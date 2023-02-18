@@ -1,9 +1,10 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
+@import url("./stylesheets/alpha.css");
 
 :root{
   --primary:#011627;
-  --accent:white;
+  --accent:#FDFFFC;
   --light:#2EC4B6;
   --gradient_blue:#2E5090;
 }
