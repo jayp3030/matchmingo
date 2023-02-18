@@ -37,9 +37,8 @@ const Landing_part02 = () => {
                 <img src={heart} 
                 alt='heart'></img>
                 <p>
-                who told you to be specific ,
-                </p>
-                <p>when you can start it from anywhere</p>
+                Who told you to be specific ,<br></br>
+                when you can start it from anywhere</p>
             </div>
           </div>
           <div className="landing_part02_container03">
