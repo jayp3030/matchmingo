@@ -1,7 +1,9 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
-
+#root{
+  overflow-anchor: none;
+}
 :root{
   --primary:#011627;
   --accent:#FDFFFC;

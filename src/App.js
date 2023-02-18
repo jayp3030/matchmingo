@@ -7,8 +7,8 @@ function App() {
   return (
     <>
     <Landing_Part01 />
-    <Landing_part02/>
-    </>
+    <Landing_part02 />
+      </>
   );
 }
 

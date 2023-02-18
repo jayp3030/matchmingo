@@ -7,7 +7,6 @@ const Landing_part02 = () => {
       <div className="landing_part02">
         <div className="landing_part02_container">
           <div className="landing_part02_container01 fcc">
-            <p className="title_matchmingo">MatchMingo</p>
           </div>
           <div className="fcc landing_part02_container02 ">
             <div className="active_part_container02 fcc">
