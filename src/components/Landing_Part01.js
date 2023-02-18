@@ -3,7 +3,7 @@ import React from 'react'
 export default function Landing_part01() {
   return (
     <>
-        <div>
+        <div class="landing_part01">
             <div className="outer">
                 <div className="inner">
                     <h2 className="intro">Introducing</h2>
