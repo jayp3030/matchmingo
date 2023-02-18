@@ -41,6 +41,7 @@
    text-transform: capitalize;
    color:var(--primary);
    font-weight: 500;
+   overflow-x:hidden ;
 }
 
 /* end of title css */
@@ -48,16 +49,13 @@
 .landing_part02_container02{
     height:25%;
     width:100%;
-    /* background:yellow; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 .active_part_container02{
     height:100%;
     width:80%;
     /* background:red; */
     flex-direction: column;
+   
 }
 
 /* css for heart image and text before that*/
@@ -73,12 +71,15 @@
     /* background: firebrick; */
     margin: 0%;
     padding: 0%;
-    font-size: 2rem;
-    font-weight: 300;
+    font-size: 1.5rem;
+    /* font-weight: 300; */
     text-transform: capitalize;
     letter-spacing: 1px;
+    
     word-spacing: 2px;
     color: var(--primary);
+    overflow:hidden;
+   
 
 }
 /* css for heart image ends */
@@ -87,34 +88,9 @@
 .landing_part02_container03{
     height:60%;
     width:100%;
-    background:darkcyan;
+    /* background:darkcyan; */
 }
 
-.slider_container{
-    height:100%;
-    width:100%;
-    background:tomato;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    
-   
 
-}
-.slider_container01,.slider_container02,.slider_container03{
-    height:60vh;
-    width:100vw;
-    background:wheat;
-    position:relative;
-}
-.slider_container02{
-    left:100%;
-    top:-100%;
-    background:aqua;
-}
-.slider_container03{
-    left:200%;
-    top:-200%;
-    background:lawngreen;
-}
+
 /*css ends here */
