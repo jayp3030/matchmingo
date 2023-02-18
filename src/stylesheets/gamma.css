@@ -2,6 +2,9 @@
     margin:0%;
     padding:0%;
     }
+    body{
+        scroll-behavior: smooth;
+    }
 .fcc{
     display: flex;
     align-items: center;
@@ -10,7 +13,7 @@
 .landing_part02{
     height:100vh;
     width:100vw;
-    background:linear-gradient(to top,var(--gradient_blue) -50%,white);
+    background:linear-gradient(to top,var(--gradient_blue) -45%,white);
     position: relative;
 }
 .landing_part02_container{
@@ -18,13 +21,13 @@
     width:100vw;
     background:transparent;
 }
+
+/*  css for title Machming landing page */
 .landing_part02_container01{
     height:15%;
     width:100%;
     /* background:red; */
     justify-content: flex-start;
-
-    
 }
 .landing_part02_container01 > p{
    margin:0%;
@@ -39,6 +42,9 @@
    color:var(--primary);
    font-weight: 500;
 }
+
+/* end of title css */
+
 .landing_part02_container02{
     height:25%;
     width:100%;
@@ -53,8 +59,10 @@
     /* background:red; */
     flex-direction: column;
 }
+
+/* css for heart image and text before that*/
 .active_part_container02 > img{
-    width:3%;
+    width:3vw;
     height:auto;
     display: block;
     /* background: green; */
@@ -73,8 +81,40 @@
     color: var(--primary);
 
 }
+/* css for heart image ends */
+
+/*css for slider*/
 .landing_part02_container03{
     height:60%;
     width:100%;
-    /* background:darkcyan; */
+    background:darkcyan;
 }
+
+.slider_container{
+    height:100%;
+    width:100%;
+    background:tomato;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    
+   
+
+}
+.slider_container01,.slider_container02,.slider_container03{
+    height:60vh;
+    width:100vw;
+    background:wheat;
+    position:relative;
+}
+.slider_container02{
+    left:100%;
+    top:-100%;
+    background:aqua;
+}
+.slider_container03{
+    left:200%;
+    top:-200%;
+    background:lawngreen;
+}
+/*css ends here */

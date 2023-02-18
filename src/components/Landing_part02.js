@@ -1,5 +1,6 @@
 import React from "react";
 import heart from '../images/heart.png'
+import Slider from "./Slider";
 const Landing_part02 = () => {
   return (
     <>
@@ -17,7 +18,9 @@ const Landing_part02 = () => {
                 <p>when you can start it from anywhere</p>
             </div>
           </div>
-          <div className="landing_part02_container03"></div>
+          <div className="landing_part02_container03">
+            <Slider />
+          </div>
         </div>
       </div>
     </>
