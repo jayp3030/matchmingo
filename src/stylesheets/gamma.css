@@ -2,6 +2,9 @@
     margin:0%;
     padding:0%;
     }
+    body{
+        scroll-behavior: smooth;
+    }
 .fcc{
     display: flex;
     align-items: center;
@@ -18,13 +21,13 @@
     width:100vw;
     background:transparent;
 }
+
+/*  css for title Machming landing page */
 .landing_part02_container01{
     height:15%;
     width:100%;
     /* background:red; */
     justify-content: flex-start;
-
-    
 }
 .landing_part02_container01 > p{
    margin:0%;
@@ -38,7 +41,11 @@
    text-transform: capitalize;
    color:var(--primary);
    font-weight: 500;
+   overflow-x:hidden ;
 }
+
+/* end of title css */
+
 .landing_part02_container02{
     height:25%;
     width:100%;
@@ -48,9 +55,13 @@
     width:80%;
     /* background:red;  */
     flex-direction: column;
+   
 }
+
+/* css for heart image and text before that*/
 .active_part_container02 > img{
-    width:4.5%;
+
+    width:3vw;
     height:auto;
     display: block;
     margin-bottom:0.5rem ;
@@ -64,12 +75,22 @@
     padding: 0%;
     font-size: 4vh;
     letter-spacing: 1px;
+    
     word-spacing: 2px;
     color: var(--primary);
+    overflow:hidden;
+   
 
 }
+/* css for heart image ends */
+
+/*css for slider*/
 .landing_part02_container03{
     height:60%;
     width:100%;
     /* background:darkcyan; */
 }
+
+
+
+/*css ends here */
