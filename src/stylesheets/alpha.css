@@ -1,0 +1,122 @@
+.outer{
+    height: 80vh;
+    width:  100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.intro{
+    font-size: 2.5rem;
+    font-family: 'manrope_light';
+    width: fit-content;
+    transition: all 1s ease-out;
+    animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
+    margin: 0.5rem  0;
+    margin-left: 4px;  
+}
+
+@keyframes fontanimation{
+    0%{
+        margin-top: 5rem;
+        transform: translate(10%,10%);
+        font-size: 6.25rem;
+        font-family: serif;
+    }
+    5%{
+        font-family:'Courier New', Courier, monospace;
+    }
+    10%{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    15%{
+        font-family: 'Times New Roman', Times, serif;
+    }
+    20%{
+        font-size: 6.25rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    25%{
+        font-size: 6.25rem;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    30%{
+        
+        font-size: 6.25rem;
+        font-family: 'manrope_light';
+    }
+    60%{
+        margin-top: 5rem;
+        transform: translate(10%,10%);
+        font-size: 6.25rem;
+        font-family: 'manrope_light';
+
+    }
+ 
+    100%{
+        
+        font-size: 2.5rem;
+        font-family: 'manrope_light';
+    }
+}
+
+.title{
+    font-size: 6.875rem;
+    font-family: 'manrope';
+    color: var(--light);
+    line-height: 3.5rem;
+    opacity: 1;
+    animation: slide-top 2s ease-in-out 1;
+    transition: all 1s;
+}
+
+@keyframes slide-top{
+    0%{
+        display: none;
+        opacity: 0;
+        transform: translate(0% , 25%);
+    }
+    50%{
+        display: block;
+        opacity: 0;
+        transform: translate(0% , 25%);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0% , 0%);
+        
+    }
+}
+
+.bottom{
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: slide-top 2s ease-in-out 1;
+    position: fixed;
+    
+}
+.bottom i{
+    font-size: 1.5rem;
+    color: var(--light);
+    transform: rotate(180deg);
+    margin: 0.5rem 0;
+}
+
+.bottom h4{
+    font-size: 1.25rem;
+    font-family: 'manrope_medium';
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
