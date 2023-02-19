@@ -1,21 +1,15 @@
-:root{
-    --primary:linear
-  }
+
 body{
-    overflow-x: hidden;      
+    overflow-x: hidden;       
 }
 .landing_carousel{
     height: 100%;
     width: 100%;
-    /* overflow: hidden;  */
-    
-    /* border: 2px solid red;  */
 }
 
 .landing_carousel_wrapper{
     height: 100%;
     width: 300%;
-    /* overflow: hidden;  */
     
 }
 
@@ -23,26 +17,26 @@ body{
     height: 100%;
     display: flex;
     overflow: hidden;
-    /* transition: all 0.1s ease;  */
     animation: motion 40s linear infinite;       
 }
 
 @keyframes motion {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(-114.28vw)} 
+	0% { transform: translateX(0vw); }
+	100% { transform: translateX(calc(-117.7vw))} 
 
 }
 
 .carousel_element{
     height: 150%;
-    min-width: 11.19rem;
-    margin:0.5rem;
+    min-width: 13.1vw;
+    margin:0.8vw;
 }
 .carousel_card{
     height: 40%;
     width: 100%;
     background-color: var(--primary);
-    margin: 0.5rem 0rem ;
+    margin: 0.8vw 0rem ;
+    z-index: 5;
 }
 .type_a,.type_b{
     padding-top: 2rem;
@@ -63,4 +57,10 @@ body{
     height: 100vh;
     width: 100vw;
     /* border: 2px solid red; */
+}
+
+.landing{
+    height: 200vh;
+    width: 100vw;
+    border: 4px solid red;
 }

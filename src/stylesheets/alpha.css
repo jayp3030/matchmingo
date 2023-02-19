@@ -1,32 +1,42 @@
+.landing_part01{
+    height:100vh;
+    width:100vw;
+}
 .outer{
-    height: 80vh;
+    height: 100vh;
     width:  100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* border: 2px solid green;  */
+    flex-direction: column;
 }
 
 .inner{
     width: fit-content;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto; 
+    min-height: 300vh;
 }
 
 .intro{
+    width: 100%;
     font-size: 2.5rem;
     font-family: 'manrope_light';
-    width: fit-content;
     transition: all 1s ease-out;
     animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
-    margin: 0.5rem  0;
-    margin-left: 4px;  
+    margin-left: 6px;
+  
+    
 }
 
 @keyframes fontanimation{
     0%{
         margin-top: 5rem;
-        transform: translate(10%,10%);
-        font-size: 6.25rem;
+        font-size: 5rem;
         font-family: serif;
     }
     5%{
@@ -39,23 +49,22 @@
         font-family: 'Times New Roman', Times, serif;
     }
     20%{
-        font-size: 6.25rem;
+        font-size: 5rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     25%{
-        font-size: 6.25rem;
+        font-size: 5rem;
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
     30%{
         
-        font-size: 6.25rem;
+        font-size: 5rem;
         font-family: 'manrope_light';
     }
     60%{
         margin-top: 5rem;
-        transform: translate(10%,10%);
-        font-size: 6.25rem;
+        font-size: 5rem;
         font-family: 'manrope_light';
 
     }
@@ -68,25 +77,28 @@
 }
 
 .title{
-    font-size: 6.875rem;
+    font-size: 5rem;
     font-family: 'manrope';
     color: var(--light);
-    line-height: 3.5rem;
+    line-height: 4rem;  
     opacity: 1;
+    bottom: 2rem;
     animation: slide-top 2s ease-in-out 1;
     transition: all 1s;
+    position: sticky;
+    top: 0;
 }
 
 @keyframes slide-top{
     0%{
         display: none;
         opacity: 0;
-        transform: translate(0% , 25%);
+        transform: translate(0% , 50%);
     }
     50%{
         display: block;
         opacity: 0;
-        transform: translate(0% , 25%);
+        transform: translate(0% , 50%);
     }
     100%{
         opacity: 1;
@@ -96,27 +108,174 @@
 }
 
 .bottom{
-    height: 20vh;
-    width: 100vw;
+    /* border: 2px solid green; */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     animation: slide-top 2s ease-in-out 1;
-    position: fixed;
+    margin-bottom: 2.5rem;
+    /* position: fixed;  */
     
 }
 .bottom i{
+    text-align: center;
     font-size: 1.5rem;
     color: var(--light);
     transform: rotate(180deg);
-    margin: 0.5rem 0;
 }
 
-.bottom h4{
+.bottom p{
+    text-align: center;
+    /* border: 2px solid black;  */
     font-size: 1.25rem;
     font-family: 'manrope_medium';
     color: var(--primary);
     letter-spacing: 1px;
 }
+@keyframes TitleAnimation{
+    100%{
+        font-size: 3rem;
+        
+    }
+}
+
+
+/* --------------- Signup css ------------------  */
+
+.outer_signup{
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: .5rem 0 1rem rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+.col1{
+    height: 100%;
+    width: 70%;
+    filter: blur(50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../images/All\ Gradient.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:200%;
+    backdrop-filter: blur(10px);
+    filter: saturate(150%);
+}
+
+
+
+.col2{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.col1 img{
+    width: 60%;
+    mix-blend-mode: luminosity;
+}
+
+.col2 h2{
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--light);
+    font-family: 'manrope_medium';
+}
+
+.upper{
+    width: 60%;
+}
+.google_btn{
+    display: block;
+    margin: .5rem auto;
+    padding: 0.5rem 0;
+    background: transparent;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid gray;
+    cursor: pointer;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'manrope_light';
+    transition: all 0.5s ease-in-out;
+}
+
+.google_logo{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 .4rem;
+}
+.google_logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.google_btn:hover{
+    color: white;
+    background: var(--light);
+    border: 1px solid transparent;
+}
+
+.col2 p{
+    text-align: center;
+    color: rgba(11, 11, 11, 0.5);
+}
+
+.col2 form{
+    width: 60%;
+}
+.col2 form > input{
+    display: block;
+    width: 95%;
+    margin: 1rem auto;
+    padding: 0.7rem 0.4rem ;
+    border: 1px solid rgba(11, 11, 11, 0.5);
+}
+
+.col2 form > input:focus{
+    outline: 1px solid var(--light);
+}
+
+.col2 h5{
+    color: var(--primary);
+    font-family: 'manrope_light';
+}
+.last_child a {
+    color: var(--light);
+    font-family: 'manrope_light';
+    text-decoration: none;
+}
+
+.btn{
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 0;
+    width: 99%;
+    font-size: 1rem;
+    outline: none;
+    color: white;
+    border: 1px solid transparent;
+    background: var(--light);
+    cursor: pointer;
+    font-family: 'manrope_light';
+    transition: all .3s ease-in-out;
+}
+
+.btn:hover{
+    transform: scale(0.95);
+}
+
+
+
+
 

@@ -49,7 +49,22 @@
     window.onscroll = function () { myFunction() };
   
     function myFunction() {
+      // if(window.scrollY <800){
+      //   document.getElementById("title").style.fontSize = "5rem" 
+      //   document.getElementById("title").style.top = "0rem" 
+      // }
       console.log(window.scrollY)
+      if(window.scrollY <400){
+        document.getElementById("title").style.transform = `scale(1)` 
+        document.getElementById("title").style.transition = `all 0.2s ease-out` 
+      }
+      if(window.scrollY >400){
+        document.getElementById("title").style.transform = `scale(${1.52-(0.0013*window.scrollY)})` 
+        document.getElementById("title").style.transition = `all 0.1s ease-out` 
+      }
+      if(window.scrollY >690){
+        document.getElementById("title").style.top = "2rem"
+      }
   
     }
   </script>

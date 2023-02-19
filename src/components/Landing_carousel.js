@@ -2,9 +2,6 @@
 
 export default function Landing_carousel() {
 
-    // let lastScrollTop = 0;
-    // const carousel_container = document.getElementById("carousel_container")
-
     return (
         <>
             <div className='landing_carousel' id='landing_carousel'>

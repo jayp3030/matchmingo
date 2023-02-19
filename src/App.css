@@ -1,18 +1,36 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
-
+#root{
+  overflow-anchor: none;
+}
 :root{
   --primary:#011627;
   --accent:#FDFFFC;
   --light:#2EC4B6;
   --gradient_blue:#2E5090;
 }
+.landing_part01{
+cursor: none;
+}
+@keyframes rotate1{
+  0%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+   }
+}
+
 
 @font-face {
   font-family: 'manrope';
   src: url("../public/resources/font/Manrope-VariableFont_wght.ttf") format("truetype");
 }
+/* *{
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' id='dt' height='100px' width='100px'><circle cx='25' cy='25' r='25'  fill='%23011627' ></circle><circle cx='25' cy='25' r='20'  stroke='%232EC4B6'  fill='%23011627' stroke-width='1'  stroke-dasharray='5' id='spinner' style=''></circle><text x='20' y='0' fill='%232EC4B6' font-family='manrope,Helvetica, sans-serif' style='font-weight:1000;font-size:9px'><tspan x='14' y='22' >Find</tspan><tspan x='10.5' y='32'>Match</tspan></text></svg>") 300 300,auto;
+} */
+
 @font-face {
   font-family: 'manrope_extra_light';
   src: url("../public/resources/font/Manrope-ExtraLight.ttf") format("truetype");
