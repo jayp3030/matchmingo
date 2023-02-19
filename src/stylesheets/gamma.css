@@ -15,12 +15,13 @@
     width:100vw;
     background:linear-gradient(to top,var(--light),transparent);
     position: relative;
-    cursor:pointer;
+    
 }
 .landing_part02_container{
     height:100vh;
     width:100vw;
     background:transparent;
+    cursor:pointer;
 }
 
 /*  css for title Machming landing page */
@@ -138,6 +139,252 @@
 }
 .match_cursor{
     top:-6%;
+}
+.login_page_main_div{
+    height:100vh;
+    width:100vw;
+    background:transparent;
+}
+.Side_presentation{
+    height:100%;
+    width:25%;
+    background:transparent;
+}
+.side_presenation_container{
+    height:100%;
+    width:100%;
+    /* background:maroon; */
+    background:url("../images/background_login.png");
+    background-size: cover;
+}
+.blurer{
+    height:100%;
+    width:100%;
+    /* background:rgba(255,255,255,0.15); */
+}
+.logo_div_login{
+    height:30%;
+    width:80%;
+    /* background:tan; */
+    flex-direction:column;
+}
+.logo_div_login > p {
+    margin: 0px;
+    padding: 0%;
+    background-color:#55B2A9;
+  font: bold 80px 'manrope';
+  color: transparent;
+  text-shadow: 0px 5px 5px rgba(255, 255, 255, 0.35);
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode:darken;
+}
+.logo_div_login p:nth-child(2){
+    top:-10%;
+    position: relative;
+    
+}
+
+.login_form_div{
+    height:100%;
+    width:75%;
+    /* background:yellow; */
+}
+
+.login_form_div_container{
+height:100%;
+width:100%;
+/* background:purple; */
+}
+
+.login_form_container{
+    height:70%;
+    width:70%;
+    /* background:black; */
+    flex-direction: column;
+}
+.login_title_container{
+    height:10%;
+    width:100%;
+    /* background:red; */
+    justify-content: flex-start;
+    padding-bottom:2%;
+}
+.login_title{
+    display:inline-block;
+    font-family:'manrope';
+    /* background:yellow; */
+    color:var(--light);
+    font-size: 30px;
+    
+    letter-spacing: 4px;
+    word-spacing: 0px;
+    font-weight: 600;
+}
+
+
+
+.login_google_container{
+    height:20%;
+    width:100%;
+    /* background:green; */
+    flex-direction: column;
+}
+.google_button_div{
+    height:80%;
+    width:100%;
+    /* background:blue; */
+}
+
+#google_login , .submit_btn{
+height:50%;
+width:40%;
+background:white;
+border:1px solid #C6C6C6;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+border-radius: 5px;
+}
+#google_login > img {
+    height:auto;
+    width:5%;
+}
+#google_login > p{
+    height:auto;
+    padding-left:3%;
+    font-size:14px;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    font-family:'manrope'
+}
+
+.OR_div{
+    height:20%;
+    width:100%;
+    /* background:lawngreen; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_OR_div{
+    height:7%;
+    background:#c0c0c0;
+    width:40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_OR_div > p{
+    display:inline-block;
+    background:white;
+    padding:0% 3% 0% 3%;
+    color:#D7D9D6;
+    margin:0px;
+}
+
+
+
+
+.form_container{
+    height:70%;
+    width:100%;
+    /* background:teal;  */
+    flex-direction: column;
+}
+.form_part1{
+    height:95%;
+    width:100%;
+    /* background: #55B2A9; */
+
+}
+.form_part2{
+    height:5%;
+    width:100%;
+    /* background: red; */
+    
+}
+#login_form_ff{
+    height:100%;
+    width:100%;
+    /* background:green; */
+    flex-direction: column;
+}
+#login_form_ff > input {
+    height:12%;
+    width:36%;
+    margin:2% 0% 2% 0%;
+    font-family: 'manrope';
+    padding:0% 0% 0% 2%;
+    font-size: 14px;
+}
+.remember_me_login{
+    height:10%;
+    width:38%;
+    /* background:yellow; */
+    margin:1% 0% 1% 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.re01,.re02{
+    height:100%;
+    width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* background:tomato; */
+}
+.re02{
+    /* background:wheat; */
+    justify-content: flex-end;
+}
+#remember{
+    font-family: 'manrope';
+    font-size:12px;
+}
+.remember_me{
+    font-size:12px;
+}
+.forget_password{
+    font-size:12px;
+}
+.submit_btn_div{
+    height:30%;
+    width:40%;
+    /* background:green; */
+}
+.link{
+    text-decoration: none;
+    outline: none;
+}
+.submit_btn{
+    height:45%;
+    width:100%;
+    font-family: 'manrope';
+    font-size:22px;
+    letter-spacing: 2px;
+    background:var(--light);
+    color:white;
+}
+.not_an_member{
+    height:25%;
+    width:100%;
+    /* background:khaki; */
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.not_an_member > p , .link > p{
+    font-size:12px;
+    letter-spacing:1px;
+    font-family: 'manrope';
+    font-weight:700;
+    
+}
+.link > p{
+    color:var(--light);
 }
 
 /*css ends here */

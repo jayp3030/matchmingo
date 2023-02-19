@@ -4,7 +4,7 @@ import Landing_part02 from "./Landing_part02";
 const Intro = () =>{
     return(
         <>
-        <div className="cursor_outer" id="cursor">
+        <div className="cursor_outer" id="cursor" >
         <div className="cursor_outside">
        <div className='cursor_div'>
         </div>
@@ -14,8 +14,6 @@ const Intro = () =>{
         </div>
         <Landing_part01 /> 
         <Landing_part02 />
-       
-        
         </>
     )
 }

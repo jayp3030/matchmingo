@@ -13,6 +13,9 @@
 .landing_part01{
 cursor: none;
 }
+#cursor{
+  cursor:none;
+}
 @keyframes rotate1{
   0%{
     transform:rotate(0deg);
