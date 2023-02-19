@@ -16,7 +16,7 @@ export default function Landing_part01() {
     }, [])
     return (
         <>
-            <div>
+            <div className='landing_part01'>
                 <div className="outer">
                     <div className='demoDiv'></div>
                     <div className="inner">
