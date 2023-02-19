@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
