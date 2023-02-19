@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-concat */
+/* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import Landing_part01 from "./Landing_Part01";
 import Landing_part02 from "./Landing_part02";
