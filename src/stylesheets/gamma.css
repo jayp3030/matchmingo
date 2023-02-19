@@ -339,6 +339,9 @@ border-radius: 5px;
     font-family: 'manrope';
     padding:0% 0% 0% 2%;
     font-size: 14px;
+    border:1px solid #C6C6C6;
+    border-radius:5px;
+    outline:none;
 }
 .remember_me_login{
     height:10%;
