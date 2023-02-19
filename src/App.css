@@ -4,6 +4,10 @@
 #root{
   overflow-anchor: none;
 }
+html {
+  scroll-behavior: smooth;
+  transition: scroll 5s ease-out;
+}
 :root{
   --primary:#011627;
   --accent:#FDFFFC;
@@ -40,3 +44,9 @@
   src: url("../public/resources/font/Manrope-ExtraBold.ttf") format("truetype");
 }
 
+@media only screen and (max-width: 600px) {
+  .title{
+      font-size: 12vw;
+      line-height: 8vw;
+  }
+}
