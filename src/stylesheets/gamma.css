@@ -143,24 +143,27 @@
 .login_page_main_div{
     height:100vh;
     width:100vw;
-    background:transparent;
+    /* background:transparent; */
 }
 .Side_presentation{
     height:100%;
     width:25%;
-    background:transparent;
+    /* background:transparent; */
 }
 .side_presenation_container{
     height:100%;
     width:100%;
     /* background:maroon; */
-    background:url("../images/background_login.png");
-    background-size: cover;
+    background:url("../images/All\ Gradient\ \(4\).png ");
+   background-size:cover;
+    /* filter:saturate(5);
+   */
 }
 .blurer{
     height:100%;
     width:100%;
-    /* background:rgba(255,255,255,0.15); */
+    /* background:rgba(255,255,255,0.0); */
+    
 }
 .logo_div_login{
     height:30%;
