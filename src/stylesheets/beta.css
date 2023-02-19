@@ -1,15 +1,18 @@
 
 body{
-    overflow-x: hidden;       
+    overflow-x: hidden; 
+    scroll-behavior: smooth;      
 }
 .landing_carousel{
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .landing_carousel_wrapper{
     height: 100%;
     width: 300%;
+    overflow-x: hidden;
     
 }
 
@@ -29,6 +32,7 @@ body{
 .carousel_element{
     height: 150%;
     min-width: 13.1vw;
+    max-width: 13.1vw;
     margin:0.8vw;
 }
 .carousel_card{
@@ -37,6 +41,13 @@ body{
     background-color: var(--primary);
     margin: 0.8vw 0rem ;
     z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel_card img{
+    height: 93%;
+    width: 90%;
 }
 .type_a,.type_b{
     padding-top: 2rem;
