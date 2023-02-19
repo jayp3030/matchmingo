@@ -3,7 +3,7 @@
 
 
 import React,{useState,useEffect} from "react";
-
+import { motion } from "framer-motion";
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
 
@@ -21,7 +21,10 @@ useEffect(() => {
 
   return (
     <>
-      <div className="landing_part02">
+      <motion.div className="landing_part02"
+      exit={{x:-2000}}
+      transition={{duration:5}}
+      >
         <div className="landing_part02_container">
           <div className="landing_part02_container01 fcc">
           </div>
@@ -38,7 +41,7 @@ useEffect(() => {
               <Landing_carousel />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

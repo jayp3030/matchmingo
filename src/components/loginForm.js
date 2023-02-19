@@ -1,6 +1,7 @@
 import React from "react";
 import obj from '../images/google.png'
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const LoginForm = () => {
   return (
     <>
@@ -8,14 +9,22 @@ const LoginForm = () => {
         <div className="login_form_div_container fcc">
           <div className="login_form_container fcc">
             <div className="login_title_container fcc">
-                <p className="login_title">Welcome Back ,Mayank</p>
+                <p className="login_title">Welcome Back ,
+                <motion.h5
+                initial={{x:-500}}
+                animate={{x:0}} 
+                transition={{duration:3,type:'spring',stiffness:300}}
+                className="user_name">Mayank</motion.h5>
+                </p>
             </div>
             <div className="login_google_container fcc">
                 <div className="google_button_div fcc">
-                    <button id="google_login">
+                    <motion.button id="google_login"
+                    whileHover={{scale:1.07}}
+                    >
                         <img src={obj}></img>
                         <p>Log in With Google</p>
-                    </button>
+                    </motion.button>
                 </div>
                 <div className="OR_div">
                     <div className="login_OR_div">
@@ -45,7 +54,9 @@ const LoginForm = () => {
                         
                         </div>
                         <div className="submit_btn_div">
-                        <button className="submit_btn">Login</button>
+                        <motion.button className="submit_btn"
+                        whileHover={{scale:1.02}}
+                        >Login</motion.button>
                         <div className="not_an_member">
                             <p>Not a Member ?&nbsp;</p>
                             <Link to='/' className="link"><p>Sign Up For Free</p></Link>
