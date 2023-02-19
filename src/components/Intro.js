@@ -12,7 +12,6 @@ const Intro = () =>{
         <p className="match_cursor">Match</p>
        </div>
         </div>
-        
         <Landing_part01 /> 
         <Landing_part02 />
        
@@ -25,7 +24,7 @@ export default Intro;
 
 document.addEventListener("mousemove",(e)=>{
     var ref=document.getElementById("cursor");
-    var x=e.clientX ;
+    var x=e.clientX;
     var y=e.clientY ;
     
     ref.style.transform="translate3d( " + x + "px," + y + "px" + "," + "0px)";

@@ -1,14 +1,16 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
-
+#root{
+  overflow-anchor: none;
+}
 :root{
   --primary:#011627;
   --accent:#FDFFFC;
   --light:#2EC4B6;
   --gradient_blue:#2E5090;
 }
-*{
+.landing_part01{
 cursor: none;
 }
 @keyframes rotate1{
