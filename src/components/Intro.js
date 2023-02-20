@@ -4,8 +4,6 @@ import React from "react";
 import Landing_part01 from "./Landing_Part01";
 import Landing_part02 from "./Landing_part02";
 import {useNavigate } from "react-router";
-import { motion } from "framer-motion";
-import { useState } from "react";
 
 export default function Intro() {
     const Navigate = useNavigate()

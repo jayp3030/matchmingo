@@ -36,12 +36,9 @@ const LoginForm = () => {
                 <div className="form_part1">
                     <form id="login_form_ff" className="fcc">
                         <input type="email" placeholder="Enter Your Email">
-
                         </input>
                         <input type="password" placeholder="Password">
-
                         </input>
-
                         <div className="remember_me_login">
                             <div className="re01">
                             <input type="checkbox" id="remember"/>
@@ -50,8 +47,6 @@ const LoginForm = () => {
                             <div className="re02">
                             <Link to='/' className="link"><p className="forget_password">Forget Password ?</p></Link>
                             </div>
-                        
-                        
                         </div>
                         <div className="submit_btn_div">
                         <motion.button className="submit_btn"

@@ -185,8 +185,8 @@
     background-size:300%;
     background-repeat: no-repeat;
     background-position: center center; 
-    backdrop-filter: blur(20px);
-    background-blend-mode:luminosity;
+    /* backdrop-filter: blur(20px); */
+    /* background-blend-mode:luminosity; */
     filter: saturate(150%);
     animation-name:move_background;
     animation-duration:10s;
@@ -207,11 +207,12 @@
     padding: 0%;
     background-color:#55B2A9;
   font: bold 80px 'manrope';
-  color: transparent;
-  text-shadow: 0px 5px 5px rgba(255, 255, 255, 0.35);
+  color:transparent;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   -webkit-background-clip: text;
   background-clip: text;
-  mix-blend-mode:darken;
+  /* mix-blend-mode:darken; */
+
 }
 .logo_div_login p:nth-child(2){
     top:-10%;
@@ -233,26 +234,26 @@ width:100%;
 
 .login_form_container{
     height:70%;
-    width:70%;
+    width:80%;
     /* background:black; */
     flex-direction: column;
 }
 .login_title_container{
-    height:10%;
+    height:14%;
     width:100%;
     /* background:red; */
     justify-content: flex-start;
-    padding-bottom:2%;
+    /* padding-bottom:2%; */
 }
 .login_title{
-    display:inline-block;
+    /* display:inline-block; */
     font-family:'manrope';
     /* background:yellow; */
     color:var(--light);
-    font-size: 30px;
-    
+    font-size: 1.8rem;
+    margin:0px;
+    padding:0px;
     letter-spacing: 4px;
-    word-spacing: 0px;
     font-weight: 600;
 }
 
@@ -271,8 +272,8 @@ width:100%;
 }
 
 #google_login , .submit_btn{
-height:50%;
-width:40%;
+height:53%;
+width:45%;
 background:white;
 border:1px solid #C6C6C6;
 display: flex;
@@ -288,7 +289,7 @@ border-radius: 5px;
 #google_login > p{
     height:auto;
     padding-left:3%;
-    font-size:14px;
+    font-size:0.9rem;
     letter-spacing: 1px;
     word-spacing: 3px;
     font-family:'manrope'
@@ -305,7 +306,7 @@ border-radius: 5px;
 .login_OR_div{
     height:7%;
     background:#c0c0c0;
-    width:40%;
+    width:45%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -347,25 +348,25 @@ border-radius: 5px;
 }
 #login_form_ff > input {
     height:12%;
-    width:36%;
+    width:43%;
     margin:2% 0% 2% 0%;
     font-family: 'manrope';
     padding:0% 0% 0% 2%;
-    font-size: 14px;
+    font-size: 0.9rem;
     border:1px solid #C6C6C6;
     border-radius:5px;
     outline:none;
 }
 
 #login_form_ff > input:hover{
-    border:3px solid var(--light);
+    border:1px solid var(--light);
     box-shadow:0px 0px 1px black;
 }
 
 
 .remember_me_login{
     height:10%;
-    width:38%;
+    width:45%;
     /* background:yellow; */
     margin:1% 0% 1% 0%;
     display: flex;
@@ -387,7 +388,7 @@ border-radius: 5px;
 }
 #remember{
     font-family: 'manrope';
-    font-size:12px;
+    font-size:0.8rem;
     border:2px solid var(--light);
 }
 #remember:after{
@@ -400,12 +401,13 @@ border-radius: 5px;
     color:#1e1e1e;
 }
 .forget_password{
-    font-size:12px;
+    font-size:0.8rem;
 }
 .submit_btn_div{
     height:30%;
-    width:40%;
-    /* background:green; */
+    width:45%;
+    /* background:blue; */
+    
 }
 .link{
     text-decoration: none;
@@ -415,7 +417,7 @@ border-radius: 5px;
     height:45%;
     width:100%;
     font-family: 'manrope';
-    font-size:22px;
+    font-size:1.5rem;
     letter-spacing: 2px;
     background:var(--light);
     color:white;
@@ -429,7 +431,7 @@ border-radius: 5px;
     justify-content:center;
 }
 .not_an_member > p , .link > p{
-    font-size:12px;
+    font-size:0.8rem;
     letter-spacing:1px;
     font-family: 'manrope';
     font-weight:700;
