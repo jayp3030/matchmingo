@@ -12,7 +12,6 @@ export default function Intro() {
     }
     return (
         <>
-
             <Landing_part01 />
             <div className="cursor_outer" id="cursor" onClick={goToSignup}>
                 <div className="cursor_outer" id="cursor" >
@@ -22,21 +21,17 @@ export default function Intro() {
                         <p className="find_cursor">Find Match</p>
                     </div>
                 </div>
-                <div>
-                    
+                <div>      
                 </div>
             </div>
             <Landing_part02 />
         </>
     )
 }
-
 document.addEventListener("mousemove", (e) => {
     var ref = document.getElementById("cursor");
     var x = e.clientX;
     var y = e.clientY;
     ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)";
     console.log(x, y);
-
-
 })
