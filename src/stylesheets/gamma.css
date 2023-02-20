@@ -151,10 +151,11 @@
     height:100vh;
     width:100vw;
     /* background:transparent; */
+    
 }
 .Side_presentation{
     height:100%;
-    width:25%;
+    width:45vw;
     background:transparent;
    
 }
@@ -163,35 +164,33 @@
     height:100%;
     width:100%;
     position: relative;
-    background-image:url("../images/All\ Gradient\ \(4\).png ");
-    background-position: -20% 20%;
-    background-size:250%;
+    background-image:url("../images/All\ color\ Gradient\ SD.png ");
+    background-size:210%;
     background-position: center center;
+   
     filter: saturate(150%);
     /* background:maroon; */
     /* background-image:url("../images/All\ Gradient\ \(4\).png ");
    background-position: -20% 20%;
    background-size:200%;
    background-position: center center;
-   
-   filter: saturate(150%); */
-    /* filter:saturate(5);
    */
+   
+ 
 }
 .blurer{
     height:100%;
     width:100%;
-    background-image:url("../images/All\ Gradient\ \(4\).png ");
+    background-image:url("../images/All\ Gradient\ \(4\).png");
     
-    background-size:200%;
+    background-size:300%;
     background-repeat: no-repeat;
-    /* background-position: center center;  */
-       backdrop-filter: blur(10px);
+    background-position: center center; 
+    backdrop-filter: blur(20px);
+    background-blend-mode:luminosity;
     filter: saturate(150%);
-   
-    background-blend-mode: color;
     animation-name:move_background;
-    animation-duration:15s;
+    animation-duration:10s;
     animation-iteration-count: infinite;
     animation-timing-function:linear;
     animation-direction: alternate;

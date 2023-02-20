@@ -16,8 +16,8 @@ function App() {
   {/* <AnimatePresence>
    <BrowserRouter>
         <Routes >
-          <Route  exact path='/' element={<Intro/>} />
-          <Route exact path="/login" element={<Login/>} />
+          <Route  exact path='/' element={<Intro />} />
+          <Route exact path="/login" element={<Master flag="login" />} />
         <Route exact path="/signup" element={<Signup/>} />
         </Routes>
       </BrowserRouter>
