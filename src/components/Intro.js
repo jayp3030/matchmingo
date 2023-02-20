@@ -3,39 +3,43 @@
 import React from "react";
 import Landing_part01 from "./Landing_Part01";
 import Landing_part02 from "./Landing_part02";
-import { Navigate, useNavigate } from "react-router";
-const Intro = () =>{
+import {useNavigate } from "react-router";
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+export default function Intro() {
     const Navigate = useNavigate()
-    const goToSignup = ()=>{
+    const goToSignup = () => {
         Navigate("/signup")
     }
-    return(
+    return (
         <>
-        
-        <Landing_part01 />
-        <div className="cursor_outer" id="cursor" onClick={goToSignup}>
-        <div className="cursor_outside">
-       <div className='cursor_div'>
-        </div>
-        <p className="find_cursor">Find Match</p>
-       </div>
-        </div>
-        <Landing_part02 />
-       
-        
+
+            <Landing_part01 />
+            <div className="cursor_outer" id="cursor" onClick={goToSignup}>
+                <div className="cursor_outer" id="cursor" >
+                    <div className="cursor_outside">
+                        <div className='cursor_div'>
+                        </div>
+                        <p className="find_cursor">Find Match</p>
+                    </div>
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+            <Landing_part02 />
         </>
     )
 }
 
-export default Intro;
+document.addEventListener("mousemove", (e) => {
+    var ref = document.getElementById("cursor");
+    var x = e.clientX;
+    var y = e.clientY;
 
-document.addEventListener("mousemove",(e)=>{
-    var ref=document.getElementById("cursor");
-    var x=e.clientX;
-    var y=e.clientY ;
-    
-    ref.style.transform="translate3d( " + (x-50) + "px," + (y-50) + "px" + "," + "0px)";
-    console.log(x,y);
+    ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)";
+    console.log(x, y);
 
 
 })
