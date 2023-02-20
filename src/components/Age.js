@@ -1,5 +1,5 @@
 import React from 'react'
-import matchmingo from "../images/MatchMingo.png";
+
 
 export default function Age() {
   const handleSlide = (e)=>{
@@ -10,7 +10,6 @@ export default function Age() {
     <>
        <div className="outer_signup" id='age'>
         <div className="col1" id="blurer">
-          {/* <img src={matchmingo} alt='MatchMingo' /> */}
         </div>
         <div className="col2">
           <div className="upper">
