@@ -5,7 +5,7 @@ import Name from "./Name";
 import Age from "./Age";
 import College from "./College";
 import Hobby from "./Hobby";
-
+import SidePresentation from "./SidePresentation";
 export default function ProfileSetup() {
   return (
     <>
