@@ -3,18 +3,23 @@
 import React from "react";
 import Landing_part01 from "./Landing_Part01";
 import Landing_part02 from "./Landing_part02";
+import { Navigate, useNavigate } from "react-router";
 const Intro = () =>{
+    const Navigate = useNavigate()
+    const goToSignup = ()=>{
+        Navigate("/signup")
+    }
     return(
         <>
-        <div className="cursor_outer" id="cursor">
+        
+        <Landing_part01 />
+        <div className="cursor_outer" id="cursor" onClick={goToSignup}>
         <div className="cursor_outside">
        <div className='cursor_div'>
         </div>
-        <p className="find_cursor">Find</p>
-        <p className="match_cursor">Match</p>
+        <p className="find_cursor">Find Match</p>
        </div>
         </div>
-        <Landing_part01 /> 
         <Landing_part02 />
        
         
@@ -29,7 +34,7 @@ document.addEventListener("mousemove",(e)=>{
     var x=e.clientX;
     var y=e.clientY ;
     
-    ref.style.transform="translate3d( " + x + "px," + y + "px" + "," + "0px)";
+    ref.style.transform="translate3d( " + (x-50) + "px," + (y-50) + "px" + "," + "0px)";
     console.log(x,y);
 
 

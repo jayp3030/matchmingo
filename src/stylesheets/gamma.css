@@ -4,6 +4,7 @@
     }
     body{
         scroll-behavior: smooth;
+        /* cursor: none;   */
     }
 .fcc{
     display: flex;
@@ -15,7 +16,7 @@
     width:100vw;
     background:linear-gradient(to top,var(--light),transparent);
     position: relative;
-    cursor:pointer;
+    cursor:none; 
 }
 .landing_part02_container{
     height:100vh;
@@ -27,7 +28,6 @@
 .landing_part02_container01{
     height:15%;
     width:100%;
-    /* background:red; */
     justify-content: flex-start;
 }
 .landing_part02_container01 > p{
@@ -52,10 +52,10 @@
     width:100%;
 }
 .active_part_container02{
-    height:90%;
+    min-height:80%;
     width:80%;
-    /* background:red;  */
     flex-direction: column;
+    justify-content: start;
    
 }
 
@@ -94,11 +94,12 @@
 
 .cursor_outer{
     position:absolute;
+    z-index: 100;
 }
 .cursor_div{
-    height:40px;
-    width:40px;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%232EC4B6' stroke-width='2' stroke-dasharray='5' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    height:80px;
+    width:80px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%232EC4B6' stroke-width='3' stroke-dasharray='9' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 50px;
     position:absolute;
     display: flex;
@@ -110,12 +111,12 @@
     animation-timing-function: linear;
 }
 .cursor_outside {
-    box-shadow: 0px 0px 10px var(--primary);
+
     position:relative;
-    width: 50px;
-    height: 51px;
+    width: 100px;
+    height:100px;
     /* dashed border */
-    border-radius:100px ;
+    border-radius:100px ;  
      top:-50%;
     background:var(--primary);
     display: flex;
@@ -124,13 +125,19 @@
     flex-direction: column;
  }
  .cursor_outside > p{
-    color:var(--light);
-    font-size:9px;
+    color:var(--light); 
+    /* border: 2px solid red;  */
+    font-size:0.8rem;
     font-family:'manrope';
     font-weight:1000;
     position: relative;
-    margin:0px;
-    padding:0px;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2rem;
 }
 
 .find_cursor{

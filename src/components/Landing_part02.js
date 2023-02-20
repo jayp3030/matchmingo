@@ -1,8 +1,8 @@
 
 /* eslint-disable react/jsx-pascal-case */
-import React from "react";
 
 import React,{useState,useEffect} from "react";
+import { useNavigate } from "react-router";
 
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
@@ -10,8 +10,14 @@ import Landing_carousel from "./Landing_carousel";
 
 
 const Landing_part02 = () => {
+  const Navigate = useNavigate();
 
   const [carousel, setcarousel] = useState(false)
+
+  const goToSignup=()=>{
+    console.log("hello")
+    Navigate("/signup")
+  }
   
 useEffect(() => {
   setTimeout(() => {
@@ -21,7 +27,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className="landing_part02">
+      <div className="landing_part02" onClick={goToSignup}>
         <div className="landing_part02_container">
           <div className="landing_part02_container01 fcc">
           </div>

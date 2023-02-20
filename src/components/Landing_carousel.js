@@ -57,50 +57,46 @@ export default function Landing_carousel() {
                             <div className='carousel_card'>
                             </div>
                         </div>
-                        <div className='type_a carousel_element'>
+                        <div className='type_a carousel_element mobileHide'>
                             <div className='carousel_card'>
                             </div>
                         </div>
-                        <div className='type_b carousel_element'>
-                            <div className='carousel_card'>
-                            </div>
-                            <div className='carousel_card'>
-                            </div>
-                        </div>
-                        <div className='type_a carousel_element'>
-                            <div className='carousel_card'>
-                            </div>
-                        </div>
-                        <div className='type_c carousel_element'>
+                        <div className='type_b carousel_element mobileHide'>
                             <div className='carousel_card'>
                             </div>
                             <div className='carousel_card'>
                             </div>
                         </div>
-                        <div className='type_a carousel_element'>
+                        <div className='type_a carousel_element mobileHide'>
                             <div className='carousel_card'>
                             </div>
                         </div>
-                        <div className='type_b carousel_element'>
-                            <div className='carousel_card'>
-                            </div>
-                            <div className='carousel_card'>
-                            </div>
-                        </div>
-                        <div className='type_a carousel_element'>
-                            <div className='carousel_card'>
-                            </div>
-                        </div>
-                        <div className='type_c carousel_element'>
+                        <div className='type_c carousel_element mobileHide'>
                             <div className='carousel_card'>
                             </div>
                             <div className='carousel_card'>
                             </div>
                         </div>
-
-
-
-
+                        <div className='type_a carousel_element mobileHide'>
+                            <div className='carousel_card'>
+                            </div>
+                        </div>
+                        <div className='type_b carousel_element mobileHide'>
+                            <div className='carousel_card'>
+                            </div>
+                            <div className='carousel_card'>
+                            </div>
+                        </div>
+                        <div className='type_a carousel_element mobileHide'>
+                            <div className='carousel_card'>
+                            </div>
+                        </div>
+                        <div className='type_c carousel_element mobileHide'>
+                            <div className='carousel_card'>
+                            </div>
+                            <div className='carousel_card'>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
