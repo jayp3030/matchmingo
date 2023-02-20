@@ -2,10 +2,12 @@ import React from 'react'
 
 
 export default function Name() {
+
     const handleSlide = (e)=>{
         e.preventDefault()
         document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
       }
+      
   return (
     <>
        <div className="outer_signup" id='name'>

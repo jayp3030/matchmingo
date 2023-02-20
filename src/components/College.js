@@ -1,5 +1,5 @@
 import React from 'react'
-import matchmingo from "../images/MatchMingo.png";
+
 
 export default function College() {
   const handleSlide = (e)=>{
@@ -11,7 +11,6 @@ export default function College() {
     <>
        <div className="outer_signup" id='college'>
         <div className="col1" id="blurer">
-          {/* <img src={matchmingo} alt='MatchMingo' /> */}
         </div>
         <div className="col2">
           <div className="upper">

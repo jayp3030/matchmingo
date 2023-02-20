@@ -9,7 +9,7 @@ import Hobby from "./Hobby";
 export default function ProfileSetup() {
   return (
     <>
-    <SidePage />
+      <SidePage />
       <div className="profile_setup" id="profile_setup">
         <Signup />
         <Name />

@@ -3,10 +3,12 @@ import google from "../images/google.png";
 
 
 export default function Signup() {
+
   const handleSlide = (e)=>{
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-100vw)" 
   }
+
   return (
     <>
       <div className="outer_signup" id="outer_signup">
@@ -41,13 +43,3 @@ export default function Signup() {
   );
 }
 
-// setInterval(() => {
-//   var a = document.getElementById("");
-  
-//   var y = Math.random() * 100;
-
-//   var z = y + "px";
-//   // console.log(z);
-//   a.style.backgroundPositionY = y + "px";
-//   a.style.transitionDuration = "2s";
-// }, 500);
