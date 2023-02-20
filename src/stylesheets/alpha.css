@@ -27,19 +27,17 @@
     text-align: center;
     /* border: 2px solid red; */
     width: 100%;
-    font-size: 4vw;
+    font-size: 3vw;
     font-family: 'manrope_light';
     transition: all 1s ease-out;
     animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
     margin-left: 6px;
-  
-    
 }
 
 @keyframes fontanimation{
     0%{
         margin-top: 5rem;
-        font-size: 10vw;
+        font-size: 8vw;
         font-family: serif;
     }
     5%{
@@ -64,14 +62,14 @@
     }
     60%{
         margin-top: 5rem;
-        font-size: 10vw;
+        font-size: 8vw;
         font-family: 'manrope_light';
 
     }
  
     100%{
         
-        font-size: 4vw;
+        font-size: 3vw;
         font-family: 'manrope_light';
     }
 }

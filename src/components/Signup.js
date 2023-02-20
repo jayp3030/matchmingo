@@ -25,7 +25,7 @@ export default function Signup() {
             <input type="password" placeholder="Confirm Password" />
             <button className="btn">Next</button>
           </form>
-          <h5 className="last_child">Already Member? <a href="/">Find Your Match</a></h5>
+          <h5 className="last_child">Already a Member? <a href="/login">Login</a></h5>
         </div>
       </div>
     </>

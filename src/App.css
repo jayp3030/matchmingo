@@ -1,6 +1,7 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
+@import url("./stylesheets/mobile.css");
 #root{
   overflow-anchor: none;
 }
@@ -181,11 +182,4 @@ cursor: none;
 @font-face {
   font-family: 'manrope_extra_bold';
   src: url("../public/resources/font/Manrope-ExtraBold.ttf") format("truetype");
-}
-
-@media only screen and (max-width: 600px) {
-  .title{
-      font-size: 12vw;
-      line-height: 8vw;
-  }
 }

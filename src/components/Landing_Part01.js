@@ -11,7 +11,7 @@ export default function Landing_part01() {
     useEffect(() => {
         setTimeout(() => {
             scrollDown()
-        }, 2200);
+        }, 2500);
       
     }, [])
     return (
