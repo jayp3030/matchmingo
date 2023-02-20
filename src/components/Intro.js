@@ -4,8 +4,6 @@ import React from "react";
 import Landing_part01 from "./Landing_Part01";
 import Landing_part02 from "./Landing_part02";
 import {useNavigate } from "react-router";
-import { motion } from "framer-motion";
-import { useState } from "react";
 
 export default function Intro() {
     const Navigate = useNavigate()
@@ -14,7 +12,6 @@ export default function Intro() {
     }
     return (
         <>
-
             <Landing_part01 />
             <div className="cursor_outer" id="cursor" onClick={goToSignup}>
                 <div className="cursor_outer" id="cursor" >
@@ -24,15 +21,13 @@ export default function Intro() {
                         <p className="find_cursor">Find Match</p>
                     </div>
                 </div>
-                <div>
-                    
+                <div>      
                 </div>
             </div>
             <Landing_part02 />
         </>
     )
 }
-
 document.addEventListener("mousemove", (e) => {
     var ref = document.getElementById("cursor"); 
     var x = e.clientX;

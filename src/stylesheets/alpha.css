@@ -143,41 +143,44 @@
 
 .outer_signup{
     height: 100vh;
-    width: 100vw;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: .5rem 0 1rem rgba(0, 0, 0, 0.3);
+    min-width: 100vw;
+    background: transparent;
     display: flex;
+   
 }
 .col1{
     height: 100%;
-    width: 70%;
-    filter: blur(50%);
+    width: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../images/All\ Gradient.png);
+    background: transparent;
+    background-color: var(--accent);
+    /* background-image: url(../images/All\ Gradient.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size:200%;
     backdrop-filter: blur(10px);
-    filter: saturate(150%);
+    filter: saturate(150%); */
 }
-
-
 
 .col2{
     height: 100%;
-    width: 100%;
+    width: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: var(--accent);
+    /* background: rgba(11, 11, 11, 0.2); */
+    /* box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .7); */
+    /* border: 2px solid rgba(0, 0, 0, 0.5); */
 }
 
 .col1 img{
-    width: 60%;
+    width: 65%;
     mix-blend-mode: luminosity;
+    pointer-events: none;
 }
 
 .col2 h2{
@@ -189,7 +192,10 @@
 }
 
 .upper{
-    width: 60%;
+    width: 50%;
+}
+.middle{
+    width: 50%;
 }
 .google_btn{
     display: block;
@@ -200,7 +206,7 @@
     outline: none;
     border: 1px solid gray;
     cursor: pointer;
-    width: 98%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,6 +214,9 @@
     transition: all 0.5s ease-in-out;
 }
 
+.google_btn div{
+    letter-spacing: 1px;
+}
 .google_logo{
     height: 1.5rem;
     width: 1.5rem;
@@ -219,9 +228,7 @@
 }
 
 .google_btn:hover{
-    color: white;
-    background: var(--light);
-    border: 1px solid transparent;
+    transform: scale(0.95);
 }
 
 .col2 p{
@@ -230,7 +237,7 @@
 }
 
 .col2 form{
-    width: 60%;
+    width: 100%;
 }
 .col2 form > input{
     display: block;
@@ -238,19 +245,34 @@
     margin: 1rem auto;
     padding: 0.7rem 0.4rem ;
     border: 1px solid rgba(11, 11, 11, 0.5);
+    border-radius: .2rem;
+    font-family: 'manrope_light';
+}
+
+.col2 form > input::placeholder{
+    color: 1px solid rgba(11, 11, 11, 0.5);
+}
+.col2 form > input:hover{
+    border: 1px solid var(--light);
 }
 
 .col2 form > input:focus{
     outline: 1px solid var(--light);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .col2 h5{
-    color: var(--primary);
-    font-family: 'manrope_light';
+    color: #757575;
+    font-family: 'manrope_extra_light';
 }
 .last_child a {
     color: var(--light);
-    font-family: 'manrope_light';
+    font-family: 'manrope_medium';
     text-decoration: none;
 }
 
@@ -258,7 +280,7 @@
     display: block;
     margin: 1rem auto;
     padding: 0.5rem 0;
-    width: 99%;
+    width: 100%;
     font-size: 1rem;
     outline: none;
     color: white;
@@ -267,13 +289,90 @@
     cursor: pointer;
     font-family: 'manrope_light';
     transition: all .3s ease-in-out;
+    letter-spacing: 1.5px;
 }
 
 .btn:hover{
     transform: scale(0.95);
 }
 
+.remember{
+    height: fit-content;
+    display: flex;
+    padding: .5rem 2rem;
+}
+
+.middle select{
+    display: block;
+    width: 100%;
+    padding: .6rem 0.3rem;
+    margin: 1rem 0;
+    outline: none;
+    border: 1px solid var(--light);
+    font-size: 1rem;
+    font-family: 'manrope_light';
+    letter-spacing: .5px;
+}
+
+.middle select:focus{
+    border: 1px solid var(--primary);
+}
+
+.middle select option{
+    color: var(--primary);
+}
+
+.sidebar_wrapper{
+    width: 45vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../images/All\ Gradient.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:200%;
+    backdrop-filter: blur(10px);
+    filter: saturate(150%);
+    position: fixed;
+    z-index: 100;
+}
+
+.sidebar_wrapper img{
+    width: 70%;
+}
+
+.profile_setup{
+    width: 600vw;
+    height: 100vh;
+    display: flex;
+    background: white;
+    transition: all .5s ease-in-out;
+}
 
 
+/* .profile_setup_inner{
+    width: 100vw;
+    height: 100vh;
+}
 
 
+.BlankPage{
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+}
+
+#name{
+    transition: all 1s ease-in-out;
+    z-index: -4;
+}
+#age{
+    z-index: -3;
+}
+#college{
+    z-index: -2;
+}
+#hobby{
+    z-index: -1;
+} */
