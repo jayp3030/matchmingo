@@ -19,14 +19,14 @@ const SidePresentation = () => {
 
 export default SidePresentation;
 
-setInterval(() => {
-  var a = document.getElementById("blurer");
-  var x = Math.random() * 100;
-  var y = Math.random() * 100;
+// setInterval(() => {
+//   var a = document.getElementById("blurer");
+//   var x = Math.random() * 100;
+//   var y = Math.random() * 100;
 
-  var z = x + "px," + y + "px";
-  console.log(z);
-  a.style.backgroundPositionX =x+"px"; 
-  a.style.backgroundPositionY =y+"px"; 
-  a.style.transitionDuration = "1s";
-}, 500);
+//   var z = x + "px," + y + "px";
+//   // console.log(z); 
+//   a.style.backgroundPositionX =x+"px"; 
+//   a.style.backgroundPositionY =y+"px"; 
+//   a.style.transitionDuration = "1s";
+// }, 500);
