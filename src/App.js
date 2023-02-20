@@ -1,16 +1,19 @@
-
 import './App.css';
 import Intro from './components/Intro';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
-import Login from './components/Login';
 import Signup from './components/Signup';
 import { AnimatePresence } from 'framer-motion';
-import Master from './components/master';
+
+import ProfileSetup from './components/ProfileSetup';
+
+
 function App() {
 
   return (
     <>
-  <AnimatePresence>
+      <ProfileSetup />
+      
+  {/* <AnimatePresence>
    <BrowserRouter>
         <Routes >
           <Route  exact path='/' element={<Intro />} />
@@ -18,7 +21,7 @@ function App() {
         <Route exact path="/signup" element={<Signup/>} />
         </Routes>
       </BrowserRouter>
-  </AnimatePresence>
+  </AnimatePresence> */}
     </>
   );
 }

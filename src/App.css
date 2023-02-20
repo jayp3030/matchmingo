@@ -3,7 +3,7 @@
 @import url("./stylesheets/alpha.css");
 @import url("./stylesheets/mobile.css");
 #root{
-  overflow-anchor: none;
+  overflow-anchor: none; 
 }
 html {
   scroll-behavior: smooth;

@@ -24,7 +24,7 @@ export default React.memo(SidePresentation);
 //   var y = Math.random() * 100;
 
 //   var z = x + "px," + y + "px";
-//   console.log(z);
+//   // console.log(z);
 //   a.style.backgroundPositionX =x+"px"; 
 //   a.style.backgroundPositionY =y+"px"; 
 //   a.style.transitionDuration = "1s";
