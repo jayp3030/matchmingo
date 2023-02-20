@@ -6,10 +6,10 @@ import matchmingo from '../images/MatchMingo.png'
 export default function Signup() {
   return (
     <>
-      <div className="outer_signup"> 
-         <div className="col1">
+      {/* <div className="outer_signup">  */}
+         {/* <div className="col1">
           <img src={matchmingo} alt="MatchMingo" />
-        </div>
+        </div> */}
         <div className="col2">
           <div className="upper">
                 <h2>Become a Mingo Member</h2>
@@ -27,7 +27,7 @@ export default function Signup() {
           </form>
           <h5 className="last_child">Already a Member? <a href="/login">Login</a></h5>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }

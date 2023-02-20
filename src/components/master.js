@@ -17,7 +17,6 @@ const Master = (e)=>{
         }
     </div>
         </>
-   
     )
 }
 
