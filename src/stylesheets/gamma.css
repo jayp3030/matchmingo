@@ -156,18 +156,17 @@
 .Side_presentation{
     height:100%;
     width:45vw;
-    background:transparent;
+   
 }
 
 .side_presenation_container{
     height:100%;
     width:100%;
-    position: relative;
     background-image:url("../images/All\ color\ Gradient\ SD.png ");
-    background-size:210%;
+    background-size:200%;
     background-position: center center;
-   
-    filter: saturate(150%);
+    /* backdrop-filter: saturate(150%); */
+    filter: saturate(200%);
     /* background:maroon; */
     /* background-image:url("../images/All\ Gradient\ \(4\).png ");
    background-position: -20% 20%;
@@ -181,13 +180,13 @@
     height:100%;
     width:100%;
     background-image:url("../images/All\ Gradient\ \(4\).png");
-    
-    background-size:300%;
+    position:fixed;
+    background-size:200%;
     background-repeat: no-repeat;
     background-position: center center; 
     /* backdrop-filter: blur(20px); */
     /* background-blend-mode:luminosity; */
-    filter: saturate(150%);
+    /* filter: saturate(150%); */
     animation-name:move_background;
     animation-duration:10s;
     animation-iteration-count: infinite;
@@ -200,7 +199,13 @@
     height:30%;
     width:80%;
     /* background:tan; */
+    position:fixed;
+    /* background:red; */
     flex-direction:column;
+}
+
+.logo_div_login > img{
+    width: 90%;
 }
 .logo_div_login > p {
     margin: 0px;

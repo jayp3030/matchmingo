@@ -1,9 +1,10 @@
 import React from "react";
 import google from "../images/google.png";
+import SidePresentation from "./SidePresentation";
 
 
 export default function Signup() {
-  
+
   const handleSlide = (e)=>{
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-100vw)" 
@@ -13,6 +14,7 @@ export default function Signup() {
     <>
       <div className="outer_signup" id="outer_signup">
         <div className="col1">
+          
   
         </div>
         <div className="col2">
