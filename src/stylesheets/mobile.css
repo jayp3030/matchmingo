@@ -1,7 +1,80 @@
-/* Extra small devices (phones, 600px and down) */
+
 @media only screen and (max-width: 600px) {
-    .title{
-        font-size: 12vw;
-        line-height: 8vw;
+
+    .cursor_outer{
+        display: none;
     }
-}
+    .intro{
+        font-size: 5vw;
+        animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
+    }
+
+    @keyframes fontanimation{
+        0%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: serif;
+        }
+        5%{
+            font-family:'Courier New', Courier, monospace;
+        }
+        10%{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        15%{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        20%{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        25%{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    
+        30%{
+            
+            font-family: 'manrope_light';
+        }
+        60%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: 'manrope_light';
+    
+        }
+     
+        100%{
+            font-size: 5vw;
+            font-family: 'manrope_light';
+        }
+    }
+    .title{
+        font-size: 13vw;
+        line-height: 12vw;
+    }
+    .fcc p{
+      font-size: 1rem;
+    }
+    .fcc img{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .active_part_container02{
+        height:50%;
+        width:80%;
+        flex-direction: column;
+       
+    }
+    .carousel_element{
+        min-width: 50vw;
+        max-width: 50vw;
+    }
+    .mobileHide{
+        display: none;
+    }
+    @keyframes motion {
+        0% { transform: translateX(0vw); }
+        100% { transform: translateX(calc(-205vw))} 
+    
+    }
+    
+  }

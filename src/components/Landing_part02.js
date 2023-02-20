@@ -1,8 +1,5 @@
-
 /* eslint-disable react/jsx-pascal-case */
 
-
-import React,{useState,useEffect} from "react";
 import { motion } from "framer-motion";
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
@@ -10,14 +7,6 @@ import Landing_carousel from "./Landing_carousel";
 
 
 const Landing_part02 = () => {
-
-  const [carousel, setcarousel] = useState(false)
-  
-useEffect(() => {
-  setTimeout(() => {
-    setcarousel(true)
-  }, 2100);
-}, [])
 
   return (
     <>
