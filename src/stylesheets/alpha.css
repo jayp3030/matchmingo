@@ -179,6 +179,7 @@
 .col1 img{
     width: 60%;
     mix-blend-mode: luminosity;
+    pointer-events: none;
 }
 
 .col2 h2{
