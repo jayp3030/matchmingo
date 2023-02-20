@@ -6,8 +6,8 @@ import matchmingo from '../images/MatchMingo.png'
 export default function Signup() {
   return (
     <>
-      <div className="outer_signup">
-        <div className="col1">
+      <div className="outer_signup"> 
+         <div className="col1">
           <img src={matchmingo} alt="MatchMingo" />
         </div>
         <div className="col2">
