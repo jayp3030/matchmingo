@@ -388,7 +388,7 @@ input::-webkit-inner-spin-button {
 }
 
 .profile_setup{
-    width: 700vw;
+    width: 800vw;
     height: 100vh;
     display: flex;
     background: white;
@@ -402,14 +402,28 @@ input::-webkit-inner-spin-button {
     margin: 1rem 0;
     border: 1.5px dashed black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
+.image_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+}
+
+.photo_section i:hover{
+    color: black;
+}
 .photo_section i{
     color: var(--primary);
     font-size: 6rem;
     opacity: 0.6;
+    transition: all .3s ease-in-out;
 }
 
 .suggestions {
