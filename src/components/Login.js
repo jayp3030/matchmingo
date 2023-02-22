@@ -9,7 +9,7 @@ return(
     <AnimatePresence >
     <div className="login_page_main_div fcc" >
         <SidePresentation />
-        {/* <LoginForm /> */}
+        <LoginForm />
     </div>
     </AnimatePresence>
     </>

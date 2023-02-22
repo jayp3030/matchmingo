@@ -36,7 +36,7 @@ export default function Signup() {
               <button className="btn" onClick={handleSlide}>Next</button>
             </form>
             <h5 className="last_child">
-              Already Member? <a href="/">Find Your Match</a>
+              Already Member? <a href="/login">Find Your Match</a>
             </h5>
           </div>
         </div>

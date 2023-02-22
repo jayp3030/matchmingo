@@ -189,7 +189,7 @@
 .col2 h2{
     margin: 1rem 0;
     font-size: 1.4rem;
-    text-align: center;
+    /* text-align: center; */
     color: var(--light);
     font-family: 'manrope_medium';
 }
@@ -253,6 +253,7 @@
     font-family: 'manrope_light';
 }
 
+
 input::placeholder{
     color: var(--primary);
 }
@@ -301,6 +302,29 @@ input::-webkit-inner-spin-button {
     transform: scale(0.95);
 }
 
+.btn_back{
+    display: block;
+    margin: .5rem 0;
+    padding: 0.5rem 0;
+    background: transparent;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid gray;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'manrope_light';
+    transition: all 0.5s ease-in-out;
+}
+
+.btn_back:hover{
+    background: var(--light);
+    border: 1px solid var(--light);
+    color: white;
+    transform: scale(0.95);
+}
 .remember{
     height: fit-content;
     display: flex;
@@ -327,6 +351,18 @@ input::-webkit-inner-spin-button {
     color: var(--primary);
 }
 
+.middle input{
+    display: block;
+    width: 100%;
+    padding: .6rem 0.3rem;
+    margin: 1rem 0;
+    outline: none;
+    border: 1px solid var(--light);
+    font-size: 1rem;
+    font-family: 'manrope_light';
+    letter-spacing: .5px;
+}
+
 .sidebar_wrapper{
     width: 45vw;
     height: 100vh;
@@ -348,36 +384,38 @@ input::-webkit-inner-spin-button {
 }
 
 .profile_setup{
-    width: 600vw;
+    width: 700vw;
     height: 100vh;
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
 }
 
-
-/* .profile_setup_inner{
-    width: 100vw;
-    height: 100vh;
+.photo_section{
+    width: 50%;
+    height: 30%;
+    margin: 1rem 0;
+    border: 1.5px dashed black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.BlankPage{
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
+.photo_section i{
+    color: var(--primary);
+    font-size: 6rem;
+    opacity: 0.6;
 }
 
-#name{
-    transition: all 1s ease-in-out;
-    z-index: -4;
+.suggestions {
+    width: 50%;
+    margin: .5rem 0;
 }
-#age{
-    z-index: -3;
+.suggestions span{
+    color: black;
 }
-#college{
-    z-index: -2;
+
+.suggestions p{
+    text-align: left;
+    color: rgba(132, 132, 132, 0.72);
 }
-#hobby{
-    z-index: -1;
-} */
