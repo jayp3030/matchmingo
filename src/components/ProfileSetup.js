@@ -6,16 +6,18 @@ import Age from "./Age";
 import College from "./College";
 import Hobby from "./Hobby";
 import SidePresentation from "./SidePresentation";
+import Uploadphoto from "./Uploadphoto";
 export default function ProfileSetup() {
   return (
     <>
-    <SidePage />
+      <SidePage />
       <div className="profile_setup" id="profile_setup">
         <Signup />
         <Name />
         <Age />
         <College />
         <Hobby />
+        < Uploadphoto />
       </div>
     </>
   );

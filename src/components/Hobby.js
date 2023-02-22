@@ -2,6 +2,14 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function Hobby() {
+  const handleSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
+  }
+  const handlebackwardSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-300vw)"
+  }
 
   const Navigate = useNavigate();
 
@@ -57,6 +65,8 @@ export default function Hobby() {
               <button className="btn" id='testDiv' onClick={handleSubmit}>
               <button className='circle' id='circle' onClick={blastCircle}></button>
                 <span>Next</span></button>
+              <button className="btn" onClick={handleSlide} >Next</button>
+              <button className="btn_back" onClick={handlebackwardSlide} >Back</button>
             </form>
           </div>
         </div>

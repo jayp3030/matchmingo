@@ -6,14 +6,13 @@ import { AnimatePresence } from 'framer-motion';
 import Master from './components/master';
 import ProfileSetup from './components/ProfileSetup';
 import Verified from './components/Verified';
+import Uploadphoto from './components/Uploadphoto';
 
 
 function App() {
 
   return (
     <>
-      {/* <ProfileSetup /> */}
-      
   <AnimatePresence>
    <BrowserRouter>
         <Routes >
