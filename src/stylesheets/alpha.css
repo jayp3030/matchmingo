@@ -332,14 +332,18 @@ input::-webkit-inner-spin-button {
     background-position: center center;
     background-repeat: no-repeat;
     background-size:200%;
-    backdrop-filter: blur(10px);
-    filter: saturate(150%);
-    position: fixed;
-    z-index: 100;
+    backdrop-filter: blur(10px);   
+    filter: saturate(150%); 
+    position: absolute;
+    z-index: 10; 
+    transition: all 1s ease-in-out;
 }
 
 .sidebar_wrapper img{
     width: 70%;
+}
+#matchmingoText{
+    transition: all 0.2 ease-in-out;
 }
 
 .profile_setup{
@@ -348,6 +352,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
+    overflow-y: hidden;
 }
 
 
