@@ -76,3 +76,28 @@ body{
     width: 100vw;
     border: 4px solid red;
 }
+.circle{
+    position:absolute; 
+    transform:translate(-50%,-50%);
+    height:35px;
+    width:35px;
+    border-radius:50%;
+    background-color: var(--light);
+    display: none;
+    display: none;
+    border: none;
+    background-color: transparent;
+  }
+  .verified{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verified img{
+    height: 30rem;
+    width: 30rem;
+  }
+  
