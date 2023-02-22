@@ -5,7 +5,7 @@ import SidePresentation from "./SidePresentation";
 export default function SidePage() {
   return (
     <>
-      <div className="sidebar_wrapper">
+      <div className="sidebar_wrapper" id="sidebar_wrapper">
         <img src={matchmingo} alt='MatchMingo' />
         {/* <SidePresentation /> */}
       </div>
