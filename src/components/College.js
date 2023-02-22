@@ -6,6 +6,10 @@ export default function College() {
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
+  const handlebackwardSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
+  }
 
   return (
     <>
@@ -29,8 +33,9 @@ export default function College() {
                 <option value="Electrical Enginnering ">Electrical Enginnering </option>
                 <option value="Electronic and Communication">Electronic and Communication</option>
               </select>
-
+              <input type="text" placeholder='Your Hometown' />
               <button className="btn" onClick={handleSlide}>Next</button>
+              <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
           </div>
         </div>
       </div>

@@ -6,6 +6,10 @@ export default function Age() {
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-300vw)"
   }
+  const handlebackwardSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-100vw)"
+  }
   return (
     <>
        <div className="outer_signup" id='age'>
@@ -23,7 +27,15 @@ export default function Age() {
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
               </select>
+              <select name="gender" className='gender'>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Straight">Straight</option>
+                <option value="Gay">Gay</option>
+                <option value="Lesbian">Lesbian</option>
+              </select>
               <button className="btn" onClick={handleSlide}>Next</button>
+              <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
             </form>
           </div>
         </div>

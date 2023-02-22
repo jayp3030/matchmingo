@@ -1,6 +1,14 @@
 import React from 'react'
 
 export default function Hobby() {
+  const handleSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
+  }
+  const handlebackwardSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-300vw)"
+  }
 
   return (
     <>
@@ -15,7 +23,8 @@ export default function Hobby() {
             <form action="">
               <input type="text" placeholder="Enter Your hobbies" />
               <input type="text" placeholder="Bio (optional )" />
-              <button className="btn" >Next</button>
+              <button className="btn" onClick={handleSlide} >Next</button>
+              <button className="btn_back" onClick={handlebackwardSlide} >Back</button>
             </form>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import google from "../images/google.png";
+import SidePresentation from "./SidePresentation";
 
 
 export default function Signup() {
@@ -13,6 +14,7 @@ export default function Signup() {
     <>
       <div className="outer_signup" id="outer_signup">
         <div className="col1">
+          
   
         </div>
         <div className="col2">
@@ -34,7 +36,7 @@ export default function Signup() {
               <button className="btn" onClick={handleSlide}>Next</button>
             </form>
             <h5 className="last_child">
-              Already Member? <a href="/">Find Your Match</a>
+              Already Member? <a href="/login">Find Your Match</a>
             </h5>
           </div>
         </div>
@@ -42,4 +44,5 @@ export default function Signup() {
     </>
   );
 }
+
 

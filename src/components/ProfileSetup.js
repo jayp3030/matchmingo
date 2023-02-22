@@ -5,7 +5,8 @@ import Name from "./Name";
 import Age from "./Age";
 import College from "./College";
 import Hobby from "./Hobby";
-
+import SidePresentation from "./SidePresentation";
+import Uploadphoto from "./Uploadphoto";
 export default function ProfileSetup() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function ProfileSetup() {
         <Age />
         <College />
         <Hobby />
+        < Uploadphoto />
       </div>
     </>
   );
