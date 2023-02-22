@@ -33,8 +33,6 @@ document.addEventListener("mousemove", (e) => {
     var x = e.clientX;
     var y = e.clientY;
 
-    ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)"; 
-    console.log(x, y);
-    ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)"; 
+    ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)";  
 
 })
