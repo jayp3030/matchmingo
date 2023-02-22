@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
-
+import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
-import { useEffect , useState } from "react";
 
 
 
