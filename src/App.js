@@ -5,20 +5,19 @@ import Signup from './components/Signup';
 import { AnimatePresence } from 'framer-motion';
 import Master from './components/master';
 import ProfileSetup from './components/ProfileSetup';
+import Uploadphoto from './components/Uploadphoto';
 
 
 function App() {
 
   return (
     <>
-      {/* <ProfileSetup /> */}
-      
   <AnimatePresence>
    <BrowserRouter>
         <Routes >
           <Route  exact path='/' element={<Intro />} />
           <Route exact path="/login" element={<Master flag="login" />} />
-        <Route exact path="/signup" element={<ProfileSetup/>} />
+          <Route exact path="/signup" element={<ProfileSetup/>} />
         </Routes>
       </BrowserRouter>
   </AnimatePresence>

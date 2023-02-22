@@ -54,7 +54,7 @@ const LoginForm = () => {
                         >Login</motion.button>
                         <div className="not_an_member">
                             <p>Not a Member ?&nbsp;</p>
-                            <Link to='/' className="link"><p>Sign Up For Free</p></Link>
+                            <Link to='/signup' className="link"><p>Sign Up For Free</p></Link>
                         </div>
 
                         </div>
