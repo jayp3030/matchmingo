@@ -7,6 +7,14 @@ import Landing_carousel from "./Landing_carousel";
 
 
 const Landing_part02 = () => {
+  const [carousel, setCarousel] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCarousel(true)
+    }, 2000);
+  }, [])
+  
 
   return (
     <>
@@ -27,7 +35,7 @@ const Landing_part02 = () => {
             </div>
           </div>
           <div className="landing_part02_container03">
-              <Landing_carousel />
+              {carousel && <Landing_carousel />}
           </div>
         </div>
       </motion.div>
