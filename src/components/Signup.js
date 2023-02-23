@@ -9,7 +9,7 @@ export default function Signup() {
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-100vw)" 
   }
-  
+
   return (
     <>
       <div className="outer_signup" id="outer_signup">
@@ -36,7 +36,7 @@ export default function Signup() {
               <button className="btn" onClick={handleSlide}>Next</button>
             </form>
             <h5 className="last_child">
-              Already Member? <a href="/">Find Your Match</a>
+              Already Member? <a href="/login">Find Your Match</a>
             </h5>
           </div>
         </div>
@@ -45,13 +45,4 @@ export default function Signup() {
   );
 }
 
-// setInterval(() => {
-//   var a = document.getElementById("");
-  
-//   var y = Math.random() * 100;
 
-//   var z = y + "px";
-//   // console.log(z);
-//   a.style.backgroundPositionY = y + "px";
-//   a.style.transitionDuration = "2s";
-// }, 500);

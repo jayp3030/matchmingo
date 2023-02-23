@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import landingPage01 from "../images/landingPage01.jpg"
 import landingPage02 from "../images/landingPage02.jpg"
 import landingPage03 from "../images/landingPage03.jpg"

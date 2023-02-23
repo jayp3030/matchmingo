@@ -1,17 +1,20 @@
 import React from 'react'
-import matchmingo from "../images/MatchMingo.png";
+
 
 export default function College() {
   const handleSlide = (e)=>{
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
+  const handlebackwardSlide = (e)=>{
+    e.preventDefault()
+    document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
+  }
 
   return (
     <>
        <div className="outer_signup" id='college'>
         <div className="col1" id="blurer">
-          {/* <img src={matchmingo} alt='MatchMingo' /> */}
         </div>
         <div className="col2">
           <div className="upper">
@@ -30,8 +33,9 @@ export default function College() {
                 <option value="Electrical Enginnering ">Electrical Enginnering </option>
                 <option value="Electronic and Communication">Electronic and Communication</option>
               </select>
-
+              <input type="text" placeholder='Your Hometown' />
               <button className="btn" onClick={handleSlide}>Next</button>
+              <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
           </div>
         </div>
       </div>
