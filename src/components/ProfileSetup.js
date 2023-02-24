@@ -7,6 +7,7 @@ import College from "./College";
 import Hobby from "./Hobby";
 import SidePresentation from "./SidePresentation";
 import Uploadphoto from "./Uploadphoto";
+import UploadId from "./UploadId";
 export default function ProfileSetup() {
   return (
     <>
@@ -18,6 +19,7 @@ export default function ProfileSetup() {
         <College />
         <Hobby />
         < Uploadphoto />
+        <UploadId />
       </div>
     </>
   );
