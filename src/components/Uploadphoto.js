@@ -30,7 +30,7 @@ export default function Uploadphoto() {
   };
 
   useEffect(() => {
-    buttonToggle();
+    // buttonToggle();
   });
 
   return (
@@ -39,7 +39,7 @@ export default function Uploadphoto() {
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
-            <h2>Upload Some Photos</h2>
+            <h2>Upload Your Photos</h2>
           </div>
           {console.log(images)}
           <ImageUploading
@@ -59,22 +59,32 @@ export default function Uploadphoto() {
               isDragging,
               dragProps,
             }) => (
-              <div
+              <form
                 className="photo_section"
-                style={isDragging ? { color: "var(--light)" } : null}
-                onClick={onImageUpload}
-                {...dragProps}
+                action = 'http://localhost:8000/details/userImages'
+                method="post"
+                enctype="multipart/form-data"
               >
-                <div className="image_wrapper">
+                <label 
+                htmlFor="input-files">
+                  Select Photo <br />
+                  <i class="fa fa-2x fa-camera"></i>
+                <input
+                type="file"
+                name="image"
+                id="input-files"
+                placeholder="Choose Photo"
+              />
+                </label>
+                {/* <div className="image_wrapper">
                   {imageList.map((image, index) => (
                     <div key={index} className="image-item">
                       <img src={image.data_url} alt="" width="130" />
                     </div>
                   ))}
-                </div>
-                <i class="fa-solid fa-image"></i>
-                <p>Click or Drop here</p>
-              </div>
+                </div> */}
+                <button>submit</button>
+              </form>
             )}
           </ImageUploading>
 

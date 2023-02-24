@@ -397,7 +397,7 @@ input::-webkit-inner-spin-button {
 }
 
 .photo_section{
-    width: 50%;
+    width: 50% !important;
     height: 30%;
     margin: 1rem 0;
     border: 1.5px dashed black;
@@ -437,4 +437,124 @@ input::-webkit-inner-spin-button {
 .suggestions p{
     text-align: left;
     color: rgba(132, 132, 132, 0.72);
+}
+
+#input-files{
+    display: none;
+}
+
+label{
+    cursor: pointer;
+}
+
+.home_outer{
+    display: flex;
+}
+.home_left{
+    height: 100vh;
+    width: 40vw;
+    background: rgba(132, 132, 132, 0.72);
+}
+
+.home_right{
+    height: 100vh;
+    width: 60vw;
+    background: var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.header h1{
+    font-size: 3.2vw;
+    color: var(--light);
+    font-family: 'manrope_medium';
+    margin-top: .5rem;
+}
+
+.heart i{
+    font-size: 4vw;
+    color: var(--light);
+}
+
+.card{
+    height: 70%;
+    width: 40%;
+    position: relative;
+    background: rgba(132, 132, 132);
+    filter: drop-shadow(0px 6px 28px rgba(0, 0, 0, 0.65));
+    margin: 2rem 0;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+}
+
+.intro{
+    position: absolute;
+    top: 0;
+}
+.userDetails{
+    /* border: 2px solid red; */
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+}
+.icons{
+    width: 100%;
+    min-height: 5rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 1rem;
+    background-image: linear-gradient(to top,black,transparent);
+}
+.userNameAge{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.icons i{
+    font-size: 2vw;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0rem 0.5rem;
+}
+
+.home_bottom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+}
+
+.bottom_inner{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box i{
+    font-size: 2vw;
+    color: var(--light);
+    margin: 0 .4rem;
+    opacity: .6;
+}
+
+.box p{
+    font-size: 1.2vw;
+    color: #757575;
 }
