@@ -5,6 +5,9 @@
 #root{
   overflow-anchor: none; 
 }
+*{
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: smooth;
   transition: scroll 5s ease-out;
