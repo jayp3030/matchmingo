@@ -1,9 +1,62 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import img from "../images/landingPage01.jpg";
 import img2 from "../images/landingPage02.jpg";
 import ChatPage from "./ChatPage";
+import { AnimatePresence, animate, motion } from "framer-motion";
+export default  function Homeright() {
 
-export default function Homeright() {
+
+
+  var [right, setRight] = useState(true);
+  var [l, setL] = useState(5);
+  var [loc, setLoc] = useState({
+    x: 0,
+    y: 0,
+  });
+  var [obj, setObj] = useState({
+    initial: {
+      opacity: 0,
+      y: "100%",
+    },
+    animate: {
+      opacity: 1,
+      y: "0%",
+      transition: {
+        duration: 1,
+        ease: "backInOut",
+        when: "beforeChildren",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: "-100%",
+      transition: {
+        duration: 1,
+        ease: "backInOut",
+        when: "beforeChildren",
+      },
+    },
+  });
+
+  function update() {
+    if(l>0){
+    setL((e) => e - 1);
+    }
+  }
+  window.addEventListener("keyup",(e)=>{
+    console.log(e);
+  if(e.key==='ArrowLeft'){
+    if(l>=0){
+  setL(l-1)
+    }
+  }
+  })
+  var reference=useRef(0);
+  var abc=document.getElementById("moving_part");
+
+    
+
+
   return (
     <>
       <div className="home_outer">
@@ -12,16 +65,18 @@ export default function Homeright() {
             <div className="home_left_top_left">
               <img src={img2}></img>
             </div>
-            <div className="home_left_top_middle">
-              Sanko Rana
-            </div>
+            <div className="home_left_top_middle">Sanko Rana</div>
             <div className="home_left_top_right">
-            <i class="fa-solid fa-user-pen"></i>
+              <i class="fa-solid fa-user-pen"></i>
             </div>
           </div>
           <div className="home_left_middle">
-            <div className="home_left_middle_left"><i class="fa-sharp fa-solid fa-heart"></i>Likes</div>
-            <div className="home_left_middle_right"><i class="fa-solid fa-message"></i>Messages</div>
+            <div className="home_left_middle_left">
+              <i class="fa-sharp fa-solid fa-heart"></i>Likes
+            </div>
+            <div className="home_left_middle_right">
+              <i class="fa-solid fa-message"></i>Messages
+            </div>
           </div>
           <div className="home_left_bottom">
             <ChatPage />
@@ -34,20 +89,135 @@ export default function Homeright() {
           {/* <div className="heart">
             <i class="fa-regular fa-heart"></i>
           </div> */}
-          <div className="card">
-            <img src={img} alt="" />
-            <div className="userDetails">
-              <div className="userNameAge">Vedant , 20</div>
-              <div className="userBranch">CE</div>
-            </div>
-            <div className="icons">
-              <i class="fa-regular fa-circle-xmark"></i>
-              <i class="fa-regular fa-circle-check"></i>
-              <i class="fa-solid fa-circle-info"></i>
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-gift"></i>
-            </div>
+          <div className="Conatiner_of_profile">
+            <motion.div
+              className="moving_part"
+              ref={reference}
+              id="moving_part"
+              onPanStart={(e) => {
+                console.log(e);
+                setLoc({ ...loc, x: e.clientX });
+              }}
+              onPanEnd={(e) => {
+                setLoc({ ...loc, y: e.clientY });
+                if (loc.x - loc.y >= 100) {
+                  if(l>0){
+                  setL((l) => l - 1);}
+                }
+              }}
+              
+            >
+              <AnimatePresence mode="wait">
+                {new Array(l).fill("").map((event, i) => (
+                  <motion.div
+                    className="card"
+                    onPanStart={(e) => {}}
+                    key={i}
+                    // initial={{opacity:0,y:"100%"}}
+                    // animate={{opacity:1,y:"0%"}}
+                    // exit={{ opacity:0,y:"-100%"}}
+                    // transition={{ duration: 1, ease: "backInOut" ,when:"beforeChildren" }}
+                    variants={obj}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <img src={img} alt="" />
+                    <div className="userDetails">
+                      <div className="userNameAge">Vedant , 20</div>
+                      <div className="userBranch">CE</div>
+                    </div>
+                    <div className="icons">
+                      <motion.i
+                        whileHover={{ scale: 1.22 }}
+                        class="fa-regular fa-circle-xmark"
+                      ></motion.i>
+                      <motion.i
+                        whileHover={{ scale: 1.22 }}
+                        class="fa-regular fa-circle-check"
+                        onClick={update}
+                      ></motion.i>
+                      <motion.i
+                        whileHover={{ scale: 1.22 }}
+                        class="fa-solid fa-circle-info"
+                      ></motion.i>
+                      <motion.i
+                        whileHover={{ scale: 1.22 }}
+                        class="fa-regular fa-heart"
+                      ></motion.i>
+                      <motion.i
+                        whileHover={{ scale: 1.22 }}
+                        class="fa-solid fa-gift"
+                      ></motion.i>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* <div className="card">
+                <img src={img} alt="" />
+                <div className="userDetails">
+                  <div className="userNameAge">Vedant , 20</div>
+                  <div className="userBranch">CE</div>
+                </div>
+                <div className="icons">
+                  <motion.i
+                    whileHover={{ scale: 1.22 }}
+                    class="fa-regular fa-circle-xmark"
+                  ></motion.i>
+                  <motion.i
+                    whileHover={{ scale: 1.22 }}
+                    class="fa-regular fa-circle-check"
+                  ></motion.i>
+                  <motion.i
+                    whileHover={{ scale: 1.22 }}
+                    class="fa-solid fa-circle-info"
+                  ></motion.i>
+                  <motion.i
+                    whileHover={{ scale: 1.22 }}
+                    onTap={{}}
+                    class="fa-regular fa-heart"
+                  ></motion.i>
+                  <motion.i
+                    whileHover={{ scale: 1.22 }}
+                    class="fa-solid fa-gift"
+                  ></motion.i>
+                </div>
+              </div> */}
+              </AnimatePresence>
+            </motion.div>
+            
+            {/* <div className="card">
+              <img src={img} alt="" />
+              <div className="userDetails">
+                <div className="userNameAge">Vedant , 20</div>
+                <div className="userBranch">CE</div>
+              </div>
+              <div className="icons">
+                <motion.i
+                  whileHover={{ scale: 1.22 }}
+                  class="fa-regular fa-circle-xmark"
+                ></motion.i>
+                <motion.i
+                  whileHover={{ scale: 1.22 }}
+                  class="fa-regular fa-circle-check"
+                ></motion.i>
+                <motion.i
+                  whileHover={{ scale: 1.22 }}
+                  class="fa-solid fa-circle-info"
+                ></motion.i>
+                <motion.i
+                  whileHover={{ scale: 1.22 }}
+                  onTap={{}}
+                  class="fa-regular fa-heart"
+                ></motion.i>
+                <motion.i
+                  whileHover={{ scale: 1.22 }}
+                  class="fa-solid fa-gift"
+                ></motion.i>
+              </div>
+            </div> */}
           </div>
+
           <div className="home_bottom">
             <div className="bottom_inner">
               <div className="box">
@@ -72,4 +242,9 @@ export default function Homeright() {
       </div>
     </>
   );
+
+  
+  
+
 }
+
