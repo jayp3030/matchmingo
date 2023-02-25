@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ImageUploading from "react-images-uploading";
+import ImageUploading from "react-images-uploading"; 
 
 export default function UploadId() {
 
@@ -90,7 +90,7 @@ export default function UploadId() {
                   <p>Click or Drop here</p>
                 </div>
               )}
-            </ImageUploading>
+            </ImageUploading> 
 
             {/* <div className="suggestions">
               <p>

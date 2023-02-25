@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ImageUploading from "react-images-uploading";
+import ImageUploading from "react-images-uploading"; 
 
 export default function Uploadphoto() {
   const buttonToggle = () => {
@@ -41,7 +41,6 @@ export default function Uploadphoto() {
           <div className="upper">
             <h2>Upload Your Photos</h2>
           </div>
-          {console.log(images)}
           <ImageUploading
             multiple
             value={images}
@@ -76,13 +75,13 @@ export default function Uploadphoto() {
                 placeholder="Choose Photo"
               />
                 </label>
-                {/* <div className="image_wrapper">
+                <div className="image_wrapper">
                   {imageList.map((image, index) => (
                     <div key={index} className="image-item">
                       <img src={image.data_url} alt="" width="130" />
                     </div>
                   ))}
-                </div> */}
+                </div>
                 <button>submit</button>
               </form>
             )}

@@ -5,6 +5,9 @@
 #root{
   overflow-anchor: none; 
 }
+*{
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: smooth;
   transition: scroll 5s ease-out;
@@ -20,6 +23,14 @@ cursor: none;
 }
 #cursor{
   cursor:none;
+}
+.dnone{
+  display:none;
+}
+.empty_btn{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 @keyframes rotate1{
   /* 0%{
