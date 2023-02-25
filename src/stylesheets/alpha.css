@@ -362,7 +362,35 @@ input::-webkit-inner-spin-button {
     font-family: 'manrope_light';
     letter-spacing: .5px;
 }
-
+.hobbies_container{
+    /* border: 2px solid red; */
+}
+.hobbyArray{
+    border:1px solid var(--light);
+    color: var(--light);
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+}
+.hobbyArray i{
+    margin-left: 0.5rem;
+}
+.hobby_input_div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.hobby_input_div i{
+    font-size:1.5rem;
+    color: var(--light);
+    margin-left: 0.5rem;
+}
+.hobbyArrayDiv{
+    display:flex;
+}
 .sidebar_wrapper{
     width: 45vw;
     height: 100vh;
@@ -557,4 +585,10 @@ label{
 .box p{
     font-size: 1.2vw;
     color: #757575;
+}
+
+.alert{
+    color: red !important;
+    opacity: 0;
+    font-family: 'manrope_light';
 }

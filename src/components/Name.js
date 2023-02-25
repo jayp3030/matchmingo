@@ -10,7 +10,7 @@ export default function Name() {
     const handlebackwardSlide = (e)=>{
         e.preventDefault()
         document.getElementById("profile_setup").style.transform = "translateX(0vw)"
-        console.log(document.getElementById("profile_setup"))
+        // console.log(document.getElementById("profile_setup"))
       }
       
   return (
