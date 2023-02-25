@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import ImageUploading from "react-images-uploading"; 
+import ImageUploading from "react-images-uploading"; 
 
 export default function Uploadphoto() {
   const buttonToggle = () => {
@@ -41,8 +41,7 @@ export default function Uploadphoto() {
           <div className="upper">
             <h2>Upload Your Photos</h2>
           </div>
-          {console.log(images)}
-          {/* <ImageUploading
+          <ImageUploading
             multiple
             value={images}
             onChange={onChange}
@@ -86,7 +85,7 @@ export default function Uploadphoto() {
                 <button>submit</button>
               </form>
             )}
-          </ImageUploading> */}
+          </ImageUploading>
 
           <div className="suggestions">
             <p>
