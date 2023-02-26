@@ -433,7 +433,6 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .image_wrapper{
@@ -444,16 +443,22 @@ input::-webkit-inner-spin-button {
     position: absolute;
 }
 
-.photo_section i:hover{
-    color: black;
+.photo_section label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'manrope_light';
+    color: #757575;
 }
-.photo_section i{
-    color: var(--primary);
-    font-size: 6rem;
-    opacity: 0.6;
+.photo_section img{
+    height: 40%;
+    width: 80%;
     transition: all .3s ease-in-out;
 }
-
+.btn_dnone{
+    display: none;
+}
 .suggestions {
     width: 50%;
     margin: .5rem 0;
@@ -468,6 +473,9 @@ input::-webkit-inner-spin-button {
 }
 
 #input-files{
+    display: none;
+}
+#input-files2{
     display: none;
 }
 

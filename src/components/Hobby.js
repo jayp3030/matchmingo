@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function Hobby() {
@@ -19,14 +19,13 @@ export default function Hobby() {
     setHobbyArr(hobbyArr)
     sethobby("")
   }
-  const removeHobby=(e)=>{
-    // hobbyArr.remove(e.target.value) 
-    console.log(e)
+  const removeHobby=(e , index)=>{
+    (hobbyArr.splice(e.target.parentNode.id.slice(-1),1));
+    setHobbyArr([...hobbyArr])
   }
   const handleHobby=(e)=>{
     sethobby(e.target.value)
   }
-
   return (
     <>
 
@@ -47,7 +46,6 @@ export default function Hobby() {
                   <button className='empty_btn' onClick={addHobby}><i class="fa-solid fa-circle-plus"></i></button>
                 </div>
                 <div className='hobbyArrayDiv' id='hobbyArrayDiv'>
-                  {console.log(hobbyArr)}
                   {hobbyArr && hobbyArr.map((element,index)=>{
                     return <span class="hobbyArray" id={`hobby${index}`}>{element}<i class="fa-solid fa-square-xmark" onClick={removeHobby}></i></span>
                   })}
