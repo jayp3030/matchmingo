@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
-import ImageUploading from "react-images-uploading"; 
+import React, { useEffect, useRef } from "react";
+// import ImageUploading from "react-images-uploading"; 
+import upldImg from '../images/uploadPhoto.png'
 
 export default function Uploadphoto() {
-  const buttonToggle = () => {
-    if (images.length < 2) {
-      document.getElementById("uploadPageBtn").disabled = true;
-    } else {
-      document.getElementById("uploadPageBtn").disabled = false;
-    }
-  };
+
+  const btnRef = useRef(null);
+
+  // const buttonToggle = () => {
+  //   if (images.length < 2) {
+  //     document.getElementById("uploadPageBtn").disabled = true;
+  //   } else {
+  //     document.getElementById("uploadPageBtn").disabled = false;
+  //   }
+  // };
 
   const handleSlide = (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-600vw)";
+    // btnRef.current.click();
+    document.getElementById("profile_setup").style.transform = "translateX(-600vw)";
   };
 
   const handlebackwardSlide = (e) => {
@@ -22,12 +26,12 @@ export default function Uploadphoto() {
       "translateX(-400vw)";
   };
 
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 20;
-  const onChange = (imageList, addUpdateIndex) => {
-    buttonToggle();
-    setImages(imageList);
-  };
+  // const [images, setImages] = React.useState([]);
+  // const maxNumber = 20;
+  // const onChange = (imageList, addUpdateIndex) => {
+  //   buttonToggle();
+  //   setImages(imageList);
+  // };
 
   useEffect(() => {
     // buttonToggle();
@@ -41,7 +45,7 @@ export default function Uploadphoto() {
           <div className="upper">
             <h2>Upload Your Photos</h2>
           </div>
-          <ImageUploading
+          {/* <ImageUploading
             multiple
             value={images}
             onChange={onChange}
@@ -57,7 +61,7 @@ export default function Uploadphoto() {
               onImageRemove,
               isDragging,
               dragProps,
-            }) => (
+            }) => ( */}
               <form
                 className="photo_section"
                 action = 'http://localhost:8000/details/userImages'
@@ -66,8 +70,8 @@ export default function Uploadphoto() {
               >
                 <label 
                 htmlFor="input-files">
-                  Select Photo <br />
-                  <i class="fa fa-2x fa-camera"></i>
+                  <img src={upldImg} alt="files" /> <br />
+                  Click Here To Select Photo
                 <input
                 type="file"
                 name="image"
@@ -75,17 +79,17 @@ export default function Uploadphoto() {
                 placeholder="Choose Photo"
               />
                 </label>
-                <div className="image_wrapper">
+                {/* <div className="image_wrapper">
                   {imageList.map((image, index) => (
                     <div key={index} className="image-item">
                       <img src={image.data_url} alt="" width="130" />
                     </div>
                   ))}
-                </div>
-                <button>submit</button>
+                </div> */}
+                <button ref={btnRef} className='btn_dnone'>submit</button>
               </form>
-            )}
-          </ImageUploading>
+            {/* )} */}
+          {/* </ImageUploading> */}
 
           <div className="suggestions">
             <p>
