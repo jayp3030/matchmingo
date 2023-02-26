@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import ImageUploading from "react-images-uploading"; 
+// import ImageUploading from "react-images-uploading"; 
+import upldImg from '../images/uploadPhoto.png'
 
 export default function UploadId() {
 
     const Navigate = useNavigate();
+    const btnRef = useRef(null);
 
-  document.addEventListener('mousemove', function(event) { 
+    document.getElementById('testDiv') &&document.addEventListener('mousemove', function(event) { 
     var rect = document.getElementById('testDiv').getBoundingClientRect(); 
     var x = event.clientX - rect.left; 
     var y = event.clientY - rect.top; 
@@ -38,19 +40,14 @@ export default function UploadId() {
   }
   const handleSubmit = (e)=>{
     e.preventDefault()
+    btnRef.current.click();
+    console.log(document.getElementById("input-files2"));
+
   }
 
   const handlebackwardSlide = (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-500vw)";
-  };
-
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 20;
-  const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
+    document.getElementById("profile_setup").style.transform = "translateX(-500vw)";
   };
 
   return (
@@ -62,53 +59,31 @@ export default function UploadId() {
             <div className="upper">
               <h2>Upload Your ID</h2>
             </div>
+            <form
+                className="photo_section"
+                action = 'http://localhost:8000/details/userImages'
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label 
+                htmlFor="input-files2">
+                  <img src={upldImg} alt="files" /> <br />
+                  Click Here To Select Photo
+                <input
+                type="file"
+                name="image"
+                id="input-files2"
+              />
+                </label>
+                <button ref={btnRef} className='btn_dnone'>submit</button>
+              </form>
 
-            <ImageUploading
-              multiple
-              value={images}
-              onChange={onChange}
-              maxNumber={maxNumber}
-              dataURLKey="data_url"
-              acceptType={["jpg", "png"]}
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
-                <div
-                  className="photo_section"
-                  style={isDragging ? { color: "var(--light)" } : null}
-                  onClick={onImageUpload}
-                  {...dragProps}
-                >
-                  <i class="fa-solid fa-image"></i>
-                  <p>Click or Drop here</p>
-                </div>
-              )}
-            </ImageUploading> 
-
-            {/* <div className="suggestions">
-              <p>
-                <span> &#129488; </span> Minimum 2 Photos
-              </p>
-              <p>
-                <span>&#129331; </span> Selfies Are Good
-              </p>
-              <p>
-                <span>&#10060;</span> Avoid Group Photos
-              </p>
-            </div> */}
             <div className="middle">
               <button className="btn" id="testDiv" onClick={handleSubmit} >
                 <button
                   className="circle"
                   id="circle"
-                  onClick={blastCircle}
+                  // onClick={blastCircle}
                 ></button>
                 <span>Upload</span>
               </button>
