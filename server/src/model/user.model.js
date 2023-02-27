@@ -3,21 +3,52 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
 
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userAuth",
-        required: true
-    },
-    
-  first_name:{
-    type:String,
-    requried:true
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "userAuth",
+    required: true
   },
-  last_name:{
+
+  first_name: {
+    type: String,
+    requried: true
+  },
+  last_name: {
+    type: String,
+    requried: true
+  },
+  birth_date :{
+  type: Date,
+  required: true
+  },
+  gender :{
+    type : String,
+    required: true
+  },
+  collage :{
+    type : String,
+    required :true
+  },
+  branch : {
     type:String,
-    requried:true
+    required : true
+  },
+  hometown :{
+    type : String,
+    required : true
+  },
+  hobbies :{
+    type : [String],
+    required : true
+  },
+  bio : {
+    type : String,
   }
 
-});
+} , 
 
-module.exports = mongoose.model("user",userSchema)
+{ versionKey: false }
+
+);
+
+module.exports = mongoose.model("user", userSchema)

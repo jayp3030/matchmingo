@@ -362,9 +362,9 @@ input::-webkit-inner-spin-button {
     font-family: 'manrope_light';
     letter-spacing: .5px;
 }
-.hobbies_container{
-    /* border: 2px solid red; */
-}
+/* .hobbies_container{
+    border: 2px solid red;
+} */
 .hobbyArray{
     border:1px solid var(--light);
     color: var(--light);
