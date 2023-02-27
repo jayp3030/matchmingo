@@ -21,7 +21,7 @@ async function createUser (req,res){
         const {email,password}=req.body
         let user = await userAuth.findOne({ email: email })
         if (user) {
-            return res.status(400).json({ error: "sorry user with same email already exist" })
+            return res.status(409).json({ error: "sorry user with same email already exist" })
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -38,7 +38,7 @@ async function createUser (req,res){
         }
         const token = jwt.sign(data, privateKey);
         success = true
-        res.json({success, token })
+        res.status(201).json({success, token })
 }
 
 // function to login user 
@@ -55,7 +55,7 @@ async function createUser (req,res){
             if(!user){
                 return res.status(400).json({error:"please enter valid credentials"})
             }
-            const passwordCompare = await bcrypt.compare(password,user.password);
+            const passwordCompare =  bcrypt.compare(password,user.password);
             if(!passwordCompare){
                 return res.status(400).json({error:"please enter valid credentials"})
             }
