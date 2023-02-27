@@ -10,6 +10,10 @@ const userAuthSchema = new Schema({
   password:{
     type:String,
     requried:true
+  },
+  userInfoStatus:{
+    type : Boolean,
+    default : false,
   }
 
 });
