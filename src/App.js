@@ -8,6 +8,7 @@ import ProfileSetup from './components/ProfileSetup';
 import Verified from './components/Verified';
 import Homeleft from './components/Homeright';
 import Homeright from './components/Homeright';
+import Login from './components/Login';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
    <BrowserRouter>
         <Routes >
           <Route  exact path='/' element={<Intro />} />
-          <Route exact path="/login" element={<Master flag="login" />} />
+          <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<ProfileSetup/>} />
         <Route exact path="/verified" element={<Verified/>} />
         <Route exact path="/home" element={<Homeright />} />
