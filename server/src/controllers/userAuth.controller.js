@@ -99,6 +99,14 @@ async function createUser (req,res){
           createdAt: Date.now(),
         }).save();
 
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+          }
+        });
+
         var mailOptions = {
             from: 'matchmingo@gmail.com',
             to: email,
@@ -107,8 +115,10 @@ async function createUser (req,res){
           };
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
+              console.log(error)
                 return res.status(400)
             } else {
+              console.log("done")
               return res.status(200)
             }
           });

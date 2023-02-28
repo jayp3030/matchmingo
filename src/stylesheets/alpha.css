@@ -501,6 +501,7 @@ label{
     flex-direction: column;
     align-items:center;
     justify-content:center;
+    z-index: 2;
 }
 .Conatiner_of_profile{
     width:100%;
@@ -555,10 +556,6 @@ label{
     height: 100%;
 }
 
-/* .intro{
-    position: absolute;
-    top: 0;
-} */
 .userDetails{
     /* border: 2px solid red; */
     position: absolute;
@@ -627,4 +624,95 @@ label{
     color: red !important;
     opacity: 0;
     font-family: 'manrope_light';
+}
+
+.msgs{
+    width: 30vw;
+    /* transition: all .5s ease-in-out; */
+}
+.msg_row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+    border-bottom: 1px solid rgba(132, 132, 132, 0.2);
+    transition: all .3s ease-in-out;
+}
+.msg_row:hover{
+    /* border-bottom: 1px solid #000; */
+    box-shadow: .5rem 0 1rem rgba(132, 132, 132, 0.25) inset;
+    box-shadow: .5rem 0 1rem rgba(132, 132, 132, 0.1);
+    transform: scale(.96); 
+}
+.msg_info{
+    display: flex;
+    align-items: center;
+}
+
+.msg_img{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1.2rem;
+}
+.msg_img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.msg_name h2{
+    font-size: 1.25rem;
+    font-family: 'manrope_medium';
+    font-weight: 100;
+}
+.msg_name p{
+    font-size: .875rem;
+    font-family: 'manrope_light';
+}
+.msg_time p{
+    font-size: .875rem;
+    font-family: 'manrope_light';
+}
+
+.likes{
+    height: 100%;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: .8rem 0;
+}
+.like_wrapper{
+    height: 30%;
+    width: 26%;
+    margin: 0 .5rem;
+}
+.like_wrapper p{
+    text-align: center;
+    font-family: 'manrope_light';
+}
+
+.img_card{
+    height: 100%;
+    width: 100%;
+    transition: all .5s ease-in-out;
+    background: rgba(132, 132, 132, 0.25);
+}
+
+.img_card:hover{
+    filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.4));
+}
+
+.img_card img{
+    height: 100%;
+    width: 100%;
+    border-radius: 3%;
+}
+
+.msg_like_wrapper{
+    width: 60vw;
+    height: 80%;
+    display: flex;
+    transition: all .5s ease-in-out;
 }
