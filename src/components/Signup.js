@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import google from "../images/google.png";
-import SidePresentation from "./SidePresentation";
+
 
 export default function Signup() {
   const host = "http://localhost:8000";

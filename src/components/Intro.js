@@ -28,13 +28,13 @@ export default function Intro() {
         </>
     )
 }
+
 document.addEventListener("mousemove", (e) => {
 
     var ref = document.getElementById("cursor"); 
     if(ref){
         var x = e.clientX;
     var y = e.clientY;
-
     ref.style.transform = "translate3d( " + (x - 50) + "px," + (y - 50) + "px" + "," + "0px)";  
     }
     

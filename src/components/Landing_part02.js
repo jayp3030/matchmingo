@@ -6,6 +6,7 @@ import Landing_carousel from "./Landing_carousel";
 
 
 
+
 const Landing_part02 = () => {
   const [carousel, setCarousel] = useState(false)
 
@@ -18,10 +19,7 @@ const Landing_part02 = () => {
 
   return (
     <>
-      <motion.div className="landing_part02"
-      exit={{x:-2000}}
-      transition={{duration:5}}
-      >
+      <motion.div className="landing_part02">
         <div className="landing_part02_container">
           <div className="landing_part02_container01 fcc">
           </div>

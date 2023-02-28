@@ -1,5 +1,5 @@
 const express = require("express")
-const {createUser,loginUser} = require("../controllers/userAuth.controller")
+const {createUser,loginUser,requestPasswordReset,resetPassword} = require("../controllers/userAuth.controller")
 const { body } = require('express-validator');
 
 const userAuthRouter =  express.Router()
@@ -16,6 +16,15 @@ userAuthRouter.post("/loginUser"
 , loginUser
 )
 
+userAuthRouter.post("/requestResetPassword"
+, body('email', 'enter a valid email').isEmail()
+, requestPasswordReset
+)
+
+userAuthRouter.post("/resetPassword"
+, body('email', 'enter a valid email').isEmail()
+, resetPassword
+)
 
 module.exports = {
     userAuthRouter,
