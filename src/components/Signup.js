@@ -21,6 +21,7 @@ export default function Signup() {
     
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     document.getElementById("profile_setup").style.transform ="translateX(-100vw)";
