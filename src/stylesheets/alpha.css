@@ -827,3 +827,41 @@ label {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(132, 132, 132, 0.72);
 }
+
+
+/* ---------- edit profile -----------  */
+
+.gender{
+    border: none;
+    font-family: 'manrope_light';
+    font-size: .8rem;
+    width: 100%;
+}
+
+.gender:focus{
+    outline: none;
+}
+
+.location_info input , .language_info input , .hobby_info input{
+    width: 100%;
+    padding: 1% .5%;
+    border: none;
+    font-family: 'manrope_light';
+    font-size: .8rem;
+}
+.location_info input:focus , .language_info input , .hobby_info input{
+    outline: none;
+}
+
+.bio_inf0 textarea{
+    width: 100%;
+    padding: 1% 0.5%;
+    border: none;
+    font-family: 'manrope_light';
+    font-size: .8rem;
+    resize: none;
+}
+
+.bio_inf0 textarea:focus{
+    outline: none;
+}

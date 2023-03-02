@@ -17,6 +17,7 @@ export default function Signup() {
 
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
