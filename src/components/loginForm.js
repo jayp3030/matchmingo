@@ -12,6 +12,7 @@ const LoginForm = () => {
     password: "",
   });
 
+  
   const handleForgetPassword=async(e)=>{
     e.preventDefault();
     const response = await fetch(`${host}/auth/requestResetPassword`, {
@@ -32,6 +33,7 @@ const LoginForm = () => {
     });
     const json = await response.json();
     if(json.success){
+      localStorage.setItem("token",json.token)
       Navigate("/home")
       return
     }

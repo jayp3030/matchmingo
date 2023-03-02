@@ -9,8 +9,10 @@ async function saveUserDetails(req,res){
         last_name,
         birth_date,
         gender,
-        collage,
+        sexual_orientation,
+        college,
         branch,
+        passout_year,
         hometown,
         hobbies,
         bio
@@ -19,19 +21,24 @@ async function saveUserDetails(req,res){
     if(!user){
         return res.status(400)
     }
-    user = await usersInfo.create({
+
+    const updatedUser = await usersInfo.findOneAndUpdate({userId:userId},{
         userId:userId,
         first_name:first_name,
         last_name:last_name,
         birth_date:birth_date,
         gender : gender,
-        collage : collage,
+        sexual_orientation : sexual_orientation,
+        college : college,
         branch : branch,
+        passout_year:passout_year,
         hometown : hometown,
         hobbies : hobbies,
         bio : bio
+    },{
+        upsert:true
     })
-    return res.json(user)
+    res.status(204).json({success:true})
 }
 
 
