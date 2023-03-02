@@ -21,16 +21,16 @@ export default function EditProfile() {
       <div className="info_box">
         <div className="gender_info">
           <h3>Gender</h3>
-          <select name="gender" className="gender">
+          <select name="gender" className="gender" >
             <option value="Male">Male</option>
-            <option value="Female" selected>
+            <option value="Female">
               Female
             </option>
             <option value="Other">Other</option>
           </select>
         </div>
         <hr />
-        <div className="gender_info">
+        <div className="gender_info ">
           <h3>Branch & College</h3>
           <p>Computer Engineering</p>
           <p>Vishwakarma Government Engineering College</p>
@@ -47,7 +47,7 @@ export default function EditProfile() {
         <div className="gender_info">
           <h3>Sexuality</h3>
           <select name="gender" className="gender">
-            <option value="Male" selected>
+            <option value="Male">
               Straigth
             </option>
             <option value="Female">Lesbian</option>
@@ -60,7 +60,7 @@ export default function EditProfile() {
           <h3>Looking For</h3>
           <select name="gender" className="gender">
             <option value="Male">Male</option>
-            <option value="Female" selected>
+            <option value="Female" >
               Female
             </option>
             <option value="Other">Other</option>
