@@ -10,12 +10,14 @@ import Homeleft from "./components/Homeright";
 import Homeright from "./components/Homeright";
 import Login from "./components/Login";
 import PasswordReset from "./components/PasswordReset";
+import EditProfile from "./components/EditProfile";
 
 
 function App() {
   return (
     <>
-      <AnimatePresence>
+    <EditProfile/>
+      {/* <AnimatePresence>
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<Intro />} />
@@ -26,7 +28,7 @@ function App() {
             <Route path="/passwordReset" element={<PasswordReset />} />
           </Routes>
         </BrowserRouter>
-      </AnimatePresence>
+      </AnimatePresence> */}
     </>
   );
 }
