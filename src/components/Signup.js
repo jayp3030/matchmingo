@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
 
 export default function Signup() {
-  const host = "http://localhost:8000";
 
+  const Navigate = useNavigate();
+  const host = "http://localhost:8000";
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
     cpassword: "",
   });
 
-  // const handleSlide = (e) => {
-  //   e.preventDefault()
-  //   handleSubmit
-  //   // document.getElementById("profile_setup").style.transform = "translateX(-100vw)"
-  // }
-
   const handleOnChange = (e) => {
-    
+
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform ="translateX(-100vw)";
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
@@ -45,10 +40,17 @@ export default function Signup() {
       document.getElementById("alert").innerHTML = "User already exist";
       return;
     }
-    if (response.status === 201) {
-      // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
+    if (json.success) {
+      localStorage.setItem("token",json.token)
+      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
     }
   };
+  useEffect(()=>{
+    //if user is logged in then redirect to home page
+    if(localStorage.getItem("token")){
+      Navigate("/home")
+    }
+  },[])
 
   return (
     <>

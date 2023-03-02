@@ -25,11 +25,19 @@ const userSchema = new Schema({
     type : String,
     required: true
   },
-  collage :{
+  college :{
     type : String,
     required :true
   },
   branch : {
+    type:String,
+    required : true
+  },
+  passout_year : {
+    type:Number,
+    required : true
+  },
+  sexual_orientation:{
     type:String,
     required : true
   },
