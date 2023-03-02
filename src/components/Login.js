@@ -1,9 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import SidePresentation from "./SidePresentation";
 import LoginForm from "./loginForm";
-import { motion,AnimatePresence } from "framer-motion";
+import {AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Login =  () =>{
+
+    const Navigate = useNavigate();
+
+    useEffect(()=>{
+        //if user is already logged in then redirect to home page
+        if(localStorage.getItem("token")){
+          Navigate("/home")
+        }
+      },[])
+
 return(
     <>
     <AnimatePresence >

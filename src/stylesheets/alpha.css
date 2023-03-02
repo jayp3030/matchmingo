@@ -193,6 +193,11 @@
     color: var(--light);
     font-family: 'manrope_medium';
 }
+.col2 h4{
+    font-size: 1rem;
+    color: var(--light);
+    font-family: 'manrope_medium';
+}
 
 .upper{
     width: 50%;
@@ -365,6 +370,9 @@ input::-webkit-inner-spin-button {
 /* .hobbies_container{
     border: 2px solid red;
 } */
+.hobbies_container{
+    margin: 1rem 0;
+}
 .hobbyArray{
     border:1px solid var(--light);
     color: var(--light);
@@ -382,6 +390,11 @@ input::-webkit-inner-spin-button {
     display:flex;
     align-items: center;
     justify-content: center;
+    
+}
+#hobbyInput{
+    margin-top: 0;
+    
 }
 .hobby_input_div i{
     font-size:1.5rem;
@@ -390,6 +403,16 @@ input::-webkit-inner-spin-button {
 }
 .hobbyArrayDiv{
     display:flex;
+}
+.bioInput{
+    height: 10rem;
+    width: 100%;
+    outline: var(--light);
+    border: 1px solid var(--light);
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-family: 'manrope_light';
+    letter-spacing: .5px;
 }
 .sidebar_wrapper{
     width: 45vw;
