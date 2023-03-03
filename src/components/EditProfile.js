@@ -1,9 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function EditProfile() {
+  const host = "http://localhost:8000";
+
+  const [fetchedData, setFetchedData] = useState([]);
+
+  async function fetchData() {
+    const response = await fetch(`${host}/details/getUserDetails`)
+      .then((res) => res.json())
+      .then((result) => setFetchedData(result))
+      .catch((err) => console.log(err));
+  }
+
+  async function updateProfile(e) {
+    e.preventDefault();
+    console.log("clicked");
+    console.log(data);
+
+    if (!data.bio || !data.hobbies || !data.languages || !data.location) {
+      console.log(fetchedData);
+      let response = await fetch(`${host}/details/userDetails`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fetchedData),
+      });
+
+      return;
+    }
+
+    let response = await fetch(`${host}/details/userDetails`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    console.log(e, "not resolved");
+  }
+
   const [data, setData] = useState({
     location: "",
-    hobbies:"",
+    hobbies: "",
     bio: "",
     languages: "",
   });
@@ -16,41 +51,41 @@ export default function EditProfile() {
     console.log(data);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="info_box">
         <div className="gender_info">
           <h3>Gender</h3>
-          <select name="gender" className="gender" >
+          <select
+            name="gender"
+            className="gender"
+          >
             <option value="Male">Male</option>
-            <option value="Female">
-              Female
-            </option>
+            <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>
         <hr />
         <div className="gender_info ">
           <h3>Branch & College</h3>
-          <p>Computer Engineering</p>
-          <p>Vishwakarma Government Engineering College</p>
+          <p>{fetchedData && fetchedData.branch}</p>
+          <p>{fetchedData && fetchedData.college}</p>
         </div>
         <hr />
         <div className="gender_info location_info">
           <h3>Location</h3>
-          <input 
-          name="location" 
-          onChange={handlOnChange}
-          ></input>
+          <input name="location" onChange={handlOnChange}></input>
         </div>
         <hr />
         <div className="gender_info">
           <h3>Sexuality</h3>
           <select name="gender" className="gender">
-            <option value="Male">
-              Straigth
-            </option>
             <option value="Female">Lesbian</option>
+            <option value="Male">Straigth</option>
             <option value="Female">Gay</option>
             <option value="Other">Other</option>
           </select>
@@ -60,9 +95,7 @@ export default function EditProfile() {
           <h3>Looking For</h3>
           <select name="gender" className="gender">
             <option value="Male">Male</option>
-            <option value="Female" >
-              Female
-            </option>
+            <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -70,32 +103,37 @@ export default function EditProfile() {
 
         <div className="gender_info hobby_info">
           <h3>Hobby</h3>
-          <input 
-          name="hobbies"
-          onChange={handlOnChange}
+          <input
+            name="hobbies"
+            onChange={handlOnChange}
+            defaultValue={(fetchedData && fetchedData.hobbies) || ""}
           ></input>
         </div>
         <hr />
 
         <div className="gender_info bio_inf0">
           <h3>Bio</h3>
-          <textarea 
-          name="bio" 
-          rows="2" 
-          cols="30"
-          onChange={handlOnChange}
-          >
-          </textarea>
+          <textarea
+            name="bio"
+            rows="2"
+            cols="30"
+            onChange={handlOnChange}
+            defaultValue={(fetchedData && fetchedData.bio) || ""}
+          ></textarea>
         </div>
         <hr />
         <div className="gender_info language_info">
           <h3>Languages</h3>
-          <input 
-          name="languages" 
-          onChange={handlOnChange}
+          <input
+            name="languages"
+            onChange={handlOnChange}
+            defaultValue="gujarati , english"
           ></input>
         </div>
         <hr />
+        <button className="btn_back btn_update" onClick={updateProfile}>
+          Update Profile
+        </button>
       </div>
     </>
   );
