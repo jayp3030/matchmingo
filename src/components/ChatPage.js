@@ -9,7 +9,11 @@ export default function ChatPage() {
             <i class="fa-solid fa-chevron-left"></i><img src={img}></img>
             </div>
             <div className='chatPage_upper_right'>
-                Pooja Rana
+                <h4>Pooja rana</h4>
+                <p>Active 3m ago</p>
+            </div>
+            <div className="info_icon">
+            <i class="fa-solid fa-circle-info"></i>
             </div>
         </div>
         <div className='chatPage_middle'>
