@@ -206,7 +206,8 @@
     color: var(--light);
     font-family: 'manrope_medium';
 }
-.col2 h4{
+
+.col2 h4 {
     font-size: 1rem;
     color: var(--light);
     font-family: 'manrope_medium';
@@ -391,8 +392,8 @@ input::-webkit-inner-spin-button {
 /* .hobbies_container{
     border: 2px solid red;
 } */
-.hobbyArray{
-    border:1px solid var(--light);
+.hobbyArray {
+    border: 1px solid var(--light);
     color: var(--light);
     display: flex;
     justify-content: space-between;
@@ -410,11 +411,12 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
-#hobbyInput{
+
+#hobbyInput {
     margin-top: 0;
-    
+
 }
 
 .hobby_input_div i {
@@ -426,7 +428,8 @@ input::-webkit-inner-spin-button {
 .hobbyArrayDiv {
     display: flex;
 }
-.sidebar_wrapper{
+
+.sidebar_wrapper {
     width: 45vw;
     height: 100vh;
     display: flex;
@@ -831,29 +834,34 @@ label {
 
 /* ---------- edit profile -----------  */
 
-.gender{
+.gender {
     border: none;
     font-family: 'manrope_light';
     font-size: .8rem;
     width: 100%;
 }
 
-.gender:focus{
+.gender:focus {
     outline: none;
 }
 
-.location_info input , .language_info input , .hobby_info input{
+.location_info input,
+.language_info input,
+.hobby_info input {
     width: 100%;
     padding: 1% .5%;
     border: none;
     font-family: 'manrope_light';
     font-size: .8rem;
 }
-.location_info input:focus , .language_info input , .hobby_info input{
+
+.location_info input:focus,
+.language_info input,
+.hobby_info input {
     outline: none;
 }
 
-.bio_inf0 textarea{
+.bio_inf0 textarea {
     width: 100%;
     padding: 1% 0.5%;
     border: none;
@@ -862,6 +870,10 @@ label {
     resize: none;
 }
 
-.bio_inf0 textarea:focus{
+.bio_inf0 textarea:focus {
     outline: none;
+}
+
+.btn_update{
+    margin-top: 1.5rem;
 }
