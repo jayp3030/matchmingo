@@ -15,40 +15,26 @@ export default function EditProfile() {
   async function updateProfile(e) {
     e.preventDefault();
     console.log("clicked");
-    console.log(data);
 
-    if (!data.bio || !data.hobbies || !data.languages || !data.location) {
-      console.log(fetchedData);
-      let response = await fetch(`${host}/details/userDetails`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fetchedData),
-      });
-
-      return;
+    if (!fetchedData.bio || !fetchData.hobbies || !fetchedData.languages || !fetchedData.location) {
+      console.log("invalid")
     }
 
     let response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(fetchedData),
     });
     console.log(e, "not resolved");
   }
 
-  const [data, setData] = useState({
-    location: "",
-    hobbies: "",
-    bio: "",
-    languages: "",
-  });
 
   const handlOnChange = (e) => {
-    setData({
-      ...data,
+    setFetchedData({
+      ...fetchedData,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    console.log(fetchedData);
   };
 
   useEffect(() => {
@@ -106,7 +92,7 @@ export default function EditProfile() {
           <input
             name="hobbies"
             onChange={handlOnChange}
-            defaultValue={(fetchedData && fetchedData.hobbies) || ""}
+            value={fetchedData && fetchedData.hobbies}
           ></input>
         </div>
         <hr />
