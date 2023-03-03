@@ -571,7 +571,7 @@ label{
     width: 100%;
     min-height: 5rem;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
     position: absolute;
     bottom: 0;

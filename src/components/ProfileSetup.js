@@ -12,15 +12,16 @@ export default function ProfileSetup() {
   return (
     <>
       <SidePage />
-      <div className="profile_setup" id="profile_setup">
-        <Signup />
-        <Name />
-        <Age />
-        <College />
-        <Hobby />
-        < Uploadphoto />
-        <UploadId />
-      </div>
+        <div className="profile_setup" id="profile_setup">
+          <Signup />
+          <Name />
+          <Age />
+          <College />
+          <Hobby />
+          <Uploadphoto />
+          <UploadId />
+        </div>
+      
     </>
   );
 }
