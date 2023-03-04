@@ -9,6 +9,7 @@ import Homeright from "./components/Homeright";
 import Login from "./components/Login";
 import PasswordReset from "./components/PasswordReset";
 import EditProfile from "./components/EditProfile";
+import Ddtest from "./components/Ddtest";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/home" element={<Homeright />} />
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
+            <Route path="/dd" element={<Ddtest/>} />
           </Routes>
         </BrowserRouter>
       </AnimatePresence>

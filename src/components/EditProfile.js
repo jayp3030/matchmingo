@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 
 export default function EditProfile() {
+
+  const gender = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+    { value: "Other", label: "Other" },
+  ];
+
+  const sexual_Orientation = [
+    { value: "Straigh", label: "Straigh" },
+    { value: "Lesbian", label: "Lesbian" },
+    { value: "Gay", label: "gay" },
+    { value: "Other", label: "Other" },
+  ]
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+
   const host = "http://localhost:8000";
 
   const [fetchedData, setFetchedData] = useState([]);
@@ -10,22 +28,18 @@ export default function EditProfile() {
       .then((res) => res.json())
       .then((result) => setFetchedData(result))
       .catch((err) => console.log(err));
+      console.log(fetchedData);
   }
 
   async function updateProfile(e) {
     e.preventDefault();
     console.log("clicked");
 
-    if (!fetchedData.bio || !fetchData.hobbies || !fetchedData.languages || !fetchedData.location) {
-      console.log("invalid")
-    }
-
     let response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(fetchedData),
     });
-    console.log(e, "not resolved");
   }
 
 
@@ -46,14 +60,32 @@ export default function EditProfile() {
       <div className="info_box">
         <div className="gender_info">
           <h3>Gender</h3>
-          <select
-            name="gender"
-            className="gender"
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+          <Select
+                className="gender"
+                defaultValue={fetchedData.gender}
+                placeholder={fetchedData.gender}
+                onChange={setSelectedOption}
+                options={gender}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'transparent' : 'transparent',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
+  
         </div>
         <hr />
         <div className="gender_info ">
@@ -62,28 +94,66 @@ export default function EditProfile() {
           <p>{fetchedData && fetchedData.college}</p>
         </div>
         <hr />
-        <div className="gender_info location_info">
+        {/* <div className="gender_info location_info">
           <h3>Location</h3>
           <input name="location" onChange={handlOnChange}></input>
         </div>
-        <hr />
+        <hr /> */}
         <div className="gender_info">
           <h3>Sexuality</h3>
-          <select name="gender" className="gender">
-            <option value="Female">Lesbian</option>
-            <option value="Male">Straigth</option>
-            <option value="Female">Gay</option>
-            <option value="Other">Other</option>
-          </select>
+          <Select
+                className="gender"
+                defaultValue={fetchedData.sexual_orientation}
+                placeholder={fetchedData.sexual_orientation}
+                onChange={setSelectedOption}
+                options={sexual_Orientation}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'transparent' : 'transparent',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
         </div>
         <hr />
         <div className="gender_info">
           <h3>Looking For</h3>
-          <select name="gender" className="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+          <Select
+                className="gender"
+                defaultValue={fetchedData.gender}
+                onChange={setSelectedOption}
+                options={gender}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'transparent' : 'transparent',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
         </div>
         <hr />
 
