@@ -156,8 +156,9 @@
 .Side_presentation{
     height:100%;
     width:45vw;
-   
 }
+
+
 
 .side_presenation_container{
     height:100%;
@@ -412,6 +413,10 @@ flex-direction: row;
     height:30%;
     width:45%;
     /* background:blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     
 }
 .link{

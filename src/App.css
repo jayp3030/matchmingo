@@ -1,7 +1,8 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
-@import url("./stylesheets/mobile.css");
+/* @import url("./stylesheets/mobile.css"); */
+@import url("./stylesheets/mobile_alpha.css");
 #root{
   overflow-anchor: none; 
 }
@@ -32,6 +33,7 @@ cursor: none;
   background-color: transparent;
   cursor: pointer;
 }
+
 @keyframes rotate1{
   /* 0%{
     transform:rotate(0deg);

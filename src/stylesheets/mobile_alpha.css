@@ -1,0 +1,540 @@
+@media (max-width: 1311px) {
+    .logo_div_login > img{
+        width:100%;
+    }
+    .sidebar_wrapper > img{
+        width:70%;
+    }
+    .login_title{
+        font-size:1.6rem;
+    }
+    .col2 h2{
+        font-size:1.5rem;
+    }
+    .google_logo img{
+        width:80%;
+        margin-top:1%;
+        height:auto;
+    }
+    .google_btn > div{
+        font-size:0.8rem;
+        padding-top:-1%;
+    }
+    .col2 form >input{
+        font-size:0.8rem;
+        padding-left:7%;
+    }
+    .btn{
+        font-size:1rem;
+    }
+    #google_login , .submit_btn{
+        width:55%;
+        height:55%
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:55%;
+        
+    }
+    .remember_me_login{
+        height:10%;
+        width:55%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.8rem;
+    }
+    .forgot_password{
+        font-size: 0.8rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:55%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.4rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.84rem;
+    }
+    .link > p{
+        font-size: 0.84rem;
+    }
+}
+
+@media (max-width: 1141px) {
+    .logo_div_login > img{
+        width:90%;
+    }
+    .login_title{
+        font-size:1.4rem;
+    }
+
+    #google_login , .submit_btn{
+        width:60%;
+        height:55%;
+        font-size:1.4rem;
+    }
+    .col2 h2{
+        font-size:1.4rem;
+    }
+    .google_logo img{
+        width:80%;
+        margin-top:20%;
+        height:auto;
+    }
+    .google_btn > div{
+        font-size:0.9rem;
+        padding-top:-1%;
+    }
+    .col2 form >input{
+        font-size:0.9rem;
+        padding-left:7%;
+    }
+    .btn{
+        font-size:1.2rem;
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:60%;
+        padding-left:5%;
+        
+    }
+    .remember_me_login{
+        height:10%;
+        width:60%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.75rem;
+    }
+    .forgot_password{
+        font-size: 0.75rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:60%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.2rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.75rem;
+    }
+    .link > p{
+        font-size: 0.75rem;}
+
+}
+
+@media (max-width: 977px) {
+
+    .logo_div_login > img{
+        width:95%;
+    }
+    .login_title{
+        font-size:1.3rem;
+    }
+   .sidebar_wrapper{
+    width:50vw;
+   }
+    #google_login , .submit_btn{
+        width:70%;
+        height:55%;
+        font-size:1.3rem;
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:70%;
+        padding-left:5%;
+        
+    }
+    .col2 h2{
+        font-size:1.35rem;
+    }
+    .google_btn{
+        width:130%;
+        margin-left:-0.5rem;
+    }
+    .google_logo img{
+        width:80%;
+        margin-top:2%;
+        height:auto;
+    }
+    .google_btn > div{
+        font-size:0.82rem;
+        padding-top:-1%;
+    }
+    .col2 form >input{
+        width:125%;
+        font-size:0.82rem;
+        padding-right:0rem;
+        padding-left:7%;
+    }
+    .btn{
+        font-size:1.2rem;
+        width:125%;
+    }
+    .remember_me_login{
+        height:10%;
+        width:70%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.75rem;
+    }
+    .forgot_password{
+        font-size: 0.75rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:70%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.2rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.75rem;
+    }
+    .link > p{
+        font-size: 0.75rem;}
+
+}
+
+@media (max-width: 827px) {
+    .Side_presentation{
+        width:47vw;
+    }
+    .login_form_div{
+        width:53vw;
+    }
+    
+    .login_form_container{
+        height:80%;
+    }
+    .logo_div_login > img{
+        width:95%;
+    }
+    .login_title_container{
+        height:20%;
+        
+
+    }
+    .login_google_container{
+        height:20%;
+        /* background:green; */
+
+    }
+    .form_container{
+        height:60%;
+        /* background:blue; */
+
+    }
+    .login_OR_div{
+        height:3%;
+        width:70%;
+    }
+    .login_title{
+        font-size:1.4rem;
+    }
+
+    #google_login , .submit_btn{
+        width:80%;
+        height:55%;
+        font-size:1.2rem;
+    }
+    #google_login > img{
+        width:7%;
+    }
+    #google_login > p{
+        font-size:0.85rem;
+        padding-left:5%;
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:80%;
+        padding-left:5%;
+        font-size: 0.8rem;
+        
+    }
+    .remember_me_login{
+        height:10%;
+        width:80%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.65rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:80%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.18rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.65rem;
+    }
+    .link > p{
+        font-size: 0.65rem;}
+
+}
+@media (max-width: 670px) {
+    .col1{
+        width:0vw;
+    }
+    .sidebar_wrapper{
+        width:0%;
+    }
+    .col2{
+        width:100vw;
+    }
+    .col2 h2{
+        font-size:1.8rem;
+        width: 120%;
+        padding-bottom:10%;
+    }
+    .google_btn{
+        width:110%;
+        margin-left:0rem;
+    }
+    .google_logo img{
+        width:80%;
+        margin-top:2%;
+        height:auto;
+    }
+    .google_btn > div{
+        font-size:0.82rem;
+        padding-top:-1%;
+    }
+    .col2 form >input{
+        width:110%;
+        font-size:0.82rem;
+        padding-right:0rem;
+        padding-left:7%;
+    }
+    .btn{
+        font-size:1.2rem;
+        width:110%;
+    }
+    .Side_presentation{
+        width:0vw;
+    }
+    .login_form_div{
+        width:100vw;
+    }
+    .login_form_container{
+        /* background: black; */
+        height:85%;
+        width:80%;
+    }
+    .logo_div_login > img{
+        width:95%;
+    }
+    .login_title_container{
+        height:20%;
+    }
+    .login_google_container{
+        height:20%;
+        /* background:green; */
+
+    }
+    .form_container{
+        height:60%;
+        /* background:blue; */
+
+    }
+    .login_OR_div{
+        height:3%;
+        width:70%;
+    }
+    .login_title{
+        font-size:1.7rem;
+        font-weight: 600;
+    }
+
+    #google_login , .submit_btn{
+        width:60%;
+        height:55%;
+        font-size:1.2rem;
+    }
+    #google_login > img{
+        width:7%;
+    }
+    #google_login > p{
+        font-size:0.85rem;
+        padding-left:5%;
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:60%;
+        padding-left:5%;
+        font-size: 0.8rem;
+        
+    }
+    .remember_me_login{
+        height:10%;
+        width:60%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.8rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:60%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.3rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.75rem;
+    }
+    .link > p{
+        font-size: 0.75rem;}
+}
+
+@media only screen and (max-width:600px){
+
+    .Side_presentation{
+        width:0vw;
+    }
+    .login_form_div{
+        width:100vw;
+    }
+    .login_form_container{
+        /* background: black; */
+        height:90%;
+        width:85%;
+    }
+    .logo_div_login > img{
+        width:95%;
+    }
+    .login_title_container{
+        height:20%;
+    }
+    .login_google_container{
+        height:20%;
+        /* background:green; */
+
+    }
+    .form_container{
+        height:60%;
+        /* background:blue; */
+
+    }
+    .login_OR_div{
+        height:3%;
+        width:70%;
+    }
+    .login_title{
+        font-size:1.7rem;
+        font-weight: 600;
+    }
+
+    #google_login , .submit_btn{
+        width:75%;
+        height:55%;
+        font-size:1.2rem;
+    }
+    #google_login > img{
+        width:7%;
+    }
+    #google_login > p{
+        font-size:0.85rem;
+        padding-left:5%;
+    }
+    #login_form_ff > input {
+        height:14%;
+        width:75%;
+        padding-left:5%;
+        font-size: 0.8rem;
+        
+    }
+    .remember_me_login{
+        height:10%;
+        width:75%;
+        /* background:yellow; */
+        margin:1% 0% 1% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .remember_me{
+        font-size:0.8rem;
+    }
+    .submit_btn_div{
+        /* background:green; */
+       width:75%;
+       height:30%;
+    }
+    .submit_btn{
+        height:50%;
+        width:100%;
+        font-size: 1.3rem;
+        padding:0%;
+    }
+    .not_an_member{
+        padding-top:5%;
+    }
+    .not_an_member > p{
+        font-size: 0.75rem;
+    }
+    .link > p{
+        font-size: 0.75rem;}
+
+}
