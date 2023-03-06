@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 export default function EditProfile() {
-
   const gender = [
     { value: "Male", label: "Male" },
     { value: "Female", label: "Female" },
@@ -14,10 +13,9 @@ export default function EditProfile() {
     { value: "Lesbian", label: "Lesbian" },
     { value: "Gay", label: "gay" },
     { value: "Other", label: "Other" },
-  ]
+  ];
 
   const [selectedOption, setSelectedOption] = useState(null);
-
 
   const host = "http://localhost:8000";
 
@@ -28,7 +26,7 @@ export default function EditProfile() {
       .then((res) => res.json())
       .then((result) => setFetchedData(result))
       .catch((err) => console.log(err));
-      console.log(fetchedData);
+    console.log(fetchedData);
   }
 
   async function updateProfile(e) {
@@ -41,7 +39,6 @@ export default function EditProfile() {
       body: JSON.stringify(fetchedData),
     });
   }
-
 
   const handlOnChange = (e) => {
     setFetchedData({
@@ -61,31 +58,30 @@ export default function EditProfile() {
         <div className="gender_info">
           <h3>Gender</h3>
           <Select
-                className="gender"
-                defaultValue={fetchedData.gender}
-                placeholder={fetchedData.gender}
-                onChange={setSelectedOption}
-                options={gender}
-                styles={{
-                  control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    borderColor: state.isFocused ? 'transparent' : 'transparent',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
-                  }),
-                }}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: "white",
-                    primary: "var(--light)",
-                    neutral80: "black",
-                  },
-                })}
-              />
-  
+            className="gender"
+            defaultValue={fetchedData.gender}
+            placeholder={fetchedData.gender}
+            onChange={setSelectedOption}
+            options={gender}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                borderColor: state.isFocused ? "transparent" : "transparent",
+                border: state.isFocused ? 0 : 0,
+                boxShadow: "none",
+              }),
+            }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: "var(--light)",
+                primary: "var(--light)",
+                neutral80: "black",
+              },
+            })}
+          />
         </div>
         <hr />
         <div className="gender_info ">
@@ -102,58 +98,58 @@ export default function EditProfile() {
         <div className="gender_info">
           <h3>Sexuality</h3>
           <Select
-                className="gender"
-                defaultValue={fetchedData.sexual_orientation}
-                placeholder={fetchedData.sexual_orientation}
-                onChange={setSelectedOption}
-                options={sexual_Orientation}
-                styles={{
-                  control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    borderColor: state.isFocused ? 'transparent' : 'transparent',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
-                  }),
-                }}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: "white",
-                    primary: "var(--light)",
-                    neutral80: "black",
-                  },
-                })}
-              />
+            className="gender"
+            defaultValue={fetchedData.sexual_orientation}
+            placeholder={fetchedData.sexual_orientation}
+            onChange={setSelectedOption}
+            options={sexual_Orientation}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                borderColor: state.isFocused ? "transparent" : "transparent",
+                border: state.isFocused ? 0 : 0,
+                boxShadow: "none",
+              }),
+            }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: "var(--light)",
+                primary: "var(--light)",
+                neutral80: "black",
+              },
+            })}
+          />
         </div>
         <hr />
         <div className="gender_info">
           <h3>Looking For</h3>
           <Select
-                className="gender"
-                defaultValue={fetchedData.gender}
-                onChange={setSelectedOption}
-                options={gender}
-                styles={{
-                  control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    borderColor: state.isFocused ? 'transparent' : 'transparent',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
-                  }),
-                }}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: "white",
-                    primary: "var(--light)",
-                    neutral80: "black",
-                  },
-                })}
-              />
+            className="gender"
+            defaultValue={fetchedData.gender}
+            onChange={setSelectedOption}
+            options={gender}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                borderColor: state.isFocused ? "transparent" : "transparent",
+                border: state.isFocused ? 0 : 0,
+                boxShadow: "none",
+              }),
+            }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: "var(--light)",
+                primary: "var(--light)",
+                neutral80: "black",
+              },
+            })}
+          />
         </div>
         <hr />
 

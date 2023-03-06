@@ -93,7 +93,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },
@@ -119,7 +119,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },
