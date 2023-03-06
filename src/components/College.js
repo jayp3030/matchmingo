@@ -9,7 +9,7 @@ export default function College(props) {
     const handleSubmit = async (e) => {
       e.preventDefault()
 
-      if (!document.getElementById("college").value || !document.getElementById("branch").value || !document.getElementById("passout_year").value) {
+      if (!selectedOptionCollege.value || !selectedOptionBranch.value || !selectedOptionPassYear.value) {
         document.getElementById("college_page_alert").style.opacity = 1;
         return;
       }
@@ -19,9 +19,9 @@ export default function College(props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           userId: props.getUserID(localStorage.getItem("token")).user.id,
-          college: document.getElementById("college").value,
-          branch: document.getElementById("branch").value,
-          passout_year: document.getElementById("passout_year").value,
+          college: selectedOptionCollege.value,
+          branch: selectedOptionBranch.value,
+          passout_year: selectedOptionPassYear.value,
 
         }),
       });
@@ -60,7 +60,23 @@ export default function College(props) {
 
   ]
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  
+  const [selectedOptionCollege, setSelectedOptionCollege] = useState(null);
+  const [selectedOptionBranch, setSelectedOptionBranch] = useState(null);
+  const [selectedOptionPassYear, setSelectedOptionPassYear] = useState(null);
+
+  const handleCollege = (selectedCollege) =>{
+    console.log(selectedCollege.value);
+    setSelectedOptionCollege(selectedCollege);
+  }
+  const handleBranch = (selectedBranch) =>{
+    console.log(selectedBranch.value);
+    setSelectedOptionBranch(selectedBranch);
+  }
+  const handleCPassYear = (selectedPassYear) =>{
+    console.log(selectedPassYear.value);
+    setSelectedOptionPassYear(selectedPassYear);
+  }
 
   return (
     <>
@@ -75,8 +91,8 @@ export default function College(props) {
             <h4>Select Your College</h4>
             <Select
                 className="gender"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                // defaultValue={selectedOption}
+                onChange={handleCollege}
                 options={collage}
                 styles={{
                   control: (baseStyles, state) => ({
@@ -100,8 +116,8 @@ export default function College(props) {
             <h4>Select Branch</h4>
             <Select
                 className="gender"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                // defaultValue={selectedOption}
+                onChange={handleBranch}
                 options={branch}
                 styles={{
                   control: (baseStyles, state) => ({
@@ -125,8 +141,8 @@ export default function College(props) {
             <h4>Passout Year</h4>
             <Select
                 className="gender"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                // defaultValue={selectedOption}
+                onChange={handleCPassYear}
                 options={passout_year}
                 styles={{
                   control: (baseStyles, state) => ({

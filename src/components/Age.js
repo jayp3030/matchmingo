@@ -5,7 +5,8 @@ export default function Age(props) {
   const host = "http://localhost:8000";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!document.getElementById("dob").value || !document.getElementById("gender").value || !document.getElementById("sexual_orientation").value) {
+    if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
+      console.log();
       document.getElementById("age_page_alert").style.opacity = 1;
       return;
     }
@@ -16,8 +17,8 @@ export default function Age(props) {
       body: JSON.stringify({
         userId: props.getUserID(localStorage.getItem("token")).user.id,
         birth_date: document.getElementById("dob").value,
-        gender: document.getElementById("gender").value,
-        sexual_orientation: document.getElementById("sexual_orientation").value,
+        gender: selectedOptionGender.value,
+        sexual_orientation: selectedOptionOrientation.value ,
       }),
     });
     if (response.ok) {
@@ -31,6 +32,8 @@ export default function Age(props) {
       "translateX(-100vw)";
   };
 
+
+
   const gender = [
     { value: "Male", label: "Male" },
     { value: "Female", label: "Female" },
@@ -38,13 +41,25 @@ export default function Age(props) {
   ];
 
   const sexual_Orientation = [
-    { value: "Straigh", label: "Straigh" },
+    { value: "Straight", label: "Straight" },
     { value: "Lesbian", label: "Lesbian" },
     { value: "Gay", label: "gay" },
     { value: "Other", label: "Other" },
   ]
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOptionGender, setSelectedOptionGender] = useState(null);
+  const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
+
+  const handleGender =(selectedGender)=>{
+    console.log(selectedGender.value);
+    setSelectedOptionGender(selectedGender);
+    console.log(selectedOptionGender.value);
+  }
+  const handleOrientation =(selectedOrientation)=>{
+    console.log(selectedOrientation.value);
+    setSelectedOptionOriantation(selectedOrientation);
+    console.log(selectedOptionOrientation.value);
+  }
 
   return (
     <>
@@ -60,10 +75,11 @@ export default function Age(props) {
               <input type="date" id="dob" placeholder="Enter Your age" />
               <h4>Select Gender</h4>
               <Select
+                id="gender"
                 className="gender"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                // defaultValue={selectedOption}
                 options={gender}
+                onChange={handleGender}
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -85,9 +101,10 @@ export default function Age(props) {
               />
               <h4>Sexual Orientation</h4>
               <Select
+                id="sexual_orientation"
                 className="gender"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                // defaultValue={selectedOption}
+                onChange={handleOrientation}
                 options={sexual_Orientation}
                 styles={{
                   control: (baseStyles, state) => ({
