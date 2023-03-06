@@ -25,18 +25,6 @@ export default function ProfileSetup() {
 
     <>
       <SidePage />
-<<<<<<< HEAD
-        <div className="profile_setup" id="profile_setup">
-          <Signup />
-          <Name />
-          <Age />
-          <College />
-          <Hobby />
-          <Uploadphoto />
-          <UploadId />
-        </div>
-      
-=======
       <div className="profile_setup" id="profile_setup">
         <Signup />
         <Name getUserID={getUserID}/>
@@ -46,7 +34,6 @@ export default function ProfileSetup() {
         < Uploadphoto getUserID={getUserID}/>
         <UploadId getUserID={getUserID}/>
       </div>
->>>>>>> 3020502bc80e6f5ed4a7152e6cec02389d149ae9
     </>
   );
 }
