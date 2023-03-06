@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
 
@@ -21,6 +21,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
+      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
       return;
@@ -46,6 +47,15 @@ export default function Signup() {
       document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
     }
   };
+
+  // const changeMode = ()=>{
+  //   var root = document.querySelector(':root');
+  
+  //   root.style.setProperty('--light','#011627');
+  //   root.style.setProperty('--primary','#2EC4B6');
+  // }
+
+
   useEffect(()=>{
     //if user is logged in then redirect to home page
     if(localStorage.getItem("token")){
@@ -101,6 +111,9 @@ export default function Signup() {
             <h5 className="last_child">
               Already Member? <a href="/login">Find Your Match</a>
             </h5>
+            {/* <div className="modes">
+                <button onClick={changeMode}>dark mode</button>
+            </div> */}
           </div>
         </div>
       </div>

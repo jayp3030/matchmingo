@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Select from "react-select";
 
 
 export default function College(props) {
@@ -8,7 +9,7 @@ export default function College(props) {
     const handleSubmit = async (e) => {
       e.preventDefault()
 
-      if (!document.getElementById("college").value || !document.getElementById("branch").value || !document.getElementById("passout_year").value) {
+      if (!selectedOptionCollege.value || !selectedOptionBranch.value || !selectedOptionPassYear.value) {
         document.getElementById("college_page_alert").style.opacity = 1;
         return;
       }
@@ -18,9 +19,9 @@ export default function College(props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           userId: props.getUserID(localStorage.getItem("token")).user.id,
-          college: document.getElementById("college").value,
-          branch: document.getElementById("branch").value,
-          passout_year: document.getElementById("passout_year").value,
+          college: selectedOptionCollege.value,
+          branch: selectedOptionBranch.value,
+          passout_year: selectedOptionPassYear.value,
 
         }),
       });
@@ -30,6 +31,51 @@ export default function College(props) {
   const handlebackwardSlide = (e) => {
     e.preventDefault()
     document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
+  }
+
+  const collage = [
+    { value: "LD Engineering collage", label: "LD Engineering collage" },
+    { value: "VGEC", label: "VGEC" },
+    { value: "NIRMA University", label: "NIRMA University" },
+    { value: "Parul University", label: "Parul University" },
+    { value: "CVM University", label: "CVM University" },
+    { value: "MS University", label: "MS University" },
+  ]
+
+  const branch = [
+    { value: "Computer Engineering", label: "Computer Engineering" },
+    { value: "Information Technology", label: "Information Technology" },
+    { value: "Electrical & Communication", label: "Electrical & Communication" },
+    { value: "Electrical Engineering", label: "Electrical Engineering" },
+    { value: "Chemical Engineering", label: "Chemical Engineering" },
+  ]
+
+  const passout_year = [
+    { value: "2024", label: "2024" },
+    { value: "2025", label: "2025" },
+    { value: "2026", label: "2026" },
+    { value: "2027", label: "2027" },
+    { value: "2028", label: "2028" },
+    { value: "2029", label: "2029" },
+
+  ]
+
+  
+  const [selectedOptionCollege, setSelectedOptionCollege] = useState(null);
+  const [selectedOptionBranch, setSelectedOptionBranch] = useState(null);
+  const [selectedOptionPassYear, setSelectedOptionPassYear] = useState(null);
+
+  const handleCollege = (selectedCollege) =>{
+    console.log(selectedCollege.value);
+    setSelectedOptionCollege(selectedCollege);
+  }
+  const handleBranch = (selectedBranch) =>{
+    console.log(selectedBranch.value);
+    setSelectedOptionBranch(selectedBranch);
+  }
+  const handleCPassYear = (selectedPassYear) =>{
+    console.log(selectedPassYear.value);
+    setSelectedOptionPassYear(selectedPassYear);
   }
 
   return (
@@ -43,29 +89,80 @@ export default function College(props) {
           </div>
           <div className="middle">
             <h4>Select Your College</h4>
-            <select name="college" className='college' id='college' required>
-              <option value="" >College</option>
-              <option value="VGEC">VGEC</option>
-              <option value="LD Enngineering Collage">LD Enginnering Collage</option>
-              <option value="Nirma University">Nirma University</option>
-              <option value="Ahmedabad University">Ahmedabad University</option>
-            </select>
+            <Select
+                className="gender"
+                // defaultValue={selectedOption}
+                onChange={handleCollege}
+                options={collage}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'white' : 'grey',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
             <h4>Select Branch</h4>
-            <select name="collage" className='branch' id='branch'>
-              <option value="" >Branch </option>
-              <option value="Computer Enginnering ">Computer Enginnering </option>
-              <option value="Information Technology ">Information Technology </option>
-              <option value="Electrical Enginnering ">Electrical Enginnering </option>
-              <option value="Electronic and Communication">Electronic and Communication</option>
-            </select>
+            <Select
+                className="gender"
+                // defaultValue={selectedOption}
+                onChange={handleBranch}
+                options={branch}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'white' : 'grey',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
             <h4>Passout Year</h4>
-            <select name="passout_year" id='passout_year' className='branch'>
-              <option value="" >Passout Year </option>
-              <option value="2024 ">2024 </option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-            </select>
+            <Select
+                className="gender"
+                // defaultValue={selectedOption}
+                onChange={handleCPassYear}
+                options={passout_year}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? 'white' : 'grey',
+                    border: state.isFocused ? 0 : 0,
+                    boxShadow: "none"
+                  }),
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "white",
+                    primary: "var(--light)",
+                    neutral80: "black",
+                  },
+                })}
+              />
             <p className='alert' id="college_page_alert">Enter Required Fields</p>
             <button className="btn" onClick={handleSubmit}>Next</button>
             <button className="btn_back" onClick={handlebackwardSlide}>Back</button>

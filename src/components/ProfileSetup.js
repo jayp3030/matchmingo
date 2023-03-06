@@ -31,7 +31,7 @@ export default function ProfileSetup() {
         <Age getUserID={getUserID}/>
         <College getUserID={getUserID}/>
         <Hobby getUserID={getUserID}/>
-        < Uploadphoto getUserID={getUserID}/>
+        <Uploadphoto getUserID={getUserID}/>
         <UploadId getUserID={getUserID}/>
       </div>
     </>

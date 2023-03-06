@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import img from "../images/landingPage01.jpg";
 import img2 from "../images/landingPage02.jpg";
 import ChatPage from "./ChatPage";
@@ -26,7 +26,19 @@ export default function Homeright() {
     x: 0,
     y: 0,
   });
-  var [obj, setObj] = useState({
+  var b={
+    "name":"mayank1"
+  };
+  var c={
+    "name":"mayank2"
+  };
+  var [personalDT,setPersonalDT]=useState([
+    {
+    "name":"mayank"
+    }
+])
+
+var [obj, setObj] = useState({
     initial: {
       opacity: 0,
       y: "100%",
@@ -36,35 +48,93 @@ export default function Homeright() {
       y: "0%",
       transition: {
         duration: 1,
+        delay:1,
         ease: "backInOut",
         when: "beforeChildren",
       },
     },
-    exit: {
-      opacity: 0,
-      y: "-100%",
-      transition: {
-        duration: 1,
-        ease: "backInOut",
-        when: "beforeChildren",
-      },
-    },
-  });
-
-  function update() {
-    if (l > 0) {
-      setL((e) => e - 1);
-    }
-  }
-  window.addEventListener("keyup", (e) => {
-    console.log(e);
-    if (e.key === "ArrowLeft") {
-      if (l >= 0) {
-        setL(l - 1);
-      }
-    }
+ 
   });
   var reference = useRef(0);
+  
+  function update() {
+    
+    if (l >= 0) {
+      setL((e) => e - 1);
+    }
+    var card=document.getElementById("card");
+    console.log(card);
+    card.style.marginTop="-200%";
+    card.style.transitionDuration="1s";
+    setPersonalDT([b]);
+    setTimeout(()=>{card.style.marginTop="0%";},1000)
+  }
+
+  function expand() {
+    var count=0;
+    var a = document.getElementById("card_right");
+    count=a.style.display;
+    console.log("width =" + count);
+    // if(count%2!=0 && count!=0){a.style.display = "block";}
+    // else{a.style.display = "none";}
+    if(count=='' || count=="none" ){a.style.display = "block";}
+    else{a.style.display = "none";}
+    console.log("button clicked");
+    
+    console.log(count);
+    // a.style.width="60% !important";
+   
+  }
+  var cards=document.getElementById("card");
+  
+    window.addEventListener("keyup", (e) => {
+      console.log(e);
+      var card=document.getElementById("card");
+    
+      if (e.key === "ArrowLeft") {
+    //     console.log(card);
+    // card.style.marginTop="-100%";
+    // card.style.transitionDuration="1s";
+    // setPersonalDT([b]);
+    // setTimeout(()=>{card.style.marginTop="0%";},1000)
+    setObj({
+      initial: {
+        opacity: 0,
+        x: "100%",
+      },
+      animate: {
+        opacity: 1,
+        x: "0%",
+        transition: {
+          duration: 1,
+          delay:1,
+          ease: "backInOut",
+          when: "beforeChildren",
+        },
+      },
+      exit: {
+        opacity: 0,
+        x: "-100%",
+        transition: {
+          duration: 3,
+          delay:1,
+          ease: "backInOut",
+          when: "beforeChildren",
+        },
+      },
+    });
+        if (l > 1) {
+          setL(l - 1);
+        }
+      }
+    });
+
+ function super_like(){
+  console.log("super like given");
+ }
+  
+
+useEffect(()=>{{console.log(l);}},[l])
   var abc = document.getElementById("moving_part");
 
   return (
@@ -109,7 +179,6 @@ export default function Homeright() {
             <i class="fa-regular fa-heart"></i>
           </div> */}
           <div className="Container_of_profile">
-            
             <motion.div
               className="moving_part"
               ref={reference}
@@ -120,56 +189,130 @@ export default function Homeright() {
               }}
               onPanEnd={(e) => {
                 setLoc({ ...loc, y: e.clientY });
-                if (loc.x - loc.y >= 100) {
-                  if (l > 0) {
+                var card=document.getElementById("card");
+                if (loc.x - loc.y >= 50) {
+                  expand();
+                  // card.style.marginTop="-200%";
+                  // card.style.transitionDuration="1s";
+                  // setPersonalDT([b]);
+                  // setTimeout(()=>{card.style.marginTop="0%";},1000)
+                  if (l > 1) {
                     setL((l) => l - 1);
+                  }
+                  else if (loc.X - loc.y <= 50) {
+                    expand(); 
                   }
                 }
               }}
             >
-              <AnimatePresence mode="wait">
-                {new Array(l).fill("").map((event, i) => (
+            <div className="card_Container" id="card_Container">
+            <AnimatePresence mode="wait">
+                {
+                  
+                // new Array(l).fill("").map((event, i) => (
+                  personalDT.map(
+                    (event,i)=>(
                   <motion.div
                     className="card"
-                    onPanStart={(e) => {}}
+                    id="card"
+                    onPanStart={(e) => {console.log(e);}}
                     key={i}
                     variants={obj}
                     initial="initial"
                     animate="animate"
                     exit="exit"
+                   
+                    // style={{top:i*105+"%",}}
                   >
-                    <img src={img} alt="" />
-                    <div className="userDetails">
-                      <div className="userNameAge">Vedant , 20</div>
-                      <div className="userBranch">CE</div>
+                    <div className="card_left" id="card_left"
+                     onDoubleClick={super_like}
+                    >
+                       {/* <img src={img} alt="" /> */} 
+                      <div className="userDetails">
+                        <div className="userNameAge">{event.name}&nbsp;,&nbsp;20</div>
+                        <div className="userBranch">CE</div>
+                      </div>
+                      <div className="icons">
+                        <motion.i
+                          whileHover={{ scale: 1.22 }}
+                          class="fa-regular fa-circle-xmark"
+                          onClick={update}
+                        ></motion.i>
+                        <motion.i
+                          whileHover={{ scale: 1.22 }}
+                          class="fa-regular fa-circle-check"
+                          onClick={update}
+                        ></motion.i>
+                        <motion.i
+                          whileHover={{ scale: 1.22 }}
+                          class="fa-solid fa-circle-info"
+                          onClick={expand}
+                        ></motion.i>
+                        <motion.i
+                          whileHover={{ scale: 1.22 }}
+                          class="fa-regular fa-heart"
+                        ></motion.i>
+                        <motion.i
+                          whileHover={{ scale: 1.22 }}
+                          class="fa-solid fa-gift"
+                        ></motion.i>
+                      </div>
                     </div>
-                    <div className="icons">
-                      <motion.i
-                        whileHover={{ scale: 1.22 }}
-                        class="fa-regular fa-circle-xmark"
-                      ></motion.i>
-                      <motion.i
-                        whileHover={{ scale: 1.22 }}
-                        class="fa-regular fa-circle-check"
-                        onClick={update}
-                      ></motion.i>
-                      <motion.i
-                        whileHover={{ scale: 1.22 }}
-                        class="fa-solid fa-circle-info"
-                      ></motion.i>
-                      <motion.i
-                        whileHover={{ scale: 1.22 }}
-                        class="fa-regular fa-heart"
-                      ></motion.i>
-                      <motion.i
-                        whileHover={{ scale: 1.22 }}
-                        class="fa-solid fa-gift"
-                      ></motion.i>
+                    <div className="card_right" id="card_right" ref={reference}>
+                      <div className="info_box">
+            <div className="gender_info">
+                <h3>Gender</h3>
+                <p>Male</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Branch & College</h3>
+                <p>Computer Engineering</p>
+                <p>Vishwakarma Government Engineering College</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Location</h3>
+                <p>Ahmedabad , Gujarat , India</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Sexuality</h3>
+                <p>Female</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Gender</h3>
+                <p>Male</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Hobby</h3>
+                <p>Cricket , Gym , Badminon</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Bio</h3>
+                <p>i am a good boy</p>
+            </div>
+            <hr />
+            <div className="gender_info">
+                <h3>Languages</h3>
+                <p>Gujarati,English</p>
+            </div>
+            <hr />
+        </div>
                     </div>
                   </motion.div>
-                ))}
+                )
+                )
+                }
               </AnimatePresence>
+            </div>
+              
             </motion.div>
+
+
 
             {/* <div className="card">
               <img src={img} alt="" />

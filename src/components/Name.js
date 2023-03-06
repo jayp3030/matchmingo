@@ -13,7 +13,7 @@ export default function Name(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    //To check whether user has entered required fields or not
+    // To check whether user has entered required fields or not
     if(!credentials.first_name || !credentials.last_name){
       document.getElementById("name_page_alert").style.opacity = 1;
       return;
