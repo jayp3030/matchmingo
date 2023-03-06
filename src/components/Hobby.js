@@ -79,11 +79,11 @@ export default function Hobby(props) {
                   
 
                   <input type="text" name='hobby' id='hobbyInput' value={hobby} onChange={handleHobby} placeholder="Enter Your hobbies" />
-                  <button className='empty_btn' onClick={addHobby}><i class="fa-solid fa-circle-plus"></i></button>
+                  <button className='empty_btn' onClick={addHobby}><i className="fa-solid fa-circle-plus"></i></button>
                 </div>
                 <div className='hobbyArrayDiv' id='hobbyArrayDiv'>
                   {hobbyArr && hobbyArr.map((element, index) => {
-                    return <span class="hobbyArray" id={`hobby${index}`}>{element}<i class="fa-solid fa-square-xmark" onClick={removeHobby}></i></span>
+                    return <span className="hobbyArray" id={`hobby${index}`}>{element}<i className="fa-solid fa-square-xmark" onClick={removeHobby}></i></span>
                   })}
 
                 </div>
