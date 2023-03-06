@@ -229,7 +229,7 @@ useEffect(()=>{{console.log(l);}},[l])
                     >
                        {/* <img src={img} alt="" /> */} 
                       <div className="userDetails">
-                        <div className="userNameAge">{event.name}Vedant&nbsp;,&nbsp;20</div>
+                        <div className="userNameAge">{event.name}&nbsp;,&nbsp;20</div>
                         <div className="userBranch">CE</div>
                       </div>
                       <div className="icons">

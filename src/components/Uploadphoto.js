@@ -66,7 +66,7 @@ export default function Uploadphoto() {
                 className="photo_section"
                 action = 'http://localhost:8000/details/userImages'
                 method="post"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <label 
                 htmlFor="input-files">
