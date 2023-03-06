@@ -10,9 +10,34 @@ import Login from "./components/Login";
 import PasswordReset from "./components/PasswordReset";
 import EditProfile from "./components/EditProfile";
 import Ddtest from "./components/Ddtest";
+import { useEffect } from "react";
 
 
 function App() {
+
+  const setThemme=()=>{
+    var root = document.querySelector(':root');
+    console.log("hello2")
+    if(localStorage.getItem("mode")){
+      if(localStorage.getItem("mode")==="light"){
+        root.style.setProperty('--primary','#011627');
+        root.style.setProperty('--accent','#FDFFFC');
+        root.style.setProperty("--light","#2EC4B6")
+      }
+      else{
+        root.style.setProperty('--primary','#FDFFFC');
+        root.style.setProperty('--accent','#011627');
+        root.style.setProperty("--light","#2EC4B6")
+        document.getElementById("landing_part02") && (document.getElementById("landing_part02").style.background = "transparent") 
+      }
+    }
+  }
+
+  useEffect(() => {
+    setThemme()
+    console.log("hello")
+  }, [])
+  
   return (
     <>
       <AnimatePresence>
