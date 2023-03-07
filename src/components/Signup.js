@@ -48,12 +48,23 @@ export default function Signup() {
     }
   };
 
-  // const changeMode = ()=>{
-  //   var root = document.querySelector(':root');
-  
-  //   root.style.setProperty('--light','#011627');
-  //   root.style.setProperty('--primary','#2EC4B6');
-  // }
+  const changeMode = ()=>{
+    if(localStorage.getItem("mode")){
+      console.log(localStorage.getItem("mode"))
+      if(localStorage.getItem("mode")==="light"){
+        console.log("hello")
+        localStorage.setItem("mode","dark")
+        window.location.reload()
+        return
+      }
+      else{
+        localStorage.setItem("mode","light")
+        window.location.reload()
+        return
+      }
+    }
+    localStorage.setItem("mode","light")
+  }
 
 
   useEffect(()=>{
@@ -111,9 +122,9 @@ export default function Signup() {
             <h5 className="last_child">
               Already Member? <a href="/login">Find Your Match</a>
             </h5>
-            {/* <div className="modes">
+            <div className="modes">
                 <button onClick={changeMode}>dark mode</button>
-            </div> */}
+            </div> 
           </div>
         </div>
       </div>

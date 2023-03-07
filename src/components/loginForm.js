@@ -55,11 +55,6 @@ const LoginForm = () => {
           <div className="login_form_container fcc">
             <div className="login_title_container fcc">
                 <p className="login_title">Welcome Back ,
-                <motion.h5
-                initial={{x:-500}}
-                animate={{x:0}} 
-                transition={{duration:3,type:'spring',stiffness:300}}
-                className="user_name">Mayank</motion.h5>
                 </p>
             </div>
             <div className="login_google_container fcc">

@@ -50,15 +50,12 @@ export default function Age(props) {
   const [selectedOptionGender, setSelectedOptionGender] = useState(null);
   const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
 
-  const handleGender =(selectedGender)=>{
-    console.log(selectedGender.value);
-    setSelectedOptionGender(selectedGender);
-    console.log(selectedOptionGender.value);
+  const handleGender =(e)=>{
+    setSelectedOptionGender(e.value);
   }
-  const handleOrientation =(selectedOrientation)=>{
-    console.log(selectedOrientation.value);
-    setSelectedOptionOriantation(selectedOrientation);
-    console.log(selectedOptionOrientation.value);
+  const handleOrientation =(e)=>{
+    setSelectedOptionOriantation(e.value);
+    console.log();
   }
 
   return (
@@ -77,7 +74,7 @@ export default function Age(props) {
               <Select
                 id="gender"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 options={gender}
                 onChange={handleGender}
                 styles={{
@@ -103,7 +100,7 @@ export default function Age(props) {
               <Select
                 id="sexual_orientation"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 onChange={handleOrientation}
                 options={sexual_Orientation}
                 styles={{

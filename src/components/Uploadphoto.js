@@ -16,7 +16,7 @@ export default function Uploadphoto() {
 
   const handleSlide = (e) => {
     e.preventDefault();
-    // btnRef.current.click();
+    btnRef.current.click();
     document.getElementById("profile_setup").style.transform = "translateX(-600vw)";
   };
 

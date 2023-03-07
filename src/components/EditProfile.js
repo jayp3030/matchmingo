@@ -26,7 +26,6 @@ export default function EditProfile() {
       .then((res) => res.json())
       .then((result) => setFetchedData(result))
       .catch((err) => console.log(err));
-    console.log(fetchedData);
   }
 
   async function updateProfile(e) {
