@@ -614,6 +614,7 @@ label {
     align-items: center;
     margin-top:1%;
     justify-content: center;
+   
         /* margin: 2rem 0; */
 }
 
@@ -624,6 +625,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+   
 }
 .card_left{
     height:100%;
@@ -634,15 +636,20 @@ label {
     align-items: flex-start;
     justify-content: flex-end;
     flex-direction: column;  
+    
 }
 .card_right{
     height:100%;
-    width:60%;
+    width:0%;
     box-shadow: -1px 0px 5px rgba(132, 132, 132, 0.4);
     /* z-index:-1; */
-    display:none;
+    /* display:none; */
+    transition-duration: 0.5s;
     /* background:wheat; */
     
+}
+.card_width{
+    width:60%;
 }
 /* .card img {
     width: 100%;
