@@ -10,6 +10,8 @@ const {
   getImages,
 } = require("../controllers/userImages.controller");
 
+const fetchUser = require("../middleware/fetchUser.middleware")
+
 const userRouter = express.Router();
 
 
@@ -20,8 +22,8 @@ userRouter.post(
   body("last_name", "enter a valid last_name").isLength({ min: 2 }),
   saveUserDetails
 );
-userRouter.get("/getUserDetails", getUserDetails);
-userRouter.post("/userImages", saveUserImages);
+userRouter.get("/getUserDetails",fetchUser, getUserDetails);
+userRouter.post("/userImages",fetchUser, saveUserImages);
 userRouter.get("/getImages", getImages);
 
 module.exports = {

@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef ,useState} from "react";
 // import ImageUploading from "react-images-uploading"; 
 import upldImg from '../images/uploadPhoto.png'
 
 export default function Uploadphoto() {
+
+  const [files, setfiles] = useState()
 
   const btnRef = useRef(null);
 
@@ -32,6 +34,16 @@ export default function Uploadphoto() {
   //   buttonToggle();
   //   setImages(imageList);
   // };
+  const submitPhoto = async()=>{
+    const response = await fetch(`http://localhost:8000/details/userImages`,{
+      method : "POST",
+      headers : {"auth-token":localStorage.getItem("token")},
+    })
+
+  }
+  const handleFileChange = (e)=>{
+    setfiles(e.target.files[0])
+  }
 
   useEffect(() => {
     // buttonToggle();
@@ -77,6 +89,7 @@ export default function Uploadphoto() {
                 name="image"
                 id="input-files"
                 placeholder="Choose Photo"
+                onChange={handleFileChange}
               />
                 </label>
                 {/* <div className="image_wrapper">

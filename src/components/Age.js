@@ -5,11 +5,11 @@ export default function Age(props) {
   const host = "http://localhost:8000";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
-      console.log();
-      document.getElementById("age_page_alert").style.opacity = 1;
-      return;
-    }
+    // if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
+    //   console.log();
+    //   document.getElementById("age_page_alert").style.opacity = 1;
+    //   return;
+    // }
 
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
@@ -50,12 +50,11 @@ export default function Age(props) {
   const [selectedOptionGender, setSelectedOptionGender] = useState(null);
   const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
 
-  const handleGender =(e)=>{
-    setSelectedOptionGender(e.value);
+  const handleGender =(selectedGender)=>{
+    setSelectedOptionGender(selectedGender);
   }
-  const handleOrientation =(e)=>{
-    setSelectedOptionOriantation(e.value);
-    console.log();
+  const handleOrientation =(selectedOrientation)=>{
+    setSelectedOptionOriantation(selectedOrientation);
   }
 
   return (
@@ -77,6 +76,7 @@ export default function Age(props) {
                 // value=""
                 options={gender}
                 onChange={handleGender}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -103,6 +103,7 @@ export default function Age(props) {
                 // value=""
                 onChange={handleOrientation}
                 options={sexual_Orientation}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
