@@ -10,13 +10,13 @@ var storage = new GridFsStorage({
     const match = ["image/png", "image/jpeg"];
 
     if (match.indexOf(file.mimetype) === -1) {
-      const filename = `dhruwang@gmail.com-${file.originalname}`;
+      const filename = `${req.user.id}-${file.originalname}`;
       return filename;
     }
 
     return {
       bucketName: 'users',
-      filename: `dhruwang@gmail.com-${file.originalname}`,
+      filename: filename
     };
   }
 });
