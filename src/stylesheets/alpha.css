@@ -1,11 +1,16 @@
 * {
     box-sizing: border-box;
+    color: var(--primary);
+}
+input{
+    background-color: transparent;
 }
 
 .landing_part01 {
     height: 100vh;
     width: 100vw;
     cursor: none;
+    background-color: var(--accent);
 }
 
 .outer {
@@ -37,6 +42,7 @@
     transition: all 1s ease-out;
     animation: fontanimation 2s cubic-bezier(.49, .52, 0, .89) 1;
     margin-left: 6px;
+    color: var(--primary);
 }
 
 @keyframes fontanimation {
@@ -273,7 +279,7 @@
     width: 100%;
     margin: 1rem 0;
     padding: 0.7rem 0.5rem;
-    border: 1px solid rgba(11, 11, 11, 0.5);
+    border: 1px solid var(--primary);
     font-family: 'manrope_light';
 }
 .col2 form .gender , .middle .gender{
@@ -325,7 +331,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     font-family: 'manrope_light';
     transition: all .3s ease-in-out;
-    letter-spacing: 1.5px;
+    letter-spacing: .2rem;
 }
 
 .btn:hover {
@@ -388,10 +394,11 @@ input::-webkit-inner-spin-button {
     padding: .6rem 0.3rem;
     margin: 1rem 0;
     outline: none;
-    border: 1px solid var(--light);
+    border: 1px solid var(--primary);
     font-size: 1rem;
     font-family: 'manrope_light';
     letter-spacing: .5px;
+    background-color: transparent;
 }
 
 /* .hobbies_container{
@@ -546,7 +553,7 @@ label {
 .home_right {
     height: 100vh;
     width: 70vw;
-    background: #EFEFEF;
+    background: var(--accent);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -607,6 +614,7 @@ label {
     align-items: center;
     margin-top:1%;
     justify-content: center;
+   
         /* margin: 2rem 0; */
 }
 
@@ -617,6 +625,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+   
 }
 .card_left{
     height:100%;
@@ -627,15 +636,20 @@ label {
     align-items: flex-start;
     justify-content: flex-end;
     flex-direction: column;  
+    
 }
 .card_right{
     height:100%;
-    width:60%;
+    width:0%;
     box-shadow: -1px 0px 5px rgba(132, 132, 132, 0.4);
     /* z-index:-1; */
-    display:none;
+    /* display:none; */
+    transition-duration: 0.5s;
     /* background:wheat; */
     
+}
+.card_width{
+    width:60%;
 }
 /* .card img {
     width: 100%;
@@ -908,6 +922,7 @@ label {
     border: none;
     font-family: 'manrope_light';
     font-size: .8rem;
+    background-color: transparent;
 }
 
 .location_info input:focus,

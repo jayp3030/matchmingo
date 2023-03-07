@@ -51,7 +51,8 @@ async function saveUserDetails(req, res) {
 
 async function getUserDetails(req, res) {
     try {
-        const userDetail = await usersInfo.findOne({userId : new ObjectId('64021f7abf13485bfc531395')});
+      const userId  = req.user.id
+        const userDetail = await usersInfo.findOne({userId : userId});
         res.status(200).json(userDetail);
         
     } catch (error) {

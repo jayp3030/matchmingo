@@ -5,11 +5,11 @@ export default function Age(props) {
   const host = "http://localhost:8000";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
-      console.log();
-      document.getElementById("age_page_alert").style.opacity = 1;
-      return;
-    }
+    // if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
+    //   console.log();
+    //   document.getElementById("age_page_alert").style.opacity = 1;
+    //   return;
+    // }
 
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
@@ -51,14 +51,10 @@ export default function Age(props) {
   const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
 
   const handleGender =(selectedGender)=>{
-    console.log(selectedGender.value);
     setSelectedOptionGender(selectedGender);
-    console.log(selectedOptionGender.value);
   }
   const handleOrientation =(selectedOrientation)=>{
-    console.log(selectedOrientation.value);
     setSelectedOptionOriantation(selectedOrientation);
-    console.log(selectedOptionOrientation.value);
   }
 
   return (
@@ -77,9 +73,10 @@ export default function Age(props) {
               <Select
                 id="gender"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 options={gender}
                 onChange={handleGender}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -93,7 +90,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },
@@ -103,9 +100,10 @@ export default function Age(props) {
               <Select
                 id="sexual_orientation"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 onChange={handleOrientation}
                 options={sexual_Orientation}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -119,7 +117,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },

@@ -39,10 +39,10 @@ async function getImages(req, res) {
 
     const database = mongoClient.db("MatchMingo");
     // const images = database.collection('MMImages.files');
-    const chunks = database.collection("MMImages.chunks");
+    const chunks = database.collection("users.chunks");
 
     const cursor = chunks.find({});
-
+  
     //   if ((await cursor.collection.estimatedDocumentCount()) === 0) {
     //     return res.status(500).send({
     //       message: "No files found!",

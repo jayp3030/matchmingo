@@ -9,10 +9,33 @@ import Homeright from "./components/Homeright";
 import Login from "./components/Login";
 import PasswordReset from "./components/PasswordReset";
 import EditProfile from "./components/EditProfile";
-import Ddtest from "./components/Ddtest";
+import { useEffect } from "react";
+import Test from "./components/Test";
 
 
 function App() {
+
+  const setThemme=()=>{
+    var root = document.querySelector(':root');
+    if(localStorage.getItem("mode")){
+      if(localStorage.getItem("mode")==="light"){
+        root.style.setProperty('--primary','#011627');
+        root.style.setProperty('--accent','#FDFFFC');
+        root.style.setProperty("--light","#2EC4B6")
+      }
+      else{
+        root.style.setProperty('--primary','#FDFFFC');
+        root.style.setProperty('--accent','#011627');
+        root.style.setProperty("--light","#2EC4B6")
+        document.getElementById("landing_part02") && (document.getElementById("landing_part02").style.background = "transparent") 
+      }
+    }
+  }
+
+  useEffect(() => {
+    setThemme()
+  }, [])
+  
   return (
     <>
       <AnimatePresence>
@@ -25,7 +48,8 @@ function App() {
             <Route exact path="/home" element={<Homeright />} />
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
-            <Route path="/dd" element={<Ddtest/>} />
+            <Route path="/test" element={<Test />} />
+            
           </Routes>
         </BrowserRouter>
       </AnimatePresence>
