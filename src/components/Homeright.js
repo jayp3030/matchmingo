@@ -8,6 +8,8 @@ import LikeSection from "./LikeSection";
 import MsgLike from "./MsgLike";
 import UserInfo from "./UserInfo";
 export default function Homeright() {
+  const host = "http://localhost:8000"
+
   const moveToLike = () => {
     document.getElementById("msg_like_wrapper").style.transform =
       "translateX(0vw)";
@@ -132,10 +134,22 @@ var [obj, setObj] = useState({
  function super_like(){
   console.log("super like given");
  }
-  
 
-useEffect(()=>{{console.log(l);}},[l])
-  var abc = document.getElementById("moving_part");
+//  api calls 
+const [userProfile, setuserProfile] = useState()
+const getUserDetails = async()=>{
+  const response = await fetch(`${host}/details/getUserDetails`,{
+    method: "GET",
+    headers: { "auth-token": localStorage.getItem("token") },
+  });
+  const json = await response.json();
+  setuserProfile(json)
+}
+  useEffect(() => {
+    getUserDetails()
+  }, [])
+  
+  
 
   return (
     <>
@@ -145,7 +159,7 @@ useEffect(()=>{{console.log(l);}},[l])
             <div className="home_left_top_left">
               <img src={img2}></img>
             </div>
-            <div className="home_left_top_middle">Sanko Rana</div>
+            <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div>
             <div className="home_left_top_right">
               <i class="fa-solid fa-user-pen"></i>
             </div>

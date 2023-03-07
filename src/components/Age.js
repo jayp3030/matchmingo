@@ -5,11 +5,11 @@ export default function Age(props) {
   const host = "http://localhost:8000";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
-      console.log();
-      document.getElementById("age_page_alert").style.opacity = 1;
-      return;
-    }
+    // if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
+    //   console.log();
+    //   document.getElementById("age_page_alert").style.opacity = 1;
+    //   return;
+    // }
 
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
@@ -50,15 +50,13 @@ export default function Age(props) {
   const [selectedOptionGender, setSelectedOptionGender] = useState(null);
   const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
 
-  const handleGender =(selectedGender)=>{
-    console.log(selectedGender.value);
-    setSelectedOptionGender(selectedGender);
-    console.log(selectedOptionGender.value);
+  const handleGender =(e)=>{
+    console.log(e.value)
+    setSelectedOptionGender(e.value);
+    console.log(selectedOptionGender)
   }
-  const handleOrientation =(selectedOrientation)=>{
-    console.log(selectedOrientation.value);
-    setSelectedOptionOriantation(selectedOrientation);
-    console.log(selectedOptionOrientation.value);
+  const handleOrientation =(e)=>{
+    setSelectedOptionOriantation(e.value);
   }
 
   return (
@@ -80,6 +78,7 @@ export default function Age(props) {
                 // defaultValue={selectedOption}
                 options={gender}
                 onChange={handleGender}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -106,6 +105,7 @@ export default function Age(props) {
                 // defaultValue={selectedOption}
                 onChange={handleOrientation}
                 options={sexual_Orientation}
+                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
