@@ -50,13 +50,11 @@ export default function Age(props) {
   const [selectedOptionGender, setSelectedOptionGender] = useState(null);
   const [selectedOptionOrientation, setSelectedOptionOriantation] = useState(null);
 
-  const handleGender =(e)=>{
-    console.log(e.value)
-    setSelectedOptionGender(e.value);
-    console.log(selectedOptionGender)
+  const handleGender =(selectedGender)=>{
+    setSelectedOptionGender(selectedGender);
   }
-  const handleOrientation =(e)=>{
-    setSelectedOptionOriantation(e.value);
+  const handleOrientation =(selectedOrientation)=>{
+    setSelectedOptionOriantation(selectedOrientation);
   }
 
   return (
@@ -75,7 +73,7 @@ export default function Age(props) {
               <Select
                 id="gender"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 options={gender}
                 onChange={handleGender}
                 value="hello"
@@ -92,7 +90,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },
@@ -102,7 +100,7 @@ export default function Age(props) {
               <Select
                 id="sexual_orientation"
                 className="gender"
-                // defaultValue={selectedOption}
+                // value=""
                 onChange={handleOrientation}
                 options={sexual_Orientation}
                 value="hello"
@@ -119,7 +117,7 @@ export default function Age(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "white",
+                    primary25: "var(--light)",
                     primary: "var(--light)",
                     neutral80: "black",
                   },

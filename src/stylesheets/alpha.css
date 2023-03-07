@@ -331,7 +331,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     font-family: 'manrope_light';
     transition: all .3s ease-in-out;
-    letter-spacing: 1.5px;
+    letter-spacing: .2rem;
 }
 
 .btn:hover {

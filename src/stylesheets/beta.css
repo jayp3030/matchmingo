@@ -218,6 +218,40 @@ body{
   .chatPage_middle{
     width: 100%;
     height: 100%;
+    padding: 1rem .5rem;
+  }
+  .chatPage_middle .left{
+    float: left;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    max-width: 13rem;
+    padding: .3rem .5rem;
+    font-family: 'manrope_light';
+    word-wrap: break-word;
+    margin: .5rem 0;
+    border-radius: 2px;
+  }
+  .chatPage_middle .right{
+    float: right;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E7E7E7;
+    max-width: 13rem;
+    padding: .3rem .5rem;
+    font-family: 'manrope_light';
+    word-wrap: break-word;
+    margin: .5rem 0;
+    border-radius: 2px;
+  }
+  .msgContent{
+    max-width: 100%;
+    line-height: 1rem;
+    font-size: .9rem;
   }
   .chatPage_bottom{
     width: 100%;

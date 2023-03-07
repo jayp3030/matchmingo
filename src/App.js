@@ -9,15 +9,14 @@ import Homeright from "./components/Homeright";
 import Login from "./components/Login";
 import PasswordReset from "./components/PasswordReset";
 import EditProfile from "./components/EditProfile";
-import Ddtest from "./components/Ddtest";
 import { useEffect } from "react";
+import Test from "./components/Test";
 
 
 function App() {
 
   const setThemme=()=>{
     var root = document.querySelector(':root');
-    console.log("hello2")
     if(localStorage.getItem("mode")){
       if(localStorage.getItem("mode")==="light"){
         root.style.setProperty('--primary','#011627');
@@ -35,7 +34,6 @@ function App() {
 
   useEffect(() => {
     setThemme()
-    console.log("hello")
   }, [])
   
   return (
@@ -50,7 +48,8 @@ function App() {
             <Route exact path="/home" element={<Homeright />} />
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
-            <Route path="/dd" element={<Ddtest/>} />
+            <Route path="/test" element={<Test />} />
+            
           </Routes>
         </BrowserRouter>
       </AnimatePresence>
