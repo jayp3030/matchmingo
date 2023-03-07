@@ -226,7 +226,7 @@ function handleTouchMove(evt) {
           <div className="Container_of_profile">
             <motion.div
               className="moving_part"
-              ref={reference}
+             
               id={"moving_part"}
             >
             <div className="card_Container" id="card_Container">
@@ -282,7 +282,7 @@ function handleTouchMove(evt) {
                         ></motion.i>
                       </div>
                     </div>
-                    <div className="card_right" id="card_right" ref={reference}>
+                    <div className="card_right" id="card_right" >
                       <div className="info_box">
             <div className="gender_info">
                 <h3>Gender</h3>
