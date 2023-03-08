@@ -11,6 +11,8 @@ import PasswordReset from "./components/PasswordReset";
 import EditProfile from "./components/EditProfile";
 import { useEffect } from "react";
 import Test from "./components/Test";
+import MsgLike from "./components/MsgLike";
+import ChatPage from "./components/ChatPage";
 
 
 function App() {
@@ -49,6 +51,7 @@ function App() {
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/chattest" element={<ChatPage />} />
             
           </Routes>
         </BrowserRouter>
