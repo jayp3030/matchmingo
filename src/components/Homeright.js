@@ -191,7 +191,7 @@ function handleTouchMove(evt) {
             <div className="home_left_top_left">
               <img src={img2}></img>
             </div>
-            <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div>
+            {/* <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div> */}
             <div className="home_left_top_right">
               <i className="fa-solid fa-user-pen"></i>
             </div>

@@ -224,6 +224,7 @@ body{
     float: left;
     clear: both;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: var(--light);
@@ -238,6 +239,7 @@ body{
     float: right;
     clear: both;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #E7E7E7;

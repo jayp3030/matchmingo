@@ -546,7 +546,7 @@ label {
 
 .home_left {
     height: 100vh;
-    width: 30vw;
+    width: 30vw;   /*------------------not remove comment-------------------------------------*/
     background: var(--accent);
 }
 
@@ -746,7 +746,9 @@ label {
     width: 30vw;
     /* transition: all .5s ease-in-out; */
 }
-
+.msg_container{
+    cursor: pointer;
+}
 .msg_row {
     width: 100%;
     display: flex;
@@ -782,7 +784,7 @@ label {
 }
 
 .msg_name h2 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-family: 'manrope_medium';
     font-weight: 100;
 }
@@ -835,7 +837,7 @@ label {
 }
 
 .msg_like_wrapper {
-    width: 60vw;
+    width: 60vw;             /* not remove comment ------------------ */
     height: 80%;
     display: flex;
     transition: all .5s ease-in-out;

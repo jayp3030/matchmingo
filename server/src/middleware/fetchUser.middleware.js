@@ -12,7 +12,7 @@ const fetchUser = (req,res,next)=>{
     try {
         const data = jwt.verify(token,privateKey)
         req.user = data.user
-        // console.log(req.user)
+        console.log(req.user)
     } catch (error) {
         res.status(400)
     }

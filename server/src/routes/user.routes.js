@@ -22,7 +22,7 @@ userRouter.post(
   body("last_name", "enter a valid last_name").isLength({ min: 2 }),
   saveUserDetails
 );
-userRouter.get("/getUserDetails",fetchUser, getUserDetails);
+userRouter.get("/getUserDetails", getUserDetails);
 userRouter.post("/userImages",fetchUser, saveUserImages);
 userRouter.get("/getImages", getImages);
 
