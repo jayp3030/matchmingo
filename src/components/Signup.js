@@ -67,12 +67,12 @@ export default function Signup() {
   }
 
 
-  useEffect(()=>{
-    //if user is logged in then redirect to home page
-    if(localStorage.getItem("token")){
-      Navigate("/home")
-    }
-  },[])
+  // useEffect(()=>{
+  //   //if user is logged in then redirect to home page
+  //   if(localStorage.getItem("token")){
+  //     Navigate("/home")
+  //   }
+  // },[])
 
   return (
     <>
