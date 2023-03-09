@@ -27,9 +27,9 @@ export default function MsgSection() {
   }
 
   useEffect(() => {
-    getChats();
-    console.log(user);
-    console.log(chats);
+    // getChats();
+    // console.log(user);
+    // console.log(chats);
   }, []);
   return (
     <>

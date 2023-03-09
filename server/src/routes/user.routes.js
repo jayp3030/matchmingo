@@ -3,6 +3,7 @@ const {
   saveUserDetails,
   getUserDetails,
 } = require("../controllers/user.controller");
+const {getUserImage} = require("../controllers/userImages.controller")
 const { body } = require("express-validator");
 
 const {
@@ -22,9 +23,10 @@ userRouter.post(
   body("last_name", "enter a valid last_name").isLength({ min: 2 }),
   saveUserDetails
 );
-userRouter.get("/getUserDetails", getUserDetails);
-userRouter.post("/userImages",fetchUser, saveUserImages);
+userRouter.get("/getUserDetails",fetchUser, getUserDetails);
+userRouter.post("/userImages", saveUserImages);
 userRouter.get("/getImages", getImages);
+userRouter.get("/getUserImage",fetchUser, getUserImage);
 
 module.exports = {
   userRouter,
