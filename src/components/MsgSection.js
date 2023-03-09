@@ -58,7 +58,6 @@ export default function MsgSection() {
         .then((result) => setChats(result))
         .catch((err) => err);
     }
-
     getChats();
     console.log(user);
     console.log(chats);

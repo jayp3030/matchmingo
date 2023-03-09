@@ -183,15 +183,42 @@ function handleTouchMove(evt) {
   yDown = null;                                             
 };
 
+const [userProfile, setuserProfile] = useState()
+const getUserDetails = async()=>{
+  const response = await fetch(`${host}/details/getUserDetails`,{
+    method: "GET",
+    headers: { "auth-token": localStorage.getItem("token") },
+  });
+  const json = await response.json();
+  setuserProfile(json)
+}
+  useEffect(() => {
+    getUserDetails()
+    getUserImg() 
+  }, [])
+
+  // function to get user Images 
+  const [userImgs, setuserImgs] = useState([])
+  const getUserImg = async()=>{
+    const response = await fetch(`${host}/details/getUserImage`,{
+      method: "GET",
+      headers: { "auth-token": localStorage.getItem("token") },
+    });
+    const json = await response.json();
+    setuserImgs(json)
+  }
+
+
   return (
     <>
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
             <div className="home_left_top_left">
-              <img src={img2}></img>
+              {console.log(userImgs)}
+              <img src={`data:image/jpeg;base64,${userImgs[0] && userImgs[0].data}`} />  
             </div>
-            {/* <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div> */}
+            <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div> 
             <div className="home_left_top_right">
               <i className="fa-solid fa-user-pen"></i>
             </div>

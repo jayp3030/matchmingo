@@ -1,10 +1,11 @@
 import React, { useEffect, useRef ,useState} from "react";
 // import ImageUploading from "react-images-uploading"; 
 import upldImg from '../images/uploadPhoto.png'
+import jwt_decode from "jwt-decode";
 
 export default function Uploadphoto() {
 
-  const [files, setfiles] = useState()
+ let files = [];
 
   const btnRef = useRef(null);
 
@@ -15,6 +16,7 @@ export default function Uploadphoto() {
   //     document.getElementById("uploadPageBtn").disabled = false;
   //   }
   // };
+
 
   const handleSlide = (e) => {
     e.preventDefault();
@@ -34,15 +36,10 @@ export default function Uploadphoto() {
   //   buttonToggle();
   //   setImages(imageList);
   // };
-  const submitPhoto = async()=>{
-    const response = await fetch(`http://localhost:8000/details/userImages`,{
-      method : "POST",
-      headers : {"auth-token":localStorage.getItem("token")},
-    })
-
-  }
   const handleFileChange = (e)=>{
-    setfiles(e.target.files[0])
+    console.log(e.target.files[0])
+    files.push(files.push(e.target.files[0]))
+    console.log(files)
   }
 
   useEffect(() => {
@@ -76,7 +73,7 @@ export default function Uploadphoto() {
             }) => ( */}
               <form
                 className="photo_section"
-                action = 'http://localhost:8000/details/userImages'
+                action = {`http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`}
                 method="post"
                 encType="multipart/form-data"
               >
