@@ -546,7 +546,7 @@ label {
 
 .home_left {
     height: 100vh;
-    width: 30vw;   /*------------------not remove comment-------------------------------------*/
+    width: 30vw;  /* ------------------not remove comment-------------------------------------*/
     background: var(--accent);
 }
 

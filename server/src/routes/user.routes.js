@@ -2,6 +2,7 @@ const express = require("express");
 const {
   saveUserDetails,
   getUserDetails,
+  getUser
 } = require("../controllers/user.controller");
 const { body } = require("express-validator");
 
@@ -23,6 +24,7 @@ userRouter.post(
   saveUserDetails
 );
 userRouter.get("/getUserDetails", getUserDetails);
+userRouter.get("/getUser/:id", getUser);
 userRouter.post("/userImages",fetchUser, saveUserImages);
 userRouter.get("/getImages", getImages);
 

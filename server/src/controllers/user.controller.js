@@ -52,7 +52,19 @@ async function saveUserDetails(req, res) {
 async function getUserDetails(req, res) {
     try {
       // const userId  = req.user.id
-        const userDetail = await usersInfo.findOne({userId : '64081131706a79d1d6d8ad8c'});
+        const userDetail = await usersInfo.findOne({userId : new ObjectId('64081131706a79d1d6d8ad8c')});
+        // console.log(userDetail)
+        res.status(200).json(userDetail);
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json('internal server error');
+    }
+}
+async function getUser(req, res) {
+    try {
+      const userId  = req.params.id
+        const userDetail = await usersInfo.findOne({userId : userId});
         // console.log(userDetail)
         res.status(200).json(userDetail);
         
@@ -65,4 +77,5 @@ async function getUserDetails(req, res) {
 module.exports = {
   saveUserDetails,
   getUserDetails,
+  getUser
 };
