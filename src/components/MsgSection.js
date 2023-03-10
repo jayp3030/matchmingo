@@ -47,7 +47,10 @@ export default function MsgSection() {
   useEffect(() => {
     async function getChats() {
       // first fetch the owner  ---------> issue
-      const res = await fetch(`${baseURl}/details/getUserDetails`)
+      const response = await fetch(`${baseURl}/details/getUserDetails`, {
+        method: "GET",
+        headers: { "auth-token": localStorage.getItem("token") },
+      })
         .then((res) => res.json())
         .then((result) => setUser(result))
         .catch((err) => err);
@@ -66,21 +69,33 @@ export default function MsgSection() {
 
   return (
     <>
-      <div className="msgs" id="msgs">
-        {/* --------- map chats here ----------  */}
-        {chats.map((chat, index) => (
-          <div className="msg_container" onClick={() => setCurrentChat(chat)}>
-            <Conversation data={chat} currentUserId={user.userId} key={index} />
-          </div>
-        ))}
-      </div>
-      <div className="test_chat">
-        {/* <ChatPage
-          chat={currentChat}
-          currentUser={user.userId}
-          setSendMessage={setSendMessage}
-          receiveMessage={receiveMessage}
-        /> */}
+      <div className="msg_chat_wrapper">
+        <div className="msgs" id="msgs">
+          {chats.map((chat, index) => (
+            <div
+              className="msg_container"
+              onClick={() => {
+                setCurrentChat(chat);
+                document.getElementById("msg_like_wrapper").style.transform =
+                  "translateX(-60vw)";
+              }}
+            >
+              <Conversation
+                data={chat}
+                currentUserId={user.userId}
+                key={index}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="chat_Page">
+          <ChatPage
+            chat={currentChat}
+            currentUser={user.userId}
+            setSendMessage={setSendMessage}
+            receiveMessage={receiveMessage}
+          />
+        </div>
       </div>
     </>
   );

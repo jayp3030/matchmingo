@@ -205,6 +205,7 @@ const getUserDetails = async()=>{
       headers: { "auth-token": localStorage.getItem("token") },
     });
     const json = await response.json();
+    console.log(json);
     setuserImgs(json)
   }
 

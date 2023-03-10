@@ -16,18 +16,18 @@ async function saveUserImages(req, res) {
     await upload(req, res);
 
     if (req.file === undefined) {
-      return res.send({
+      return res.json({
         message: "You must select a file.",
       });
     }
 
-    return res.send({
+    return res.json({
       message: "File has been uploaded.",
     });
   } catch (error) {
     console.log(error);
 
-    return res.send({
+    return res.json({
       message: `Error when trying upload image: ${error}`,
     });
   }
