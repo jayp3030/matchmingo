@@ -60,11 +60,8 @@ var [obj, setObj] = useState({
   });
 
   
-  function update() {
+  function update(){
     
-    if (l >= 0) {
-      setL((e) => e - 1);
-    }
     var card=document.getElementById("card");
     console.log(card);
     card.style.marginTop="-200%";
@@ -123,12 +120,11 @@ var [obj, setObj] = useState({
   console.log("like was given");
  }
 
-
-
  window.onload=()=>{
   document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
  }
+
 var xDown = null;                                                        
 var yDown = null;
 
