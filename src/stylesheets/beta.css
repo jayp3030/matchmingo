@@ -197,6 +197,7 @@ body{
   .chatPage_upper_left i{
     font-size: 1rem;
     margin: auto 0;
+    cursor: pointer;
   }
   .chatPage_upper_right{
     width: 100%;
@@ -219,8 +220,9 @@ body{
     width: 100%;
     height: 100%;
     padding: 1rem .5rem;
+    overflow-y: auto;
   }
-  .chatPage_middle .left{
+  .left{
     float: left;
     clear: both;
     display: flex;
@@ -235,7 +237,7 @@ body{
     margin: .5rem 0;
     border-radius: 2px;
   }
-  .chatPage_middle .right{
+  .right{
     float: right;
     clear: both;
     display: flex;
@@ -250,10 +252,23 @@ body{
     margin: .5rem 0;
     border-radius: 2px;
   }
+  .right p , .right .time_ago{
+    width: 100%;
+    text-align: right;
+  }
+  .left p, .left .time_ago{
+    width: 100%;
+    text-align: left;
+  }
+  .time_ago{
+    font-size: .6rem;
+    font-family: 'manrope_medium';
+  }
+
   .msgContent{
     max-width: 100%;
     line-height: 1rem;
-    font-size: .9rem;
+    font-size: 1rem;
   }
   .chatPage_bottom{
     width: 100%;

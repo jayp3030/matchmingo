@@ -1,6 +1,6 @@
-import React, { useEffect, useRef ,useState} from "react";
-// import ImageUploading from "react-images-uploading"; 
-import upldImg from '../images/uploadPhoto.png'
+import React, { useEffect, useRef, useState } from "react";
+// import ImageUploading from "react-images-uploading";
+import upldImg from "../images/uploadPhoto.png";
 import jwt_decode from "jwt-decode";
 
 export default function Uploadphoto() {
@@ -18,11 +18,11 @@ export default function Uploadphoto() {
   //   }
   // };
 
-
   const handleSlide = (e) => {
     e.preventDefault();
     btnRef.current.click();
-    document.getElementById("profile_setup").style.transform = "translateX(-600vw)";
+    document.getElementById("profile_setup").style.transform =
+      "translateX(-600vw)";
   };
 
   const handlebackwardSlide = (e) => {
@@ -43,7 +43,6 @@ export default function Uploadphoto() {
     console.log(files)
   }
 
-
   useEffect(() => {
     setInterval(() => {
       localStorage.getItem("token") && setuserId(jwt_decode(localStorage.getItem("token")).user.id)
@@ -58,14 +57,29 @@ export default function Uploadphoto() {
           <div className="upper">
             <h2>Upload Your Photos</h2>
           </div>
+          {/* <ImageUploading
+            multiple
+            value={images}
+            onChange={onChange}
+            maxNumber={maxNumber}
+            dataURLKey="data_url"
+            acceptType={["jpg", "png"]}
+          >
+            {({
+              imageList,
+              onImageUpload,
+              onImageRemoveAll,
+              onImageUpdate,
+              onImageRemove,
+              isDragging,
+              dragProps,
+            }) => ( */}
               <form
                 className="photo_section"
-                action = {`http://localhost:8000/details/userImages?id=${userId}`} 
-                
+                action = {`http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`}
                 method="post"
                 encType="multipart/form-data"
               >
-                {console.log(userId)}
                 <label 
                 htmlFor="input-files">
                   <img src={upldImg} alt="files" /> <br />
@@ -78,9 +92,17 @@ export default function Uploadphoto() {
                 onChange={handleFileChange}
               />
                 </label>
-
+                {/* <div className="image_wrapper">
+                  {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <img src={image.data_url} alt="" width="130" />
+                    </div>
+                  ))}
+                </div> */}
                 <button ref={btnRef} className='btn_dnone'>submit</button>
               </form>
+            {/* )} */}
+          {/* </ImageUploading> */}
 
           <div className="suggestions">
             <p>
