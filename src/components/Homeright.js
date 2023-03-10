@@ -8,6 +8,7 @@ import MsgSection from "./MsgSection";
 import LikeSection from "./LikeSection";
 import MsgLike from "./MsgLike";
 import UserInfo from "./UserInfo";
+import axios from 'axios';
 export default function Homeright() {
   const host = "http://localhost:8000"
 
@@ -24,6 +25,7 @@ export default function Homeright() {
   };
 
   var [right, setRight] = useState(true);
+  var [user_image,setUser_image]=useState(null);
   var [l, setL] = useState(5);
   var [loc, setLoc] = useState({
     x1: null,
@@ -36,9 +38,7 @@ export default function Homeright() {
     "name":"mayank2"
   };
   var [personalDT,setPersonalDT]=useState([
-    {
-    "name":"mayank"
-    }
+   null
 ])
 
 var [obj, setObj] = useState({
@@ -59,15 +59,38 @@ var [obj, setObj] = useState({
  
   });
 
-  
-  function update(){
-    
+   function setAnimation(){
     var card=document.getElementById("card");
     console.log(card);
-    card.style.marginTop="-200%";
-    card.style.transitionDuration="1s";
-    setPersonalDT([b]);
+    card.style.marginTop = "-200%";
+    card.style.transitionDuration="2s";
+    
+  }
+ async function update(){
+  var card=document.getElementById("card");
+   setAnimation();
+    await axios.get("http://localhost:8000/details/getUserDetails/",{ 
+      headers: { "auth-token": localStorage.getItem("token") }  
+   },
+  ).then((e)=>{
+      setPersonalDT([
+        e
+      ])
+   console.log(e);
+    }).catch((e)=>{console.log(e);})
+  //  setTimeout(()=>{},2000)
+    await axios.get("http://localhost:8000/details/getUserImage/",{ 
+      headers: { "auth-token": localStorage.getItem("token") }  
+   },
+  ).then((e)=>{
+      setUser_image(e.data[0].data);
+      console.log("data of image");
+   console.log(e);
+    }).catch((e)=>{console.log(e);})
     setTimeout(()=>{card.style.marginTop="0%";},1000)
+    // http://localhost:8000/details/getUserImage
+    
+    
   }
 
   function expand() {
@@ -205,7 +228,10 @@ const getUserDetails = async()=>{
     setuserImgs(json)
   }
 
-
+function displayImage(){
+  var a=document.getElementById("card_left");
+  a.style.backgroundImage=`url(data:image/jpeg;base64,${user_image})`;
+}
   return (
     <>
       <div className="home_outer">
@@ -260,7 +286,9 @@ const getUserDetails = async()=>{
                   
                 // new Array(l).fill("").map((event, i) => (
                   personalDT.map(
-                    (event,i)=>(
+                    (e,i)=>{ console.log(e);return (
+                      
+                      
                   <motion.div
                     className="card"
                     id="card"
@@ -276,9 +304,21 @@ const getUserDetails = async()=>{
                     <div className="card_left" id="card_left"
                      onDoubleClick={super_like}
                     >
+                      {
+                        user_image==null?
+                        "User Image":
+                        displayImage()
+                      }
                        {/* <img src={img} alt="" /> */} 
                       <div className="userDetails">
-                        <div className="userNameAge" id="userNameAge">{event.name}Vedant&nbsp;,&nbsp;20</div>
+                        <div className="userNameAge" id="userNameAge">
+                         { e ==null ?
+                          "Data Loading ...":
+                          `${e.data.first_name}\n${e.data.last_name}`
+                          }
+                          
+                          
+                          </div>
                         <div className="userBranch" id="userBranch">CE</div>
                       </div>
                       <div className="icons">
@@ -311,13 +351,24 @@ const getUserDetails = async()=>{
                       <div className="info_box">
             <div className="gender_info">
                 <h3>Gender</h3>
-                <p>Male</p>
+                <p>
+                {e ==null ?
+                          "No Data Available":
+                          e.data.gender
+                }
+                  
+                  </p>
             </div>
             <hr />
             <div className="gender_info">
                 <h3>Branch & College</h3>
-                <p>Computer Engineering</p>
-                <p>Vishwakarma Government Engineering College</p>
+                <p>{e ==null ?
+                          "No Data Available":
+                          e.data.branch
+                }</p>
+                <p>{e ==null ?
+                          "- - -":
+                          e.data.college}</p>
             </div>
             <hr />
             <div className="gender_info">
@@ -326,23 +377,36 @@ const getUserDetails = async()=>{
             </div>
             <hr />
             <div className="gender_info">
-                <h3>Sexuality</h3>
-                <p>Female</p>
+                <h3>attraction</h3>
+                <p>{e ==null ?
+                          "Not Specified":
+                          e.data.sexual_orientation}</p>
             </div>
             <hr />
             <div className="gender_info">
                 <h3>Gender</h3>
-                <p>Male</p>
+                <p>{e ==null ?
+                          "No Data Available":
+                          e.data.gender}</p>
             </div>
             <hr />
             <div className="gender_info">
                 <h3>Hobby</h3>
-                <p>Cricket , Gym , Badminon</p>
+                {
+                e==null ?
+                " . . . ":
+                e.data.hobbies.map((e,i)=>{
+                  
+                  return (<p>{e}</p>)})
+                    }
+                
             </div>
             <hr />
             <div className="gender_info">
                 <h3>Bio</h3>
-                <p>i am a good boy</p>
+                <p>{e ==null ?
+                          "No Bio Added":
+                          e.data.bio}</p>
             </div>
             <hr />
             <div className="gender_info">
@@ -353,7 +417,7 @@ const getUserDetails = async()=>{
         </div>
                     </div>
                   </motion.div>
-                )
+                )}
                 )
                 }
               </AnimatePresence>
