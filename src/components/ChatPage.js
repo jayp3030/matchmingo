@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import img from "../images/landingPage03.jpg";
-import {format} from 'timeago.js'
+// import { format } from "timeago.js";
 
 
 
@@ -96,7 +96,10 @@ export default function ChatPage({ chat , currentUser , setSendMessage , receive
     <div className="chatPage">
       <div className="chatPage_upper">
         <div className="chatPage_upper_left">
-          <i className="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left" onClick={() => {
+              document.getElementById("msg_like_wrapper").style.transform =
+              "translateX(-30vw)"
+          }} />
           <img src={img}></img>
         </div>
         <div className="chatPage_upper_right">
@@ -116,7 +119,7 @@ export default function ChatPage({ chat , currentUser , setSendMessage , receive
                 {message.text}
               </p>
               <span className="time_ago">
-                {format(message.createdAt)}
+                {message.createdAt}
               </span>
             </div>
           </>

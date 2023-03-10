@@ -197,6 +197,7 @@ body{
   .chatPage_upper_left i{
     font-size: 1rem;
     margin: auto 0;
+    cursor: pointer;
   }
   .chatPage_upper_right{
     width: 100%;
