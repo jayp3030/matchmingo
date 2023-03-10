@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 export default function Uploadphoto() {
 
  let files = [];
+ const [userId, setuserId] = useState()
 
   const btnRef = useRef(null);
 
@@ -42,41 +43,29 @@ export default function Uploadphoto() {
     console.log(files)
   }
 
+
   useEffect(() => {
-    // buttonToggle();
+    setInterval(() => {
+      localStorage.getItem("token") && setuserId(jwt_decode(localStorage.getItem("token")).user.id)
+    }, 5000);
   });
 
   return (
     <>
-      <div className="outer_signup" id="outer_signup">
+      {localStorage.getItem("token") && <div className="outer_signup" id="outer_signup">
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
             <h2>Upload Your Photos</h2>
           </div>
-          {/* <ImageUploading
-            multiple
-            value={images}
-            onChange={onChange}
-            maxNumber={maxNumber}
-            dataURLKey="data_url"
-            acceptType={["jpg", "png"]}
-          >
-            {({
-              imageList,
-              onImageUpload,
-              onImageRemoveAll,
-              onImageUpdate,
-              onImageRemove,
-              isDragging,
-              dragProps,
-            }) => ( */}
               <form
                 className="photo_section"
-                action = {`http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`}
+                action = {`http://localhost:8000/details/userImages?id=${userId}`} 
+                
                 method="post"
                 encType="multipart/form-data"
               >
+                {console.log(userId)}
                 <label 
                 htmlFor="input-files">
                   <img src={upldImg} alt="files" /> <br />
@@ -89,17 +78,9 @@ export default function Uploadphoto() {
                 onChange={handleFileChange}
               />
                 </label>
-                {/* <div className="image_wrapper">
-                  {imageList.map((image, index) => (
-                    <div key={index} className="image-item">
-                      <img src={image.data_url} alt="" width="130" />
-                    </div>
-                  ))}
-                </div> */}
+
                 <button ref={btnRef} className='btn_dnone'>submit</button>
               </form>
-            {/* )} */}
-          {/* </ImageUploading> */}
 
           <div className="suggestions">
             <p>
@@ -121,7 +102,7 @@ export default function Uploadphoto() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 }
