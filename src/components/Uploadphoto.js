@@ -1,10 +1,12 @@
-import React, { useEffect, useRef ,useState} from "react";
-// import ImageUploading from "react-images-uploading"; 
-import upldImg from '../images/uploadPhoto.png'
+import React, { useEffect, useRef, useState } from "react";
+// import ImageUploading from "react-images-uploading";
+import upldImg from "../images/uploadPhoto.png";
+import jwt_decode from "jwt-decode";
 
 export default function Uploadphoto() {
 
-  const [files, setfiles] = useState()
+ let files = [];
+ const [userId, setuserId] = useState()
 
   const btnRef = useRef(null);
 
@@ -19,7 +21,8 @@ export default function Uploadphoto() {
   const handleSlide = (e) => {
     e.preventDefault();
     btnRef.current.click();
-    document.getElementById("profile_setup").style.transform = "translateX(-600vw)";
+    document.getElementById("profile_setup").style.transform =
+      "translateX(-600vw)";
   };
 
   const handlebackwardSlide = (e) => {
@@ -34,24 +37,21 @@ export default function Uploadphoto() {
   //   buttonToggle();
   //   setImages(imageList);
   // };
-  const submitPhoto = async()=>{
-    const response = await fetch(`http://localhost:8000/details/userImages`,{
-      method : "POST",
-      headers : {"auth-token":localStorage.getItem("token")},
-    })
-
-  }
   const handleFileChange = (e)=>{
-    setfiles(e.target.files[0])
+    console.log(e.target.files[0])
+    files.push(files.push(e.target.files[0]))
+    console.log(files)
   }
 
   useEffect(() => {
-    // buttonToggle();
+    setInterval(() => {
+      localStorage.getItem("token") && setuserId(jwt_decode(localStorage.getItem("token")).user.id)
+    }, 5000);
   });
 
   return (
     <>
-      <div className="outer_signup" id="outer_signup">
+      {localStorage.getItem("token") && <div className="outer_signup" id="outer_signup">
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
@@ -76,7 +76,7 @@ export default function Uploadphoto() {
             }) => ( */}
               <form
                 className="photo_section"
-                action = 'http://localhost:8000/details/userImages'
+                action = {`http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`}
                 method="post"
                 encType="multipart/form-data"
               >
@@ -124,7 +124,7 @@ export default function Uploadphoto() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 }

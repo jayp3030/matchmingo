@@ -1,8 +1,11 @@
 const express = require("express");
+const fetchUser = require("../middleware/fetchUser.middleware")
 const {
   saveUserDetails,
   getUserDetails,
+  getUser
 } = require("../controllers/user.controller");
+const {getUserImage} = require("../controllers/userImages.controller")
 const { body } = require("express-validator");
 
 const {
@@ -10,7 +13,6 @@ const {
   getImages,
 } = require("../controllers/userImages.controller");
 
-const fetchUser = require("../middleware/fetchUser.middleware")
 
 const userRouter = express.Router();
 
@@ -22,9 +24,12 @@ userRouter.post(
   body("last_name", "enter a valid last_name").isLength({ min: 2 }),
   saveUserDetails
 );
+userRouter.get("/getUser/:id", getUser);
+// userRouter.post("/userImages",fetchUser, saveUserImages);
 userRouter.get("/getUserDetails",fetchUser, getUserDetails);
-userRouter.post("/userImages",fetchUser, saveUserImages);
+userRouter.post("/userImages", saveUserImages);
 userRouter.get("/getImages", getImages);
+userRouter.get("/getUserImage",fetchUser, getUserImage);
 
 module.exports = {
   userRouter,

@@ -331,7 +331,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     font-family: 'manrope_light';
     transition: all .3s ease-in-out;
-    letter-spacing: 1.5px;
+    letter-spacing: .2rem;
 }
 
 .btn:hover {
@@ -546,7 +546,7 @@ label {
 
 .home_left {
     height: 100vh;
-    width: 30vw;
+    width: 30vw;  /* ------------------not remove comment-------------------------------------*/
     background: var(--accent);
 }
 
@@ -744,9 +744,21 @@ label {
 
 .msgs {
     width: 30vw;
+    height: 100%;
     /* transition: all .5s ease-in-out; */
 }
-
+.chat_Page{
+    width: 30vw;
+    height: 100%;
+}
+.msg_chat_wrapper{
+    width: 60vw;
+    height: 100%;
+    display: flex;
+}
+.msg_container{
+    cursor: pointer;
+}
 .msg_row {
     width: 100%;
     display: flex;
@@ -782,7 +794,7 @@ label {
 }
 
 .msg_name h2 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-family: 'manrope_medium';
     font-weight: 100;
 }
@@ -835,8 +847,8 @@ label {
 }
 
 .msg_like_wrapper {
-    width: 60vw;
-    height: 80%;
+    width: 90vw;             /* not remove comment ------------------ */
+    height: 100%;
     display: flex;
     transition: all .5s ease-in-out;
 }

@@ -89,7 +89,6 @@ var [obj, setObj] = useState({
   
   
     window.addEventListener("keydown", async (e) => {
-      console.log(e);
       var card=document.getElementById("card");
       var user_name=document.getElementById("userNameAge");
       var user_branch=document.getElementById("userBranch");
@@ -180,17 +179,45 @@ function handleTouchMove(evt) {
   yDown = null;                                             
 };
 
+const [userProfile, setuserProfile] = useState()
+const getUserDetails = async()=>{
+  const response = await fetch(`${host}/details/getUserDetails`,{
+    method: "GET",
+    headers: { "auth-token": localStorage.getItem("token") },
+  });
+  const json = await response.json();
+  setuserProfile(json)
+}
+  useEffect(() => {
+    getUserDetails()
+    getUserImg() 
+  }, [])
+
+  // function to get user Images 
+  const [userImgs, setuserImgs] = useState([])
+  const getUserImg = async()=>{
+    const response = await fetch(`${host}/details/getUserImage`,{
+      method: "GET",
+      headers: { "auth-token": localStorage.getItem("token") },
+    });
+    const json = await response.json();
+    console.log(json);
+    setuserImgs(json)
+  }
+
+
   return (
     <>
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
             <div className="home_left_top_left">
-              <img src={img2}></img>
+              {console.log(userImgs)}
+              <img src={`data:image/jpeg;base64,${userImgs[0] && userImgs[0].data}`} />  
             </div>
-            <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div>
+            <div className="home_left_top_middle">{userProfile && userProfile.first_name}</div> 
             <div className="home_left_top_right">
-              <i class="fa-solid fa-user-pen"></i>
+              <i className="fa-solid fa-user-pen"></i>
             </div>
           </div>
           <div className="home_left_middle">
@@ -199,14 +226,14 @@ function handleTouchMove(evt) {
               id="home_left_middle_left"
               onClick={moveToLike}
             >
-              <i class="fa-sharp fa-solid fa-heart"></i>Likes
+              <i className="fa-sharp fa-solid fa-heart"></i>Likes
             </div>
             <div
               className="home_left_middle_right"
               id="home_left_middle_right"
               onClick={moveToMsg}
             >
-              <i class="fa-solid fa-message"></i>Messages
+              <i className="fa-solid fa-message"></i>Messages
             </div>
           </div>
           <div className="home_left_bottom">
@@ -219,7 +246,7 @@ function handleTouchMove(evt) {
             <h1>MatchMingo</h1>
           </div>
           {/* <div className="heart">
-            <i class="fa-regular fa-heart"></i>
+            <i className="fa-regular fa-heart"></i>
           </div> */}
           <div className="Container_of_profile">
             <motion.div
@@ -257,26 +284,26 @@ function handleTouchMove(evt) {
                       <div className="icons">
                         <motion.i
                           whileHover={{ scale: 1.22 }}
-                          class="fa-regular fa-circle-xmark"
+                          className="fa-regular fa-circle-xmark"
                           onClick={update}
                         ></motion.i>
                         <motion.i
                           whileHover={{ scale: 1.22 }}
-                          class="fa-regular fa-circle-check"
+                          className="fa-regular fa-circle-check"
                           onClick={update}
                         ></motion.i>
                         <motion.i
                           whileHover={{ scale: 1.22 }}
-                          class="fa-solid fa-circle-info"
+                          className="fa-solid fa-circle-info"
                           onClick={expand}
                         ></motion.i>
                         <motion.i
                           whileHover={{ scale: 1.22 }}
-                          class="fa-regular fa-heart"
+                          className="fa-regular fa-heart"
                         ></motion.i>
                         <motion.i
                           whileHover={{ scale: 1.22 }}
-                          class="fa-solid fa-gift"
+                          className="fa-solid fa-gift"
                         ></motion.i>
                       </div>
                     </div>
@@ -345,24 +372,24 @@ function handleTouchMove(evt) {
               <div className="icons">
                 <motion.i
                   whileHover={{ scale: 1.22 }}
-                  class="fa-regular fa-circle-xmark"
+                  className="fa-regular fa-circle-xmark"
                 ></motion.i>
                 <motion.i
                   whileHover={{ scale: 1.22 }}
-                  class="fa-regular fa-circle-check"
+                  className="fa-regular fa-circle-check"
                 ></motion.i>
                 <motion.i
                   whileHover={{ scale: 1.22 }}
-                  class="fa-solid fa-circle-info"
+                  className="fa-solid fa-circle-info"
                 ></motion.i>
                 <motion.i
                   whileHover={{ scale: 1.22 }}
                   onTap={{}}
-                  class="fa-regular fa-heart"
+                  className="fa-regular fa-heart"
                 ></motion.i>
                 <motion.i
                   whileHover={{ scale: 1.22 }}
-                  class="fa-solid fa-gift"
+                  className="fa-solid fa-gift"
                 ></motion.i>
               </div>
             </div> */}
@@ -370,19 +397,19 @@ function handleTouchMove(evt) {
           <div className="home_bottom">
             <div className="bottom_inner">
               <div className="box">
-                <i class="fa-regular fa-circle-left"></i>
+                <i className="fa-regular fa-circle-left"></i>
                 <p>PASS</p>
               </div>
               <div className="box">
-                <i class="fa-regular fa-circle-right"></i>
+                <i className="fa-regular fa-circle-right"></i>
                 <p>LIKE</p>
               </div>
               <div className="box">
-                <i class="fa-regular fa-circle-up"></i>
+                <i className="fa-regular fa-circle-up"></i>
                 <p>OPEN PROFILE</p>
               </div>
               <div className="box">
-                <i class="fa-regular fa-circle-down"></i>
+                <i className="fa-regular fa-circle-down"></i>
                 <p>CLOSE PROFILE</p>
               </div>
             </div>

@@ -12,22 +12,22 @@ const mongoClient = new MongoClient(url);
 async function saveUserImages(req, res) {
 
   try {
+    const id = req.query.id;
     await upload(req, res);
-    console.log(req.file);
 
     if (req.file === undefined) {
-      return res.send({
+      return res.json({
         message: "You must select a file.",
       });
     }
 
-    return res.send({
+    return res.json({
       message: "File has been uploaded.",
     });
   } catch (error) {
     console.log(error);
 
-    return res.send({
+    return res.json({
       message: `Error when trying upload image: ${error}`,
     });
   }
@@ -39,7 +39,7 @@ async function getImages(req, res) {
 
     const database = mongoClient.db("MatchMingo");
     // const images = database.collection('MMImages.files');
-    const chunks = database.collection("MMImages.chunks");
+    const chunks = database.collection("users.chunks");
 
     const cursor = chunks.find({});
 
@@ -48,7 +48,6 @@ async function getImages(req, res) {
     //       message: "No files found!",
     //     });
     //   }
-
     let fileInfos = [];
     await cursor.forEach((doc) => {
       fileInfos.push({
@@ -62,8 +61,35 @@ async function getImages(req, res) {
     });
   }
 }
+async function getUserImage(req, res) {
+  try {
+    const userId = req.user.id
+    const database = mongoClient.db("MatchMingo");
+
+    const userImg = database.collection("users.files");
+    const chunks = database.collection("users.chunks");
+
+    const images = userImg.find({ filename: { $regex: userId, $options: "i" } });
+    const userImgArr = [];
+    for await (const doc of images) {
+      const BinaryImg = await chunks.findOne({ files_id: doc._id })
+      userImgArr.push(
+        BinaryImg
+      );
+
+    }
+    return res.status(200).send(userImgArr);
+
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json('internal server error');
+  }
+}
+
 
 module.exports = {
   saveUserImages,
   getImages,
+  getUserImage
 };
