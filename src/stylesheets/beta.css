@@ -166,9 +166,6 @@ body{
     height: 80%;
     width: 100%;
     display: flex;
-    padding: .3rem 0;
-    /* overflow-x: scroll; */
-
   }
   .chatPage{
     width: 100%;
