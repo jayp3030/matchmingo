@@ -12,7 +12,6 @@ const mongoClient = new MongoClient(url);
 async function saveUserImages(req, res) {
 
   try {
-    const id = req.query.id;
     await upload(req, res);
 
     if (req.file === undefined) {

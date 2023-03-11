@@ -59,6 +59,9 @@ var [obj, setObj] = useState({
  
   });
 
+  
+
+    
    function setAnimation(){
     var card=document.getElementById("card");
     console.log(card);
@@ -483,6 +486,7 @@ function displayImage(){
     </>
   );
 }
+
 // var abc = document.getElementById("moving_part");
 // console.log(abc);
 // abc.ontouchstart=()=>{

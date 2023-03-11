@@ -5,7 +5,8 @@ import jwt_decode from "jwt-decode";
 import img from "../images/landingPage03.jpg"
 
 export default function Uploadphoto() {
-  let files = [];
+  const [images, setimages] = useState([])
+  const host = "http://localhost:8000"
   const [userId, setuserId] = useState();
 
   const btnRef = useRef(null);
@@ -24,9 +25,7 @@ export default function Uploadphoto() {
   };
 
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
-    files.push(files.push(e.target.files[0]));
-    console.log(files);
+    setimages(images => [...images, e.target.files[0]])
   };
 
   useEffect(() => {
@@ -34,7 +33,50 @@ export default function Uploadphoto() {
       localStorage.getItem("token") &&
         setuserId(jwt_decode(localStorage.getItem("token")).user.id);
     }, 5000);
-  });
+    buttonToggle()
+  }, [images]);
+
+  //testing //
+
+  function submitForm(event) {
+    event.preventDefault(); // prevent the default form submission behavior
+    // do any form validation or processing here
+    // use AJAX to submit the form data to the backend URL
+    // for example:
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', `http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`);
+    xhr.onload = function () {
+      // handle the response from the server
+    };
+    xhr.send(new FormData(document.getElementById('myForm')));
+  }
+
+  const buttonToggle = () => {
+    console.log(images.length)
+    if (images.length < 2) {
+      document.getElementById("uploadPageBtn").disabled = true;
+    } else {
+      document.getElementById("uploadPageBtn").disabled = false;
+    }
+  };
+  const handleUploadPhoto = async (e) => {
+    e.preventDefault()
+    // Create a new FormData object
+    const formData = new FormData();
+
+    // Add each file from the file input to the FormData object
+    for (let i = 0; i < images.length; i++) {
+      formData.append('images', images[i]);
+    }
+
+    console.log(images)
+    const response = await fetch(`${host}/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`, {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
+    console.log(json)
+  }
 
   return (
     <>
@@ -45,50 +87,52 @@ export default function Uploadphoto() {
             <div className="upper">
               <h2>Upload Your Photos</h2>
             </div>
+
+            {console.log(images)}
             <div className="photo_section">
-                <div className="photo_section_left">
-                <img src={img} alt="" />
+              <div className="photo_section_left">
+                <img src={images[0] && URL.createObjectURL(images[0])} alt="" />
+              </div>
+              <div className="photo_section_right">
+                <div className="photo_section_box">
+                  <div className="inner_box">
+                    <img src={images[1] && URL.createObjectURL(images[1])} alt="" />
+                  </div>
+                  <div className="inner_box">
+                    <img src={images[2] && URL.createObjectURL(images[2])} alt="" />
+                  </div>
                 </div>
-                <div className="photo_section_right">
-                    <div className="photo_section_box">
-                      <div className="inner_box">
-                        <img src={img} alt="" />
-                      </div>
-                      <div className="inner_box">
-                      <img src={img} alt="" />
-                      </div>
-                    </div>
-                    <div className="photo_section_box">
-                      <div className="inner_box">
-                      <img src={img} alt="" />
-                      </div>
-                      <div className="inner_box">
-                      <img src={img} alt="" />
-                      </div>
-                    </div>
+                <div className="photo_section_box">
+                  <div className="inner_box">
+                    <img src={images[3] && URL.createObjectURL(images[3])} alt="" />
+                  </div>
+                  <div className="inner_box">
+                    <img src={images[4] && URL.createObjectURL(images[4])} alt="" />
+                  </div>
                 </div>
+              </div>
             </div>
             <form
               className="photo_section_dummy"
-              action={`http://localhost:8000/details/userImages?id=${
-                jwt_decode(localStorage.getItem("token")).user.id
-              }`}
+              action={`http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id
+                }`}
               method="post"
-              onSubmit={ e => e.preventDefault()}
               encType="multipart/form-data"
+              id="myForm"
             >
               <label htmlFor="input-files">
                 <img src={upldImg} alt="files" />
                 Click Here To Select Photo
                 <input
                   type="file"
-                  name="image"
+                  name="images"
                   id="input-files"
                   placeholder="Choose Photo"
                   onChange={handleFileChange}
+                  multiple
                 />
               </label>
-              <button ref={btnRef}  className="btn_dnone">
+              <button ref={btnRef} onClick={handleUploadPhoto} className="btn_dnone">
                 submit
               </button>
             </form>
@@ -118,13 +162,7 @@ export default function Uploadphoto() {
     </>
   );
 }
-// const buttonToggle = () => {
-//   if (images.length < 2) {
-//     document.getElementById("uploadPageBtn").disabled = true;
-//   } else {
-//     document.getElementById("uploadPageBtn").disabled = false;
-//   }
-// };
+
 
 // const [images, setImages] = React.useState([]);
 // const maxNumber = 20;
