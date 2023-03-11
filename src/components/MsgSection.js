@@ -9,9 +9,9 @@ import Conversation from "./Conversation";
 export default function MsgSection() {
   const baseURl = "http://localhost:8000";
 
+  const [user, setUser] = useState([]);
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
-  const [user, setUser] = useState([]);
   const [sendMessage, setSendMessage] = useState(null);
   const [receiveMessage, setReceiveMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -54,12 +54,14 @@ export default function MsgSection() {
         .then((res) => res.json())
         .then((result) => setUser(result))
         .catch((err) => err);
+        console.log(response);                     // ------ bug ------
 
       // then fetch its chat partners
       const data = await fetch(`${baseURl}/chat/${user.userId}`) // user must logged in or exist --------- some confusion so letter will done
         .then((res) => res.json())
         .then((result) => setChats(result))
         .catch((err) => err);
+        console.log(data);                        // -------- bug -----
     }
     getChats();
     console.log(user);
@@ -92,7 +94,7 @@ export default function MsgSection() {
           <ChatPage
             chat={currentChat}
             currentUser={user.userId}
-            setSendMessage={setSendMessage}
+            sendMessage={sendMessage}
             receiveMessage={receiveMessage}
           />
         </div>
