@@ -5,20 +5,16 @@ import img from "../images/landingPage03.jpg";
 
 
 
-export default function ChatPage({ chat , currentUser , sendMessage , receiveMessage }) {
+export default function ChatPage({ chat , currentUser , setSendMessage , receiveMessage }) {
   const baseURl = "http://localhost:8000";
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState({
     msg_input : "",
   });
-  const scroll = useRef()
+  const ref = useRef();
 
-  useEffect( () => {
-     if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
-        setMessages([...messages , receiveMessage]);
-     }
-  },[receiveMessage])
+  
   
   // fetching data for header name  and message...
   useEffect(() => {
@@ -72,25 +68,39 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(messageToSend),
           })
-          setMessages([...messages , response]);
-          setNewMessage("");
-          console.log(newMessage);
-          console.log(newMessage);
+          const json = await response.json()
+          setMessages([...messages , json]);
+          console.log(json)
+          setNewMessage({
+            msg_input : "",
+          });
         } catch (error) {
           console.log(error);
         }
       }
+      
 
       // send message to socket server
 
       const receiverId = chat.members.find( (id) => id !== currentUser);
-      sendMessage( [...messages , receiverId]);
+      setSendMessage( {...messageToSend , receiverId});
   }
-
+  
   // scroll to the last message 
   useEffect( () => {
-    scroll.current?.scrollIntoView({behaviour : 'smooth'})  /* bug here */
+    console.log("scrolling")
+    document.getElementById("chatPage_middle").scrollTop = document.getElementById("chatPage_middle").scrollHeight 
+    
   },[messages])
+
+  useEffect( () => {
+    if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
+      console.log(receiveMessage)
+       setMessages(receiveMessage);
+       console.log(messages)
+    }
+ },[receiveMessage])
+
 
   return (
     <div className="chatPage">
@@ -102,7 +112,7 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
           }} />
           <img src={img}></img>
         </div>
-        <div className="chatPage_upper_right">
+        <div className="chatPage_upper_right" >
           <h4>{userData && userData.first_name + " " + userData.last_name}</h4>
           {/* <p>Active 3m ago</p> */}
         </div>
@@ -111,9 +121,9 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
         </div>
       </div>
       <hr />
-      <div className="chatPage_middle" >
-        {messages.map((message) => (                /*  here is one bug */
-          <>
+      <div className="chatPage_middle" id="chatPage_middle" >
+        {messages && messages.map((message) => (                /*  here is one bug */
+          <div ref={ref} >
             <div className={message.senderId === currentUser ? 'right':'left'}>
               <p>
                 {message.text}
@@ -122,7 +132,7 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
                 {message.createdAt}
               </span>
             </div>
-          </>
+          </div>
         ))}
       </div>
       <div className="chatPage_bottom">
@@ -131,10 +141,10 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
           <p>Hello,Baby</p>
           <p>Bye then</p>
         </div>
-        <div className="chatPage_bottom_inner">
+        <div className="chatPage_bottom_inner" >
           <i className="fa-solid fa-camera"></i>
-          <input type="text" placeholder="Message..." onChange={handleChange} name="msg_input"></input>
-          <i className="fa-solid fa-play" onClick={handleSend}></i>
+          <input type="text" placeholder="Message..." value={newMessage.msg_input} onChange={handleChange} name="msg_input"></input>
+          <i className="fa-solid fa-play" onClick={handleSend} ></i>
         </div>
       </div>
     </div>

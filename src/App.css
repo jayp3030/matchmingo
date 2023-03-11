@@ -4,10 +4,12 @@
 /* @import url("./stylesheets/mobile.css"); */
 @import url("./stylesheets/mobile_alpha.css");
 #root{
-  overflow-anchor: none; 
+  overflow-anchor: none;
+  /* overflow:hidden;  */
 }
 *{
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 html {
   scroll-behavior: smooth;
@@ -32,6 +34,15 @@ cursor: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+  
 }
 @keyframes rotate1{
   /* 0%{

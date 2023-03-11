@@ -427,6 +427,9 @@ background-color: transparent;
 .link{
     text-decoration: none;
     outline: none;
+
+    border:none;
+    background:inherit;
 }
 .submit_btn{
     height:45%;

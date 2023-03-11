@@ -6,6 +6,7 @@ export default function Conversation({ data, currentUserId }) {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
+    console.log("Hello i am conversation")
     const userIds = data.members.find((id) => id !== currentUserId);
     console.log(userIds);
     async function getUserdata() {                                 // temporary will be changed

@@ -76,7 +76,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="outer_signup" id="outer_signup">
+      <div className="outer_signup" id="outer_signup" style={{overflow:"hidden"}}>
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">

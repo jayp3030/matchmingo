@@ -52,11 +52,13 @@ export default function Uploadphoto() {
   }
 
   const buttonToggle = () => {
-    console.log(images.length)
-    if (images.length < 2) {
-      document.getElementById("uploadPageBtn").disabled = true;
-    } else {
-      document.getElementById("uploadPageBtn").disabled = false;
+    if(document.getElementById("uploadPageBtn")){
+
+      if (images.length < 2) {
+        document.getElementById("uploadPageBtn").disabled = true;
+      } else {
+        document.getElementById("uploadPageBtn").disabled = false;
+      }
     }
   };
   const handleUploadPhoto = async (e) => {
