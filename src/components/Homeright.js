@@ -9,6 +9,7 @@ import LikeSection from "./LikeSection";
 import MsgLike from "./MsgLike";
 import UserInfo from "./UserInfo";
 import axios from 'axios';
+import { wait } from '@testing-library/user-event/dist/utils';
 export default function Homeright() {
   const host = "http://localhost:8000"
 
@@ -25,6 +26,7 @@ export default function Homeright() {
   };
 
   var [right, setRight] = useState(true);
+  var [waiting,setWaiting]=useState(false);
   var [user_image,setUser_image]=useState(null);
   var [l, setL] = useState(5);
   var [loc, setLoc] = useState({
@@ -62,26 +64,31 @@ var [obj, setObj] = useState({
   
 
     
-   function setAnimation(){
+   async function setAnimation(){
+  
     var card=document.getElementById("card");
     console.log(card);
-    card.style.marginTop = "-200%";
-    card.style.transitionDuration="2s";
+    card.style.marginTop = "-150%";
+    card.style.transitionDuration="1s";
+    setTimeout(()=>{},2500);
     
   }
  async function update(){
   var card=document.getElementById("card");
-   setAnimation();
+   await setAnimation();
+   await setWaiting(true);
     await axios.get("http://localhost:8000/details/getUserDetails/",{ 
       headers: { "auth-token": localStorage.getItem("token") }  
    },
-  ).then((e)=>{
-      setPersonalDT([
-        e
-      ])
-   console.log(e);
+  ).then(async (e)=>{
+     setWaiting(false);
+    await setTimeout(()=>{card.style.marginTop="0%";},1000)
+    setPersonalDT([e])
     }).catch((e)=>{console.log(e);})
+
   //  setTimeout(()=>{},2000)
+
+
     await axios.get("http://localhost:8000/details/getUserImage/",{ 
       headers: { "auth-token": localStorage.getItem("token") }  
    },
@@ -90,7 +97,7 @@ var [obj, setObj] = useState({
       console.log("data of image");
    console.log(e);
     }).catch((e)=>{console.log(e);})
-    setTimeout(()=>{card.style.marginTop="0%";},1000)
+    
     // http://localhost:8000/details/getUserImage
     
     
@@ -280,18 +287,23 @@ function displayImage(){
           <div className="Container_of_profile">
             <motion.div
               className="moving_part"
-             
               id={"moving_part"}
             >
             <div className="card_Container" id="card_Container">
+              {waiting ? 
+              <motion.div 
+              style={{
+                height:"100%",width:"35%",background:'none',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                <div style={{
+                  boxShadow:"0px 0px 3px black",
+                  height:'15%',width:'22%',border:"10px solid #f1f1f1 inset",borderTop:"10px solid var(--light)",borderRadius:"200%",display:'flex',alignItems:'center',justifyContent:'center',animationTimingFunction:'ease-in-out',animationName:'spin',animationDuration:'2s',animationIterationCount:'infinite'}}>
+                </div>
+              </motion.div> :
             <AnimatePresence mode="wait">
                 {
-                  
-                // new Array(l).fill("").map((event, i) => (
                   personalDT.map(
-                    (e,i)=>{ console.log(e);return (
-                      
-                      
+                    (e,i)=>{
+                      return (
                   <motion.div
                     className="card"
                     id="card"
@@ -351,6 +363,7 @@ function displayImage(){
                       </div>
                     </div>
                     <div className="card_right" id="card_right" >
+                    {waiting ? <div style={{background:"green",height:"100%",width:"60%"}}></div> :
                       <div className="info_box">
             <div className="gender_info">
                 <h3>Gender</h3>
@@ -380,7 +393,7 @@ function displayImage(){
             </div>
             <hr />
             <div className="gender_info">
-                <h3>attraction</h3>
+                <h3>Attraction</h3>
                 <p>{e ==null ?
                           "Not Specified":
                           e.data.sexual_orientation}</p>
@@ -417,49 +430,22 @@ function displayImage(){
                 <p>Gujarati,English</p>
             </div>
             <hr />
-        </div>
+        </div>}
                     </div>
                   </motion.div>
                 )}
-                )
+                  )
                 }
+                
               </AnimatePresence>
+}
             </div>
               
             </motion.div>
 
 
 
-            {/* <div className="card">
-              <img src={img} alt="" />
-              <div className="userDetails">
-                <div className="userNameAge">Vedant , 20</div>
-                <div className="userBranch">CE</div>
-              </div>
-              <div className="icons">
-                <motion.i
-                  whileHover={{ scale: 1.22 }}
-                  className="fa-regular fa-circle-xmark"
-                ></motion.i>
-                <motion.i
-                  whileHover={{ scale: 1.22 }}
-                  className="fa-regular fa-circle-check"
-                ></motion.i>
-                <motion.i
-                  whileHover={{ scale: 1.22 }}
-                  className="fa-solid fa-circle-info"
-                ></motion.i>
-                <motion.i
-                  whileHover={{ scale: 1.22 }}
-                  onTap={{}}
-                  className="fa-regular fa-heart"
-                ></motion.i>
-                <motion.i
-                  whileHover={{ scale: 1.22 }}
-                  className="fa-solid fa-gift"
-                ></motion.i>
-              </div>
-            </div> */}
+            
           </div>
           <div className="home_bottom">
             <div className="bottom_inner">
@@ -487,11 +473,3 @@ function displayImage(){
   );
 }
 
-// var abc = document.getElementById("moving_part");
-// console.log(abc);
-// abc.ontouchstart=()=>{
-//   console.log("touch started");
-// }
-// abc.ontouchend=()=>{
-//   console.log("touch end");
-// }
