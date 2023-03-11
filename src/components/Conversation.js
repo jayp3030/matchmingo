@@ -13,6 +13,7 @@ export default function Conversation({ data, currentUserId }) {
         .then((res) => res.json())
         .then((result) => setUserData(result))
         .catch((err) => err);
+        console.log(res);
     }
     getUserdata();
     console.log(userData);
