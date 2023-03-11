@@ -5,7 +5,7 @@ import img from "../images/landingPage03.jpg";
 
 
 
-export default function ChatPage({ chat , currentUser , setSendMessage , receiveMessage }) {
+export default function ChatPage({ chat , currentUser , sendMessage , receiveMessage }) {
   const baseURl = "http://localhost:8000";
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -84,7 +84,7 @@ export default function ChatPage({ chat , currentUser , setSendMessage , receive
       // send message to socket server
 
       const receiverId = chat.members.find( (id) => id !== currentUser);
-      setSendMessage( [...messages , receiverId]);
+      sendMessage( [...messages , receiverId]);
   }
 
   // scroll to the last message 

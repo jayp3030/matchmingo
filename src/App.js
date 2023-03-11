@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import Test from "./components/Test";
 import MsgLike from "./components/MsgLike";
 import ChatPage from "./components/ChatPage";
+import Uploadphoto from "./components/Uploadphoto";
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
             <Route path="/test" element={<Test />} />    
+            <Route path="/photo" element={<Uploadphoto />} />    
           </Routes>
         </BrowserRouter>
       </AnimatePresence>

@@ -17,7 +17,7 @@ io.on('connection' , (socket) => {
                 socketId : socket.id
             })
         }
-        console.log('connected users' , activeUser);
+        console.log('connected users :' , activeUser);
         io.emit('get-users' , activeUser);
     })
 
