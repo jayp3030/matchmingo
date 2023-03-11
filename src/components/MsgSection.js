@@ -16,7 +16,7 @@ export default function MsgSection() {
   const [receiveMessage, setReceiveMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   // ref
-  const socket = useRef;
+  const socket = useRef();
 
   useEffect(() => {
     socket.current = io("http://localhost:8800");
@@ -40,7 +40,6 @@ export default function MsgSection() {
       (data) => {
         setReceiveMessage(data);
       },
-      []
     );
   });
 
