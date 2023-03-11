@@ -62,9 +62,6 @@ var [obj, setObj] = useState({
   
   function update() {
     
-    if (l >= 0) {
-      setL((e) => e - 1);
-    }
     var card=document.getElementById("card");
     console.log(card);
     card.style.marginTop="-200%";
