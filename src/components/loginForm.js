@@ -54,7 +54,7 @@ const LoginForm = () => {
         <div className="login_form_div_container fcc">
           <div className="login_form_container fcc">
             <div className="login_title_container fcc">
-                <p className="login_title">Welcome Back ,
+                <p className="login_title">Welcome User ,
                 </p>
             </div>
             <div className="login_google_container fcc">

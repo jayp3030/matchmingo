@@ -4,7 +4,8 @@
 /* @import url("./stylesheets/mobile.css"); */
 @import url("./stylesheets/mobile_alpha.css");
 #root{
-  overflow-anchor: none; 
+  overflow-anchor: none;
+  overflow:hidden; 
 }
 *{
   box-sizing: border-box;

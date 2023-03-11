@@ -68,12 +68,15 @@
     .not_an_member > p{
         font-size: 0.84rem;
     }
+   
     .link > p{
+
         font-size: 0.84rem;
     }
 }
 
 @media (max-width: 1141px) {
+    
     .logo_div_login > img{
         width:90%;
     }
