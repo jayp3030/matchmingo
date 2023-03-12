@@ -3,7 +3,8 @@ const fetchUser = require("../middleware/fetchUser.middleware")
 const {
   saveUserDetails,
   getUserDetails,
-  getUser
+  getUser,
+  
 } = require("../controllers/user.controller");
 const { body } = require("express-validator");
 
@@ -11,7 +12,8 @@ const {
   saveUserImages,
   getImages,
   getUserImageArr,
-  getUserImage
+  getUserImage,
+  getUserIDImage
 } = require("../controllers/userImages.controller");
 
 
@@ -33,6 +35,7 @@ userRouter.get("/getImages", getImages);
 userRouter.get("/getUserImage",fetchUser, getUserImage);
 userRouter.post("/getUserImageArr", getUserImageArr);
 
+userRouter.get('/getUserIDImage',fetchUser, getUserIDImage)
 
 module.exports = {
   userRouter,
