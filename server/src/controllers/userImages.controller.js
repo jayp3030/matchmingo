@@ -85,10 +85,37 @@ async function getUserImage(req, res) {
     res.status(500).json('internal server error');
   }
 }
+async function getUserIDImage(req, res) {
+  try {
+    const userId = req.user.id
+    console.log(userId);
+    const database = mongoClient.db("MatchMingo");
+
+    const userImg = database.collection("users.files");
+    const chunks = database.collection("users.chunks");
+
+    const images = userImg.find({ filename: { $regex: `idCard${userId}`, $options: "i" } });
+    const userImgArr = [];
+    for await (const doc of images) {
+      const BinaryImg = await chunks.findOne({ files_id: doc._id })
+      userImgArr.push(
+        BinaryImg
+      );
+
+    }
+    return res.status(200).send(userImgArr);
+
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json('internal server error');
+  }
+}
 
 
 module.exports = {
   saveUserImages,
   getImages,
-  getUserImage
+  getUserImage,
+  getUserIDImage
 };
