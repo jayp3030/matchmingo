@@ -6,12 +6,13 @@ const {
   getUser,
   
 } = require("../controllers/user.controller");
-const {getUserImage} = require("../controllers/userImages.controller")
 const { body } = require("express-validator");
 
 const {
   saveUserImages,
   getImages,
+  getUserImageArr,
+  getUserImage,
   getUserIDImage
 } = require("../controllers/userImages.controller");
 
@@ -32,6 +33,8 @@ userRouter.get("/getUserDetails",fetchUser, getUserDetails);
 userRouter.post("/userImages", saveUserImages);
 userRouter.get("/getImages", getImages);
 userRouter.get("/getUserImage",fetchUser, getUserImage);
+userRouter.post("/getUserImageArr", getUserImageArr);
+
 userRouter.get('/getUserIDImage',fetchUser, getUserIDImage)
 
 module.exports = {
