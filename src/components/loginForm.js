@@ -1,9 +1,16 @@
 import React,{useState} from "react";
-import obj from '../images/google.png'
+import obj1 from '../images/google.png'
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
+
+  var [isLogIn,setLogIn]=useState(false);
+  var [data, setData] = useState({first_name:null,last_name:null,email:null});
+  var [data_personal,setPersonal]=useState({birthday:null,gender:null})
+const obj=window.gapi;
+var data_combine={};
+var data_bir_gen={}
 
   const Navigate = useNavigate();
   const host = "http://localhost:8000";
@@ -47,7 +54,55 @@ const LoginForm = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-
+  const handleCal=async ()=>{
+    var auth_obj=window.gapi.auth2.getAuthInstance();
+    console.log(auth_obj);
+    if(isLogIn==false){
+      await auth_obj
+      .signIn()
+      .then(async (e)=>
+        {
+          console.log(e);
+          data_combine={
+            "first_name":e.tv.PZ,
+            "last_name":e.tv.eY,
+            "email":e.tv.fw
+          }
+          setData(()=>({
+            first_name:e.tv.PZ,
+            last_name:e.tv.eY,
+            email:e.tv.fw
+        }
+        ))
+      })
+    }
+  
+    const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
+      setLogIn(state);
+      await window.gapi.client.load("people","v1",async ()=>{
+        var req01=window.gapi.client.people.people.get({
+                'resourceName': 'people/me',
+                'personFields': 'birthdays,genders,addresses'})
+        
+        await req01.execute(async (e)=>{
+          console.log(e);
+          data_bir_gen={
+            "birthday":e.birthdays[0].date,
+              "gender":e.genders[0].value
+          }
+          await setPersonal(
+            {
+              birthday:e.birthdays[0].date,
+              gender:e.genders[0].value});
+        }) 
+        console.log("data_combine =");
+        console.log(data_combine);
+        console.log("data_bir_gen =");
+        console.log(data_bir_gen);
+      })
+  
+  
+  }
   return (
     <>
       <div className="login_form_div">
@@ -60,9 +115,10 @@ const LoginForm = () => {
             <div className="login_google_container fcc">
                 <div className="google_button_div fcc">
                     <motion.button id="google_login"
+                    onClick={handleCal}
                     whileHover={{scale:1.07}}
                     >
-                        <img src={obj}></img>
+                        <img src={obj1}></img>
                         <p>Log in With Google</p>
                     </motion.button>
                 </div>
