@@ -1,7 +1,12 @@
-import React,{useState} from 'react'
-
+import React,{useContext, useState} from 'react'
+import { context } from './ProfileSetup';
 
 export default function Name(props) {
+var data=useContext(context);
+var usable_data=null;
+if(data!=null){
+usable_data=data.data;
+}
 
   const host = "http://localhost:8000";
 

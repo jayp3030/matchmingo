@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
+var data_context=React.createContext();
 
-export default function Signup() {
+export default function Signup(props) {
 
   const Navigate = useNavigate();
   const host = "http://localhost:8000";
@@ -12,9 +13,10 @@ export default function Signup() {
     password: "",
     cpassword: "",
   });
-
+  var [data, setData] = useState({first_name:null,last_name:null,email:null});
+  var [personal,setPersonal]=useState({birthday:null,gender:null});
   const handleOnChange = (e) => {
-
+    // if(data.email!=null){setCredentials({...credentials,email:data.email})}
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   
@@ -74,14 +76,57 @@ export default function Signup() {
   //   }
   // },[])
 
+  const handleCal=async ()=>{
+    var auth_obj=window.gapi.auth2.getAuthInstance();
+    console.log(auth_obj);
+    
+      await auth_obj
+      .signIn()
+      .then(async (e)=>
+        {
+          console.log(e);
+         
+          setData({
+            first_name:e.tv.PZ,
+            last_name:e.tv.eY,
+            email:e.tv.fw
+        })
+        console.log("data =");
+        console.log(data);
+  })
+    
+  
+    const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
+      // setLogIn(state);
+      await window.gapi.client.load("people","v1",async ()=>{
+        var req01=window.gapi.client.people.people.get({
+                'resourceName': 'people/me',
+                'personFields': 'birthdays,genders,addresses'})
+        await req01.execute(async (e)=>{
+          console.log(e);
+         
+          await setPersonal(
+            { ...data,
+              gen_bir:{
+              birthday:e.birthdays[0].date,
+              gender:e.genders[0].value
+              }
+            }
+              );
+        }) 
+       
+      })
+  }
+
   return (
     <>
+    {props.handleCall(data,personal)}
       <div className="outer_signup" id="outer_signup" style={{overflow:"hidden"}}>
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
             <h2>Become a Mingo Member</h2>
-            <button className="google_btn">
+            <button className="google_btn" onClick={handleCal}>
               <div className="google_logo">
                 <img src={google} alt="google" />
               </div>
@@ -96,7 +141,9 @@ export default function Signup() {
                 name="email"
                 id="email"
                 onChange={handleOnChange}
+                value={credentials.email}
                 placeholder="Enter Your Email"
+                disabled={data.email!=null && true}
               />
               <input
                 type="password"
@@ -131,3 +178,5 @@ export default function Signup() {
     </>
   );
 }
+
+export {data_context};

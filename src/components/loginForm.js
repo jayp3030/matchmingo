@@ -7,7 +7,7 @@ const LoginForm = () => {
 
   var [isLogIn,setLogIn]=useState(false);
   var [data, setData] = useState({first_name:null,last_name:null,email:null});
-  var [data_personal,setPersonal]=useState({birthday:null,gender:null})
+  var [personal,setPersonal]=useState({birthday:null,gender:null})
 const obj=window.gapi;
 var data_combine={};
 var data_bir_gen={}
@@ -68,12 +68,13 @@ var data_bir_gen={}
             "last_name":e.tv.eY,
             "email":e.tv.fw
           }
-          setData(()=>({
+          setData({
             first_name:e.tv.PZ,
             last_name:e.tv.eY,
             email:e.tv.fw
-        }
-        ))
+        })
+        console.log("data =");
+        console.log(data);
       })
     }
   
@@ -83,25 +84,18 @@ var data_bir_gen={}
         var req01=window.gapi.client.people.people.get({
                 'resourceName': 'people/me',
                 'personFields': 'birthdays,genders,addresses'})
-        
         await req01.execute(async (e)=>{
           console.log(e);
-          data_bir_gen={
-            "birthday":e.birthdays[0].date,
-              "gender":e.genders[0].value
-          }
-          await setPersonal(
+         
+          setPersonal(
             {
               birthday:e.birthdays[0].date,
-              gender:e.genders[0].value});
+              gender:e.genders[0].value
+            }
+              );
         }) 
-        console.log("data_combine =");
-        console.log(data_combine);
-        console.log("data_bir_gen =");
-        console.log(data_bir_gen);
+       
       })
-  
-  
   }
   return (
     <>
@@ -171,5 +165,4 @@ var data_bir_gen={}
     </>
   );
 };
-
 export default LoginForm;
