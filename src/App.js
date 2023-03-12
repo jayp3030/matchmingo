@@ -25,14 +25,16 @@ function App() {
   " https://www.googleapis.com/auth/user.birthday.read " +
   " https://www.googleapis.com/auth/user.gender.read " +
   " https://www.googleapis.com/auth/user.addresses.read "
-        obj_gapi.load("client:auth2", async ()=>{
+  try{     
+  obj_gapi.load("client:auth2", async ()=>{
           obj_gapi.client.init({
             apiKey:API_KEY,
             clientId:CLIENT_ID,
             scope:SCOPES,
             plugin_name: "MatchMingo",
-          })
+          }) 
 });
+  }catch(e){console.log(e);}
   const setThemme=()=>{
     var root = document.querySelector(':root');
     if(localStorage.getItem("mode")){

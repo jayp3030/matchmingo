@@ -23,11 +23,19 @@
         margin-top:1%;
         height:auto;
     }
+    .google_btn{
+        width:100%;
+    }
+    .btn_back{
+        width:100%;
+        margin-left:-2rem;
+    }
     .google_btn > div{
         font-size:0.8rem;
         padding-top:-1%;
     }
     .col2 form >input{
+       
         font-size:0.8rem;
         padding-left:7%;
     }
@@ -193,9 +201,21 @@
     .col2 h2{
         font-size:1.35rem;
     }
-    .google_btn{
+    .col2 p{
         width:130%;
-        margin-left:-0.5rem;
+    }
+    .btn_back{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .google_btn{
+        padding-left:0%;
+        padding-right:0%;
+        margin-left:0%;
+        width:130%;
+    }
+    .col2 form >input{
+        width:130%;
     }
     .google_logo img{
         width:80%;
@@ -207,14 +227,14 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        width:125%;
+        width:130%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
     }
     .btn{
         font-size:1.2rem;
-        width:125%;
+        width:130%;
     }
     .btn_back{
         width:125%;
@@ -369,6 +389,7 @@
     }
     .col2{
         width:100vw;
+      
     }
     .col2 h2{
         font-size:1.8rem;
@@ -379,11 +400,19 @@
         width:110%;
         margin-left:0rem;
     }
+    .btn_back{
+        width:110%;
+        margin-left:-2rem;
+    }
+    .col2 p{
+        width:110%;
+    }
     .google_logo img{
         width:70%;
-        margin-top:2%;
+        margin-top:10%;
         height:auto;
     }
+    
     .google_btn > div{
         font-size:0.82rem;
         padding-top:-1%;
@@ -489,7 +518,37 @@
         font-size: 0.9rem;}
 }
 
-@media only screen and (max-width:600px){
+@media (max-width:600px){
+    .google_logo > p{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .upper > h2{
+        margin-left:-2rem;
+    }
+    .google_btn{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .btn_back{
+        width:130%;
+    }
+    .col2 form > input{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .btn{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .last_child{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .modes{
+        width:130%;
+        margin-left:-2rem;
+    }
     .login_title_container{
         width:90%;
         /* background:maroon; */
@@ -504,6 +563,9 @@
         /* background: black; */
         height:90%;
         width:85%;
+    }
+    .google_logo > div{
+        font-size:1rem;
     }
     .logo_div_login > img{
         width:95%;

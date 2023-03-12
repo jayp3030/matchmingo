@@ -94,28 +94,10 @@ export default function Signup(props) {
         console.log("data =");
         console.log(data);
   })
-    
-  
     const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
-      // setLogIn(state);
-      await window.gapi.client.load("people","v1",async ()=>{
-        var req01=window.gapi.client.people.people.get({
-                'resourceName': 'people/me',
-                'personFields': 'birthdays,genders,addresses'})
-        await req01.execute(async (e)=>{
-          console.log(e);
-         
-          await setPersonal(
-            { ...data,
-              gen_bir:{
-              birthday:e.birthdays[0].date,
-              gender:e.genders[0].value
-              }
-            }
-              );
-        }) 
-       
-      })
+      if(state){
+        Navigate("/home");
+      }
   }
 
   return (

@@ -31,10 +31,6 @@ export default function Homeright() {
   var [waiting, setWaiting] = useState(false);
   var [user_image, setUser_image] = useState(null);
   var [l, setL] = useState(5);
-  var [loc, setLoc] = useState({
-    x1: null,
-    y1: null,
-  });
   var b = {
     name: "mayank1",
   };
@@ -42,6 +38,24 @@ export default function Homeright() {
     name: "mayank2",
   };
   var [personalDT, setPersonalDT] = useState([null]);
+  var preLoaded = [];
+  // useEffect((e) => {
+  //   var count = 3;
+  //   while (count > 0) {
+  //     axios
+  //       .get("http://localhost:8000/details/getUserDetails/", {
+  //         headers: { "auth-token": localStorage.getItem("token") },
+  //       })
+  //       .then((e) => {
+  //         preLoaded.push(e);
+  //         count--;
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   }
+  //   setPersonalDT([preLoaded[0]]);
+  // }, []);
 
   var [obj, setObj] = useState({
     initial: {
@@ -76,11 +90,13 @@ export default function Homeright() {
         headers: { "auth-token": localStorage.getItem("token") },
       })
       .then(async (e) => {
+        // preLoaded.pop();
+        // preLoaded.push(e);
         setWaiting(false);
         await setTimeout(() => {
           card.style.marginTop = "0%";
         }, 1000);
-        setPersonalDT([e]);
+        setPersonalDT([preLoaded[0]]);
       })
       .catch((e) => {
         console.log(e);
@@ -359,8 +375,6 @@ export default function Homeright() {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-
-                          // style={{top:i*105+"%",}}
                         >
                           <div
                             className="card_left"
