@@ -18,7 +18,21 @@ import UploadId from "./components/UploadId";
 
 
 function App() {
-
+  var obj_gapi=window.gapi;
+  var CLIENT_ID ="646322029510-5gabrec6u1phpnp0lspfdv5uj5gopeut.apps.googleusercontent.com";
+    var API_KEY = "AIzaSyCrH5V637UOA6baVFReHGhj7P2Gw7z3_w8";
+    const SCOPES = "https://mail.google.com/ " + 
+  " https://www.googleapis.com/auth/user.birthday.read " +
+  " https://www.googleapis.com/auth/user.gender.read " +
+  " https://www.googleapis.com/auth/user.addresses.read "
+        obj_gapi.load("client:auth2", async ()=>{
+          obj_gapi.client.init({
+            apiKey:API_KEY,
+            clientId:CLIENT_ID,
+            scope:SCOPES,
+            plugin_name: "MatchMingo",
+          })
+});
   const setThemme=()=>{
     var root = document.querySelector(':root');
     if(localStorage.getItem("mode")){
