@@ -68,7 +68,7 @@ const LoginForm = () => {
                 </div>
                 <div className="OR_div">
                     <div className="login_OR_div">
-                    <p>OR</p>
+                    <p className="ORP">OR</p>
                     </div>
                 </div>
             </div>

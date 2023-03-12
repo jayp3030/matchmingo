@@ -247,12 +247,13 @@ width:100%;
 }
 .login_title_container{
     height:14%;
-    width:100%;
+    width:60%;
     /* background:red; */
     justify-content: flex-start;
     /* padding-bottom:2%; */
 }
 .login_title{
+   
     /* display:inline-block; */
     font-family:'manrope';
     /* background:yellow; */
@@ -280,8 +281,8 @@ width:100%;
 
 #google_login , .submit_btn{
 height:53%;
-width:45%;
-border:1px solid #C6C6C6;
+width:60%;
+border:1px solid black;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -306,7 +307,7 @@ background-color: transparent;
 .OR_div{
     height:20%;
     width:100%;
-   
+    /* background:yellow; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,18 +315,19 @@ background-color: transparent;
 .login_OR_div{
     height:7%;
     background:#c0c0c0;
-    width:45%;
+    width:60%;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background:green; */
     
 }
-.login_OR_div > p{
+.login_OR_div > p,.ORP{
     display:inline-block;
     background:white;
     padding:0% 3% 0% 3%;
-    color:var(--accent);
-    margin:0px;
+    color:#c0c0c0;
+    /* margin:0px; */
     
 }
 
@@ -357,14 +359,14 @@ background-color: transparent;
     flex-direction: column;
 }
 #login_form_ff > input {
-    height:12%;
-    width:43%;
+    height:13%;
+    width:60%; /*43%*/
     margin:2% 0% 2% 0%;
     font-family: 'manrope';
     padding:0% 0% 0% 2%;
     font-size: 0.9rem;
-    border:1px solid #C6C6C6;
-    border-radius:5px;
+    border:1px solid black;
+    /* border-radius:5px; */
     outline:none;
     background-color: transparent;
 }
@@ -377,7 +379,7 @@ background-color: transparent;
 
 .remember_me_login{
     height:10%;
-    width:45%;
+    width:60%;
     /* background:yellow; */
     margin:1% 0% 1% 0%;
     display: flex;
@@ -408,15 +410,15 @@ background-color: transparent;
     color:var(--light) !important;
 }
 .remember_me{
-    font-size:12px;
+    font-size:0.9rem;
     color:#1e1e1e;
 }
 .forget_password{
-    font-size:0.8rem;
+    font-size:0.9rem;
 }
 .submit_btn_div{
     height:30%;
-    width:45%;
+    width:60%;
     /* background:blue; */
     display: flex;
     align-items: center;
@@ -439,6 +441,7 @@ background-color: transparent;
     letter-spacing: 2px;
     background:var(--light);
     color:white;
+    border: none;
 }
 .not_an_member{
     height:25%;
@@ -446,14 +449,13 @@ background-color: transparent;
     /* background:khaki; */
     display: flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
 }
 .not_an_member > p , .link > p{
     font-size:0.8rem;
     letter-spacing:1px;
     font-family: 'manrope';
     font-weight:700;
-    
 }
 .link > p{
     color:var(--light);
