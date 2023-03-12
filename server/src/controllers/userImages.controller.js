@@ -41,12 +41,6 @@ async function getImages(req, res) {
     const chunks = database.collection("users.chunks");
 
     const cursor = chunks.find({});
-
-    //   if ((await cursor.collection.estimatedDocumentCount()) === 0) {
-    //     return res.status(500).send({
-    //       message: "No files found!",
-    //     });
-    //   }
     let fileInfos = [];
     await cursor.forEach((doc) => {
       fileInfos.push({
@@ -85,10 +79,60 @@ async function getUserImage(req, res) {
     res.status(500).json('internal server error');
   }
 }
+async function getUserImageArr(req, res) {
+  try {
+    const imgArr = [];
+    const userIdArr = req.body.userArray;
+    const database = mongoClient.db("MatchMingo");
+    const userImg = database.collection("users.files");
+    const chunks = database.collection("users.chunks");
+
+    for (let index = 0; index < userIdArr.length; index++) {
+      const image = await userImg.findOne({ filename: { $regex: `pp${userIdArr[index]}`, $options: "i" } });
+      const imageArrBinary = await chunks.findOne({ files_id: image._id })
+      imgArr.push(imageArrBinary)
+      
+    }
+
+    return res.status(200).send(imgArr);
+  }
+  catch (error) {
+    console.log(error)
+    res.status(500).json('internal server error');
+  }
+}
+async function getUserIDImage(req, res) {
+  try {
+    const userId = req.user.id
+    console.log(userId);
+    const database = mongoClient.db("MatchMingo");
+
+    const userImg = database.collection("users.files");
+    const chunks = database.collection("users.chunks");
+
+    const images = userImg.find({ filename: { $regex: `idCard${userId}`, $options: "i" } });
+    const userImgArr = [];
+    for await (const doc of images) {
+      const BinaryImg = await chunks.findOne({ files_id: doc._id })
+      userImgArr.push(
+        BinaryImg
+      );
+
+    }
+    return res.status(200).send(userImgArr);
+
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json('internal server error');
+  }
+}
 
 
 module.exports = {
   saveUserImages,
   getImages,
-  getUserImage
+  getUserImage,
+  getUserImageArr,
+  getUserIDImage
 };

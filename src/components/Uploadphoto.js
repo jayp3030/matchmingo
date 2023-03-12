@@ -36,20 +36,6 @@ export default function Uploadphoto() {
     buttonToggle()
   }, [images]);
 
-  //testing //
-
-  function submitForm(event) {
-    event.preventDefault(); // prevent the default form submission behavior
-    // do any form validation or processing here
-    // use AJAX to submit the form data to the backend URL
-    // for example:
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', `http://localhost:8000/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`);
-    xhr.onload = function () {
-      // handle the response from the server
-    };
-    xhr.send(new FormData(document.getElementById('myForm')));
-  }
 
   const buttonToggle = () => {
     if(document.getElementById("uploadPageBtn")){
@@ -89,8 +75,6 @@ export default function Uploadphoto() {
             <div className="upper">
               <h2>Upload Your Photos</h2>
             </div>
-
-            {console.log(images)}
             <div className="photo_section">
               <div className="photo_section_left">
                 <img src={images[0] && URL.createObjectURL(images[0])} alt="" />
@@ -129,7 +113,6 @@ export default function Uploadphoto() {
                   type="file"
                   name="images"
                   id="input-files"
-                  placeholder="Choose Photo"
                   onChange={handleFileChange}
                   multiple
                 />

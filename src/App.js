@@ -14,6 +14,7 @@ import Test from "./components/Test";
 import MsgLike from "./components/MsgLike";
 import ChatPage from "./components/ChatPage";
 import Uploadphoto from "./components/Uploadphoto";
+import UploadId from "./components/UploadId";
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
             <Route path="/test" element={<Test />} />    
-            <Route path="/photo" element={<Uploadphoto />} />    
+            <Route path="/photo" element={<UploadId />} />    
           </Routes>
         </BrowserRouter>
       </AnimatePresence>

@@ -1,91 +1,98 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-// import ImageUploading from "react-images-uploading"; 
-import upldImg from '../images/uploadPhoto.png'
+import React, { useEffect, useRef, useState } from "react";
+// import ImageUploading from "react-images-uploading";
+import upldImg from "../images/uploadPhoto.png";
+import jwt_decode from "jwt-decode";
+import img from "../images/landingPage03.jpg"
 
-export default function UploadId() {
+export default function Uploadphoto() {
+  const [idImages, setidImages] = useState([])
+  const host = "http://localhost:8000"
+  const [userId, setuserId] = useState();
 
-    const Navigate = useNavigate();
-    const btnRef = useRef(null);
+  const btnRef2 = useRef(null);
 
-    document.getElementById('testDiv') &&document.addEventListener('mousemove', function(event) { 
-    var rect = document.getElementById('testDiv').getBoundingClientRect(); 
-    var x = event.clientX - rect.left; 
-    var y = event.clientY - rect.top; 
-
-     
-    if(x>0 && x<320 && y>0 && y<40 ){
-        document.getElementById("circle").style.display = "block" 
-        document.getElementById("circle").style.top = y + "px";
-        document.getElementById("circle").style.left = x + "px";
-    }
-      else{
-        document.getElementById("circle").style.display = "none" 
-      }
-      
-  }); 
-  const blastCircle=(e)=>{
-    e.preventDefault()
-    document.getElementById("circle").style.backgroundColor = "#2EC4B6"
-
-    setTimeout(() => {
-      Navigate("/verified")
-    }, 1000);
-    
-    document.getElementById("circle").style.transform = "scale(100)"
-    document.getElementById("circle").style.transition = "all 1s ease-out"
-    document.getElementById("sidebar_wrapper").style.opacity = 0 
-    document.getElementById("matchmingoText").style.opacity = 0 
-    
-  }
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    btnRef.current.click();
-    console.log(document.getElementById("input-files2"));
-
-  }
+  const handleSlide = (e) => {
+    e.preventDefault();
+    console.log('clicked2');
+    btnRef2.current.click();
+  
+  };
 
   const handlebackwardSlide = (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform = "translateX(-500vw)";
+    document.getElementById("profile_setup").style.transform =
+      "translateX(-400vw)";
   };
+
+  const handleFileChange2 = (e) => {
+    console.log('changed');
+    setidImages(idImages => [...idImages, e.target.files[0]])
+    
+  };
+
+  useEffect(() => {
+    setInterval(() => {
+      localStorage.getItem("token") &&
+        setuserId(jwt_decode(localStorage.getItem("token")).user.id);
+    }, 5000);
+    // buttonToggle()
+  }, [idImages]);
+
+  const handleUploadPhoto = async (e) => {
+    e.preventDefault()
+    console.log('clicked');
+    // Create a new FormData object
+    const formData = new FormData();
+    // Add each file from the file input to the FormData object
+    for (let i = 0; i < idImages.length; i++) {
+      formData.append('images', idImages[i]);
+    }
+
+    const response = await fetch(`${host}/details/userImages?id=idCard${jwt_decode(localStorage.getItem("token")).user.id}`, {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
+    console.log(json)
+  }
 
   return (
     <>
-      <>
+      {localStorage.getItem("token") && (
         <div className="outer_signup" id="outer_signup">
           <div className="col1"></div>
           <div className="col2">
             <div className="upper">
-              <h2>Upload Your ID</h2>
+              <h2>Upload Your Photos</h2>
+            </div>
+            {console.log(idImages)}
+            <div className="photo_section">
+              <div className="id_section_left">
+                <img src={idImages[0] && URL.createObjectURL(idImages[0])} alt="" />
+              </div>
             </div>
             <form
-                className="photo_section"
-                action = 'http://localhost:8000/details/userImages'
-                method="post"
-                encType="multipart/form-data"
-              >
-                <label 
-                htmlFor="input-files2">
-                  <img src={upldImg} alt="files" /> <br />
-                  Click Here To Select Photo
+              className="photo_section_dummy"
+              id="myForm2"
+            >
+              <label htmlFor="input-files2">
+                <img src={upldImg} alt="files" />
+                Click Here To Select Photo
                 <input
-                type="file"
-                name="image"
-                id="input-files2"
-              />
-                </label>
-                <button ref={btnRef} className='btn_dnone'>submit</button>
-              </form>
-
+                  type="file"
+                  name="images"
+                  id="input-files2"
+                  onChange={handleFileChange2}
+                  multiple
+                />
+              </label>
+              <button ref={btnRef2} onClick={handleUploadPhoto} className="btn_dnone">
+                submit
+              </button>
+            </form>
             <div className="middle">
-              <button className="btn" id="testDiv" onClick={handleSubmit} >
-                <button
-                  className="circle"
-                  id="circle"
-                  // onClick={blastCircle}
-                ></button>
-                <span>Upload</span>
+              <button className="btn" id="uploadPageBtn" onClick={handleSlide}>
+                Upload
               </button>
               <button className="btn_back" onClick={handlebackwardSlide}>
                 Back
@@ -93,7 +100,7 @@ export default function UploadId() {
             </div>
           </div>
         </div>
-      </>
+      )}
     </>
   );
 }
