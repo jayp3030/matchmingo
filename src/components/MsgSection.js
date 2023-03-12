@@ -2,78 +2,85 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import img2 from "../images/landingPage02.jpg";
 import ChatPage from "./ChatPage";
 import Conversation from "./Conversation";
+import jwt_decode from "jwt-decode";
 
 export default function MsgSection() {
   const baseURl = "http://localhost:8000";
 
-  const [user, setUser] = useState([]);
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
   const [sendMessage, setSendMessage] = useState(null);
   const [receiveMessage, setReceiveMessage] = useState(null);
+  const [currentUser, setcurrentUser] = useState()
   const [onlineUsers, setOnlineUsers] = useState([]);
   // ref
-  const socket = useRef;
+  const socket = useRef();
 
   useEffect(() => {
+    setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id)
     socket.current = io("http://localhost:8800");
-    socket.current.emit("new-user-add", user.userId);
+    socket.current.emit("new-user-add", jwt_decode(localStorage.getItem("token")).user.id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-  }, [user]);
+    
+    
+  }, [currentUser]);
 
   // sending message to socket server
   useEffect(() => {
     if (sendMessage !== null) {
       socket.current.emit("send-message", sendMessage);
     }
+    
   }, [sendMessage]);
 
   // receiving message from socket server
+ 
+
+  useEffect(() => {
+    
+    getChats();
+  }, []);
+
+  async function getChats() {
+    // first fetch the owner  ---------> issue
+    const response = await fetch(`${baseURl}/details/getUserDetails`, {
+      method: "GET",
+      headers: { "auth-token": localStorage.getItem("token") },
+    })
+      .then((res) => res.json())
+      .then((result) => fetchChatPartner(result.userId))
+      .catch((err) => err)
+
+    // then fetch its chat partners
+  }
+
+  const fetchChatPartner=async(userId)=>{
+    console.log({userId})
+    const data = await fetch(`${baseURl}/chat/${userId}`) // user must logged in or exist --------- some confusion so letter will done
+        .then((res) => res.json())
+        .then((result) => setChats(result))
+        .catch((err) => err);
+  }
   useEffect(() => {
     socket.current.on(
       "receive-message",
       (data) => {
         setReceiveMessage(data);
       },
-      []
     );
   });
 
-  useEffect(() => {
-    async function getChats() {
-      // first fetch the owner  ---------> issue
-      const response = await fetch(`${baseURl}/details/getUserDetails`, {
-        method: "GET",
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-        .then((res) => res.json())
-        .then((result) => setUser(result))
-        .catch((err) => err);
-        console.log(response);                     // ------ bug ------
-
-      // then fetch its chat partners
-      const data = await fetch(`${baseURl}/chat/${user.userId}`) // user must logged in or exist --------- some confusion so letter will done
-        .then((res) => res.json())
-        .then((result) => setChats(result))
-        .catch((err) => err);
-        console.log(data);                        // -------- bug -----
-    }
-    getChats();
-    console.log(user);
-    console.log(chats);
-    console.log(currentChat);
-  }, []);
-
   return (
     <>
+
       <div className="msg_chat_wrapper">
         <div className="msgs" id="msgs">
-          {chats.map((chat, index) => (
+          {console.log({chats})}
+          {chats && chats.map((chat, index) => (
             <div
               className="msg_container"
               onClick={() => {
@@ -82,9 +89,10 @@ export default function MsgSection() {
                   "translateX(-60vw)";
               }}
             >
+              {console.log(`chat :  `)}
               <Conversation
                 data={chat}
-                currentUserId={user.userId}
+                currentUserId={currentUser}
                 key={index}
               />
             </div>
@@ -93,8 +101,8 @@ export default function MsgSection() {
         <div className="chat_Page">
           <ChatPage
             chat={currentChat}
-            currentUser={user.userId}
-            sendMessage={sendMessage}
+            currentUser={currentUser}
+            setSendMessage={setSendMessage}
             receiveMessage={receiveMessage}
           />
         </div>
