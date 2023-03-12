@@ -488,14 +488,22 @@ input::-webkit-inner-spin-button {
     width: 50% !important;
     height: 100%;
     border: 1px dashed black;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+}
+.id_section_left{
+    width: 100% !important;
+    height: 100%;
+    border: 1px dashed black;
+   
 }
 .photo_section_left img{
     width: 100% !important;
     height: 100% !important;
+    object-fit:contain;
+}
+.id_section_left img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit:contain;
 }
 .photo_section_right{
     width: 50% !important;
@@ -521,6 +529,7 @@ input::-webkit-inner-spin-button {
 .inner_box img{
     width: 100% !important;
     height: 100% !important;
+    object-fit:contain;
 }
 
 /* 
