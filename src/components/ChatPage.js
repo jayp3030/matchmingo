@@ -1,29 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import img from "../images/landingPage03.jpg";
-// import { format } from "timeago.js";
+import { format } from "timeago.js";
 
-
-
-export default function ChatPage({ chat , currentUser , sendMessage , receiveMessage }) {
+export default function ChatPage({
+  chat,
+  currentUser,
+  setSendMessage,
+  receiveMessage,
+}) {
   const baseURl = "http://localhost:8000";
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState({
-    msg_input : "",
+    msg_input: "",
   });
-  const scroll = useRef()
+  const ref = useRef();
 
-  useEffect( () => {
-     if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
-        setMessages([...messages , receiveMessage]);
-     }
-  },[receiveMessage])
-  
   // fetching data for header name  and message...
   useEffect(() => {
     const userIds = chat?.members?.find((id) => id !== currentUser);
-    console.log(userIds);
+    // console.log(userIds);
     async function getUserdata() {
       const res = await fetch(`${baseURl}/details/getUser/${userIds}`)
         .then((res) => res.json())
@@ -43,63 +40,71 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
       }
     }
     if (chat !== null) getMessages();
-    console.log(userData);
-    console.log(messages);
   }, [chat, currentUser]);
+
+  // scroll to the last message
+  useEffect(() => {
+    document.getElementById("chatPage_middle").scrollTop =
+      document.getElementById("chatPage_middle").scrollHeight;
+  }, [messages]);
 
   const handleChange = (e) => {
     e.preventDefault();
-    setNewMessage({...newMessage , [e.target.name]: e.target.value});
+    setNewMessage({ ...newMessage, [e.target.name]: e.target.value });
     console.log(newMessage);
-  }
+  };
 
   const handleSend = async (e) => {
-      e.preventDefault();
-
-      const messageToSend = {
-        senderId : currentUser,
-        text : newMessage.msg_input,
-        chatId : chat._id
+    e.preventDefault();
+    console.log("1");
+    const messageToSend = {
+      senderId: currentUser,
+      text: newMessage.msg_input,
+      chatId: chat._id,
+    };
+    // send message to socket server
+    const receiverId = chat.members.find((id) => id !== currentUser);
+    setSendMessage({ ...messageToSend, receiverId });
+    // send messege to database
+    if (messageToSend.text !== undefined) {
+      try {
+        const response = await fetch(`${baseURl}/message`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(messageToSend),
+        });
+        const json = await response.json();
+        setMessages([...messages, json]);
+        setNewMessage({
+          msg_input: "",
+        });
+      } catch (error) {
+        console.log(error);
       }
-      console.log(messageToSend.text);                  // bug
+    }
+  };
 
-      // send messege to database 
-
-      if (messageToSend.text !== undefined) {           // here is one bug
-        try {
-          const response = await fetch(`${baseURl}/message` , {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(messageToSend),
-          })
-          setMessages([...messages , response]);
-          setNewMessage("");
-          console.log(newMessage);
-          console.log(newMessage);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      // send message to socket server
-
-      const receiverId = chat.members.find( (id) => id !== currentUser);
-      sendMessage( [...messages , receiverId]);
-  }
-
-  // scroll to the last message 
-  useEffect( () => {
-    scroll.current?.scrollIntoView({behaviour : 'smooth'})  /* bug here */
-  },[messages])
+  useEffect(() => {
+    console.log(receiveMessage);
+    if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
+      console.log("3");
+      console.log("seting messages as " + receiveMessage);
+      setMessages([...messages, receiveMessage]);
+      console.log(messages);
+    }
+  }, [receiveMessage]);
 
   return (
     <div className="chatPage">
       <div className="chatPage_upper">
         <div className="chatPage_upper_left">
-          <i className="fa-solid fa-chevron-left" onClick={() => {
+          <i
+            className="fa-solid fa-chevron-left"
+            onClick={() => {
               document.getElementById("msg_like_wrapper").style.transform =
-              "translateX(-30vw)"
-          }} />
+                "translateX(-30vw)";
+            }}
+          />
           <img src={img}></img>
         </div>
         <div className="chatPage_upper_right">
@@ -111,29 +116,45 @@ export default function ChatPage({ chat , currentUser , sendMessage , receiveMes
         </div>
       </div>
       <hr />
-      <div className="chatPage_middle" >
-        {messages.map((message) => (                /*  here is one bug */
-          <>
-            <div className={message.senderId === currentUser ? 'right':'left'}>
-              <p>
-                {message.text}
-              </p>
-              <span className="time_ago">
-                {message.createdAt}
-              </span>
-            </div>
-          </>
-        ))}
-      </div>
+      {messages && (
+        <div className="chatPage_middle" id="chatPage_middle">
+          {messages.map((message, index) => {
+            return (
+              <div ref={ref} key={index}>
+                <div
+                  className={
+                    message.senderId === currentUser ? "right" : "left"
+                  }
+                >
+                  <p>{message.text}</p>
+                  <span className="time_ago">
+                    {format(message.createdAt).split(" ")[0] +
+                      " " +
+                      format(message.createdAt).split(" ")[1][0] +
+                      " " +
+                      format(message.createdAt).split(" ")[2]}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className="chatPage_bottom">
         <div className="chatPage_bottom_suggestions">
-          <p>Hello</p>
+          <p onClick={() => {}}>Hello</p>
           <p>Hello,Baby</p>
           <p>Bye then</p>
         </div>
         <div className="chatPage_bottom_inner">
           <i className="fa-solid fa-camera"></i>
-          <input type="text" placeholder="Message..." onChange={handleChange} name="msg_input"></input>
+          <input
+            type="text"
+            placeholder="Message..."
+            value={newMessage.msg_input}
+            onChange={handleChange}
+            name="msg_input"
+          ></input>
           <i className="fa-solid fa-play" onClick={handleSend}></i>
         </div>
       </div>

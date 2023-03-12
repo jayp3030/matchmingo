@@ -2,99 +2,108 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import img2 from "../images/landingPage02.jpg";
 import ChatPage from "./ChatPage";
 import Conversation from "./Conversation";
+import jwt_decode from "jwt-decode";
 
 export default function MsgSection() {
   const baseURl = "http://localhost:8000";
 
-  const [user, setUser] = useState([]);
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
   const [sendMessage, setSendMessage] = useState(null);
-  const [receiveMessage, setReceiveMessage] = useState(null);
+  const [receiveMessage, setReceiveMessage] = useState([]);
+  const [currentUser, setcurrentUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   // ref
-  const socket = useRef;
+  const socket = useRef();
 
   useEffect(() => {
+    setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id);
     socket.current = io("http://localhost:8800");
-    socket.current.emit("new-user-add", user.userId);
+    socket.current.emit(
+      "new-user-add",
+      jwt_decode(localStorage.getItem("token")).user.id
+    );
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-  }, [user]);
+  }, [currentUser]);
+
+  useEffect(() => {
+    getChats();
+  }, [currentUser]);
+
 
   // sending message to socket server
   useEffect(() => {
     if (sendMessage !== null) {
+      console.log("2");
       socket.current.emit("send-message", sendMessage);
     }
   }, [sendMessage]);
-
+  
   // receiving message from socket server
   useEffect(() => {
-    socket.current.on(
-      "receive-message",
-      (data) => {
-        setReceiveMessage(data);
-      },
-      []
-    );
-  });
+    socket.current.on("receive-message", (data) => {
+      console.log("5");
+      console.log("i am receiving");
+      console.log(data);
 
-  useEffect(() => {
-    async function getChats() {
-      // first fetch the owner  ---------> issue
-      const response = await fetch(`${baseURl}/details/getUserDetails`, {
-        method: "GET",
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-        .then((res) => res.json())
-        .then((result) => setUser(result))
-        .catch((err) => err);
-        console.log(response);                     // ------ bug ------
+      setReceiveMessage(data);
+      console.log("after receive message")
+    });
+  }, [receiveMessage]);
 
-      // then fetch its chat partners
-      const data = await fetch(`${baseURl}/chat/${user.userId}`) // user must logged in or exist --------- some confusion so letter will done
-        .then((res) => res.json())
-        .then((result) => setChats(result))
-        .catch((err) => err);
-        console.log(data);                        // -------- bug -----
-    }
-    getChats();
-    console.log(user);
-    console.log(chats);
-    console.log(currentChat);
-  }, []);
+  async function getChats() {
+    // first fetch the owner
+    const response = await fetch(`${baseURl}/details/getUserDetails`, {
+      method: "GET",
+      headers: { "auth-token": localStorage.getItem("token") },
+    })
+      .then((res) => res.json())
+      .then((result) => fetchChatPartner(result.userId))
+      .catch((err) => err);
+  }
+
+  // then fetch its chat partners
+  const fetchChatPartner = async (userId) => {
+    // console.log({ userId });
+    const data = await fetch(`${baseURl}/chat/${userId}`) // user must logged in or exist
+      .then((res) => res.json())
+      .then((result) => setChats(result))
+      .catch((err) => err);
+  };
 
   return (
     <>
       <div className="msg_chat_wrapper">
         <div className="msgs" id="msgs">
-          {chats.map((chat, index) => (
-            <div
-              className="msg_container"
-              onClick={() => {
-                setCurrentChat(chat);
-                document.getElementById("msg_like_wrapper").style.transform =
-                  "translateX(-60vw)";
-              }}
-            >
-              <Conversation
-                data={chat}
-                currentUserId={user.userId}
+          {console.log('6')}
+          {chats &&
+            chats.map((chat, index) => (
+              <div
                 key={index}
-              />
-            </div>
-          ))}
+                className="msg_container"
+                onClick={() => {
+                  setCurrentChat(chat);
+                  document.getElementById("msg_like_wrapper").style.transform =
+                    "translateX(-60vw)";
+                }}
+              >
+                <Conversation
+                  data={chat}
+                  currentUserId={currentUser}
+                  key={index}
+                />
+              </div>
+            ))}
         </div>
         <div className="chat_Page">
           <ChatPage
             chat={currentChat}
-            currentUser={user.userId}
-            sendMessage={sendMessage}
+            currentUser={currentUser}
+            setSendMessage={setSendMessage}
             receiveMessage={receiveMessage}
           />
         </div>
