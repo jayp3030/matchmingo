@@ -4,6 +4,7 @@ const cors = require('cors');
 const { userAuthRouter } = require('./routes/userAuth.routes');
 const {userRouter} = require("./routes/user.routes")
 const { chatRouter } = require('./routes/chat.routes');
+const { matchRouter } = require('./routes/match.route');
 const imageModel = require('./model/user.model');
 const messageRouter = require('./routes/message.routes');
 
@@ -18,6 +19,7 @@ app.use("/auth",userAuthRouter);
 app.use("/details",userRouter);
 app.use("/chat" , chatRouter);
 app.use('/message' , messageRouter);
+app.use('/match' , matchRouter);
 
 app.get('/uploadedimgs' , async (req ,res) =>{
     const allImg = await imageModel.find();

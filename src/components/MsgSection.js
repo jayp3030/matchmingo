@@ -12,72 +12,72 @@ export default function MsgSection() {
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
   const [sendMessage, setSendMessage] = useState(null);
-  const [receiveMessage, setReceiveMessage] = useState(null);
-  const [currentUser, setcurrentUser] = useState()
+  const [receiveMessage, setReceiveMessage] = useState([]);
+  const [currentUser, setcurrentUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [isMatched, setisMatched] = useState(false)
   // ref
   const socket = useRef();
 
   useEffect(() => {
-    setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id)
+    setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id);
     socket.current = io("http://localhost:8800");
-    socket.current.emit("new-user-add", jwt_decode(localStorage.getItem("token")).user.id);
+    socket.current.emit(
+      "new-user-add",
+      jwt_decode(localStorage.getItem("token")).user.id
+    );
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-    
-    
   }, [currentUser]);
+
+  useEffect(() => {
+    getChats();
+  }, [currentUser]);
+
 
   // sending message to socket server
   useEffect(() => {
     if (sendMessage !== null) {
+      console.log("2");
       socket.current.emit("send-message", sendMessage);
     }
-    
   }, [sendMessage]);
-
+  
   // receiving message from socket server
- 
-
   useEffect(() => {
-    
-    getChats();
-  }, []);
+    socket.current.on("receive-message", (data) => {
+      console.log("5");
+      console.log("i am receiving");
+      console.log(data);
+
+      setReceiveMessage(data);
+      console.log("after receive message")
+    });
+  }, [receiveMessage]);
 
   async function getChats() {
-    // first fetch the owner  ---------> issue
+    // first fetch the owner
     const response = await fetch(`${baseURl}/details/getUserDetails`, {
       method: "GET",
       headers: { "auth-token": localStorage.getItem("token") },
     })
       .then((res) => res.json())
       .then((result) => fetchChatPartner(result.userId))
-      .catch((err) => err)
-
-    // then fetch its chat partners
+      .catch((err) => err);
   }
 
-  const fetchChatPartner=async(userId)=>{
-    console.log({userId})
-    const data = await fetch(`${baseURl}/chat/${userId}`) // user must logged in or exist --------- some confusion so letter will done
-        .then((res) => res.json())
-        .then((result) => setChats(result))
-        .catch((err) => err);
-  }
-  useEffect(() => {
-    socket.current.on(
-      "receive-message",
-      (data) => {
-        setReceiveMessage(data);
-      },
-    );
-  });
+  // then fetch its chat partners
+  const fetchChatPartner = async (userId) => {
+    // console.log({ userId });
+    const data = await fetch(`${baseURl}/chat/${userId}`) // user must logged in or exist
+      .then((res) => res.json())
+      .then((result) => setChats(result))
+      .catch((err) => err);
+  };
 
   return (
     <>
-
       <div className="msg_chat_wrapper">
      { isMatched ?  <div className="msgs" id="msgs">
           {console.log({chats})}
