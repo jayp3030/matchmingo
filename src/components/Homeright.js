@@ -39,24 +39,29 @@ export default function Homeright() {
   };
   var [personalDT, setPersonalDT] = useState([null]);
   var preLoaded = [];
-  // useEffect((e) => {
-  //   var count = 3;
-  //   while (count > 0) {
-  //     axios
-  //       .get("http://localhost:8000/details/getUserDetails/", {
-  //         headers: { "auth-token": localStorage.getItem("token") },
-  //       })
-  //       .then((e) => {
-  //         preLoaded.push(e);
-  //         count--;
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   }
-  //   setPersonalDT([preLoaded[0]]);
-  // }, []);
+ 
+    var count = 3;
+    useEffect(()=>{
+      while (count > 0) {
+        axios
+          .get("http://localhost:8000/details/getUserDetails/", {
+            headers: { "auth-token": localStorage.getItem("token") },
+          })
+          .then((e) => {
+            preLoaded.push(e.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+          count--;
+      }
+      console.log("preloaded =");
+      console.log(preLoaded);
+    })
+    
+   
 
+  
   var [obj, setObj] = useState({
     initial: {
       opacity: 0,
@@ -77,26 +82,25 @@ export default function Homeright() {
   async function setAnimation() {
     var card = document.getElementById("card");
     console.log(card);
-    card.style.marginTop = "-150%";
+    card.style.marginTop = "-200%";
     card.style.transitionDuration = "1s";
     setTimeout(() => {}, 2500);
   }
   async function update() {
     var card = document.getElementById("card");
     await setAnimation();
-    await setWaiting(true);
+    // await setWaiting(true);
     await axios
       .get("http://localhost:8000/details/getUserDetails/", {
         headers: { "auth-token": localStorage.getItem("token") },
       })
       .then(async (e) => {
-        // preLoaded.pop();
-        // preLoaded.push(e);
+        preLoaded.push(e.data);
         setWaiting(false);
-        await setTimeout(() => {
+        setTimeout(() => {
           card.style.marginTop = "0%";
         }, 1000);
-        setPersonalDT([preLoaded[0]]);
+        setPersonalDT([preLoaded.shift()]);
       })
       .catch((e) => {
         console.log(e);
@@ -118,6 +122,8 @@ export default function Homeright() {
       });
 
     // http://localhost:8000/details/getUserImage
+    console.log("preLoaded = ");
+    console.log(preLoaded);
   }
 
   function expand() {
@@ -387,7 +393,7 @@ export default function Homeright() {
                               <div className="userNameAge" id="userNameAge">
                                 {e == null
                                   ? "Data Loading ..."
-                                  : `${e.data.first_name}\n${e.data.last_name}`}
+                                  : `${e.first_name}\n${e.last_name}`}
                               </div>
                               <div className="userBranch" id="userBranch">
                                 CE
@@ -436,7 +442,7 @@ export default function Homeright() {
                                   <p>
                                     {e == null
                                       ? "No Data Available"
-                                      : e.data.gender}
+                                      : e.gender}
                                   </p>
                                 </div>
                                 <hr />
@@ -445,9 +451,9 @@ export default function Homeright() {
                                   <p>
                                     {e == null
                                       ? "No Data Available"
-                                      : e.data.branch}
+                                      : e.branch}
                                   </p>
-                                  <p>{e == null ? "- - -" : e.data.college}</p>
+                                  <p>{e == null ? "- - -" : e.college}</p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
@@ -460,7 +466,7 @@ export default function Homeright() {
                                   <p>
                                     {e == null
                                       ? "Not Specified"
-                                      : e.data.sexual_orientation}
+                                      : e.sexual_orientation}
                                   </p>
                                 </div>
                                 <hr />
@@ -469,7 +475,7 @@ export default function Homeright() {
                                   <p>
                                     {e == null
                                       ? "No Data Available"
-                                      : e.data.gender}
+                                      : e.gender}
                                   </p>
                                 </div>
                                 <hr />
@@ -477,7 +483,7 @@ export default function Homeright() {
                                   <h3>Hobby</h3>
                                   {e == null
                                     ? " . . . "
-                                    : e.data.hobbies.map((e, i) => {
+                                    : e.hobbies.map((e, i) => {
                                         return <p>{e}</p>;
                                       })}
                                 </div>
@@ -485,7 +491,7 @@ export default function Homeright() {
                                 <div className="gender_info">
                                   <h3>Bio</h3>
                                   <p>
-                                    {e == null ? "No Bio Added" : e.data.bio}
+                                    {e == null ? "No Bio Added" : e.bio}
                                   </p>
                                 </div>
                                 <hr />
