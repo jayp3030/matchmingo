@@ -15,11 +15,7 @@ export default function MsgSection() {
   const [receiveMessage, setReceiveMessage] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-<<<<<<< HEAD
   const [fetchedChats, setFetchedChats] = useState([]);
-=======
-  const [isMatched, setisMatched] = useState(false)
->>>>>>> 2e36732d666e5eaaebb3df358722eef223d04e00
   // ref
   const socket = useRef();
 
@@ -128,13 +124,7 @@ export default function MsgSection() {
     <>
     {console.log(fetchedChats)}
       <div className="msg_chat_wrapper">
-<<<<<<< HEAD
-        <div className="msgs" id="msgs">
-          {chats &&
-            chats.map((chat, index) => (
-              <div
-=======
-     { isMatched ?  <div className="msgs" id="msgs">
+     {fetchedChats && fetchedChats.length!==0  ?  <div className="msgs" id="msgs">
           {console.log({chats})}
           {chats && chats.map((chat, index) => (
             <div
@@ -149,7 +139,6 @@ export default function MsgSection() {
               <Conversation
                 data={chat}
                 currentUserId={currentUser}
->>>>>>> 2e36732d666e5eaaebb3df358722eef223d04e00
                 key={index}
               />
             </div>

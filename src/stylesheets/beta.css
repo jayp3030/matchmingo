@@ -241,7 +241,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #E7E7E7;
+    background: var(--light);
     max-width: 13rem;
     padding: .3rem .5rem;
     font-family: 'manrope_light';
@@ -258,7 +258,7 @@ body{
     text-align: left;
   }
   .time_ago{
-    font-size: .6rem;
+    font-size: .5rem;
     font-family: 'manrope_medium';
   }
 
