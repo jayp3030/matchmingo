@@ -106,7 +106,7 @@ export default function Homeright() {
   async function setAnimation() {
     var card = document.getElementById("card");
     console.log(card);
-    card.style.marginTop = "-200%";
+    card.style.marginTop = "-400%";
     card.style.transitionDuration = "1s";
     setTimeout(() => {}, 2500);
   }
@@ -347,19 +347,33 @@ export default function Homeright() {
   async function update() {
     if (cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
       console.log(cardIdArray[IdCount])
-      fetch_data(cardIdArray[IdCount]);
-      getUserImages(cardIdArray[IdCount]);
+      setAnimation();
+      setTimeout(() => {
+        fetch_data(cardIdArray[IdCount]);
+        getUserImages(cardIdArray[IdCount]);
+      }, 1000);
+      setTimeout(() => {
+        const card = document.getElementById('card')
+        card.style.marginTop = "0%";
+      }, 1000);
     }
     else{
-      fetch_data(cardIdArray[IdCount+1]);
-      getUserImages(cardIdArray[IdCount+1 ]);
+      setAnimation()
+      setTimeout(() => {
+        fetch_data(cardIdArray[IdCount]);
+        getUserImages(cardIdArray[IdCount]);
+      }, 1000);
+      setTimeout(() => {
+        
+        const card = document.getElementById('card')
+        card.style.marginTop = "0%";
+      }, 1000);
     }
     setIdCount(IdCount + 1);
   }
 
   return (
     <>
-      {console.log(userCardImgs)}
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
