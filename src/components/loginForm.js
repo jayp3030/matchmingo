@@ -72,9 +72,14 @@ var data_bir_gen={}
             first_name:e.tv.PZ,
             last_name:e.tv.eY,
             email:e.tv.fw
+<<<<<<< HEAD
+        }
+        )
+=======
         })
         console.log("data =");
         console.log(data);
+>>>>>>> ed24a52eb21ad98d309b23423b49aa05a5f3ea09
       })
     }
   
@@ -94,11 +99,19 @@ var data_bir_gen={}
             }
               );
         }) 
+<<<<<<< HEAD
+        console.log("data_combine =");
+        console.log(data_combine);
+      
+=======
        
+>>>>>>> ed24a52eb21ad98d309b23423b49aa05a5f3ea09
       })
   }
   return (
     <>
+    { 
+        console.log(data_bir_gen)}
       <div className="login_form_div">
         <div className="login_form_div_container fcc">
           <div className="login_form_container fcc">

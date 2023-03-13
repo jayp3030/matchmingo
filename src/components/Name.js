@@ -44,7 +44,13 @@ usable_data=data.data;
   }
 
   const handleOnChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    const { value } = e.target;
+    console.log('Input value: ', value);
+ 
+    const re = /^[A-Za-z]+$/;
+    if (value === "" || re.test(value)) {
+      setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    }
   };
 
 
@@ -59,8 +65,22 @@ usable_data=data.data;
           </div>
           <div className="middle">
             <form action="">
-              <input type="text" id='first_name' name="first_name" value={credentials.first_name} onChange={handleOnChange} placeholder="Enter First Name" />
-              <input type="text" id='last_name' name="last_name" value={credentials.last_name} onChange={handleOnChange}  placeholder="Enter Last Name" />
+              <input 
+              type="text" 
+              id='first_name' 
+              name="first_name" 
+              value={credentials.first_name} 
+              onChange={handleOnChange} 
+              placeholder="Enter First Name(Alphabets Only)" 
+              />
+              <input 
+              type="text" 
+              id='last_name' 
+              name="last_name" 
+              value={credentials.last_name} 
+              onChange={handleOnChange}  
+              placeholder="Enter Last Name(Alphabets Only)" 
+              />
               <p className='alert' id='name_page_alert'>Ender Required Fields</p>
               <button className="btn" onClick={handleSubmit}>Next</button>
               <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
