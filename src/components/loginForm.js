@@ -68,12 +68,12 @@ var data_bir_gen={}
             "last_name":e.tv.eY,
             "email":e.tv.fw
           }
-          setData(()=>({
+          setData({
             first_name:e.tv.PZ,
             last_name:e.tv.eY,
             email:e.tv.fw
         }
-        ))
+        )
       })
     }
   
@@ -97,14 +97,15 @@ var data_bir_gen={}
         }) 
         console.log("data_combine =");
         console.log(data_combine);
-        console.log("data_bir_gen =");
-        console.log(data_bir_gen);
+      
       })
   
   
   }
   return (
     <>
+    { 
+        console.log(data_bir_gen)}
       <div className="login_form_div">
         <div className="login_form_div_container fcc">
           <div className="login_form_container fcc">
