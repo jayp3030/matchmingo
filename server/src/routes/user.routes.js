@@ -15,7 +15,8 @@ const {
   getImages,
   getUserImageArr,
   getUserImage,
-  getUserIDImage
+  getUserIDImage,
+  getUserImageById
 } = require("../controllers/userImages.controller");
 
 
@@ -30,11 +31,11 @@ userRouter.post(
   saveUserDetails
 );
 userRouter.get("/getUser/:id", getUser);
-// userRouter.post("/userImages",fetchUser, saveUserImages);
 userRouter.get("/getUserDetails",fetchUser, getUserDetails);
 userRouter.post("/userImages", saveUserImages);
 userRouter.get("/getImages", getImages);
 userRouter.get("/getUserImage",fetchUser, getUserImage);
+userRouter.get("/getUserImagebyId/:id", getUserImageById);
 userRouter.post("/getUserImageArr", getUserImageArr);
 userRouter.get("/getAllGirlsId", getAllGirlsId);
 userRouter.get("/getAllBoysId", getAllBoysId);

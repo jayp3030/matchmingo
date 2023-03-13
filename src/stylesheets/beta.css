@@ -241,7 +241,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--light);
+    background: #E7E7E7;
     max-width: 13rem;
     padding: .3rem .5rem;
     font-family: 'manrope_light';
@@ -252,6 +252,7 @@ body{
   .right p , .right .time_ago{
     width: 100%;
     text-align: right;
+    color: #000;
   }
   .left p, .left .time_ago{
     width: 100%;
@@ -304,6 +305,7 @@ body{
   .chatPage_bottom_inner i{
     margin: 0rem 1rem;
     cursor: pointer;
+    color: #000;
   }
   .chatPage_bottom_inner input{
     width: 100%;
@@ -312,9 +314,11 @@ body{
     border: 2px solid transparent;
     padding: 1rem 0.5rem;
     overflow: auto;
+    color: #000;
   }
   ::placeholder{
     font-family: "manrope";
+    color: #000 ;
   }
   .chatPage_bottom_inner input:focus{
     outline: none;

@@ -83,14 +83,14 @@ export default function MsgSection() {
     if(fetchedChats){
       for (let index = 0; index < fetchedChats.length; index++) {
         createChat(fetchedChats[index])
-        console.log("for lopp running");
+   
         
       }
     }
   },[fetchedChats])
 
   const createChat=async(rcvId)=>{
-    console.log(rcvId);
+
     if(!localStorage.getItem("token")){
       return
     }
@@ -122,10 +122,9 @@ export default function MsgSection() {
 
   return (
     <>
-    {console.log(fetchedChats)}
       <div className="msg_chat_wrapper">
      {fetchedChats && fetchedChats.length!==0  ?  <div className="msgs" id="msgs">
-          {console.log({chats})}
+          
           {chats && chats.map((chat, index) => (
             <div
               className="msg_container"
@@ -135,7 +134,6 @@ export default function MsgSection() {
                   "translateX(-60vw)";
               }}
             >
-              {console.log(`chat :  `)}
               <Conversation
                 data={chat}
                 currentUserId={currentUser}

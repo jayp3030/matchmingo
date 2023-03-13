@@ -21,7 +21,6 @@ export default function LikeSection() {
     setMatches(json)
   }
   const getUserImages = async () => {
-    console.log(matches)
 
     const response = await fetch(`${host}/details/getUserImageArr`, {
       method: "POST",
@@ -47,6 +46,7 @@ export default function LikeSection() {
 
   return (
     <>
+    {console.log(userImgArr)}
       {matches && matches.length!==0 ? <div className="likes">
         {userImgArr && userImgArr.map((img) => {
           return <div className="like_wrapper">
@@ -54,7 +54,6 @@ export default function LikeSection() {
               <img src={`data:image/jpeg;base64,${img && img.data
                 }`} alt="" />
             </div>
-            <p>abc</p>
           </div>
         })}
       </div>

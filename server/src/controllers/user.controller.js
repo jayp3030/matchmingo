@@ -61,7 +61,6 @@ async function getUserDetails(req, res) {
     res.status(500).json("internal server error");
   }
 }
-
 // function to getUser
 async function getUser(req, res) {
   try {
@@ -112,5 +111,6 @@ module.exports = {
   getUserDetails,
   getUser,
   getAllGirlsId,
-  getAllBoysId
+  getAllBoysId,
+  
 };
