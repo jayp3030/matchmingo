@@ -132,6 +132,7 @@ export default function Homeright() {
         console.log(e);
       });
     
+      
     //  setTimeout(()=>{},2000)
    
     await axios
