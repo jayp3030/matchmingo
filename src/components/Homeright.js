@@ -52,7 +52,6 @@ export default function Homeright() {
           })
           .then((e) => {
             preLoaded.push(e.data);
-            // console.log('function completed');
           })
           .catch((e) => {
             console.log(e);
