@@ -112,6 +112,15 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
+@keyframes rotate1 {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(30deg);
+    }
+
+}
 .cursor_outside {
 
     position:relative;
@@ -458,6 +467,15 @@ background-color: transparent;
 }
 .link > p{
     color:var(--light);
+}
+.imageChangeArrowDiv{
+    display: flex;
+    position: absolute;
+    top:45%;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    font-size: 2rem;
 }
 
 /*css ends here */

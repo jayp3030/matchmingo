@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import img2 from "../images/landingPage02.jpg";
+import jwt_decode from "jwt-decode";
 
 export default function Conversation({ data, currentUserId }) {
   const baseURl = "http://localhost:8000";
   const [userData, setUserData] = useState([]);
+  const [convesationPageImg, setConvesationPageImg] = useState([]);
 
   useEffect(() => {
     const userIds = data.members.find((id) => id !== currentUserId);
@@ -14,14 +16,31 @@ export default function Conversation({ data, currentUserId }) {
         .catch((err) => err);
     }
     getUserdata();
+    getUserImages()
   }, []);
+  
+  const getUserImages = async () => {
+
+    const response = await fetch(`${baseURl}/details/getUserImageArr`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+
+      body: JSON.stringify({
+        userArray: [data.members.find((id) => id !== currentUserId)]
+      })
+    });
+    const json = await response.json();
+    setConvesationPageImg(json)
+  }
+  
 
   return (
     <>
       <div className="msg_row">
         <div className="msg_info">
           <div className="msg_img">
-            <img src={img2} alt="" />
+            <img src={`data:image/jpeg;base64,${convesationPageImg[0] && convesationPageImg[0].data
+                }`} alt="" />
           </div>
           <div className="msg_name">
             <h2>

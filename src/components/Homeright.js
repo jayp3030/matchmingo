@@ -1,7 +1,5 @@
 import SwipeListener from "swipe-listener";
 import React, { useEffect, useRef, useState } from "react";
-import img from "../images/landingPage01.jpg";
-import img2 from "../images/landingPage02.jpg";
 import ChatPage from "./ChatPage";
 import { AnimatePresence, animate, motion } from "framer-motion";
 import MsgSection from "./MsgSection";
@@ -11,9 +9,13 @@ import UserInfo from "./UserInfo";
 import axios from "axios";
 import { wait } from "@testing-library/user-event/dist/utils";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function Homeright() {
   const host = "http://localhost:8000";
+  const Navigate = useNavigate();
+  const [cardIdArray, setCardIdArray] = useState([]);
+  const [IdCount, setIdCount] = useState(0);
 
   const moveToLike = () => {
     document.getElementById("msg_like_wrapper").style.transform =
@@ -27,21 +29,62 @@ export default function Homeright() {
     // document.getElementById('home_left_middle_right').style.borderBottom = '2px solid var(--light)'
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    Navigate("/login");
+  };
+
   var [right, setRight] = useState(true);
   var [waiting, setWaiting] = useState(false);
   var [user_image, setUser_image] = useState(null);
   var [l, setL] = useState(5);
-  var [loc, setLoc] = useState({
-    x1: null,
-    y1: null,
-  });
   var b = {
     name: "mayank1",
   };
   var c = {
     name: "mayank2",
   };
-  var [personalDT, setPersonalDT] = useState([null]);
+  var [personalDT, setPersonalDT] = useState([]);
+  var preLoaded = [];
+
+  const fetchAllIdToShow = async (gender) => {
+    const response = await fetch(`${host}/details/getAll${gender}Id`);
+    const json = await response.json();
+    setCardIdArray(json);
+  };
+  async function fetch_data(userId) {
+    const response = await fetch(
+      `http://localhost:8000/details/getUser/${userId.userId}`
+    );
+    const json = await response.json();
+    console.log(json);
+    setPersonalDT([json]);
+  }
+
+  useEffect(() => {
+    getUserDetails();
+    getUserImg();
+  }, []);
+
+  useEffect(() => {
+    console.log(cardIdArray);
+    if (cardIdArray.length !== 0 && cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
+      fetch_data(cardIdArray[IdCount]);
+      getUserImages(cardIdArray[IdCount]);
+      setIdCount(IdCount + 1);
+    }
+  }, [cardIdArray]);
+  useEffect(() => {
+    if (preLoaded.length != 0) {
+      var datta = preLoaded.shift();
+      console.log(datta);
+    }
+  }, [preLoaded]);
+  // var datta = preLoaded.shift();
+  // console.log(datta);
+  // // // setPersonalDT([datta]);
+  // console.log("after shifted preloaded =");
+  // console.log(preLoaded);
 
   var [obj, setObj] = useState({
     initial: {
@@ -63,45 +106,9 @@ export default function Homeright() {
   async function setAnimation() {
     var card = document.getElementById("card");
     console.log(card);
-    card.style.marginTop = "-150%";
+    card.style.marginTop = "-200%";
     card.style.transitionDuration = "1s";
     setTimeout(() => {}, 2500);
-  }
-  async function update() {
-    var card = document.getElementById("card");
-    await setAnimation();
-    await setWaiting(true);
-    await axios
-      .get("http://localhost:8000/details/getUserDetails/", {
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-      .then(async (e) => {
-        setWaiting(false);
-        await setTimeout(() => {
-          card.style.marginTop = "0%";
-        }, 1000);
-        setPersonalDT([e]);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    //  setTimeout(()=>{},2000)
-
-    await axios
-      .get("http://localhost:8000/details/getUserImage/", {
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-      .then((e) => {
-        setUser_image(e.data[0].data);
-        console.log("data of image");
-        console.log(e);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    // http://localhost:8000/details/getUserImage
   }
 
   function expand() {
@@ -224,52 +231,101 @@ export default function Homeright() {
     });
     const json = await response.json();
     setuserProfile(json);
+    if(json.gender==="Male"){
+      fetchAllIdToShow("girls")
+    }
+    else{
+      fetchAllIdToShow("boys")
+    }
   };
-  useEffect(() => {
-    getUserDetails();
-    getUserImg();
-  }, []);
-
+ 
   // function to get user Images
   const [userImgs, setuserImgs] = useState([]);
+  const [userCardImgs, setuserCardImgs] = useState([]);
+
   const getUserImg = async () => {
     const response = await fetch(`${host}/details/getUserImage`, {
       method: "GET",
       headers: { "auth-token": localStorage.getItem("token") },
     });
     const json = await response.json();
-    // console.log(json);
+    console.log(json);
     setuserImgs(json);
   };
 
+  const getUserImages = async (userId) => {
+    console.log(userId);
+    const response = await fetch(`${host}/details/getUserImagebyId/${userId.userId}`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    console.log(json);
+    setuserCardImgs(json);
+  };
+
+  const [imgCount, setImgCount] = useState(0);
+
+  useEffect(() => {
+    displayImage();
+  }, [userCardImgs]);
   function displayImage() {
     var a = document.getElementById("card_left");
-    a.style.backgroundImage = `url(data:image/jpeg;base64,${user_image})`;
+    if (a) {
+      a.style.backgroundImage = `url(data:image/jpeg;base64,${
+        userCardImgs[imgCount] && userCardImgs[imgCount].data
+      })`;
+    }
   }
 
-  const handleLike = async () => {
+  const handleLike = async (userId) => {
     if (!localStorage.getItem("token")) {
       return;
     }
+
     const response = await fetch(`${host}/match/addLike`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         userId: jwt_decode(localStorage.getItem("token")).user.id,
-        id: "6400a8ecc8e9b9648079ca40",
+        id: userId,
       }),
     });
     if (response.ok) {
       console.log("like successfull");
     }
   };
+  const handleImageChangeLeft = () => {
+    console.log("left");
+    if (imgCount === 0) {
+      setImgCount(userImgs.length - imgCount - 1);
+    } else {
+      setImgCount(imgCount - 1);
+    }
+  };
+  const handleImageChangeRight = () => {
+    setImgCount((imgCount + 1) % userImgs.length);
+  };
+
+  async function update() {
+    if (cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
+      console.log(cardIdArray[IdCount])
+      fetch_data(cardIdArray[IdCount]);
+      getUserImages(cardIdArray[IdCount]);
+    }
+    else{
+      fetch_data(cardIdArray[IdCount+1]);
+      getUserImages(cardIdArray[IdCount+1 ]);
+    }
+    setIdCount(IdCount + 1);
+  }
+
   return (
     <>
+      {console.log(userCardImgs)}
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
             <div className="home_left_top_left">
-              {/* {console.log(userImgs)} */}
               <img
                 alt="userPhotos"
                 src={`data:image/jpeg;base64,${
@@ -299,9 +355,11 @@ export default function Homeright() {
             >
               <i className="fa-solid fa-message"></i>Messages
             </div>
+            <button type="reset" onClick={handleLogout}>
+              logout
+            </button>
           </div>
           <div className="home_left_bottom">
-            {/* <ChatPage /> */}
             <MsgLike />
           </div>
         </div>
@@ -359,22 +417,36 @@ export default function Homeright() {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-
-                          // style={{top:i*105+"%",}}
                         >
                           <div
                             className="card_left"
                             id="card_left"
                             onDoubleClick={super_like}
                           >
-                            {user_image == null ? "User Image" : displayImage()}
-                            {/* <img src={img} alt="" /> */}
+                            <div className="imageChangeArrowDiv">
+                              <i
+                                className="bi bi-arrow-left-circle-fill"
+                                onClick={handleImageChangeLeft}
+                              ></i>
+                              <i
+                                className="bi bi-arrow-right-circle-fill"
+                                onClick={handleImageChangeRight}
+                              ></i>
+                            </div>
+
+                            {userCardImgs && displayImage()}
+                            {/* {userCardImgs.map((img,index)=>{
+                              return <img src={`data:image/jpeg;base64,${
+                               img.data
+                              }`} alt="" />
+                            })} */}
                             <div className="userDetails">
                               <div className="userNameAge" id="userNameAge">
                                 {e == null
                                   ? "Data Loading ..."
-                                  : `${e.data.first_name}\n${e.data.last_name}`}
+                                  : `${e.first_name}\n${e.last_name}`}
                               </div>
+
                               <div className="userBranch" id="userBranch">
                                 CE
                               </div>
@@ -398,7 +470,9 @@ export default function Homeright() {
                               <motion.i
                                 whileHover={{ scale: 1.22 }}
                                 className="fa-regular fa-heart"
-                                onClick={handleLike}
+                                onClick={()=>{
+                                  handleLike(e.userId)
+                                }}
                               ></motion.i>
                               <motion.i
                                 whileHover={{ scale: 1.22 }}
@@ -420,20 +494,16 @@ export default function Homeright() {
                                 <div className="gender_info">
                                   <h3>Gender</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.data.gender}
+                                    {e == null ? "No Data Available" : e.gender}
                                   </p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
                                   <h3>Branch & College</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.data.branch}
+                                    {e == null ? "No Data Available" : e.branch}
                                   </p>
-                                  <p>{e == null ? "- - -" : e.data.college}</p>
+                                  <p>{e == null ? "- - -" : e.college}</p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
@@ -446,16 +516,14 @@ export default function Homeright() {
                                   <p>
                                     {e == null
                                       ? "Not Specified"
-                                      : e.data.sexual_orientation}
+                                      : e.sexual_orientation}
                                   </p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
                                   <h3>Gender</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.data.gender}
+                                    {e == null ? "No Data Available" : e.gender}
                                   </p>
                                 </div>
                                 <hr />
@@ -463,16 +531,14 @@ export default function Homeright() {
                                   <h3>Hobby</h3>
                                   {e == null
                                     ? " . . . "
-                                    : e.data.hobbies.map((e, i) => {
+                                    : e.hobbies.map((e, i) => {
                                         return <p>{e}</p>;
                                       })}
                                 </div>
                                 <hr />
                                 <div className="gender_info">
                                   <h3>Bio</h3>
-                                  <p>
-                                    {e == null ? "No Bio Added" : e.data.bio}
-                                  </p>
+                                  <p>{e == null ? "No Bio Added" : e.bio}</p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">

@@ -73,10 +73,8 @@ export default function Age(props) {
               <Select
                 id="gender"
                 className="gender"
-                // value=""
                 options={gender}
                 onChange={handleGender}
-                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
@@ -100,10 +98,8 @@ export default function Age(props) {
               <Select
                 id="sexual_orientation"
                 className="gender"
-                // value=""
                 onChange={handleOrientation}
                 options={sexual_Orientation}
-                value="hello"
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,

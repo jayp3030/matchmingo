@@ -4,10 +4,23 @@ async function createChat(req, res) {
   const { senderId, receiverId } = req.body;
 
   try {
-    const newChat = await chatModel.create({
-      members: [senderId, receiverId],
+    const existChat = await chatModel.find({
+      members : [senderId, receiverId] 
     });
-    res.status(201).json(newChat);
+    const existChatRev = await chatModel.find({
+      members : [receiverId, senderId] 
+    });
+    if (existChat.length === 0 && existChatRev.length === 0) {
+      const newChat = await chatModel.create({
+        members: [senderId, receiverId],
+      });
+    }
+    else
+    {
+      console.log("hello")
+      return
+    }
+    res.status(201).json(true);
   } catch (error) {
     res.status(500).json(error);
   }

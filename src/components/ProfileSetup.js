@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SidePage from "./SidePage";
 import Signup from "./Signup";
 import Name from "./Name";
@@ -9,7 +9,7 @@ import SidePresentation from "./SidePresentation";
 import Uploadphoto from "./Uploadphoto";
 import UploadId from "./UploadId";
 
-
+var context =React.createContext();
 export default function ProfileSetup() {
 
   const getUserID = (token) => {
@@ -21,19 +21,36 @@ export default function ProfileSetup() {
 
     return JSON.parse(jsonPayload);
   }
+  var [data,setData]=useState();
+  var [personal,setPersonal]=useState();
+  var [combine,setCombine]=useState();
+  
+  function handleCallback(data,gen_bir){
+    // console.log("new_data=");
+    // console.log(data);
+    setData(data);
+    setPersonal(gen_bir);
+  // setCombine(...data,...personal);
+  }
+  
   return (
-
     <>
       <SidePage />
+      
       <div className="profile_setup" id="profile_setup">
-        <Signup />
+        <Signup handleCall={handleCallback}/>
+        <context.Provider value={{data,personal}}>
         <Name getUserID={getUserID}/>
         <Age getUserID={getUserID}/>
         <College getUserID={getUserID}/>
         <Hobby getUserID={getUserID}/>
         <Uploadphoto getUserID={getUserID}/>
         <UploadId getUserID={getUserID}/>
+        </context.Provider>
+        
       </div>
     </>
   );
 }
+
+export {context};

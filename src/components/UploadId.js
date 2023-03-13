@@ -15,7 +15,6 @@ export default function Uploadphoto() {
     e.preventDefault();
     console.log('clicked2');
     btnRef2.current.click();
-  
   };
 
   const handlebackwardSlide = (e) => {
