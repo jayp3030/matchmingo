@@ -44,8 +44,8 @@ export default function Homeright() {
   var c = {
     name: "mayank2",
   };
-  var [personalDT, setPersonalDT] = useState([]);
-  var preLoaded = [];
+  var [personalDT, setPersonalDT] = useState([null]);
+
 
   const fetchAllIdToShow = async (gender) => {
     const response = await fetch(`${host}/details/getAll${gender}Id`);
@@ -66,25 +66,21 @@ export default function Homeright() {
     getUserImg();
   }, []);
 
-  useEffect(() => {
-    console.log(cardIdArray);
-    if (cardIdArray.length !== 0 && cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
-      fetch_data(cardIdArray[IdCount]);
-      getUserImages(cardIdArray[IdCount]);
-      setIdCount(IdCount + 1);
-    }
-  }, [cardIdArray]);
-  useEffect(() => {
-    if (preLoaded.length != 0) {
-      var datta = preLoaded.shift();
-      console.log(datta);
-    }
-  }, [preLoaded]);
-  // var datta = preLoaded.shift();
-  // console.log(datta);
-  // // // setPersonalDT([datta]);
-  // console.log("after shifted preloaded =");
-  // console.log(preLoaded);
+  // useEffect(() => {
+  //   console.log(cardIdArray);
+  //   if (cardIdArray.length !== 0 && cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
+  //     fetch_data(cardIdArray[IdCount]);
+  //     getUserImages(cardIdArray[IdCount]);
+  //     setIdCount(IdCount + 1);
+  //   }
+  // }, [cardIdArray]);
+  // useEffect(() => {
+  //   if (preLoaded.length != 0) {
+  //     var datta = preLoaded.shift();
+  //     console.log(datta);
+  //   }
+  // }, [preLoaded]);
+ 
 
   var [obj, setObj] = useState({
     initial: {
@@ -110,63 +106,56 @@ export default function Homeright() {
     card.style.transitionDuration = "1s";
     setTimeout(() => {}, 2500);
   }
-  async function update() {
-    var card = document.getElementById("card");
-    await setAnimation();
-    // await setWaiting(true);
-    await axios
-      .get("http://localhost:8000/details/getUserDetails/", {
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-      .then((e) => {
-        preLoaded.push(e.data);
-        setPersonalDT([preLoaded.shift()]);
-        // setWaiting(false);
-        setTimeout(() => {
-          card.style.marginTop = "0%";
-        }, 1000);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  // async function update() {
+  //   var card = document.getElementById("card");
+  //   await setAnimation();
+  //   // await setWaiting(true);
+  //   await axios
+  //     .get("http://localhost:8000/details/getUserDetails/", {
+  //       headers: { "auth-token": localStorage.getItem("token") },
+  //     })
+  //     .then((e) => {
+  //       preLoaded.push(e.data);
+  //       setPersonalDT([preLoaded.shift()]);
+  //       // setWaiting(false);
+  //       setTimeout(() => {
+  //         card.style.marginTop = "0%";
+  //       }, 1000);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
     
       
-    //  setTimeout(()=>{},2000)
+  //   //  setTimeout(()=>{},2000)
    
-    await axios
-      .get("http://localhost:8000/details/getUserImage/", {
-        headers: { "auth-token": localStorage.getItem("token") },
-      })
-      .then((e) => {
-        setUser_image(e.data[0].data);
-        console.log("data of image");
-        console.log(e);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  //   await axios
+  //     .get("http://localhost:8000/details/getUserImage/", {
+  //       headers: { "auth-token": localStorage.getItem("token") },
+  //     })
+  //     .then((e) => {
+  //       setUser_image(e.data[0].data);
+  //       console.log("data of image");
+  //       console.log(e);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
 
-    // http://localhost:8000/details/getUserImage
-  }
+  //   // http://localhost:8000/details/getUserImage
+  // }
 
   function expand() {
     var count = 0;
     var a = document.getElementById("card_right");
     count = a.style.width;
-    // console.log("width =" + count);
-    // if(count%2!=0 && count!=0){a.style.display = "block";}
-    // else{a.style.display = "none";}
+ 
     if (count == "" || count == "0%") {
       a.style.width = "60%";
-    } //a.style.display = "block";
+    } 
     else {
       a.style.width = "0%";
-    } //a.style.display = "none";
-    // console.log("button clicked");
-
-    // console.log(count);
-
-    // a.style.width="60% !important";
+    } 
   }
 
   window.addEventListener("keydown", async (e) => {
@@ -364,7 +353,6 @@ export default function Homeright() {
         getUserImages(cardIdArray[IdCount]);
       }, 1000);
       setTimeout(() => {
-        
         const card = document.getElementById('card')
         card.style.marginTop = "0%";
       }, 1000);
