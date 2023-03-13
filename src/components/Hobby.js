@@ -76,8 +76,6 @@ export default function Hobby(props) {
               <p className='alert dnone' id="hobby_limit_alert">Maximum 5 hobbies allowed</p>
               <div className='hobbies_container'>
                 <div className='hobby_input_div'>
-                  
-
                   <input type="text" name='hobby' id='hobbyInput' value={hobby} onChange={handleHobby} placeholder="Enter Your hobbies" />
                   <button className='empty_btn' onClick={addHobby}><i className="fa-solid fa-circle-plus"></i></button>
                 </div>
@@ -89,7 +87,7 @@ export default function Hobby(props) {
                 </div>
               </div>
               <h4>Describe Yourself</h4>
-              <textarea type="text" id='bio' name='bio' value={bio} onChange={handleOnChange} className='bioInput' placeholder="Bio (optional )" />
+              <textarea type="text" id='bio' name='bio' value={bio} onChange={handleOnChange} className='bioInput' placeholder="Bio (optional )" rows='3' />
                   <p className='alert' id='hobby_page_alert'>Please enter atleast 1 hobby</p>
               <button className="btn" onClick={handleSubmit} >Next</button>
               <button className="btn_back" onClick={handlebackwardSlide} >Back</button>

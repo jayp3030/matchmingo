@@ -15,6 +15,7 @@ export default function MsgSection() {
   const [receiveMessage, setReceiveMessage] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
+  const [isMatched, setisMatched] = useState(false)
   // ref
   const socket = useRef();
 
@@ -78,27 +79,30 @@ export default function MsgSection() {
   return (
     <>
       <div className="msg_chat_wrapper">
-        <div className="msgs" id="msgs">
-          {console.log('6')}
-          {chats &&
-            chats.map((chat, index) => (
-              <div
+     { isMatched ?  <div className="msgs" id="msgs">
+          {console.log({chats})}
+          {chats && chats.map((chat, index) => (
+            <div
+              className="msg_container"
+              onClick={() => {
+                setCurrentChat(chat);
+                document.getElementById("msg_like_wrapper").style.transform =
+                  "translateX(-60vw)";
+              }}
+            >
+              {console.log(`chat :  `)}
+              <Conversation
+                data={chat}
+                currentUserId={currentUser}
                 key={index}
-                className="msg_container"
-                onClick={() => {
-                  setCurrentChat(chat);
-                  document.getElementById("msg_like_wrapper").style.transform =
-                    "translateX(-60vw)";
-                }}
-              >
-                <Conversation
-                  data={chat}
-                  currentUserId={currentUser}
-                  key={index}
-                />
-              </div>
-            ))}
-        </div>
+              />
+            </div>
+          ))}
+        </div>  : <div className="msgs notMatched" id="msgs notMathced">
+          <h2>
+            Find Your Match to Start Conversation
+          </h2>
+        </div>}
         <div className="chat_Page">
           <ChatPage
             chat={currentChat}
@@ -111,3 +115,23 @@ export default function MsgSection() {
     </>
   );
 }
+     {/* <div className="msgs" id="msgs">
+          {console.log({chats})}
+          {chats && chats.map((chat, index) => (
+            <div
+              className="msg_container"
+              onClick={() => {
+                setCurrentChat(chat);
+                document.getElementById("msg_like_wrapper").style.transform =
+                  "translateX(-60vw)";
+              }}
+            >
+              {console.log(`chat :  `)}
+              <Conversation
+                data={chat}
+                currentUserId={currentUser}
+                key={index}
+              />
+            </div>
+          ))}
+        </div> */}
