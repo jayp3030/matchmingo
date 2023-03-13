@@ -39,7 +39,6 @@ userRouter.get("/getUserImagebyId/:id", getUserImageById);
 userRouter.post("/getUserImageArr", getUserImageArr);
 userRouter.get("/getAllGirlsId", getAllGirlsId);
 userRouter.get("/getAllBoysId", getAllBoysId);
-
 userRouter.get('/getUserIDImage',fetchUser, getUserIDImage)
 
 module.exports = {
