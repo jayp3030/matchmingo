@@ -88,9 +88,12 @@ async function getUserImageArr(req, res) {
     const chunks = database.collection("users.chunks");
 
     for (let index = 0; index < userIdArr.length; index++) {
-      const image = await userImg.findOne({ filename: { $regex: `pp${userIdArr[index]}`, $options: "i" } });
-      const imageArrBinary = await chunks.findOne({ files_id: image._id })
-      imgArr.push(imageArrBinary)
+      const image = await userImg.findOne({ filename: { $regex: `${userIdArr[index]}`, $options: "i" } });
+      if(image){
+
+        const imageArrBinary = await chunks.findOne({ files_id: image._id })
+        imgArr.push(imageArrBinary)
+      }
       
     }
 

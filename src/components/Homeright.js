@@ -11,9 +11,11 @@ import UserInfo from "./UserInfo";
 import axios from "axios";
 import { wait } from "@testing-library/user-event/dist/utils";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function Homeright() {
   const host = "http://localhost:8000";
+  const Navigate = useNavigate();
 
   const moveToLike = () => {
     document.getElementById("msg_like_wrapper").style.transform =
@@ -26,6 +28,11 @@ export default function Homeright() {
       "translateX(-30vw)";
     // document.getElementById('home_left_middle_right').style.borderBottom = '2px solid var(--light)'
   };
+
+  const handleLogout=()=>{
+    localStorage.removeItem("token")
+    Navigate("/login")
+  }
 
   var [right, setRight] = useState(true);
   var [waiting, setWaiting] = useState(false);
@@ -93,7 +100,7 @@ export default function Homeright() {
         headers: { "auth-token": localStorage.getItem("token") },
       })
       .then((e) => {
-        setUser_image(e.data[0].data);
+        setUser_image(e.data);
         console.log("data of image");
         console.log(e);
       })
@@ -242,15 +249,18 @@ export default function Homeright() {
     setuserImgs(json);
   };
 
+  const[imgCount,setImgCount]= useState(0)
+
   function displayImage() {
     var a = document.getElementById("card_left");
-    a.style.backgroundImage = `url(data:image/jpeg;base64,${user_image})`;
+    a.style.backgroundImage = `url(data:image/jpeg;base64,${user_image[imgCount].data})`;
   }
 
   const handleLike = async () => {
     if (!localStorage.getItem("token")) {
       return;
     }
+    
     const response = await fetch(`${host}/match/addLike`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -263,13 +273,24 @@ export default function Homeright() {
       console.log("like successfull");
     }
   };
+  const handleImageChangeLeft = ()=>{
+    if(imgCount===0){
+      setImgCount((userImgs.length-imgCount-1))
+    }
+    else{
+      setImgCount(imgCount-1)
+    }
+
+  }
+  const handleImageChangeRight = ()=>{
+    setImgCount((imgCount+1)%userImgs.length)
+  }
   return (
     <>
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
             <div className="home_left_top_left">
-              {/* {console.log(userImgs)} */}
               <img
                 alt="userPhotos"
                 src={`data:image/jpeg;base64,${
@@ -299,9 +320,9 @@ export default function Homeright() {
             >
               <i className="fa-solid fa-message"></i>Messages
             </div>
+            <button type="reset" onClick={handleLogout}>logout</button>
           </div>
           <div className="home_left_bottom">
-            {/* <ChatPage /> */}
             <MsgLike />
           </div>
         </div>
@@ -367,6 +388,12 @@ export default function Homeright() {
                             id="card_left"
                             onDoubleClick={super_like}
                           >
+                            <div className="imageChangeArrowDiv">
+
+                            <i class="bi bi-arrow-left-circle-fill" onClick={handleImageChangeLeft}></i>
+                            <i class="bi bi-arrow-right-circle-fill" onClick={handleImageChangeRight}></i>
+                            </div>
+                            
                             {user_image == null ? "User Image" : displayImage()}
                             {/* <img src={img} alt="" /> */}
                             <div className="userDetails">
@@ -375,6 +402,7 @@ export default function Homeright() {
                                   ? "Data Loading ..."
                                   : `${e.data.first_name}\n${e.data.last_name}`}
                               </div>
+                              
                               <div className="userBranch" id="userBranch">
                                 CE
                               </div>

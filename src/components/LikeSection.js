@@ -41,7 +41,6 @@ export default function LikeSection() {
 
   useEffect(()=>{
     if(matches){
-
       getUserImages()
     }
   },[matches])

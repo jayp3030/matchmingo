@@ -74,8 +74,43 @@ async function getUser(req, res) {
   }
 }
 
+async function getAllGirlsId(req, res) {
+  try{
+    const userDetail = await usersInfo.find({
+      gender: "Female",
+    },{
+      userId:1,_id:0
+    });
+    res.status(200).json(userDetail);
+  }
+  
+   catch (error) {
+    console.log(error.message);
+    res.status(500).json("internal server error");
+  }
+}
+async function getAllBoysId(req, res) {
+  try{
+    const userDetail = await usersInfo.find({
+      gender: "Male",
+    },{
+      userId:1,_id:0
+    });
+    res.status(200).json(userDetail);
+  }
+  
+   catch (error) {
+    console.log(error.message);
+    res.status(500).json("internal server error");
+  }
+}
+
+
+
 module.exports = {
   saveUserDetails,
   getUserDetails,
   getUser,
+  getAllGirlsId,
+  getAllBoysId
 };
