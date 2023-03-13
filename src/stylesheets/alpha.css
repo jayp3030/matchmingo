@@ -248,7 +248,16 @@ input{
 .google_btn div {
     letter-spacing: 1px;
 }
-
+.bioInput{
+    padding: .2rem .4rem;
+    width: 100%;
+    height: 100%;
+    font-family: 'manrope_light';
+    margin-top: 1rem;
+}
+.bioInput:focus{
+    outline: 1px solid var(--accent);
+}
 .google_logo {
     height: 1.5rem;
     width: 1.5rem;
@@ -404,6 +413,7 @@ input::-webkit-inner-spin-button {
 /* .hobbies_container{
     border: 2px solid red;
 } */
+
 .hobbyArray {
     border: 1px solid var(--light);
     color: var(--light);
@@ -413,6 +423,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
     padding: 0.2rem 0.5rem;
     margin-right: 0.5rem;
+    margin-bottom: .5rem;
 }
 
 .hobbyArray i {
@@ -423,18 +434,24 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    border: 1px solid rgba(132, 132, 132, 0.8);
+    height: 2.5rem;
+    margin: 1rem 0;
 }
-
 #hobbyInput {
-    margin-top: 0;
-
+    margin:  auto 0;
+    border: none;
+    height: 100%;
+    font-size: .8rem;
 }
 
 .hobby_input_div i {
     font-size: 1.5rem;
     color: var(--light);
-    margin-left: 0.5rem;
+    margin: auto 0.5rem;
+}
+.hobby_input_div i:hover {
+    color: var(--primary);
 }
 
 .hobbyArrayDiv {
@@ -808,6 +825,18 @@ label {
     width: 30vw;
     height: 100%;
     /* transition: all .5s ease-in-out; */
+}
+.notMatched{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+.notMatched h2{
+    font-size: 1rem;
+    text-align: center;
+    font-family: 'manrope_light';
+    color: #757575;
 }
 .chat_Page{
     width: 30vw;
