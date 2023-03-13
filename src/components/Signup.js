@@ -152,7 +152,7 @@ export default function Signup(props) {
               Already Member? <a href="/login">Find Your Match</a>
             </h5>
             <div className="modes">
-                <button onClick={changeMode}>dark mode</button>
+                <button className="btn" onClick={changeMode}>dark mode</button>
             </div> 
           </div>
         </div>

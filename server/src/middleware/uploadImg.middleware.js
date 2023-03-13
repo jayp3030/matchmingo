@@ -7,6 +7,7 @@ var storage = new GridFsStorage({
   url: 'mongodb://0.0.0.0:27017/MatchMingo',
   options: { useNewUrlParser: true, useUnifiedTopology: true },
   file: (req,file) => {
+    console.log(file)
     const id = req.query.id;
     const match = ["image/png", "image/jpeg"];
     if (match.indexOf(file.mimetype) === -1) {

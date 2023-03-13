@@ -62,7 +62,7 @@ async function getUserImage(req, res) {
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
 
-    const images = userImg.find({ filename: { $regex: userId, $options: "i" } });
+    const images = userImg.find({ filename: { $regex: userId, $options: "i" } }); //array of images starting with userId
     const userImgArr = [];
     for await (const doc of images) {
       const BinaryImg = await chunks.findOne({ files_id: doc._id })
@@ -79,22 +79,49 @@ async function getUserImage(req, res) {
     res.status(500).json('internal server error');
   }
 }
+async function getUserImageById(req, res) {
+  try {
+    const userId = req.params.id
+    console.log(userId);
+    const database = mongoClient.db("MatchMingo");
+
+    const userImg = database.collection("users.files");
+    const chunks = database.collection("users.chunks");
+
+    const images = userImg.find({ filename: { $regex: userId, $options: "i" } }); //array of images starting with userId
+    const userImgArr = [];
+    for await (const doc of images) {
+      const BinaryImg = await chunks.findOne({ files_id: doc._id })
+      userImgArr.push(
+        BinaryImg
+      );
+
+    }
+    return res.status(200).send(userImgArr);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json('internal server error');
+  }
+}
 async function getUserImageArr(req, res) {
   try {
-    const imgArr = [];
     const userIdArr = req.body.userArray;
     const database = mongoClient.db("MatchMingo");
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
+    console.log(userIdArr)
+    const userImgArr = []
 
     for (let index = 0; index < userIdArr.length; index++) {
-      const image = await userImg.findOne({ filename: { $regex: `pp${userIdArr[index]}`, $options: "i" } });
-      const imageArrBinary = await chunks.findOne({ files_id: image._id })
-      imgArr.push(imageArrBinary)
-      
+      const image = await userImg.findOne({ filename: { $regex: `${userIdArr[index]}`, $options: "i" } }); 
+      const BinaryImg = await chunks.findOne({ files_id: image._id })
+       userImgArr.push(
+        BinaryImg
+      );
+      console.log("1")
+      return res.status(200).send(userImgArr);
     }
-
-    return res.status(200).send(imgArr);
+      
   }
   catch (error) {
     console.log(error)
@@ -104,7 +131,6 @@ async function getUserImageArr(req, res) {
 async function getUserIDImage(req, res) {
   try {
     const userId = req.user.id
-    console.log(userId);
     const database = mongoClient.db("MatchMingo");
 
     const userImg = database.collection("users.files");
@@ -133,6 +159,7 @@ module.exports = {
   saveUserImages,
   getImages,
   getUserImage,
+  getUserImageById,
   getUserImageArr,
   getUserIDImage
 };
