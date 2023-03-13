@@ -110,6 +110,44 @@ export default function Homeright() {
     card.style.transitionDuration = "1s";
     setTimeout(() => {}, 2500);
   }
+  async function update() {
+    var card = document.getElementById("card");
+    await setAnimation();
+    // await setWaiting(true);
+    await axios
+      .get("http://localhost:8000/details/getUserDetails/", {
+        headers: { "auth-token": localStorage.getItem("token") },
+      })
+      .then((e) => {
+        preLoaded.push(e.data);
+        setPersonalDT([preLoaded.shift()]);
+        // setWaiting(false);
+        setTimeout(() => {
+          card.style.marginTop = "0%";
+        }, 1000);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    
+      
+    //  setTimeout(()=>{},2000)
+   
+    await axios
+      .get("http://localhost:8000/details/getUserImage/", {
+        headers: { "auth-token": localStorage.getItem("token") },
+      })
+      .then((e) => {
+        setUser_image(e.data[0].data);
+        console.log("data of image");
+        console.log(e);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    // http://localhost:8000/details/getUserImage
+  }
 
   function expand() {
     var count = 0;
