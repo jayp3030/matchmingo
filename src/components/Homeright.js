@@ -44,13 +44,16 @@ export default function Homeright() {
   var c = {
     name: "mayank2",
   };
-  var [personalDT, setPersonalDT] = useState([null]);
-  var preLoaded = [];
- 
-    var count = 3;
-    useEffect(()=>{
+  var [personalDT, setPersonalDT] = useState([]);
+  var preLoaded=[];
+
+  useEffect(() => {
+    async function fetch_data() {
+      // console.log("loop " + count);
+      // console.log(preLoaded);
+      var count = 3;
       while (count > 0) {
-        axios
+        await axios
           .get("http://localhost:8000/details/getUserDetails/", {
             headers: { "auth-token": localStorage.getItem("token") },
           })
@@ -60,15 +63,38 @@ export default function Homeright() {
           .catch((e) => {
             console.log(e);
           });
-          count--;
+        count--;
       }
       console.log("preloaded =");
-      console.log(preLoaded);
-    })
-    
-   
+      console.log(preLoaded , preLoaded.length);
+      setPersonalDT([preLoaded.shift()])
+      console.log("preloaded after=");
+      console.log(preLoaded , preLoaded.length);
+    }
+    fetch_data();
+    // console.log("preloaded =");
+    // console.log(preLoaded , preLoaded.length);
+    // console.log(preLoaded.length);
+    // console.log(preLoaded);
+    // console.log(preLoaded.shift());
+    // setPersonalDT([datta]);
+    console.log("after shifted preloaded =");
+    console.log(preLoaded.length);
+    // console.log("hello ,world");
+  }, []);
+  useEffect(()=>{
+    console.log(" preloaded  " + preLoaded.length);
+ if(preLoaded.length!=0){
+  var datta = preLoaded.shift();
+  console.log(datta);
+ }
+  },[preLoaded])
+  // var datta = preLoaded.shift();
+  // console.log(datta);
+  // // // setPersonalDT([datta]);
+  // console.log("after shifted preloaded =");
+  // console.log(preLoaded);
 
-  
   var [obj, setObj] = useState({
     initial: {
       opacity: 0,
@@ -101,20 +127,20 @@ export default function Homeright() {
       .get("http://localhost:8000/details/getUserDetails/", {
         headers: { "auth-token": localStorage.getItem("token") },
       })
-      .then(async (e) => {
+      .then((e) => {
         preLoaded.push(e.data);
-        setWaiting(false);
+        setPersonalDT([preLoaded.shift()]);
+        // setWaiting(false);
         setTimeout(() => {
           card.style.marginTop = "0%";
         }, 1000);
-        setPersonalDT([preLoaded.shift()]);
       })
       .catch((e) => {
         console.log(e);
       });
-
+    
     //  setTimeout(()=>{},2000)
-
+   
     await axios
       .get("http://localhost:8000/details/getUserImage/", {
         headers: { "auth-token": localStorage.getItem("token") },
@@ -129,8 +155,6 @@ export default function Homeright() {
       });
 
     // http://localhost:8000/details/getUserImage
-    console.log("preLoaded = ");
-    console.log(preLoaded);
   }
 
   function expand() {
@@ -468,18 +492,14 @@ export default function Homeright() {
                                 <div className="gender_info">
                                   <h3>Gender</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.gender}
+                                    {e == null ? "No Data Available" : e.gender}
                                   </p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
                                   <h3>Branch & College</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.branch}
+                                    {e == null ? "No Data Available" : e.branch}
                                   </p>
                                   <p>{e == null ? "- - -" : e.college}</p>
                                 </div>
@@ -501,9 +521,7 @@ export default function Homeright() {
                                 <div className="gender_info">
                                   <h3>Gender</h3>
                                   <p>
-                                    {e == null
-                                      ? "No Data Available"
-                                      : e.gender}
+                                    {e == null ? "No Data Available" : e.gender}
                                   </p>
                                 </div>
                                 <hr />
@@ -518,9 +536,7 @@ export default function Homeright() {
                                 <hr />
                                 <div className="gender_info">
                                   <h3>Bio</h3>
-                                  <p>
-                                    {e == null ? "No Bio Added" : e.bio}
-                                  </p>
+                                  <p>{e == null ? "No Bio Added" : e.bio}</p>
                                 </div>
                                 <hr />
                                 <div className="gender_info">
