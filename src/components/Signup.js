@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
+
 var data_context=React.createContext();
 
 export default function Signup(props) {
 
   const Navigate = useNavigate();
-  const host = "http://localhost:8000";
+  const host = process.env.REACT_APP_BASEURL
+  console.log(host);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",

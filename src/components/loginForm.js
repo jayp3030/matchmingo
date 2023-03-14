@@ -13,7 +13,7 @@ var data_combine={};
 var data_bir_gen={}
 
   const Navigate = useNavigate();
-  const host = "http://localhost:8000";
+  const host = process.env.REACT_APP_BASEURL
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",

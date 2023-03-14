@@ -17,7 +17,7 @@ export default function EditProfile() {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const host = "http://localhost:8000";
+  const host = process.env.REACT_APP_BASEURL
 
   const [fetchedData, setFetchedData] = useState([]);
 

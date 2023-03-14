@@ -6,7 +6,7 @@ import img from "../images/landingPage03.jpg"
 
 export default function Uploadphoto() {
   const [idImages, setidImages] = useState([])
-  const host = "http://localhost:8000"
+  const host = process.env.REACT_APP_BASEURL
   const [userId, setuserId] = useState();
 
   const btnRef2 = useRef(null);
