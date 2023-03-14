@@ -12,6 +12,7 @@ export default function ChatPage({
   const baseURl = "http://localhost:8000";
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [convesationPageImg, setConvesationPageImg] = useState([]);
   const [newMessage, setNewMessage] = useState({
     msg_input: "",
   });
@@ -83,16 +84,29 @@ export default function ChatPage({
       }
     }
   };
+  const getUserImages = async () => {
+
+    const response = await fetch(`${baseURl}/details/getUserImageArr`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+
+      body: JSON.stringify({
+        userArray: [chat.members.find((id) => id !== currentUser)]
+      })
+    });
+    const json = await response.json();
+    setConvesationPageImg(json)
+  }
+  
 
   useEffect(() => {
-    console.log(receiveMessage);
     if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
-      console.log("3");
-      console.log("seting messages as " + receiveMessage);
       setMessages([...messages, receiveMessage]);
-      console.log(messages);
     }
   }, [receiveMessage]);
+  useEffect(()=>{
+    getUserImages()
+  })
 
   return (
     <div className="chatPage">
@@ -105,7 +119,8 @@ export default function ChatPage({
                 "translateX(-30vw)";
             }}
           />
-          <img src={img}></img>
+          <img alt="userImage" src={`data:image/jpeg;base64,${convesationPageImg[0] && convesationPageImg[0].data
+                }`}></img>
         </div>
         <div className="chatPage_upper_right">
           <h4>{userData && userData.first_name + " " + userData.last_name}</h4>
@@ -129,7 +144,6 @@ export default function ChatPage({
                   <p>{message.text}</p>
                   <span className="time_ago">
                     {format(message.createdAt).split(" ")[0] +
-                      " " +
                       format(message.createdAt).split(" ")[1][0] +
                       " " +
                       format(message.createdAt).split(" ")[2]}
@@ -141,13 +155,13 @@ export default function ChatPage({
         </div>
       )}
       <div className="chatPage_bottom">
-        <div className="chatPage_bottom_suggestions">
+        {/* <div className="chatPage_bottom_suggestions">
           <p onClick={() => {}}>Hello</p>
           <p>Hello,Baby</p>
           <p>Bye then</p>
-        </div>
+        </div> */}
         <div className="chatPage_bottom_inner">
-          <i className="fa-solid fa-camera"></i>
+          {/* <i className="fa-solid fa-camera"></i> */}
           <input
             type="text"
             placeholder="Message..."

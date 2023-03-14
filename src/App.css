@@ -1,8 +1,9 @@
 @import url("./stylesheets/beta.css");
 @import url("./stylesheets/gamma.css");
 @import url("./stylesheets/alpha.css");
-/* @import url("./stylesheets/mobile.css"); */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url("./stylesheets/mobile_alpha.css");
+@import url("./stylesheets/mobile.css");
 #root{
   overflow-anchor: none;
   /* overflow:hidden;  */

@@ -7,8 +7,6 @@ export default function LikeSection() {
   const host = "http://localhost:8000"
   const [matches, setMatches] = useState()
   const [userImgArr, setUserImgArr] = useState()
-  const [isLiked, setisLiked] = useState(false
-    )
 
 
   const fetchMatches = async () => {
@@ -23,7 +21,6 @@ export default function LikeSection() {
     setMatches(json)
   }
   const getUserImages = async () => {
-    console.log(matches)
 
     const response = await fetch(`${host}/details/getUserImageArr`, {
       method: "POST",
@@ -43,21 +40,20 @@ export default function LikeSection() {
 
   useEffect(() => {
     if (matches) {
-
       getUserImages()
     }
   }, [matches])
 
   return (
     <>
-      {isLiked ? <div className="likes">
+    {console.log(userImgArr)}
+      {matches && matches.length!==0 ? <div className="likes">
         {userImgArr && userImgArr.map((img) => {
           return <div className="like_wrapper">
             <div className="img_card">
               <img src={`data:image/jpeg;base64,${img && img.data
                 }`} alt="" />
             </div>
-            <p>abc</p>
           </div>
         })}
       </div>

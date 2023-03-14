@@ -91,6 +91,7 @@ export default function College(props) {
             <h4>Select Your College</h4>
             <Select
                 className="gender"
+                id="gender_college"
                 // defaultValue={selectedOption}
                 onChange={handleCollege}
                 options={collage}
@@ -116,6 +117,7 @@ export default function College(props) {
             <h4>Select Branch</h4>
             <Select
                 className="gender"
+                id="gender_college"
                 // defaultValue={selectedOption}
                 onChange={handleBranch}
                 options={branch}
@@ -142,6 +144,7 @@ export default function College(props) {
             <Select
                 className="gender"
                 // defaultValue={selectedOption}
+                id="gender_college"
                 onChange={handleCPassYear}
                 options={passout_year}
                 styles={{

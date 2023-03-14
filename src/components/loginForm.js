@@ -93,9 +93,7 @@ var data_bir_gen={}
             }
               );
         }) 
-        console.log("data_combine =");
-        console.log(data_combine);
-      
+       
       })
   }
   return (

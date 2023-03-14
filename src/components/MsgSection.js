@@ -15,7 +15,7 @@ export default function MsgSection() {
   const [receiveMessage, setReceiveMessage] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [isMatched, setisMatched] = useState(false)
+  const [fetchedChats, setFetchedChats] = useState([]);
   // ref
   const socket = useRef();
 
@@ -67,6 +67,46 @@ export default function MsgSection() {
       .catch((err) => err);
   }
 
+  // function to fetch userId of matched users
+  const fetchChats=async()=>{
+    if(!localStorage.getItem("token")){
+      return
+    }
+    const response = await fetch(`${baseURl}/match/fetchMatch?id=${jwt_decode(localStorage.getItem("token")).user.id}`,{
+      method : "GET",
+      headers: { "Content-Type": "application/json" }
+    })
+    const json = await response.json()
+    setFetchedChats(json)
+  }
+  useEffect(()=>{
+    if(fetchedChats){
+      for (let index = 0; index < fetchedChats.length; index++) {
+        createChat(fetchedChats[index])
+   
+        
+      }
+    }
+  },[fetchedChats])
+
+  const createChat=async(rcvId)=>{
+
+    if(!localStorage.getItem("token")){
+      return
+    }
+    const response = await fetch(`${baseURl}/chat`,{
+      method : "POST",
+      headers: { "Content-Type": "application/json" },
+      body :JSON.stringify({
+        senderId:jwt_decode(localStorage.getItem("token")).user.id,
+        receiverId:rcvId
+      })
+    })
+    const json = await response.json()
+    setFetchedChats(json)
+    console.log(json);
+  }
+
   // then fetch its chat partners
   const fetchChatPartner = async (userId) => {
     // console.log({ userId });
@@ -76,10 +116,15 @@ export default function MsgSection() {
       .catch((err) => err);
   };
 
+  useEffect(()=>{
+    fetchChats()
+  },[])
+
   return (
     <>
       <div className="msg_chat_wrapper">
-     { isMatched ?  <div className="msgs" id="msgs">
+     {fetchedChats && fetchedChats.length!==0  ?  <div className="msgs" id="msgs">
+          
           {chats && chats.map((chat, index) => (
             <div
               className="msg_container"
@@ -89,7 +134,6 @@ export default function MsgSection() {
                   "translateX(-60vw)";
               }}
             >
-              {console.log(`chat :  `)}
               <Conversation
                 data={chat}
                 currentUserId={currentUser}
