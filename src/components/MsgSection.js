@@ -7,7 +7,7 @@ import Conversation from "./Conversation";
 import jwt_decode from "jwt-decode";
 
 export default function MsgSection() {
-  const baseURl = "http://localhost:8000";
+  const baseURl = process.env.REACT_APP_BASEURL
 
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);

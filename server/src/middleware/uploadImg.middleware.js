@@ -5,9 +5,8 @@ const sharp = require('sharp')
 
 
 var storage = new GridFsStorage({
-  url: 'mongodb://0.0.0.0:27017/MatchMingo',
+  url: 'mongodb+srv://matchmingo:dhruwang@clustermm.t9rtc3r.mongodb.net/matchmingo',
   options: { useNewUrlParser: true, useUnifiedTopology: true },
-<<<<<<< HEAD
   // file:  (req,file) => {
 
   //   const imageBuffer = file.buffer;
@@ -22,46 +21,43 @@ var storage = new GridFsStorage({
   //     const filename = `${id}-${file.originalname}`;
   //     return filename;
   //   }
+  file: (req,file) => {
+    console.log(file)
+    const id = req.query.id;
+    const match = ["image/png", "image/jpeg"];
+    if (match.indexOf(file.mimetype) === -1) {
+      const filename = `${id}-${file.originalname}`;
+      return filename;
+    }
 
-=======
-  // file: (req,file) => {
-  //   console.log(file)
-  //   const id = req.query.id;
-  //   const match = ["image/png", "image/jpeg"];
-  //   if (match.indexOf(file.mimetype) === -1) {
-  //     const filename = `${id}-${file.originalname}`;
-  //     return filename;
-  //   }
-
->>>>>>> 06eb832cfef7ae0af2b557c1759eb0620bd4752d
-  //   return {
-  //     bucketName: 'users',
-  //     filename: `${id}-${file.originalname}`
-  //   };
-  // }
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      // read the image file as a buffer
-      const imageBuffer = file.buffer;
-      
-      // compress the image using sharp
-      sharp(imageBuffer)
-        .jpeg({ quality: 50 })
-        .toBuffer((err, compressedImageBuffer) => {
-          if (err) {
-            return reject(err);
-          }
-          
-          // create a new file in GridFS with the compressed image buffer
-          const filename = id + file.originalname;
-          const fileInfo = {
-            filename: filename,
-            bucketName: 'users'
-          };
-          resolve(fileInfo);
-        });
-    });
+    return {
+      bucketName: 'users',
+      filename: `${id}-${file.originalname}`
+    };
   }
+  // file: (req, file) => {
+  //   return new Promise((resolve, reject) => {
+  //     // read the image file as a buffer
+  //     const imageBuffer = file.buffer;
+      
+  //     // compress the image using sharp
+  //     sharp(imageBuffer)
+  //       .jpeg({ quality: 50 })
+  //       .toBuffer((err, compressedImageBuffer) => {
+  //         if (err) {
+  //           return reject(err);
+  //         }
+          
+  //         // create a new file in GridFS with the compressed image buffer
+  //         const filename = id + file.originalname;
+  //         const fileInfo = {
+  //           filename: filename,
+  //           bucketName: 'users'
+  //         };
+  //         resolve(fileInfo);
+  //       });
+  //   });
+  // }
 });
 
 var uploadFiles = multer({ storage: storage }).array('images');
