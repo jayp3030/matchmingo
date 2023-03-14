@@ -12,7 +12,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 export default function Homeright() {
-  const host = "http://localhost:8000";
+  const host = process.env.REACT_APP_BASEURL
   const Navigate = useNavigate();
   const [cardIdArray, setCardIdArray] = useState([]);
   const [IdCount, setIdCount] = useState(0);

@@ -3,7 +3,7 @@ import img2 from "../images/landingPage02.jpg";
 import jwt_decode from "jwt-decode";
 
 export default function Conversation({ data, currentUserId }) {
-  const baseURl = "http://localhost:8000";
+  const baseURl = process.env.REACT_APP_BASEURL
   const [userData, setUserData] = useState([]);
   const [convesationPageImg, setConvesationPageImg] = useState([]);
 

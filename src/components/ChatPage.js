@@ -9,7 +9,7 @@ export default function ChatPage({
   setSendMessage,
   receiveMessage,
 }) {
-  const baseURl = "http://localhost:8000";
+  const baseURl = process.env.REACT_APP_BASEURL
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
   const [convesationPageImg, setConvesationPageImg] = useState([]);

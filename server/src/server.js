@@ -4,8 +4,9 @@ require('dotenv').config();
 
 
 const app = require('./app')
+const password = process.env.MONGO_PASS
 const PORT = 8000;
-const MONGO_URL = 'mongodb://0.0.0.0:27017/MatchMingo' 
+const MONGO_URL = `mongodb+srv://matchmingo:dhruwang@clustermm.t9rtc3r.mongodb.net/matchmingo`
 const server = http.createServer(app);
 mongoose.set('strictQuery', true);
 
