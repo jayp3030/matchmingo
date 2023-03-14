@@ -36,7 +36,7 @@ export default function Homeright() {
 
   var [right, setRight] = useState(true);
   var [waiting, setWaiting] = useState(false);
-  var [user_image, setUser_image] = useState(null);
+  // var [user_image, setUser_image] = useState(null);
   var [l, setL] = useState(5);
   var b = {
     name: "mayank1",
