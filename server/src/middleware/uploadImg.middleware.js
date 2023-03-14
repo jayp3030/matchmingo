@@ -2,7 +2,7 @@ const util = require("util");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
 const sharp = require("sharp");
-const { createReadStream } = require('fs');
+// const { createReadStream } = require('fs');
 const { PassThrough } = require('stream');
 
 // var storage = new GridFsStorage({
@@ -23,13 +23,27 @@ const { PassThrough } = require('stream');
 //   }
 // });
 
-const storage = new GridFsStorage({
-  url: 'mongodb://0.0.0.0:27017/MatchMingo',
+var storage = new GridFsStorage({
+  url: 'mongodb+srv://matchmingo:dhruwang@clustermm.t9rtc3r.mongodb.net/matchmingo',
   options: { useNewUrlParser: true, useUnifiedTopology: true },
-  file: (req, file) => {
+  // file:  (req,file) => {
+
+  //   const imageBuffer = file.buffer;
+  //   constcompressedImage = sharp(imageBuffer)
+  //   .resize({ width: 500 })
+  //   .jpeg({ quality: 80 })
+  //   .toBuffer();
+
+  //   const id = req.query.id;
+  //   const match = ["image/png", "image/jpeg"];
+  //   if (match.indexOf(file.mimetype) === -1) {
+  //     const filename = `${id}-${file.originalname}`;
+  //     return filename;
+  //   }
+  file: (req,file) => {
+    console.log(file)
     const id = req.query.id;
     const match = ["image/png", "image/jpeg"];
-
     if (match.indexOf(file.mimetype) === -1) {
       const filename = `${id}-${file.originalname}`;
       return filename;
@@ -56,8 +70,6 @@ const storage = new GridFsStorage({
     };
   }
 });
-
-
 
 
 var uploadFiles = multer({ storage: storage }).array("images");

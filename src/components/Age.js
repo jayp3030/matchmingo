@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 
 export default function Age(props) {
-  const host = "http://localhost:8000";
+  const host = process.env.REACT_APP_BASEURL
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {

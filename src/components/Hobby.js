@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Hobby(props) {
 
-  const host = "http://localhost:8000"
+  const host = process.env.REACT_APP_BASEURL
   const [hobby, sethobby] = useState("")
   const [hobbyArr, setHobbyArr] = useState([])
   const [bio, setbio] = useState("")
