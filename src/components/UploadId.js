@@ -20,7 +20,7 @@ export default function Uploadphoto() {
   const handlebackwardSlide = (e) => {
     e.preventDefault();
     document.getElementById("profile_setup").style.transform =
-      "translateX(-400vw)";
+      "translateX(-500vw)";
   };
 
   const handleFileChange2 = (e) => {
