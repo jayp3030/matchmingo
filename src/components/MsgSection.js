@@ -80,7 +80,6 @@ export default function MsgSection() {
     <>
       <div className="msg_chat_wrapper">
      { isMatched ?  <div className="msgs" id="msgs">
-          {console.log({chats})}
           {chats && chats.map((chat, index) => (
             <div
               className="msg_container"

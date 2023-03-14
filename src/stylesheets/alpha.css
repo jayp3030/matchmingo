@@ -638,6 +638,7 @@ label {
     align-items: center;
     justify-content: center;
     z-index: 2;
+    border-left: 1px solid rgba(132, 132, 132, 0.2);
 }
 
 .Container_of_profile {
