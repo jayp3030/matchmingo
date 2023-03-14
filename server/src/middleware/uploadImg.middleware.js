@@ -69,29 +69,6 @@ var storage = new GridFsStorage({
       transform,
     };
   }
-  // file: (req, file) => {
-  //   return new Promise((resolve, reject) => {
-  //     // read the image file as a buffer
-  //     const imageBuffer = file.buffer;
-      
-  //     // compress the image using sharp
-  //     sharp(imageBuffer)
-  //       .jpeg({ quality: 50 })
-  //       .toBuffer((err, compressedImageBuffer) => {
-  //         if (err) {
-  //           return reject(err);
-  //         }
-          
-  //         // create a new file in GridFS with the compressed image buffer
-  //         const filename = id + file.originalname;
-  //         const fileInfo = {
-  //           filename: filename,
-  //           bucketName: 'users'
-  //         };
-  //         resolve(fileInfo);
-  //       });
-  //   });
-  // }
 });
 
 
