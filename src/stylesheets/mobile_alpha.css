@@ -28,20 +28,27 @@
     }
     .btn_back{
         width:100%;
-        margin-left:-2rem;
+        /* margin-left:0rem; */
     }
     .google_btn > div{
         font-size:0.8rem;
         padding-top:-1%;
     }
     .col2 form >input{
-       
         font-size:0.8rem;
         padding-left:7%;
     }
+    
+    #gender,#sexual_orientation{
+        width:100%;
+    }
+   
     .btn{
         font-size:1rem;
     }
+    
+
+   
     #google_login , .submit_btn{
         width:75%;
         height:60%
@@ -187,6 +194,20 @@
    .sidebar_wrapper{
     width:50vw;
    }
+   #gender,#sexual_orientation{
+    width:130%;
+}
+#gender_college{
+    width:130%;
+}
+.photo_section{
+    width:100%;
+}
+.hobbies_container,.bioInput{
+    width:130%;
+    
+    /* background:green; */
+}
     #google_login , .submit_btn{
         width:85%;
         height:55%;
@@ -206,7 +227,7 @@
     }
     .btn_back{
         width:130%;
-        margin-left:-2rem;
+        /* margin-left:-2rem; */
     }
     .google_btn{
         padding-left:0%;
@@ -237,7 +258,7 @@
         width:130%;
     }
     .btn_back{
-        width:125%;
+        width:130%;
     }
     .remember_me_login{
         height:10%;
@@ -396,13 +417,16 @@
         width: 120%;
         padding-bottom:10%;
     }
+    #gender_college{
+        width:110%;
+    }
     .google_btn{
         width:110%;
         margin-left:0rem;
     }
     .btn_back{
         width:110%;
-        margin-left:-2rem;
+        /* margin-left:-2rem; */
     }
     .col2 p{
         width:110%;
@@ -422,6 +446,14 @@
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
+    }
+    #gender,#sexual_orientation{
+        width:110%;
+    }
+    .hobbies_container,.bioInput{
+        width:110%;
+        
+        /* background:green; */
     }
     .btn{
         font-size:1.2rem;
@@ -532,6 +564,26 @@
     }
     .btn_back{
         width:130%;
+        margin-left:-2rem;
+    }
+    #gender,#sexual_orientation{
+        width:130%;
+        margin-left:-2rem;
+    }
+    #gender_college{
+        width:130%;
+        margin-left:-2rem;
+    }
+    .hobbies_container,.bioInput{
+        width:130%;
+        margin-left:-2rem;
+        /* background:green; */
+    }
+    .col2 form > h4{
+        margin-left: -2rem;;
+    }
+    .middle > h4{
+        margin-left: -2rem;
     }
     .col2 form > input{
         width:130%;
@@ -540,6 +592,11 @@
     .btn{
         width:130%;
         margin-left:-2rem;
+    }
+    .modes > button{
+        width:100%;
+        margin-left:0rem;
+
     }
     .last_child{
         width:130%;

@@ -77,7 +77,7 @@ async function getUserImage(req, res) {
 async function getUserImageById(req, res) {
   try {
     const userId = req.params.id;
-    console.log(userId);
+    // console.log(userId);
     const database = mongoClient.db("MatchMingo");
 
     const userImg = database.collection("users.files");
