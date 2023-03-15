@@ -2,6 +2,7 @@ const util = require("util");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
 const sharp = require("sharp");
+require("dotenv").config();
 // const { createReadStream } = require('fs');
 const { PassThrough } = require('stream');
 
@@ -24,7 +25,7 @@ const { PassThrough } = require('stream');
 // });
 
 var storage = new GridFsStorage({
-  url: 'mongodb+srv://matchmingo:dhruwang@clustermm.t9rtc3r.mongodb.net/matchmingo',
+  url: process.env.MONGO_URL,
   options: { useNewUrlParser: true, useUnifiedTopology: true },
   // file:  (req,file) => {
 
