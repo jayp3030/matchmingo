@@ -13,7 +13,13 @@ export default function College(props) {
         document.getElementById("college_page_alert").style.opacity = 1;
         return;
       }
-      document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
+      var name=document.getElementsByClassName("outer_signup");
+
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-400vw)";
+        element.style.transition="1s";
+      });
+      // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
       const response = await fetch(`${host}/details/userDetails`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,11 +32,21 @@ export default function College(props) {
         }),
       });
       const json = await response.json();
-    document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
+      
+    // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
   const handlebackwardSlide = (e) => {
     e.preventDefault()
-    document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
+    // name.forEach(element => {
+    //   element.style.transform="translateX(-200vw)";
+    //   element.style.transition="1s";
+    // });
+    var name=document.getElementsByClassName("outer_signup");
+    Array.prototype.forEach.call(name,(element) => {
+      element.style.transform="translateX(-200vw)";
+      element.style.transition="1s";
+    });
+    // document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
   }
 
   const collage = [
