@@ -2,9 +2,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
 const app = require('./app')
-const password = process.env.MONGO_PASS
 const PORT = 8000;
 const MONGO_URL = process.env.MONGO_URL
 const server = http.createServer(app);
