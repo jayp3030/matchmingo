@@ -46,7 +46,7 @@ export default function Homeright() {
   };
   var [personalDT, setPersonalDT] = useState([]);
 
-  
+
   const fetchAllIdToShow = async (gender) => {
     const response = await fetch(`${host}/details/getAll${gender}Id`);
     const json = await response.json();
