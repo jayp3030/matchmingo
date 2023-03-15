@@ -484,7 +484,7 @@ input::-webkit-inner-spin-button {
 }
 
 .profile_setup {
-    width: 800vw;
+    width: 100vw; /*800vw*/
     height: 100vh;
     display: flex;
     background: white;

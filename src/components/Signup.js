@@ -25,9 +25,18 @@ export default function Signup(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
-      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
+      // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
+      // var name=document.getElementById("name");
+      // name.style.transform="translateX(0vw)";
+      var name=document.getElementsByClassName("outer_signup");
+      console.log(name);
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-100vw)";
+        element.style.transition="1s";
+      });
+      
       return;
     }
     if (credentials.password !== credentials.cpassword) {
@@ -47,8 +56,13 @@ export default function Signup(props) {
       return;
     }
     if (json.success) {
+       // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
       localStorage.setItem("token",json.token)
-      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
+      var name=document.getElementsByClassName("outer_signup");
+      name.forEach(element => {
+        element.style.transform="translateX(-100vw)";
+        element.style.transition="1s";
+      });
     }
   };
 

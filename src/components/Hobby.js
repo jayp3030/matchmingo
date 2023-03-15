@@ -25,13 +25,23 @@ export default function Hobby(props) {
       }),
     });
     if(response.ok){
-      document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
+      var name=document.getElementsByClassName("outer_signup");
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-500vw)";
+        element.style.transition="1s";
+      });
+      // document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
     }
     
   }
   const handlebackwardSlide = (e) => {
-    e.preventDefault()
-    document.getElementById("profile_setup").style.transform = "translateX(-300vw)"
+    e.preventDefault();
+    var name=document.getElementsByClassName("outer_signup");
+    Array.prototype.forEach.call(name,(element) => {
+      element.style.transform="translateX(-300vw)";
+      element.style.transition="1s";
+    });
+    // document.getElementById("profile_setup").style.transform = "translateX(-300vw)"
   }
   const addHobby = (e) => {
     e.preventDefault()
