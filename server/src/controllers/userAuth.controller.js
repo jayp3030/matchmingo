@@ -9,7 +9,7 @@ const crypto = require("crypto");
 var nodemailer = require("nodemailer");
 
 const privateKey = process.env.PRIVATE_KEY;
-const clientURL = "http://localhost:3000";
+const clientURL = "https://matchmingo.netlify.app/";
 
 var transporter = nodemailer.createTransport({
   service: "gmail",
