@@ -551,6 +551,82 @@
 }
 
 @media (max-width:600px){
+    .cursor_outer{
+        display: none;
+    }
+    .intro{
+        font-size: 5vw;
+        animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
+    }
+
+    @keyframes fontanimation{
+        0%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: serif;
+        }
+        5%{
+            font-family:'Courier New', Courier, monospace;
+        }
+        10%{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        15%{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        20%{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        25%{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    
+        30%{
+            
+            font-family: 'manrope_light';
+        }
+        60%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: 'manrope_light';
+    
+        }
+     
+        100%{
+            font-size: 5vw;
+            font-family: 'manrope_light';
+        }
+    }
+    .title{
+        font-size: 13vw;
+        line-height: 12vw;
+    }
+    /* .fcc p{
+      font-size: 1rem;
+    } */
+    .fcc img{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .active_part_container02{
+        height:50%;
+        width:80%;
+        flex-direction: column;
+       
+    }
+    .carousel_element{
+        min-width: 50vw;
+        max-width: 50vw;
+    }
+    .mobileHide{
+        display: none;
+    }
+    @keyframes motion {
+        0% { transform: translateX(0vw); }
+        100% { transform: translateX(calc(-205vw))} 
+    
+    }
+
     .google_logo > p{
         width:130%;
         margin-left:-2rem;
@@ -606,15 +682,13 @@
         width:130%;
         margin-left:-2rem;
     }
-    .login_title_container{
-        width:90%;
-        /* background:maroon; */
-    }
+    
     .Side_presentation{
         width:0vw;
     }
     .login_form_div{
         width:100vw;
+        
     }
     .login_form_container{
         /* background: black; */
@@ -628,8 +702,12 @@
         width:95%;
     }
     .login_title_container{
-        height:20%;
+        height:10%;
+        width:90%;
+        
+        background:green;
     }
+    
     .login_google_container{
         height:20%;
         /* background:green; */
@@ -645,7 +723,7 @@
         width:90%;
     }
     .login_title{
-        font-size:1.7rem;
+        font-size:1.3rem !important;
         font-weight: 600;
     }
 
@@ -678,7 +756,7 @@
         justify-content: center;  
     }
     .remember_me{
-        font-size:0.9rem;
+        font-size:0.85rem;
     }
     .submit_btn_div{
         /* background:green; */
@@ -700,80 +778,5 @@
     .link > p{
         font-size: 0.82rem;}
 
-        .cursor_outer{
-            display: none;
-        }
-        .intro{
-            font-size: 5vw;
-            animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
-        }
-    
-        @keyframes fontanimation{
-            0%{
-                margin-top: 5rem;
-                font-size: 8vw;
-                font-family: serif;
-            }
-            5%{
-                font-family:'Courier New', Courier, monospace;
-            }
-            10%{
-                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            }
-            15%{
-                font-family: 'Times New Roman', Times, serif;
-            }
-            20%{
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-            25%{
-                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            }
         
-            30%{
-                
-                font-family: 'manrope_light';
-            }
-            60%{
-                margin-top: 5rem;
-                font-size: 8vw;
-                font-family: 'manrope_light';
-        
-            }
-         
-            100%{
-                font-size: 5vw;
-                font-family: 'manrope_light';
-            }
-        }
-        .title{
-            font-size: 13vw;
-            line-height: 12vw;
-        }
-        .fcc p{
-          font-size: 1rem;
-        }
-        .fcc img{
-            height: 1.5rem;
-            width: 1.5rem;
-        }
-        .active_part_container02{
-            height:50%;
-            width:80%;
-            flex-direction: column;
-           
-        }
-        .carousel_element{
-            min-width: 50vw;
-            max-width: 50vw;
-        }
-        .mobileHide{
-            display: none;
-        }
-        @keyframes motion {
-            0% { transform: translateX(0vw); }
-            100% { transform: translateX(calc(-205vw))} 
-        
-        }
-
 }
