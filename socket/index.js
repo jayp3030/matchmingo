@@ -1,8 +1,9 @@
-const io = require('socket.io')("https://matchmingosocket.onrender.com" , {
+const io = require('socket.io')(8800 , {
     cors :{
         origin : 'http://matchmingo.netlify.app'
     }
 });
+// https://matchmingosocket.onrender.com
 
 let activeUser = [];
 
