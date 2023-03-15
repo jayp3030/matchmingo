@@ -1,6 +1,6 @@
 const io = require('socket.io')(8800 , {
     cors :{
-        origin : 'http://matchmingo.netlify.app'
+        origin : 'https://matchmingo.netlify.app'
     }
 });
 // https://matchmingosocket.onrender.com
