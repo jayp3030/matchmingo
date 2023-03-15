@@ -109,6 +109,9 @@ async function getUserImageArr(req, res) {
       const image = await userImg.findOne({
         filename: { $regex: `${userIdArr[index]}`, $options: "i" },
       });
+      if (!image) {
+        return
+      }
       const BinaryImg = await chunks.findOne({ files_id: image._id });
       userImgArr.push(BinaryImg);
       
