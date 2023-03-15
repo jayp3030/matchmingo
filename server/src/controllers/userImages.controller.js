@@ -1,10 +1,9 @@
 const MongoClient = require("mongodb").MongoClient;
 const upload = require("../middleware/uploadImg.middleware");
+require("dotenv").config();
 // const GridFSBucket = require("mongodb").GridFSBucket;
 
-const url = "mongodb://0.0.0.0:27017";
-
-const baseUrl = "http://localhost:8000/details/userImages";
+const url = process.env.MONGO_URL;
 
 const mongoClient = new MongoClient(url);
 
