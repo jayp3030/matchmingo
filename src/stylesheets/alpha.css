@@ -489,7 +489,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .photo_section {

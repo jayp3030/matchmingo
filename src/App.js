@@ -15,7 +15,7 @@ import MsgLike from "./components/MsgLike";
 import ChatPage from "./components/ChatPage";
 import Uploadphoto from "./components/Uploadphoto";
 import UploadId from "./components/UploadId";
-
+import HomeMobile from "./components/HomeMobile";
 
 function App() {
   var obj_gapi=window.gapi;
@@ -65,7 +65,12 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<ProfileSetup />} />
             <Route exact path="/verified" element={<Verified />} />
+            {window.innerWidth<=730 ?
+            <Route exact path="/home" element={<HomeMobile/>} />:
             <Route exact path="/home" element={<Homeright />} />
+            
+            }
+            
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
             <Route path="/test" element={<Test />} />    

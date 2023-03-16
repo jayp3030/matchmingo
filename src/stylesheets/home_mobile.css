@@ -1,0 +1,67 @@
+.home_outer_mobile{
+    height:100vh;
+    width:100vw;
+    /* background:green; */
+}
+.home_right_mobile{
+    height:100%;
+    width:100%;
+    /* background:maroon; */
+}
+.header_mobile{
+    height:10%;
+    /* background:yellow; */
+}
+.middle_mobile{
+    height:79%;
+    /* background:tan; */
+}
+.footer_mobile{
+    height:12%;
+    background:#dedddd;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+   
+}
+.card{
+    /* z-index:-1; */
+    height:80%;
+}
+.footer_mobile_container{
+    border-radius: inherit;
+    background: inherit;
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+.footer_logos{
+    height:100%;
+    width: 25%;
+   
+}
+.userDetaileMobile{
+    position:relative;
+    top:-5%;;
+}
+.iconsMobile i{
+    font-size: 1.7rem;
+}
+.card_mobile{
+    height:73%;
+    margin:0px;
+    /* background:red; */
+}
+.card_left_mobile{
+    /* background: thistle; */
+    width:50%;
+    transition:1s;
+    background-image: url("../images/landingPage05.jpg");
+}
+.image_slide_container{
+    width:50%;
+    transition:0.25s;
+}
