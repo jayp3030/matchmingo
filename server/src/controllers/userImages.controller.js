@@ -33,7 +33,7 @@ async function getImages(req, res) {
   try {
     await mongoClient.connect();
 
-    const database = mongoClient.db("MatchMingo");
+    const database = mongoClient.db("Matchmingo");
     // const images = database.collection('MMImages.files');
     const chunks = database.collection("users.chunks");
 
@@ -55,6 +55,7 @@ async function getUserImage(req, res) {
   try {
     const userId = req.user.id;
     const database = mongoClient.db("MatchMingo");
+
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
     const images =   userImg.find({filename: { $regex: userId, $options: "i" }}); //array of images starting with userId
@@ -72,14 +73,13 @@ async function getUserImage(req, res) {
 async function getUserImageById(req, res) {
   try {
     const userId = req.params.id;
+    console.log("image"+userId);
     const database = mongoClient.db("MatchMingo");
 
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
 
-    const images = userImg.find({
-      filename: { $regex: userId, $options: "i" },
-    }); //array of images starting with userId
+    const images = userImg.find({filename: { $regex: userId, $options: "i" }}); //array of images starting with userId
     const userImgArr = [];
     for await (const doc of images) {
       const BinaryImg = await chunks.findOne({ files_id: doc._id });
@@ -94,7 +94,7 @@ async function getUserImageById(req, res) {
 async function getUserImageArr(req, res) {
   try {
     const userIdArr = req.body.userArray;
-    const database = mongoClient.db("MatchMingo");
+    const database = mongoClient.db("Matchmingo");
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
     const userImgArr = [];
@@ -103,7 +103,7 @@ async function getUserImageArr(req, res) {
       const image = await userImg.findOne({
         filename: { $regex: `${userIdArr[index]}`, $options: "i" },
       });
-      if(!image){
+      if (!image) {
         return
       }
       const BinaryImg = await chunks.findOne({ files_id: image._id });
@@ -119,7 +119,7 @@ async function getUserImageArr(req, res) {
 async function getUserIDImage(req, res) {
   try {
     const userId = req.user.id;
-    const database = mongoClient.db("MatchMingo");
+    const database = mongoClient.db("Matchmingo");
 
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");

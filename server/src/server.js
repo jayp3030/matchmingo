@@ -2,7 +2,6 @@ const http = require('http');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
 const app = require('./app')
 const PORT = 8000;
 const MONGO_URL = 'mongodb://0.0.0.0:27017/MatchMingo' 

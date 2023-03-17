@@ -160,12 +160,20 @@ export default function Homeright() {
   function expand() {
     var count = 0;
     var a = document.getElementById("card_right");
+    var b=document.getElementById("card_left");
+    var contou=document.getElementById('imageChangeArrowDiv');
     count = a.style.width;
 
     if (count == "" || count == "0%") {
+        b.style.width="40%";
+        contou.style.width="40%";
       a.style.width = "60%";
     }
     else {
+      if(window.innerWidth>=730 && window.innerWidth<=827){
+        b.style.width="53%";
+        contou.style.width="53%";
+      }
       a.style.width = "0%";
     }
   }
@@ -400,7 +408,7 @@ export default function Homeright() {
             </button>
           </div>
           <div className="home_left_bottom">
-            <MsgLike /> 
+            {/* <MsgLike />  */}
           </div>
         </div>
         <div className="home_right">
@@ -463,7 +471,7 @@ export default function Homeright() {
                             id="card_left"
                             onDoubleClick={super_like}
                           >
-                            <div className="imageChangeArrowDiv">
+                            <div className="imageChangeArrowDiv" id="imageChangeArrowDiv">
                               <i
                                 className="bi bi-arrow-left-circle-fill"
                                 onClick={handleImageChangeLeft}

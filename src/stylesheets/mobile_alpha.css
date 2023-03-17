@@ -98,6 +98,32 @@
 
         font-size: 0.84rem;
     }
+    .header h1{
+        font-size:2rem;
+    }
+    .card{
+        /* background:red; */
+        width:80%;
+    }
+  .box p{
+    font-size:1.12rem;
+  }
+  
+.home_left_top_right i {
+    font-size:1.4rem;
+}
+.card_left{
+    /* background:red; */
+}
+.imageChangeArrowDiv i{
+    font-size:1.8rem;
+}
+.imageChangeArrowDiv i:nth-child(1) {
+    transform: translateX(1vw);  
+}
+.imageChangeArrowDiv i:nth-child(2) {
+    transform: translateX(-1vw);  
+}
 }
 
 @media (max-width: 1141px) {
@@ -175,6 +201,26 @@
     }
     .link > p{
         font-size: 0.8rem;}
+        .header h1{
+            font-size:2.2rem;
+        }
+        .card{
+            /* background:red; */
+            width:90%;
+        }
+      .box p{
+        font-size:1rem;
+      }
+      
+    .home_left_top_right i {
+        font-size:1.3rem;
+    }
+    .icons i{
+        font-size:1.5rem;
+    }
+    .imageChangeArrowDiv i {
+        font-size: 1.76rem;
+    }
 
 }
 
@@ -296,6 +342,34 @@
     .link > p{
         font-size: 0.85rem;}
 
+        .header h1{
+            font-size:2.3rem;
+        }
+        .card{
+            /* background:red; */
+            width:95%;
+        }
+      .box p{
+        font-size:1rem;
+      }
+      
+    .home_left_top_right i {
+        font-size:1.4rem;
+    }
+.home_left{
+    width:33vw;
+}
+.home_right{
+    width:67vw;
+}
+.icons i{
+    font-size:1.4rem;
+
+}
+.imageChangeArrowDiv i {
+    font-size: 1.65rem;
+}
+
 }
 
 @media (max-width: 827px) {
@@ -389,7 +463,44 @@
     }
     .link > p{
         font-size: 0.83rem;}
-
+        .header h1{
+            font-size:2.1rem;
+        }
+        .card{
+            /* background:red; */
+            width:95%;
+        }
+      .box p{
+        font-size:0.79rem;
+      }
+      
+    .home_left_top_right i {
+        font-size:1.4rem;
+        transform: translateX(3vw);
+    }
+.home_left{
+    width:35vw;
+}
+.home_left_middle i {
+    margin-right: 0.28rem;
+}
+.home_left_middle_right {
+    font-size:0.85rem;
+}
+.home_right{
+    width:65vw;
+}
+.home_left_top{
+    /* background:green; */
+}
+.icons i{
+    font-size:1.3rem;
+}
+.card_left,.imageChangeArrowDiv{
+    width:53%;
+}
+}
+@media (max-width:730px){
 }
 @media (max-width: 670px) {
     .login_title_container{
@@ -547,6 +658,82 @@
 }
 
 @media (max-width:600px){
+    .cursor_outer{
+        display: none;
+    }
+    .intro{
+        font-size: 5vw;
+        animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
+    }
+
+    @keyframes fontanimation{
+        0%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: serif;
+        }
+        5%{
+            font-family:'Courier New', Courier, monospace;
+        }
+        10%{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        15%{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        20%{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        25%{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    
+        30%{
+            
+            font-family: 'manrope_light';
+        }
+        60%{
+            margin-top: 5rem;
+            font-size: 8vw;
+            font-family: 'manrope_light';
+    
+        }
+     
+        100%{
+            font-size: 5vw;
+            font-family: 'manrope_light';
+        }
+    }
+    .title{
+        font-size: 13vw;
+        line-height: 12vw;
+    }
+    /* .fcc p{
+      font-size: 1rem;
+    } */
+    .fcc img{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .active_part_container02{
+        height:50%;
+        width:80%;
+        flex-direction: column;
+       
+    }
+    .carousel_element{
+        min-width: 50vw;
+        max-width: 50vw;
+    }
+    .mobileHide{
+        display: none;
+    }
+    @keyframes motion {
+        0% { transform: translateX(0vw); }
+        100% { transform: translateX(calc(-205vw))} 
+    
+    }
+
     .google_logo > p{
         width:130%;
         margin-left:-2rem;
@@ -602,15 +789,13 @@
         width:130%;
         margin-left:-2rem;
     }
-    .login_title_container{
-        width:90%;
-        /* background:maroon; */
-    }
+    
     .Side_presentation{
         display: none;
     }
     .login_form_div{
         width:100vw;
+        
     }
     .login_form_container{
         /* background: black; */
@@ -624,8 +809,12 @@
         width:95%;
     }
     .login_title_container{
-        height:20%;
+        height:10%;
+        width:90%;
+        
+        /* background:green; */
     }
+    
     .login_google_container{
         height:20%;
         /* background:green; */
@@ -647,7 +836,7 @@
 
     #google_login , .submit_btn{
         width:90%;
-        height:55%;
+        height:45%;
         font-size:1.2rem;
     }
     #google_login > img{
@@ -658,7 +847,7 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:14%;
+        height:12%;
         width:90%;
         padding-left:5%;
         font-size: 0.92rem;
@@ -677,7 +866,7 @@
        height:30%;
     }
     .submit_btn{
-        height:50%;
+        height:45%;
         width:100%;
         font-size: 1.3rem;
         padding:0%;
@@ -690,14 +879,30 @@
     }
     .link > p{
         font-size: 0.82rem;}
+    .card_left_mobile{
+        width:62% !important;
+    }
+    .imageChangeArrowDiv{
+        width:62% !important;
+    }
+    .footer_logos img {
+        width:auto;
+        height:auto;
+    }
 
-        .cursor_outer{
-            display: none;
-        }
-        .intro{
-            font-size: 5vw;
-            animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
-        }
+        
+}
+@media  (max-width:408px) {
+    .card_left_mobile{
+        width:80% !important;
+    }
+    .imageChangeArrowDiv{
+        width:80% !important;
+    }
+    .footer_logos img {
+        width:35%;
+        height:auto;
+    }
     
         @keyframes fontanimation{
             0%{
