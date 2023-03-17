@@ -14,14 +14,24 @@ export default function Uploadphoto() {
   const handleSlide = (e) => {
     e.preventDefault();
     btnRef.current.click();
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-600vw)";
+    var name=document.getElementsByClassName("outer_signup");
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-600vw)";
+        element.style.transition="1s";
+      });
+    // document.getElementById("profile_setup").style.transform =
+    //   "translateX(-600vw)";
   };
 
   const handlebackwardSlide = (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-400vw)";
+    var name=document.getElementsByClassName("outer_signup");
+    Array.prototype.forEach.call(name,(element) => {
+      element.style.transform="translateX(-400vw)";
+      element.style.transition="1s";
+    });
+    // document.getElementById("profile_setup").style.transform =
+    //   "translateX(-400vw)";
   };
 
   const handleFileChange = (e) => {

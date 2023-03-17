@@ -22,14 +22,25 @@ export default function Age(props) {
       }),
     });
     if (response.ok) {
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-300vw)";
+
+      var name=document.getElementsByClassName("outer_signup");
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-300vw)";
+        element.style.transition="1s";
+      });
+    // document.getElementById("profile_setup").style.transform =
+    //   "translateX(-300vw)";
     }
   };
   const handlebackwardSlide = (e) => {
     e.preventDefault();
-    document.getElementById("profile_setup").style.transform =
-      "translateX(-100vw)";
+    var name=document.getElementsByClassName("outer_signup");
+    Array.prototype.forEach.call(name,(element) => {
+      element.style.transform="translateX(-100vw)";
+      element.style.transition="1s";
+    });
+    // document.getElementById("profile_setup").style.transform =
+    //   "translateX(-100vw)";
   };
 
 
