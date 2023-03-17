@@ -43,6 +43,7 @@ input{
     animation: fontanimation 2s cubic-bezier(.49, .52, 0, .89) 1;
     margin-left: 6px;
     color: var(--primary);
+    margin-bottom: 1.5vw; 
 }
 
 @keyframes fontanimation {

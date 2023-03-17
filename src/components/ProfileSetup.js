@@ -45,7 +45,7 @@ export default function ProfileSetup() {
         <College getUserID={getUserID}/>
         <Hobby getUserID={getUserID}/>
         <Uploadphoto getUserID={getUserID}/>
-        <UploadId getUserID={getUserID}/>
+        {/* <UploadId getUserID={getUserID}/> */}
         </context.Provider>
         
       </div>

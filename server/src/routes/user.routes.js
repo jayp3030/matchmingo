@@ -3,7 +3,7 @@ const fetchUser = require("../middleware/fetchUser.middleware")
 const {
   saveUserDetails,
   getUserDetails,
-  getUser,
+  getUserById,
   getAllGirlsId,
   getAllBoysId
   
@@ -30,7 +30,7 @@ userRouter.post(
   body("last_name", "enter a valid last_name").isLength({ min: 2 }),
   saveUserDetails
 );
-userRouter.get("/getUser/:id", getUser);
+userRouter.get("/getUserById", getUserById);
 userRouter.get("/getUserDetails",fetchUser, getUserDetails);
 userRouter.post("/userImages", saveUserImages);
 userRouter.get("/getImages", getImages);

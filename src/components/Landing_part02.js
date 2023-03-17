@@ -3,12 +3,14 @@ import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import heart from '../images/heart.png'
 import Landing_carousel from "./Landing_carousel";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Landing_part02 = () => {
   const [carousel, setCarousel] = useState(false)
+  const Navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,7 +21,7 @@ const Landing_part02 = () => {
 
   return (
     <>
-      <motion.div className="landing_part02" id="landing_part02">
+      <motion.div className="landing_part02" id="landing_part02" onClick={()=>{Navigate("/signup")}}>
         <div className="landing_part02_container">
           <div className="landing_part02_container01 fcc">
           </div>

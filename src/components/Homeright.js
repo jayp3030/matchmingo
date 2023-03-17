@@ -44,43 +44,55 @@ export default function Homeright() {
   var c = {
     name: "mayank2",
   };
-  var [personalDT, setPersonalDT] = useState([]);
+  var [personalDT, setPersonalDT] = useState([null]);
 
-  
+
   const fetchAllIdToShow = async (gender) => {
     const response = await fetch(`${host}/details/getAll${gender}Id`);
     const json = await response.json();
     setCardIdArray(json);
   };
-  async function fetch_data(userId) {
-    const response = await fetch(
-      `http://localhost:8000/details/getUser/${userId.userId}`
-    );
-    const json = await response.json();
-    console.log(json);
-    setPersonalDT([json]);
+
+  const fetch_data=async(userId)=> {
+    console.log("fetching" + userId.userId)
+
+    const response = await fetch(`${host}/details/getUserById?id=${userId.userId}`,{
+      method:"get",
+      headers: { "Content-Type": "application/json" }
+    });
+    const json = await response.json()
+    setPersonalDT([json]);  
+  }
+
+  const checkUserInfoStatus = async () => {
+
+    const response = await fetch(`${host}/auth/userAuthCompletedStatus?id=${jwt_decode(localStorage.getItem("token")).user.id}`)
+    const json = await response.json()
+    if (!json) {
+      localStorage.removeItem("token")
+      Navigate("/login")
+    }
+
   }
 
   useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      Navigate("/login")
+    }
+    else {
+      checkUserInfoStatus()
+    }
     getUserDetails();
     getUserImg();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(cardIdArray);
-  //   if (cardIdArray.length !== 0 && cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
-  //     fetch_data(cardIdArray[IdCount]);
-  //     getUserImages(cardIdArray[IdCount]);
-  //     setIdCount(IdCount + 1);
-  //   }
-  // }, [cardIdArray]);
-  // useEffect(() => {
-  //   if (preLoaded.length != 0) {
-  //     var datta = preLoaded.shift();
-  //     console.log(datta);
-  //   }
-  // }, [preLoaded]);
- 
+  useEffect(() => {
+    if (cardIdArray.length !== 0 && cardIdArray[IdCount].userId !== jwt_decode(localStorage.getItem("token")).user.id) {
+      fetch_data(cardIdArray[IdCount]);
+      getUserImages(cardIdArray[IdCount]);
+      setIdCount(IdCount + 1);
+    }
+  }, [cardIdArray]);
 
   var [obj, setObj] = useState({
     initial: {
@@ -104,7 +116,7 @@ export default function Homeright() {
     console.log(card);
     card.style.marginTop = "-400%";
     card.style.transitionDuration = "1s";
-    setTimeout(() => {}, 2500);
+    setTimeout(() => { }, 2500);
   }
   // async function update() {
   //   var card = document.getElementById("card");
@@ -125,10 +137,10 @@ export default function Homeright() {
   //     .catch((e) => {
   //       console.log(e);
   //     });
-    
-      
+
+
   //   //  setTimeout(()=>{},2000)
-   
+
   //   await axios
   //     .get("http://localhost:8000/details/getUserImage/", {
   //       headers: { "auth-token": localStorage.getItem("token") },
@@ -149,13 +161,13 @@ export default function Homeright() {
     var count = 0;
     var a = document.getElementById("card_right");
     count = a.style.width;
- 
+
     if (count == "" || count == "0%") {
       a.style.width = "60%";
-    } 
+    }
     else {
       a.style.width = "0%";
-    } 
+    }
   }
 
   window.addEventListener("keydown", async (e) => {
@@ -258,14 +270,14 @@ export default function Homeright() {
     });
     const json = await response.json();
     setuserProfile(json);
-    if(json.gender==="Male"){
+    if (json.gender === "Male") {
       fetchAllIdToShow("girls")
     }
-    else{
+    else {
       fetchAllIdToShow("boys")
     }
   };
- 
+
   // function to get user Images
   const [userImgs, setuserImgs] = useState([]);
   const [userCardImgs, setuserCardImgs] = useState([]);
@@ -273,10 +285,11 @@ export default function Homeright() {
   const getUserImg = async () => {
     const response = await fetch(`${host}/details/getUserImage`, {
       method: "GET",
-      headers: { "auth-token": localStorage.getItem("token") },
+      headers: { "auth-token": localStorage.getItem("token"),
+      "Content-Type": "application/json" },
     });
     const json = await response.json();
-    console.log(json);
+    console.log("HEllo");
     setuserImgs(json);
   };
 
@@ -298,9 +311,8 @@ export default function Homeright() {
   function displayImage() {
     var a = document.getElementById("card_left");
     if (a) {
-      a.style.backgroundImage = `url(data:image/jpeg;base64,${
-        userCardImgs[imgCount] && userCardImgs[imgCount].data
-      })`;
+      a.style.backgroundImage = `url(data:image/jpeg;base64,${userCardImgs[imgCount] && userCardImgs[imgCount].data
+        })`;
     }
   }
 
@@ -334,43 +346,31 @@ export default function Homeright() {
   };
 
   async function update() {
-    if (cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
-      console.log(cardIdArray[IdCount])
-      setAnimation();
-      setTimeout(() => {
-        fetch_data(cardIdArray[IdCount]);
-        getUserImages(cardIdArray[IdCount]);
-      }, 1000);
-      setTimeout(() => {
-        const card = document.getElementById('card')
-        card.style.marginTop = "0%";
-      }, 1000);
-    }
-    else{
-      setAnimation()
-      setTimeout(() => {
-        fetch_data(cardIdArray[IdCount]);
-        getUserImages(cardIdArray[IdCount]);
-      }, 1000);
-      setTimeout(() => {
-        const card = document.getElementById('card')
-        card.style.marginTop = "0%";
-      }, 1000);
-    }
+    console.log("updating")
+    console.log(IdCount)
+    setAnimation() 
+    setTimeout(() => {
+      fetch_data(cardIdArray[IdCount]);
+      getUserImages(cardIdArray[IdCount]);
+    }, 1000);
+    setTimeout(() => {
+      const card = document.getElementById('card')
+      card.style.marginTop = "0%";
+    }, 1000);
     setIdCount(IdCount + 1);
   }
 
   return (
     <>
+      {console.log(cardIdArray)}
       <div className="home_outer">
         <div className="home_left">
           <div className="home_left_top">
             <div className="home_left_top_left">
               <img
                 alt="userPhotos"
-                src={`data:image/jpeg;base64,${
-                  userImgs[0] && userImgs[0].data
-                }`}
+                src={`data:image/jpeg;base64,${userImgs[0] && userImgs[0].data
+                  }`}
               />
             </div>
             <div className="home_left_top_middle">
@@ -400,7 +400,7 @@ export default function Homeright() {
             </button>
           </div>
           <div className="home_left_bottom">
-            <MsgLike />
+            <MsgLike /> 
           </div>
         </div>
         <div className="home_right">
@@ -510,7 +510,7 @@ export default function Homeright() {
                               <motion.i
                                 whileHover={{ scale: 1.22 }}
                                 className="fa-regular fa-heart"
-                                onClick={()=>{
+                                onClick={() => {
                                   handleLike(e.userId)
                                 }}
                               ></motion.i>
@@ -572,8 +572,8 @@ export default function Homeright() {
                                   {e == null
                                     ? " . . . "
                                     : e.hobbies.map((e, i) => {
-                                        return <p>{e}</p>;
-                                      })}
+                                      return <p>{e}</p>;
+                                    })}
                                 </div>
                                 <hr />
                                 <div className="gender_info">
