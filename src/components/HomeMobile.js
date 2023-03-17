@@ -157,26 +157,17 @@ export default function HomeMobile(){
         count = a.style.width;
      
         if (count == "" || count == "0%") {
-          if(window.innerWidth<=600){
-              b.style.width="40%";
-              contou.style.width="62%";
-          }
-          else{
-            b.style.width="40%";
-            contou.style.width="40%";
-          }
-          a.style.width = "60%";
+          b.style.display="none";
+              // b.style.width="0% !important";
+              contou.style.width="0%";
+          a.style.width = "100%";
         } 
         else {
-          if(window.innerWidth<=600){
-            b.style.width="62%";
-            contou.style.width="62%";
-            // code to show card right part
-          }
+          
+            // b.style.width="62%";
+            // contou.style.width="62%";
           a.style.width = "0%";
-          b.style.width="50%";
-          contou.style.width="50%";
-         
+          setTimeout(()=>{b.style.display="flex";},500)
         } 
       }
     
@@ -546,15 +537,27 @@ return (
         </div>
         <div className="footer_mobile fcc">
             <div className="footer_mobile_container">
+             
               <div className="footer_logos fcc">
                 <img src={img1}></img>
               </div>
+            
+              
               <div  className="footer_logos fcc">
+              <a href={"./like"}>
               <img src={img2}></img>
+              </a>
               </div>
+             
+              
+             
               <div  className="footer_logos fcc">
+              <a href={"./chat"}>
               <img src={img3}></img>
+              </a>
               </div>
+             
+              
               <div  className="footer_logos fcc">
               <img src={img4}></img>
               </div>
