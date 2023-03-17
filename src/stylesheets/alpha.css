@@ -489,8 +489,8 @@ input::-webkit-inner-spin-button {
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
-    overflow: hidden;
-    overflow-x: hidden;
+    /* overflow: hidden;  */
+    overflow-x: hidden; 
 }
 
 .photo_section {
@@ -909,7 +909,7 @@ label {
     justify-content: center;
     flex-wrap: wrap;
     padding: .8rem 0;
-    background:yellow;
+    /* background:yellow; */
 }
 
 .like_wrapper {

@@ -102,7 +102,7 @@ async function getUserImageArr(req, res) {
     const database = mongoClient.db("matchmingo");
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
-    console.log(userIdArr);
+    console.log({userIdArr});
     const userImgArr = [];
 
     for (let index = 0; index < userIdArr.length; index++) {

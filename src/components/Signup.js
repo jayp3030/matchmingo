@@ -56,13 +56,13 @@ export default function Signup(props) {
       return;
     }
     if (json.success) {
-       // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
       localStorage.setItem("token",json.token)
-      var name=document.getElementsByClassName("outer_signup");
-      name.forEach(element => {
-        element.style.transform="translateX(-100vw)";
-        element.style.transition="1s";
-      });
+      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
+      // var name1=document.getElementsByClassName("outer_signup");
+      // name1.forEach(element => {
+      //   element.style.transform="translateX(-100vw)";
+      //   element.style.transition="1s";
+      // });
     }
   };
 
@@ -91,31 +91,6 @@ export default function Signup(props) {
   //     Navigate("/home")
   //   }
   // },[])
-
-  const handleCal=async ()=>{
-    var auth_obj=window.gapi.auth2.getAuthInstance();
-    console.log(auth_obj);
-    
-      await auth_obj
-      .signIn()
-      .then(async (e)=>
-        {
-          console.log(e);
-         
-          setData({
-            first_name:e.tv.PZ,
-            last_name:e.tv.eY,
-            email:e.tv.fw
-        })
-        console.log("data =");
-        console.log(data);
-  })
-    const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
-      if(state){
-        Navigate("/home");
-      }
-  }
-
   return (
     <>
     {props.handleCall(data,personal)}
@@ -124,7 +99,7 @@ export default function Signup(props) {
         <div className="col2">
           <div className="upper">
             <h2>Become a Mingo Member</h2>
-            <button className="google_btn" onClick={handleCal}>
+            <button className="google_btn">
               <div className="google_logo">
                 <img src={google} alt="google" />
               </div>
