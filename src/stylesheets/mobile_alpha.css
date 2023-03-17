@@ -14,7 +14,9 @@
     .login_title{
         font-size:1.6rem;
     }
-    
+    .passwordDiv{
+        width:100%;
+    }
     .col2 h2{
         font-size:1.5rem;
     }
@@ -34,7 +36,7 @@
         font-size:0.8rem;
         padding-top:-1%;
     }
-    .col2 form >input{
+    .col2 form>input{
         font-size:0.8rem;
         padding-left:7%;
     }
@@ -281,9 +283,7 @@
         margin-left:0%;
         width:130%;
     }
-    .col2 form >input{
-        width:130%;
-    }
+    
     .google_logo img{
         width:80%;
         margin-top:2%;
@@ -293,14 +293,22 @@
         font-size:0.82rem;
         padding-top:-1%;
     }
+    .google_btn{
+        margin-left:-0.5rem;
+    }
     .col2 form >input{
         width:130%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
+        transform: translateX(2rem);
+        
+        
     }
     .passwordDiv{
         width: 130%;
+        transform: translateX(2rem);
+
     }
     .btn{
         font-size:1.2rem;
@@ -308,6 +316,7 @@
     }
     .btn_back{
         width:130%;
+        transform: translateX(2.5rem);
     }
     .remember_me_login{
         height:10%;
@@ -415,7 +424,12 @@
     .login_title{
         font-size:1.5rem;
     }
-
+   .google_btn{
+    margin-left:-0.1rem;
+   }
+   .btn_back{
+    transform: translateX(2rem);
+   }
     #google_login , .submit_btn{
         width:95%;
         height:55%;
@@ -501,6 +515,9 @@
 }
 }
 @media (max-width:730px){
+    .btn_back{
+        transform: translateX(1.7rem);
+    }
 }
 @media (max-width: 670px) {
     .login_title_container{
@@ -530,11 +547,11 @@
         width:110%;
     }
     .google_btn{
-        width:110%;
-        margin-left:0rem;
+        width:130%;
+        margin-left:-1rem;
     }
     .btn_back{
-        width:110%;
+        width:130%;
         /* margin-left:-2rem; */
     }
     .col2 p{
@@ -551,7 +568,7 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        width:110%;
+        width:130%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
@@ -566,10 +583,11 @@
     }
     .btn{
         font-size:1.2rem;
-        width:110%;
+        width:130%;
+        transform: translateX(-1rem);
     }
     .btn_back{
-        width:110%;
+        width:130%;
     }
     .Side_presentation{
         display: none;
@@ -747,7 +765,7 @@
     }
     .btn_back{
         width:130%;
-        margin-left:-2rem;
+        margin-left:-4.5rem;
     }
     #gender,#sexual_orientation{
         width:130%;
@@ -770,11 +788,14 @@
     }
     .col2 form > input{
         width:130%;
-        margin-left:-2rem;
+        margin-left:-4rem;
     }
     .btn{
         width:130%;
         margin-left:-2rem;
+    }
+    .passwordDiv{
+        transform: translateX(0rem);
     }
     .modes > button{
         width:100%;
@@ -893,6 +914,12 @@
         
 }
 @media  (max-width:408px) {
+    .btn{
+        transform: translateX(0rem);
+    }
+    .btn_back{
+        transform: translateX(2rem);
+    }
     .card_left_mobile{
         width:80% !important;
     }
