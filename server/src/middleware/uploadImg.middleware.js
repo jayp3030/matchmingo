@@ -25,7 +25,7 @@ const { PassThrough } = require('stream');
 // });
 
 var storage = new GridFsStorage({
-  url: process.env.MONGO_URL,
+  url: "mongodb://0.0.0.0:27017/MatchMingo",
   options: { useNewUrlParser: true, useUnifiedTopology: true },
   // file:  (req,file) => {
 

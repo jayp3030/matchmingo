@@ -104,7 +104,7 @@ var data_bir_gen={}
         <div className="login_form_div_container fcc">
           <div className="login_form_container fcc">
             <div className="login_title_container fcc">
-                <p className="login_title">Welcome User ,
+                <p className="login_title">Welcome Back
                 </p>
             </div>
             <div className="login_google_container fcc">
@@ -134,7 +134,7 @@ var data_bir_gen={}
                         <div className="remember_me_login">
                             <div className="re01">
                             <input type="checkbox" id="remember"/>
-                        <p className="remember_me">&nbsp;Remeber This Device</p>
+                        <p className="remember_me">&nbsp;Remeber me</p>
                             </div>
                             <div className="re02">
                             <button className="link" onClick={handleForgetPassword}><p className="forget_password">Forget Password ?</p></button>

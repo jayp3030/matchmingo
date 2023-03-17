@@ -46,6 +46,12 @@
     .btn{
         font-size:1rem;
     }
+    .col2 form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     
 
    
@@ -63,9 +69,6 @@
         width:75%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
     }
     .remember_me{
         font-size:0.8rem;
@@ -171,10 +174,7 @@
         height:10%;
         width:80%;
         /* background:yellow; */
-        margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+        margin:1% 0% 1% 0%; 
     }
     .remember_me{
         font-size:0.8rem;
@@ -299,6 +299,9 @@
         padding-right:0rem;
         padding-left:7%;
     }
+    .passwordDiv{
+        width: 130%;
+    }
     .btn{
         font-size:1.2rem;
         width:130%;
@@ -311,9 +314,7 @@
         width:85%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+
     }
     .remember_me{
         font-size:0.85rem;
@@ -380,7 +381,7 @@
         width:95%;
     }
     .Side_presentation{
-        width:47vw;
+        display: none;
     }
     .login_form_div{
         width:53vw;
@@ -412,7 +413,7 @@
         width:95%;
     }
     .login_title{
-        font-size:1.4rem;
+        font-size:1.5rem;
     }
 
     #google_login , .submit_btn{
@@ -439,9 +440,6 @@
         width:95%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
     }
     .remember_me{
         font-size:0.83rem;
@@ -574,7 +572,7 @@
         width:110%;
     }
     .Side_presentation{
-        width:0vw;
+        display: none;
     }
     .login_form_div{
         width:100vw;
@@ -633,9 +631,7 @@
         width:85%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+        
     }
     .remember_me{
         font-size:0.9rem;
@@ -795,7 +791,7 @@
     }
     
     .Side_presentation{
-        width:0vw;
+        display: none;
     }
     .login_form_div{
         width:100vw;
@@ -834,7 +830,7 @@
         width:90%;
     }
     .login_title{
-        font-size:1.3rem !important;
+        font-size:1.5rem !important;
         font-weight: 600;
     }
 
@@ -862,12 +858,7 @@
         width:90%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-    }
-    .remember_me{
-        font-size:0.85rem;
+        font-size: 10px;
     }
     .submit_btn_div{
         /* background:green; */
@@ -913,4 +904,54 @@
         height:auto;
     }
     
+        @keyframes fontanimation{
+            0%{
+                margin-top: 5rem;
+                font-size: 8vw;
+                font-family: serif;
+            }
+            5%{
+                font-family:'Courier New', Courier, monospace;
+            }
+            10%{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            15%{
+                font-family: 'Times New Roman', Times, serif;
+            }
+            20%{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            25%{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+        
+            30%{
+                
+                font-family: 'manrope_light';
+            }
+            60%{
+                margin-top: 5rem;
+                font-size: 8vw;
+                font-family: 'manrope_light';
+        
+            }
+         
+            100%{
+                font-size: 5vw;
+                font-family: 'manrope_light';
+            }
+        }
+        .title{
+            font-size: 13vw;
+            line-height: 12vw;
+        }
+        .fcc p{
+          font-size: 0.7rem;
+        }
+        .fcc img{
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+        
 }

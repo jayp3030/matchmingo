@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
 
-var data_context=React.createContext();
+var data_context = React.createContext();
 
 export default function Signup(props) {
 
@@ -15,17 +15,16 @@ export default function Signup(props) {
     password: "",
     cpassword: "",
   });
-  var [data, setData] = useState({first_name:null,last_name:null,email:null});
-  var [personal,setPersonal]=useState({birthday:null,gender:null});
+  var [data, setData] = useState({ first_name: null, last_name: null, email: null });
+  var [personal, setPersonal] = useState({ birthday: null, gender: null });
   const handleOnChange = (e) => {
     // if(data.email!=null){setCredentials({...credentials,email:data.email})}
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
-      // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
       // var name=document.getElementById("name");
@@ -63,25 +62,27 @@ export default function Signup(props) {
       //   element.style.transform="translateX(-100vw)";
       //   element.style.transition="1s";
       // });
+      localStorage.setItem("token", json.token) 
+      document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
     }
   };
 
-  const changeMode = ()=>{
-    if(localStorage.getItem("mode")){
+  const changeMode = () => {
+    if (localStorage.getItem("mode")) {
       console.log(localStorage.getItem("mode"))
-      if(localStorage.getItem("mode")==="light"){
+      if (localStorage.getItem("mode") === "light") {
         console.log("hello")
-        localStorage.setItem("mode","dark")
+        localStorage.setItem("mode", "dark")
         window.location.reload()
         return
       }
-      else{
-        localStorage.setItem("mode","light")
+      else {
+        localStorage.setItem("mode", "light")
         window.location.reload()
         return
       }
     }
-    localStorage.setItem("mode","light")
+    localStorage.setItem("mode", "light")
   }
 
 
@@ -93,8 +94,8 @@ export default function Signup(props) {
   // },[])
   return (
     <>
-    {props.handleCall(data,personal)}
-      <div className="outer_signup" id="outer_signup" style={{overflow:"hidden"}}>
+      {props.handleCall(data, personal)}
+      <div className="outer_signup" id="outer_signup" style={{ overflow: "hidden" }}>
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
@@ -116,22 +117,35 @@ export default function Signup(props) {
                 onChange={handleOnChange}
                 value={credentials.email}
                 placeholder="Enter Your Email"
-                disabled={data.email!=null && true}
+                disabled={data.email != null && true}
               />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleOnChange}
-                placeholder="Password"
-              />
-              <input
-                type="password"
-                name="cpassword"
-                id="cpassword"
-                onChange={handleOnChange}
-                placeholder="Confirm Password"
-              />
+
+              <div className="passwordDiv">
+
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleOnChange}
+                  placeholder="Password"
+                />
+                {document.getElementById("password") && document.getElementById("password").value.length>0 && <button onClick={handlePasswordShow}>
+                  <i class="bi bi-eye"></i>
+                </button>}
+              </div>
+              <div className="passwordDiv">
+
+                <input
+                  type="password"
+                  name="cpassword"
+                  id="cpassword"
+                  onChange={handleOnChange}
+                  placeholder="Confirm Password"
+                />
+                {document.getElementById("cpassword") && document.getElementById("cpassword").value.length>0 && <button onClick={handlePasswordShow}>
+                  <i class="bi bi-eye"></i>
+                </button>}
+              </div>
               <p className="alert" id="alert">
                 demo
               </p>
@@ -143,8 +157,8 @@ export default function Signup(props) {
               Already Member? <a href="/login">Find Your Match</a>
             </h5>
             <div className="modes">
-                <button className="btn" onClick={changeMode}>dark mode</button>
-            </div> 
+              <button className="btn" onClick={changeMode}>dark mode</button>
+            </div>
           </div>
         </div>
       </div>
@@ -152,4 +166,4 @@ export default function Signup(props) {
   );
 }
 
-export {data_context};
+export { data_context };

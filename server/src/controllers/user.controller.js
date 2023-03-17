@@ -1,7 +1,6 @@
-const express = require("express");
+
 const userAuth = require("../model/userAuth.model");
 const usersInfo = require("../model/user.model");
-const { ObjectId } = require("mongodb");
 
 async function saveUserDetails(req, res) {
   const {
@@ -62,14 +61,13 @@ async function getUserDetails(req, res) {
   }
 }
 // function to getUser
-async function getUser(req, res) {
+async function getUserById(req, res) {
   try {
-    const userId = req.params.id;
+    const userId = req.query.id;
     const userDetail = await usersInfo.findOne({ userId: userId });
-    // console.log(userDetail)
-    res.status(200).json(userDetail);
+    return res.status(200).json(userDetail);
   } catch (error) {
-    res.status(500).json("internal server error");
+    return res.status(500).json("internal server error");
   }
 }
 
@@ -109,7 +107,7 @@ async function getAllBoysId(req, res) {
 module.exports = {
   saveUserDetails,
   getUserDetails,
-  getUser,
+  getUserById,
   getAllGirlsId,
   getAllBoysId,
   
