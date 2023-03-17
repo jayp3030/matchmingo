@@ -3,6 +3,9 @@ body{
     overflow-x: hidden; 
     scroll-behavior: smooth;      
 }
+/* html{
+  overflow-x: hidden;
+} */
 .landing_carousel{
     height: 100%;
     width: 100%;
@@ -31,15 +34,15 @@ body{
 
 .carousel_element{
     height: 150%;
-    min-width: 13.1vw;
-    max-width: 13.1vw;
-    margin:0.8vw;
+    min-width: 10.5rem;
+    max-width: 10.5rem;
+    margin:0.4rem;
 }
 .carousel_card{
     height: 40%;
     width: 100%;
     background-color: var(--primary);
-    margin: 0.8vw 0rem ;
+    margin: 0.4rem 0rem ;
     z-index: 5;
     display: flex;
     align-items: center;
@@ -322,4 +325,23 @@ body{
   }
   .chatPage_bottom_inner input:focus{
     outline: none;
+  }
+  .passwordDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary);
+    padding: none;
+    padding: 0rem 0.5rem ;
+    margin-bottom: 1rem;
+  }
+  .passwordDiv input{
+    border: none !important;
+    margin: 0 !important;
+  
+  }
+  .passwordDiv button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }

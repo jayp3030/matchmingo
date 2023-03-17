@@ -8,12 +8,12 @@ const Login =  () =>{
 
     const Navigate = useNavigate();
 
-    // useEffect(()=>{
-    //     // if user is already logged in then redirect to home page
-    //     if(localStorage.getItem("token")){
-    //       Navigate("/home")
-    //     }
-    //   },[])
+    useEffect(()=>{
+        // if user is already logged in then redirect to home page
+        if(localStorage.getItem("token")){
+          Navigate("/home")
+        }
+      },[])
 
 return(
     <>

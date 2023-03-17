@@ -135,7 +135,10 @@ export default function MsgSectionMobile() {
         <div className="footer_mobile fcc">
             <div className="footer_mobile_container">
               <div className="footer_logos fcc">
+                <a href={"/"}>
+
                 <img src={img1}></img>
+                </a>
               </div>
             
               

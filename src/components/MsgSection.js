@@ -21,7 +21,7 @@ export default function MsgSection() {
 
   useEffect(() => {
     setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id);
-    socket.current = io("https://matchmingosocket.onrender.com");
+    socket.current = io("https://matchmingosocket.onrender.com"); 
     socket.current.emit(
       "new-user-add",
       jwt_decode(localStorage.getItem("token")).user.id
