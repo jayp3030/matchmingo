@@ -16,8 +16,8 @@ usable_data=data.data;
   });
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
+    e.preventDefault();
+   
     // To check whether user has entered required fields or not
     if(!credentials.first_name || !credentials.last_name){
       document.getElementById("name_page_alert").style.opacity = 1;
@@ -40,9 +40,7 @@ usable_data=data.data;
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
     }
-    
   }
-
   const handlebackwardSlide = (e) => {
     e.preventDefault()
     var name=document.getElementsByClassName("outer_signup");
