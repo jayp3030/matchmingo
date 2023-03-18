@@ -158,7 +158,7 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        font-size:0.9rem;
+        /* font-size:1rem; */
         padding-left:7%;
     }
     .btn{
@@ -241,16 +241,16 @@
     width:50vw;
    }
    #gender,#sexual_orientation{
-    width:130%;
+    width:100%;
 }
 #gender_college{
-    width:130%;
+    width:100%;
 }
 .photo_section{
     width:100%;
 }
 .hobbies_container,.bioInput{
-    width:130%;
+    width:100%;
     
     /* background:green; */
 }
@@ -269,20 +269,20 @@
         font-size:1.35rem;
     }
     .col2 p{
-        width:130%;
+        width:100%;
     }
     .btn_back{
-        width:130%;
-        /* margin-left:-2rem; */
+        width:100%;
+        /*  */
     }
     .google_btn{
         padding-left:0%;
         padding-right:0%;
         margin-left:0%;
-        width:130%;
+        width:100%;
     }
     .col2 form >input{
-        width:130%;
+        width:100%;
     }
     .google_logo img{
         width:80%;
@@ -294,20 +294,20 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        width:130%;
+        width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
     }
     .passwordDiv{
-        width: 130%;
+        width: 100%;
     }
     .btn{
         font-size:1.2rem;
-        width:130%;
+        width:100%;
     }
     .btn_back{
-        width:130%;
+        width:100%;
     }
     .remember_me_login{
         height:10%;
@@ -527,18 +527,18 @@
         padding-bottom:10%;
     }
     #gender_college{
-        width:110%;
+        width:100%;
     }
     .google_btn{
-        width:110%;
+        width:100%;
         margin-left:0rem;
     }
     .btn_back{
-        width:110%;
-        /* margin-left:-2rem; */
+        width:100%;
+        /*  */
     }
     .col2 p{
-        width:110%;
+        width:100%;
     }
     .google_logo img{
         width:70%;
@@ -551,25 +551,25 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        width:110%;
+        width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
     }
     #gender,#sexual_orientation{
-        width:110%;
+        width:100%;
     }
     .hobbies_container,.bioInput{
-        width:110%;
+        width:100%;
         
         /* background:green; */
     }
     .btn{
         font-size:1.2rem;
-        width:110%;
+        width:100%;
     }
     .btn_back{
-        width:110%;
+        width:100%;
     }
     .Side_presentation{
         display: none;
@@ -705,12 +705,12 @@
         }
     }
     .title{
-        font-size: 13vw;
+        font-size: 15vw;
         line-height: 12vw;
     }
-    /* .fcc p{
-      font-size: 1rem;
-    } */
+    .fcc p{
+      font-size: .85rem;
+    }
     .fcc img{
         height: 1.5rem;
         width: 1.5rem;
@@ -735,31 +735,31 @@
     }
 
     .google_logo > p{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .upper > h2{
-        margin-left:-2rem;
+        
     }
     .google_btn{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .btn_back{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     #gender,#sexual_orientation{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     #gender_college{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .hobbies_container,.bioInput{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
         /* background:green; */
     }
     .col2 form > h4{
@@ -769,12 +769,12 @@
         margin-left: -2rem;
     }
     .col2 form > input{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .btn{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .modes > button{
         width:100%;
@@ -782,12 +782,12 @@
 
     }
     .last_child{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .modes{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     
     .Side_presentation{
@@ -943,11 +943,11 @@
             }
         }
         .title{
-            font-size: 13vw;
+            font-size: 15vw;
             line-height: 12vw;
         }
         .fcc p{
-          font-size: 0.7rem;
+          font-size: 0.8rem;
         }
         .fcc img{
             height: 1.5rem;

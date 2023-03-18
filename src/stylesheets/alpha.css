@@ -288,7 +288,7 @@ input{
     display: block;
     width: 100%;
     margin: 1rem 0;
-    padding: 0.7rem 0.5rem;
+    padding: 0.7rem 1rem;
     border: 1px solid var(--primary);
     font-family: 'manrope_light';
 }
@@ -405,7 +405,7 @@ input::-webkit-inner-spin-button {
     margin: 1rem 0;
     outline: none;
     border: 1px solid var(--primary);
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-family: 'manrope_light';
     letter-spacing: .5px;
     background-color: transparent;

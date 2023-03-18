@@ -62,8 +62,6 @@ export default function Signup(props) {
       //   element.style.transform="translateX(-100vw)";
       //   element.style.transition="1s";
       // });
-      localStorage.setItem("token", json.token) 
-      document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
     }
   };
 
@@ -86,12 +84,46 @@ export default function Signup(props) {
   }
 
 
-  // useEffect(()=>{
-  //   //if user is logged in then redirect to home page
-  //   if(localStorage.getItem("token")){
-  //     Navigate("/home")
-  //   }
-  // },[])
+  useEffect(()=>{
+    //if user is logged in then redirect to home page
+    if(localStorage.getItem("token")){
+      Navigate("/home")
+    }
+  },[])
+
+  const handleCal = async () => {
+    var auth_obj = window.gapi.auth2.getAuthInstance();
+    console.log(auth_obj);
+
+    await auth_obj
+      .signIn()
+      .then(async (e) => {
+        console.log(e);
+
+        setData({
+          first_name: e.tv.PZ,
+          last_name: e.tv.eY,
+          email: e.tv.fw
+        })
+        console.log("data =");
+        console.log(data);
+      })
+    const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
+    if (state) {
+      Navigate("/home");
+    }
+  }
+  const handlePasswordShow=(e)=>{
+    e.preventDefault()
+    if( e.target.parentElement.parentElement.firstChild.type === "text"){
+      e.target.parentElement.parentElement.firstChild.type = "password"
+      
+      return
+    }
+    e.target.parentElement.parentElement.firstChild.type = "text"
+   
+  }
+
   return (
     <>
       {props.handleCall(data, personal)}
