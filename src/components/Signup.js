@@ -55,8 +55,13 @@ export default function Signup(props) {
       return;
     }
     if (json.success) {
-      localStorage.setItem("token", json.token) 
-      document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
+      localStorage.setItem("token",json.token)
+      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
+      // var name1=document.getElementsByClassName("outer_signup");
+      // name1.forEach(element => {
+      //   element.style.transform="translateX(-100vw)";
+      //   element.style.transition="1s";
+      // });
     }
   };
 
@@ -127,7 +132,7 @@ export default function Signup(props) {
         <div className="col2">
           <div className="upper">
             <h2>Become a Mingo Member</h2>
-            <button className="google_btn" onClick={handleCal}>
+            <button className="google_btn">
               <div className="google_logo">
                 <img src={google} alt="google" />
               </div>

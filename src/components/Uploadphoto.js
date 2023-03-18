@@ -187,7 +187,7 @@ const blastCircle=()=>{
                   className="circle"
                   id="circle"
                 ></button>
-                <span>Upload</span>
+                Upload
               </button>
               <button className="btn_back"  onClick={handlebackwardSlide}>
                 Back

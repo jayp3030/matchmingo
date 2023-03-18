@@ -320,8 +320,8 @@ body{
     color: #000;
   }
   ::placeholder{
-    font-family: "manrope";
-    color: #000 ;
+    font-family: 'manrope_extra_light';
+    color: var(--primary);
   }
   .chatPage_bottom_inner input:focus{
     outline: none;
@@ -331,17 +331,37 @@ body{
     align-items: center;
     justify-content: center;
     border: 1px solid var(--primary);
-    padding: none;
-    padding: 0rem 0.5rem ;
+    padding: 0 1rem;
     margin-bottom: 1rem;
+    width: 100%;
+    transition: all .1s ease-in-out;
   }
+  .passwordDiv input{
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--primary);
+    font-family: 'manrope_light';
+  }
+  .passwordDiv:hover{
+    border: 1px solid var(--light);
+  }
+
+  /* .passwordDiv:focus{
+    border: 1px solid var(--light);
+  } */
   .passwordDiv input{
     border: none !important;
     margin: 0 !important;
-  
+    font-family: 'manrope_extra_light';
   }
   .passwordDiv button{
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+  .passwordDiv input:focus{
+    outline: none;
+    border: 1px solid var(--light)
   }
