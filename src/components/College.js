@@ -16,7 +16,7 @@ export default function College(props) {
       var name=document.getElementsByClassName("outer_signup");
 
       Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-400vw)";
+        element.style.transform="translateX(-300vw)";
         element.style.transition="1s";
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
@@ -43,7 +43,7 @@ export default function College(props) {
     // });
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-200vw)";
+      element.style.transform="translateX(-100vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform = "translateX(-200vw)"

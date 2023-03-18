@@ -490,8 +490,8 @@ input::-webkit-inner-spin-button {
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
-    overflow: hidden;
-    overflow-x: hidden;
+    /* overflow: hidden;  */
+    /* overflow-y: hidden;  */
 }
 
 .photo_section {
