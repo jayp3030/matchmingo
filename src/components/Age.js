@@ -25,7 +25,7 @@ export default function Age(props) {
 
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-300vw)";
+        element.style.transform="translateX(-200vw)";
         element.style.transition="1s";
       });
     // document.getElementById("profile_setup").style.transform =
@@ -36,7 +36,7 @@ export default function Age(props) {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-100vw)";
+      element.style.transform="translateX(-0vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform =
