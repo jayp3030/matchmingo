@@ -14,7 +14,9 @@
     .login_title{
         font-size:1.6rem;
     }
-    
+    .passwordDiv{
+        width:100%;
+    }
     .col2 h2{
         font-size:1.5rem;
     }
@@ -26,15 +28,11 @@
     .google_btn{
         width:100%;
     }
-    .btn_back{
-        width:100%;
-        /* margin-left:0rem; */
-    }
     .google_btn > div{
         font-size:0.8rem;
         padding-top:-1%;
     }
-    .col2 form >input{
+    .col2 form>input{
         font-size:0.8rem;
         padding-left:7%;
     }
@@ -56,17 +54,17 @@
 
    
     #google_login , .submit_btn{
-        width:75%;
+        width:80%;
         height:60%
     }
-    #login_form_ff > input {
+    /* #login_form_ff > input {
         height:15%;
         width:75%;
         
-    }
+    } */
     .remember_me_login{
         height:10%;
-        width:75%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
     }
@@ -78,7 +76,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:75%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -164,15 +162,15 @@
     .btn{
         font-size:1.2rem;
     }
-    #login_form_ff > input {
+    /* #login_form_ff > input {
         height:14%;
         width:80%;
         padding-left:5%;
         
-    }
+    } */
     .remember_me_login{
         height:10%;
-        width:80%;
+        /* width:80%; */
         /* background:yellow; */
         margin:1% 0% 1% 0%; 
     }
@@ -184,7 +182,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:80%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -255,13 +253,11 @@
     /* background:green; */
 }
     #google_login , .submit_btn{
-        width:85%;
+        width:100%;
         height:55%;
         font-size:1.3rem;
     }
     #login_form_ff > input {
-        height:14%;
-        width:85%;
         padding-left:5%;
         
     }
@@ -270,10 +266,6 @@
     }
     .col2 p{
         width:100%;
-    }
-    .btn_back{
-        width:100%;
-        /*  */
     }
     .google_btn{
         padding-left:0%;
@@ -293,20 +285,19 @@
         font-size:0.82rem;
         padding-top:-1%;
     }
-    .col2 form >input{
+    /* .col2 form >input{
         width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
-    }
+        
+        
+    } */
     .passwordDiv{
         width: 100%;
     }
     .btn{
         font-size:1.2rem;
-        width:100%;
-    }
-    .btn_back{
         width:100%;
     }
     .remember_me_login{
@@ -324,7 +315,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:85%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -415,9 +406,12 @@
     .login_title{
         font-size:1.5rem;
     }
-
+   .google_btn{
+    margin-left:-0.1rem;
+   }
+ 
     #google_login , .submit_btn{
-        width:95%;
+        width:100%;
         height:55%;
         font-size:1.2rem;
     }
@@ -429,9 +423,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:14%;
-        width:95%;
-        padding-left:5%;
         font-size: 0.8rem;
         
     }
@@ -446,7 +437,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:95%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -500,8 +491,6 @@
     width:53%;
 }
 }
-@media (max-width:730px){
-}
 @media (max-width: 670px) {
     .login_title_container{
         width:85%;
@@ -521,21 +510,13 @@
         width:100vw;
       
     }
-    .col2 h2{
-        font-size:1.8rem;
-        width: 120%;
-        padding-bottom:10%;
-    }
+ 
     #gender_college{
         width:100%;
     }
     .google_btn{
         width:100%;
         margin-left:0rem;
-    }
-    .btn_back{
-        width:100%;
-        /*  */
     }
     .col2 p{
         width:100%;
@@ -550,12 +531,12 @@
         font-size:0.82rem;
         padding-top:-1%;
     }
-    .col2 form >input{
+    /* .col2 form >input{
         width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
-    }
+    } */
     #gender,#sexual_orientation{
         width:100%;
     }
@@ -566,9 +547,6 @@
     }
     .btn{
         font-size:1.2rem;
-        width:100%;
-    }
-    .btn_back{
         width:100%;
     }
     .Side_presentation{
@@ -608,7 +586,7 @@
     }
 
     #google_login , .submit_btn{
-        width:85%;
+        width:100%;
         height:55%;
         font-size:1.2rem;
     }
@@ -620,9 +598,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:14%;
-        width:85%;
-        padding-left:5%;
         font-size: 0.9rem;
         
     }
@@ -638,7 +613,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:85%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -745,10 +720,7 @@
         width:100%;
         
     }
-    .btn_back{
-        width:100%;
-        
-    }
+  
     #gender,#sexual_orientation{
         width:100%;
         
@@ -768,13 +740,12 @@
     .middle > h4{
         margin-left: -2rem;
     }
-    .col2 form > input{
-        width:100%;
-        
-    }
     .btn{
         width:100%;
         
+    }
+    .passwordDiv{
+        transform: translateX(0rem);
     }
     .modes > button{
         width:100%;
@@ -835,7 +806,7 @@
     }
 
     #google_login , .submit_btn{
-        width:90%;
+        width:100%;
         height:45%;
         font-size:1.2rem;
     }
@@ -847,9 +818,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:12%;
-        width:90%;
-        padding-left:5%;
         font-size: 0.92rem;
         
     }
@@ -862,7 +830,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:90%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -893,6 +861,12 @@
         
 }
 @media  (max-width:408px) {
+    .btn{
+        transform: translateX(0rem);
+    }
+    .btn_back{
+        transform: translateX(2rem);
+    }
     .card_left_mobile{
         width:80% !important;
     }

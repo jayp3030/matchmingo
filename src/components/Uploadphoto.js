@@ -81,9 +81,12 @@ export default function Uploadphoto() {
   }
 
   document.getElementById('uploadPageBtn') &&document.addEventListener('mousemove', function(event) { 
-  var rect = document.getElementById('uploadPageBtn').getBoundingClientRect(); 
-  var x = event.clientX - rect.left; 
-  var y = event.clientY - rect.top; 
+    if(document.getElementById('uploadPageBtn')){
+
+      var rect = document.getElementById('uploadPageBtn').getBoundingClientRect(); 
+      var x = event.clientX - rect.left; 
+      var y = event.clientY - rect.top; 
+    }
 
    
   if(x>0 && x<320 && y>0 && y<40 ){
@@ -184,7 +187,7 @@ const blastCircle=()=>{
                   className="circle"
                   id="circle"
                 ></button>
-                <span>Upload</span>
+                Upload
               </button>
               <button className="btn_back"  onClick={handlebackwardSlide}>
                 Back

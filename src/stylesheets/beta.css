@@ -336,9 +336,18 @@ body{
     width: 100%;
     transition: all .1s ease-in-out;
   }
+  .passwordDiv input{
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--primary);
+    font-family: 'manrope_light';
+  }
   .passwordDiv:hover{
     border: 1px solid var(--light);
   }
+
   /* .passwordDiv:focus{
     border: 1px solid var(--light);
   } */
@@ -351,4 +360,8 @@ body{
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+  .passwordDiv input:focus{
+    outline: none;
+    border: 1px solid var(--light)
   }

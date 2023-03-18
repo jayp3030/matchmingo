@@ -415,6 +415,13 @@ input::-webkit-inner-spin-button {
     border: 2px solid red;
 } */
 
+form h4{
+    width: 100%;
+    text-align: left;
+}
+.hobbies_container{
+    width: 100%;
+}
 .hobbyArray {
     border: 1px solid var(--light);
     color: var(--light);
@@ -438,6 +445,7 @@ input::-webkit-inner-spin-button {
     border: 1px solid rgba(132, 132, 132, 0.8);
     height: 2.5rem;
     margin: 1rem 0;
+    width: 100%;
 }
 #hobbyInput {
     margin:  auto 0;
@@ -491,7 +499,7 @@ input::-webkit-inner-spin-button {
     background: white;
     transition: all .5s ease-in-out;
     /* overflow: hidden;  */
-    overflow-x: hidden; 
+    /* overflow-y: hidden;  */
 }
 
 .photo_section {
