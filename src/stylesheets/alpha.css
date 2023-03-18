@@ -43,6 +43,7 @@ input{
     animation: fontanimation 2s cubic-bezier(.49, .52, 0, .89) 1;
     margin-left: 6px;
     color: var(--primary);
+    margin-bottom: 1.5vw; 
 }
 
 @keyframes fontanimation {
@@ -287,7 +288,7 @@ input{
     display: block;
     width: 100%;
     margin: 1rem 0;
-    padding: 0.7rem 0.5rem;
+    padding: 0.7rem 1rem;
     border: 1px solid var(--primary);
     font-family: 'manrope_light';
 }
@@ -404,7 +405,7 @@ input::-webkit-inner-spin-button {
     margin: 1rem 0;
     outline: none;
     border: 1px solid var(--primary);
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-family: 'manrope_light';
     letter-spacing: .5px;
     background-color: transparent;
@@ -414,6 +415,13 @@ input::-webkit-inner-spin-button {
     border: 2px solid red;
 } */
 
+form h4{
+    width: 100%;
+    text-align: left;
+}
+.hobbies_container{
+    width: 100%;
+}
 .hobbyArray {
     border: 1px solid var(--light);
     color: var(--light);
@@ -437,6 +445,7 @@ input::-webkit-inner-spin-button {
     border: 1px solid rgba(132, 132, 132, 0.8);
     height: 2.5rem;
     margin: 1rem 0;
+    width: 100%;
 }
 #hobbyInput {
     margin:  auto 0;
@@ -489,8 +498,8 @@ input::-webkit-inner-spin-button {
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
-    overflow: hidden;
-    overflow-x: hidden;
+    /* overflow: hidden;  */
+    /* overflow-y: hidden;  */
 }
 
 .photo_section {
@@ -909,7 +918,7 @@ label {
     justify-content: center;
     flex-wrap: wrap;
     padding: .8rem 0;
-    background:yellow;
+    /* background:yellow; */
 }
 
 .like_wrapper {

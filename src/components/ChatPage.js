@@ -91,7 +91,7 @@ export default function ChatPage({
       headers: { "Content-Type": "application/json" },
 
       body: JSON.stringify({
-        userArray: [chat.members.find((id) => id !== currentUser)]
+        userArray: [chat.members && chat.members.find((id) => id !== currentUser)]
       })
     });
     const json = await response.json();

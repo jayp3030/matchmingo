@@ -27,7 +27,7 @@ export default function Hobby(props) {
     if(response.ok){
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-500vw)";
+        element.style.transform="translateX(-400vw)";
         element.style.transition="1s";
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
@@ -38,7 +38,7 @@ export default function Hobby(props) {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-300vw)";
+      element.style.transform="translateX(-200vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform = "translateX(-300vw)"

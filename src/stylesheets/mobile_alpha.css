@@ -14,7 +14,9 @@
     .login_title{
         font-size:1.6rem;
     }
-    
+    .passwordDiv{
+        width:100%;
+    }
     .col2 h2{
         font-size:1.5rem;
     }
@@ -26,15 +28,11 @@
     .google_btn{
         width:100%;
     }
-    .btn_back{
-        width:100%;
-        /* margin-left:0rem; */
-    }
     .google_btn > div{
         font-size:0.8rem;
         padding-top:-1%;
     }
-    .col2 form >input{
+    .col2 form>input{
         font-size:0.8rem;
         padding-left:7%;
     }
@@ -46,26 +44,29 @@
     .btn{
         font-size:1rem;
     }
+    .col2 form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     
 
    
     #google_login , .submit_btn{
-        width:75%;
+        width:80%;
         height:60%
     }
-    #login_form_ff > input {
+    /* #login_form_ff > input {
         height:15%;
         width:75%;
         
-    }
+    } */
     .remember_me_login{
         height:10%;
-        width:75%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
     }
     .remember_me{
         font-size:0.8rem;
@@ -75,7 +76,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:75%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -155,26 +156,23 @@
         padding-top:-1%;
     }
     .col2 form >input{
-        font-size:0.9rem;
+        /* font-size:1rem; */
         padding-left:7%;
     }
     .btn{
         font-size:1.2rem;
     }
-    #login_form_ff > input {
+    /* #login_form_ff > input {
         height:14%;
         width:80%;
         padding-left:5%;
         
-    }
+    } */
     .remember_me_login{
         height:10%;
-        width:80%;
+        /* width:80%; */
         /* background:yellow; */
-        margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+        margin:1% 0% 1% 0%; 
     }
     .remember_me{
         font-size:0.8rem;
@@ -184,7 +182,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:80%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -241,27 +239,25 @@
     width:50vw;
    }
    #gender,#sexual_orientation{
-    width:130%;
+    width:100%;
 }
 #gender_college{
-    width:130%;
+    width:100%;
 }
 .photo_section{
     width:100%;
 }
 .hobbies_container,.bioInput{
-    width:130%;
+    width:100%;
     
     /* background:green; */
 }
     #google_login , .submit_btn{
-        width:85%;
+        width:100%;
         height:55%;
         font-size:1.3rem;
     }
     #login_form_ff > input {
-        height:14%;
-        width:85%;
         padding-left:5%;
         
     }
@@ -269,20 +265,16 @@
         font-size:1.35rem;
     }
     .col2 p{
-        width:130%;
-    }
-    .btn_back{
-        width:130%;
-        /* margin-left:-2rem; */
+        width:100%;
     }
     .google_btn{
         padding-left:0%;
         padding-right:0%;
         margin-left:0%;
-        width:130%;
+        width:100%;
     }
     .col2 form >input{
-        width:130%;
+        width:100%;
     }
     .google_logo img{
         width:80%;
@@ -293,27 +285,27 @@
         font-size:0.82rem;
         padding-top:-1%;
     }
-    .col2 form >input{
-        width:130%;
+    /* .col2 form >input{
+        width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
+        
+        
+    } */
+    .passwordDiv{
+        width: 100%;
     }
     .btn{
         font-size:1.2rem;
-        width:130%;
-    }
-    .btn_back{
-        width:130%;
+        width:100%;
     }
     .remember_me_login{
         height:10%;
         width:85%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+
     }
     .remember_me{
         font-size:0.85rem;
@@ -323,7 +315,7 @@
     }
     .submit_btn_div{
         /* background:green; */
-       width:85%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -380,7 +372,7 @@
         width:95%;
     }
     .Side_presentation{
-        width:47vw;
+        display: none;
     }
     .login_form_div{
         width:53vw;
@@ -412,11 +404,14 @@
         width:95%;
     }
     .login_title{
-        font-size:1.4rem;
+        font-size:1.5rem;
     }
-
+   .google_btn{
+    margin-left:-0.1rem;
+   }
+ 
     #google_login , .submit_btn{
-        width:95%;
+        width:100%;
         height:55%;
         font-size:1.2rem;
     }
@@ -428,9 +423,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:14%;
-        width:95%;
-        padding-left:5%;
         font-size: 0.8rem;
         
     }
@@ -439,16 +431,13 @@
         width:95%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
     }
     .remember_me{
         font-size:0.83rem;
     }
     .submit_btn_div{
         /* background:green; */
-       width:95%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -502,8 +491,6 @@
     width:53%;
 }
 }
-@media (max-width:730px){
-}
 @media (max-width: 670px) {
     .login_title_container{
         width:85%;
@@ -523,24 +510,16 @@
         width:100vw;
       
     }
-    .col2 h2{
-        font-size:1.8rem;
-        width: 120%;
-        padding-bottom:10%;
-    }
+ 
     #gender_college{
-        width:110%;
+        width:100%;
     }
     .google_btn{
-        width:110%;
+        width:100%;
         margin-left:0rem;
     }
-    .btn_back{
-        width:110%;
-        /* margin-left:-2rem; */
-    }
     .col2 p{
-        width:110%;
+        width:100%;
     }
     .google_logo img{
         width:70%;
@@ -552,29 +531,26 @@
         font-size:0.82rem;
         padding-top:-1%;
     }
-    .col2 form >input{
-        width:110%;
+    /* .col2 form >input{
+        width:100%;
         font-size:0.82rem;
         padding-right:0rem;
         padding-left:7%;
-    }
+    } */
     #gender,#sexual_orientation{
-        width:110%;
+        width:100%;
     }
     .hobbies_container,.bioInput{
-        width:110%;
+        width:100%;
         
         /* background:green; */
     }
     .btn{
         font-size:1.2rem;
-        width:110%;
-    }
-    .btn_back{
-        width:110%;
+        width:100%;
     }
     .Side_presentation{
-        width:0vw;
+        display: none;
     }
     .login_form_div{
         width:100vw;
@@ -610,7 +586,7 @@
     }
 
     #google_login , .submit_btn{
-        width:85%;
+        width:100%;
         height:55%;
         font-size:1.2rem;
     }
@@ -622,9 +598,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:14%;
-        width:85%;
-        padding-left:5%;
         font-size: 0.9rem;
         
     }
@@ -633,16 +606,14 @@
         width:85%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+        
     }
     .remember_me{
         font-size:0.9rem;
     }
     .submit_btn_div{
         /* background:green; */
-       width:85%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -709,12 +680,12 @@
         }
     }
     .title{
-        font-size: 13vw;
+        font-size: 15vw;
         line-height: 12vw;
     }
-    /* .fcc p{
-      font-size: 1rem;
-    } */
+    .fcc p{
+      font-size: .85rem;
+    }
     .fcc img{
         height: 1.5rem;
         width: 1.5rem;
@@ -739,31 +710,28 @@
     }
 
     .google_logo > p{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .upper > h2{
-        margin-left:-2rem;
+        
     }
     .google_btn{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
-    .btn_back{
-        width:130%;
-        margin-left:-2rem;
-    }
+  
     #gender,#sexual_orientation{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     #gender_college{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .hobbies_container,.bioInput{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
         /* background:green; */
     }
     .col2 form > h4{
@@ -772,13 +740,12 @@
     .middle > h4{
         margin-left: -2rem;
     }
-    .col2 form > input{
-        width:130%;
-        margin-left:-2rem;
-    }
     .btn{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
+    }
+    .passwordDiv{
+        transform: translateX(0rem);
     }
     .modes > button{
         width:100%;
@@ -786,16 +753,16 @@
 
     }
     .last_child{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     .modes{
-        width:130%;
-        margin-left:-2rem;
+        width:100%;
+        
     }
     
     .Side_presentation{
-        width:0vw;
+        display: none;
     }
     .login_form_div{
         width:100vw;
@@ -834,12 +801,12 @@
         width:90%;
     }
     .login_title{
-        font-size:1.3rem !important;
+        font-size:1.5rem !important;
         font-weight: 600;
     }
 
     #google_login , .submit_btn{
-        width:90%;
+        width:100%;
         height:45%;
         font-size:1.2rem;
     }
@@ -851,9 +818,6 @@
         padding-left:5%;
     }
     #login_form_ff > input {
-        height:12%;
-        width:90%;
-        padding-left:5%;
         font-size: 0.92rem;
         
     }
@@ -862,16 +826,11 @@
         width:90%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-    }
-    .remember_me{
-        font-size:0.85rem;
+        font-size: 10px;
     }
     .submit_btn_div{
         /* background:green; */
-       width:90%;
+       width:100%;
        height:30%;
     }
     .submit_btn{
@@ -902,6 +861,12 @@
         
 }
 @media  (max-width:408px) {
+    .btn{
+        transform: translateX(0rem);
+    }
+    .btn_back{
+        transform: translateX(2rem);
+    }
     .card_left_mobile{
         width:80% !important;
     }
@@ -913,4 +878,54 @@
         height:auto;
     }
     
+        @keyframes fontanimation{
+            0%{
+                margin-top: 5rem;
+                font-size: 8vw;
+                font-family: serif;
+            }
+            5%{
+                font-family:'Courier New', Courier, monospace;
+            }
+            10%{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            15%{
+                font-family: 'Times New Roman', Times, serif;
+            }
+            20%{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            25%{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+        
+            30%{
+                
+                font-family: 'manrope_light';
+            }
+            60%{
+                margin-top: 5rem;
+                font-size: 8vw;
+                font-family: 'manrope_light';
+        
+            }
+         
+            100%{
+                font-size: 5vw;
+                font-family: 'manrope_light';
+            }
+        }
+        .title{
+            font-size: 15vw;
+            line-height: 12vw;
+        }
+        .fcc p{
+          font-size: 0.8rem;
+        }
+        .fcc img{
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+        
 }

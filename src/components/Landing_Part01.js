@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 export default function Landing_part01() {
     const scrollDown=()=>{
-        window.scrollTo(0,2000)
+        window.scrollTo(0,3000)
     }
     
     useEffect(() => {

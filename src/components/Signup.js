@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
 
 
-var data_context=React.createContext();
+var data_context = React.createContext();
 
 export default function Signup(props) {
 
@@ -15,17 +15,16 @@ export default function Signup(props) {
     password: "",
     cpassword: "",
   });
-  var [data, setData] = useState({first_name:null,last_name:null,email:null});
-  var [personal,setPersonal]=useState({birthday:null,gender:null});
+  var [data, setData] = useState({ first_name: null, last_name: null, email: null });
+  var [personal, setPersonal] = useState({ birthday: null, gender: null });
   const handleOnChange = (e) => {
     // if(data.email!=null){setCredentials({...credentials,email:data.email})}
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
-      // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; 
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
       // var name=document.getElementById("name");
@@ -56,75 +55,84 @@ export default function Signup(props) {
       return;
     }
     if (json.success) {
-       // document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
       localStorage.setItem("token",json.token)
-      var name=document.getElementsByClassName("outer_signup");
-      name.forEach(element => {
-        element.style.transform="translateX(-100vw)";
-        element.style.transition="1s";
-      });
+      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
+      // var name1=document.getElementsByClassName("outer_signup");
+      // name1.forEach(element => {
+      //   element.style.transform="translateX(-100vw)";
+      //   element.style.transition="1s";
+      // });
     }
   };
 
-  const changeMode = ()=>{
-    if(localStorage.getItem("mode")){
+  const changeMode = () => {
+    if (localStorage.getItem("mode")) {
       console.log(localStorage.getItem("mode"))
-      if(localStorage.getItem("mode")==="light"){
+      if (localStorage.getItem("mode") === "light") {
         console.log("hello")
-        localStorage.setItem("mode","dark")
+        localStorage.setItem("mode", "dark")
         window.location.reload()
         return
       }
-      else{
-        localStorage.setItem("mode","light")
+      else {
+        localStorage.setItem("mode", "light")
         window.location.reload()
         return
       }
     }
-    localStorage.setItem("mode","light")
+    localStorage.setItem("mode", "light")
   }
 
 
-  // useEffect(()=>{
-  //   //if user is logged in then redirect to home page
-  //   if(localStorage.getItem("token")){
-  //     Navigate("/home")
-  //   }
-  // },[])
+  useEffect(()=>{
+    //if user is logged in then redirect to home page
+    if(localStorage.getItem("token")){
+      Navigate("/home")
+    }
+  },[])
 
-  const handleCal=async ()=>{
-    var auth_obj=window.gapi.auth2.getAuthInstance();
+  const handleCal = async () => {
+    var auth_obj = window.gapi.auth2.getAuthInstance();
     console.log(auth_obj);
-    
-      await auth_obj
+
+    await auth_obj
       .signIn()
-      .then(async (e)=>
-        {
-          console.log(e);
-         
-          setData({
-            first_name:e.tv.PZ,
-            last_name:e.tv.eY,
-            email:e.tv.fw
+      .then(async (e) => {
+        console.log(e);
+
+        setData({
+          first_name: e.tv.PZ,
+          last_name: e.tv.eY,
+          email: e.tv.fw
         })
         console.log("data =");
         console.log(data);
-  })
+      })
     const state = await window.gapi.auth2.getAuthInstance().isSignedIn.Oa;
-      if(state){
-        Navigate("/home");
-      }
+    if (state) {
+      Navigate("/home");
+    }
+  }
+  const handlePasswordShow=(e)=>{
+    e.preventDefault()
+    if( e.target.parentElement.parentElement.firstChild.type === "text"){
+      e.target.parentElement.parentElement.firstChild.type = "password"
+      
+      return
+    }
+    e.target.parentElement.parentElement.firstChild.type = "text"
+   
   }
 
   return (
     <>
-    {props.handleCall(data,personal)}
-      <div className="outer_signup" id="outer_signup" style={{overflow:"hidden"}}>
+      {props.handleCall(data, personal)}
+      <div className="outer_signup" id="outer_signup" style={{ overflow: "hidden" }}>
         <div className="col1"></div>
         <div className="col2">
           <div className="upper">
             <h2>Become a Mingo Member</h2>
-            <button className="google_btn" onClick={handleCal}>
+            <button className="google_btn">
               <div className="google_logo">
                 <img src={google} alt="google" />
               </div>
@@ -141,22 +149,35 @@ export default function Signup(props) {
                 onChange={handleOnChange}
                 value={credentials.email}
                 placeholder="Enter Your Email"
-                disabled={data.email!=null && true}
+                disabled={data.email != null && true}
               />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleOnChange}
-                placeholder="Password"
-              />
-              <input
-                type="password"
-                name="cpassword"
-                id="cpassword"
-                onChange={handleOnChange}
-                placeholder="Confirm Password"
-              />
+
+              <div className="passwordDiv">
+
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleOnChange}
+                  placeholder="Password"
+                />
+                {document.getElementById("password") && document.getElementById("password").value.length>0 && <button onClick={handlePasswordShow}>
+                  <i class="bi bi-eye"></i>
+                </button>}
+              </div>
+              <div className="passwordDiv">
+
+                <input
+                  type="password"
+                  name="cpassword"
+                  id="cpassword"
+                  onChange={handleOnChange}
+                  placeholder="Confirm Password"
+                />
+                {document.getElementById("cpassword") && document.getElementById("cpassword").value.length>0 && <button onClick={handlePasswordShow}>
+                  <i class="bi bi-eye"></i>
+                </button>}
+              </div>
               <p className="alert" id="alert">
                 demo
               </p>
@@ -168,8 +189,8 @@ export default function Signup(props) {
               Already Member? <a href="/login">Find Your Match</a>
             </h5>
             <div className="modes">
-                <button className="btn" onClick={changeMode}>dark mode</button>
-            </div> 
+              <button className="btn" onClick={changeMode}>dark mode</button>
+            </div>
           </div>
         </div>
       </div>
@@ -177,4 +198,4 @@ export default function Signup(props) {
   );
 }
 
-export {data_context};
+export { data_context };

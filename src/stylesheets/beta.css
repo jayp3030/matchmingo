@@ -3,6 +3,9 @@ body{
     overflow-x: hidden; 
     scroll-behavior: smooth;      
 }
+/* html{
+  overflow-x: hidden;
+} */
 .landing_carousel{
     height: 100%;
     width: 100%;
@@ -31,15 +34,15 @@ body{
 
 .carousel_element{
     height: 150%;
-    min-width: 13.1vw;
-    max-width: 13.1vw;
-    margin:0.8vw;
+    min-width: 10.5rem;
+    max-width: 10.5rem;
+    margin:0.4rem;
 }
 .carousel_card{
     height: 40%;
     width: 100%;
     background-color: var(--primary);
-    margin: 0.8vw 0rem ;
+    margin: 0.4rem 0rem ;
     z-index: 5;
     display: flex;
     align-items: center;
@@ -317,9 +320,48 @@ body{
     color: #000;
   }
   ::placeholder{
-    font-family: "manrope";
-    color: #000 ;
+    font-family: 'manrope_extra_light';
+    color: var(--primary);
   }
   .chatPage_bottom_inner input:focus{
     outline: none;
+  }
+  .passwordDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary);
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    transition: all .1s ease-in-out;
+  }
+  .passwordDiv input{
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--primary);
+    font-family: 'manrope_light';
+  }
+  .passwordDiv:hover{
+    border: 1px solid var(--light);
+  }
+
+  /* .passwordDiv:focus{
+    border: 1px solid var(--light);
+  } */
+  .passwordDiv input{
+    border: none !important;
+    margin: 0 !important;
+    font-family: 'manrope_extra_light';
+  }
+  .passwordDiv button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .passwordDiv input:focus{
+    outline: none;
+    border: 1px solid var(--light)
   }

@@ -1,20 +1,14 @@
-import SwipeListener from "swipe-listener";
+
 import React, { useEffect, useRef, useState } from "react";
-import ChatPage from "./ChatPage";
+
 import { AnimatePresence, animate, motion } from "framer-motion";
-import MsgSection from "./MsgSection";
-import LikeSection from "./LikeSection";
-import MsgLike from "./MsgLike";
-import UserInfo from "./UserInfo";
-import axios from "axios";
-import { wait } from "@testing-library/user-event/dist/utils";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import img1 from "../images/285660_picture_image_pic_icon 1.png";
 import img2 from "../images/favorite.png";
 import img3 from "../images/icons8-messages-500 1.png";
 import img4 from "../images/1167993_cog_cogwheel_configuration_parameters_properties_icon 1.png";
-import img5 from "../images/landingPage05.jpg";
+
 export default function HomeMobile(){
     const host = process.env.REACT_APP_BASEURL
     const Navigate = useNavigate();
@@ -58,7 +52,7 @@ export default function HomeMobile(){
       };
       async function fetch_data(userId) {
         const response = await fetch(
-          `http://localhost:8000/details/getUser/${userId.userId}`
+          `${host}/details/getUserById?id=${userId.userId}`
         );
         const json = await response.json();
         console.log(json);
@@ -294,9 +288,12 @@ export default function HomeMobile(){
       };
     
       const getUserImages = async (userId) => {
-        console.log(userId);
+        console.log("ooo" +userId.userId);
         const response = await fetch(`${host}/details/getUserImagebyId/${userId.userId}`, {
           method: "GET",
+          headers:{
+            "Content-Type":"application/json"
+          }
         });
         const json = await response.json();
         console.log(json);
@@ -347,19 +344,6 @@ export default function HomeMobile(){
       };
     
       async function update() {
-        if (cardIdArray[IdCount].userId!==jwt_decode(localStorage.getItem("token")).user.id) {
-          console.log(cardIdArray[IdCount])
-          setAnimation();
-          setTimeout(() => {
-            fetch_data(cardIdArray[IdCount]);
-            getUserImages(cardIdArray[IdCount]);
-          }, 1000);
-          setTimeout(() => {
-            const card = document.getElementById('card')
-            card.style.marginTop = "0%";
-          }, 1000);
-        }
-        else{
           setAnimation()
 
           setTimeout(() => {
@@ -371,7 +355,6 @@ export default function HomeMobile(){
             const card = document.getElementById('card')
             card.style.marginTop = "0%";
           }, 1000);
-        }
         setIdCount(IdCount + 1);
       }
 return (

@@ -1,7 +1,7 @@
-const express = require("express");
+
 const userAuth = require("../model/userAuth.model");
 const Token = require("../model/token.model");
-const { body, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -164,5 +164,27 @@ const resetPassword = async (req, res) => {
   await passwordResetToken.deleteOne();
   return res.status(200).json({ success: true });
 };
+const userAuthCompleted=async(req,res)=>{
+  try {
+    const userId = req.body.userId;
+    const user = await userAuth.findByIdAndUpdate(userId,{$set:{userInfoStatus:true}})
+    return res.status(200).send(user)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("internal server error");
+  }
+}
+const userAuthCompletedStatus=async(req,res)=>{
+  try {
+    const userId = req.query.id;
+    const user = await userAuth.findOne(
+      {_id:userId}
+    );
+    return res.status(200).send(user.userInfoStatus)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("internal server error");
+  }
+}
 
-module.exports = { createUser, loginUser, requestPasswordReset, resetPassword };
+module.exports = { createUser, loginUser, requestPasswordReset, resetPassword,userAuthCompleted ,userAuthCompletedStatus};

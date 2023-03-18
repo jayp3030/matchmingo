@@ -1,27 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
-// import ImageUploading from "react-images-uploading";
 import upldImg from "../images/uploadPhoto.png";
 import jwt_decode from "jwt-decode";
-import img from "../images/landingPage03.jpg"
+import { useNavigate } from "react-router-dom";
 
 export default function Uploadphoto() {
   const [images, setimages] = useState([])
   const host = process.env.REACT_APP_BASEURL
   const [userId, setuserId] = useState();
+  const Navigate = useNavigate();
 
   const btnRef = useRef(null);
 
-  const handleSlide = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    btnRef.current.click();
-    var name=document.getElementsByClassName("outer_signup");
-      Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-600vw)";
-        element.style.transition="1s";
-      });
-    // document.getElementById("profile_setup").style.transform =
-    //   "translateX(-600vw)";
+    if(images.length<3){
+      return
+    }
+    updateUserInfoStatus()
+    
   };
+  const updateUserInfoStatus = async()=>{
+    const response = await fetch(`${host}/auth/userAuthCompleted`,{
+      method:"post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "userId":jwt_decode(localStorage.getItem("token")).user.id
+      })
+    }).then(handleUploadPhoto())
+  }
 
   const handlebackwardSlide = (e) => {
     e.preventDefault();
@@ -57,8 +63,7 @@ export default function Uploadphoto() {
       }
     }
   };
-  const handleUploadPhoto = async (e) => {
-    e.preventDefault()
+  const handleUploadPhoto = async () => {
     // Create a new FormData object
     const formData = new FormData();
 
@@ -67,14 +72,47 @@ export default function Uploadphoto() {
       formData.append('images', images[i]);
     }
 
-    console.log(images)
     const response = await fetch(`${host}/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`, {
       method: "POST",
       body: formData,
     });
     const json = await response.json();
-    console.log(json)
+    blastCircle()
   }
+
+  document.getElementById('uploadPageBtn') &&document.addEventListener('mousemove', function(event) { 
+    if(document.getElementById('uploadPageBtn')){
+
+      var rect = document.getElementById('uploadPageBtn').getBoundingClientRect(); 
+      var x = event.clientX - rect.left; 
+      var y = event.clientY - rect.top; 
+    }
+
+   
+  if(x>0 && x<320 && y>0 && y<40 ){
+      document.getElementById("circle").style.display = "block" 
+      document.getElementById("circle").style.top = y + "px";
+      document.getElementById("circle").style.left = x + "px";
+  }
+    else{
+      document.getElementById("circle").style.display = "none" 
+    }
+    
+}); 
+const blastCircle=()=>{
+  document.getElementById("circle").style.backgroundColor = "#2EC4B6"
+
+  setTimeout(() => {
+    Navigate("/home")
+  }, 2000);
+  
+  document.getElementById("circle").style.transform = "scale(100)"
+  document.getElementById("circle").style.transition = "all 1s ease-out"
+  document.getElementById("sidebar_wrapper").style.opacity = 0 
+  document.getElementById("matchmingoText").style.opacity = 0 
+  
+}
+
 
   return (
     <>
@@ -127,7 +165,7 @@ export default function Uploadphoto() {
                   multiple
                 />
               </label>
-              <button ref={btnRef} onClick={handleUploadPhoto} className="btn_dnone">
+              <button className="btn_dnone">
                 submit
               </button>
             </form>
@@ -144,10 +182,14 @@ export default function Uploadphoto() {
               </p>
             </div>
             <div className="middle">
-              <button className="btn" id="uploadPageBtn" onClick={handleSlide}>
+            <button className="btn"  {...images.length<3?"disabled":""} id="uploadPageBtn" onClick={ handleSubmit} >
+                <button
+                  className="circle"
+                  id="circle"
+                ></button>
                 Upload
               </button>
-              <button className="btn_back" onClick={handlebackwardSlide}>
+              <button className="btn_back"  onClick={handlebackwardSlide}>
                 Back
               </button>
             </div>
