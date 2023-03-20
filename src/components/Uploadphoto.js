@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import upldImg from "../images/uploadPhoto.png";
 import jwt_decode from "jwt-decode";
@@ -88,8 +89,8 @@ export default function Uploadphoto() {
       var y = event.clientY - rect.top; 
     }
 
-   
-  if(x>0 && x<320 && y>0 && y<40 ){
+   if(document.getElementById("circle")){
+    if(x>0 && x<320 && y>0 && y<40){
       document.getElementById("circle").style.display = "block" 
       document.getElementById("circle").style.top = y + "px";
       document.getElementById("circle").style.left = x + "px";
@@ -97,6 +98,8 @@ export default function Uploadphoto() {
     else{
       document.getElementById("circle").style.display = "none" 
     }
+   }
+ 
     
 }); 
 const blastCircle=()=>{
@@ -116,6 +119,7 @@ const blastCircle=()=>{
 
   return (
     <>
+    {console.log(images)}
       {localStorage.getItem("token") && (
         <div className="outer_signup" id="outer_signup">
           <div className="col1"></div>

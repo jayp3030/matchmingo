@@ -408,7 +408,7 @@ export default function Homeright() {
             </button>
           </div>
           <div className="home_left_bottom">
-            {/* <MsgLike />  */}
+            <MsgLike /> 
           </div>
         </div>
         <div className="home_right">
