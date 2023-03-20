@@ -18,10 +18,10 @@ export default function MsgSection() {
   const [fetchedChats, setFetchedChats] = useState([]);
   // ref
   const socket = useRef();
-
+  // "https://matchmingosocket.onrender.com" 
   useEffect(() => {
     setcurrentUser(jwt_decode(localStorage.getItem("token")).user.id);
-    socket.current = io("https://matchmingosocket.onrender.com"); 
+    socket.current = io("http://localhost:8800"); 
     socket.current.emit(
       "new-user-add",
       jwt_decode(localStorage.getItem("token")).user.id

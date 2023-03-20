@@ -23,9 +23,10 @@ export default function ChatPage({
     const userIds = chat?.members?.find((id) => id !== currentUser);
     // console.log(userIds);
     async function getUserdata() {
-      const res = await fetch(`${baseURl}/details/getUser/${userIds}`)
+      const res = await fetch(`${baseURl}/details/getUserById?id=${userIds}`)
         .then((res) => res.json())
         .then((result) => setUserData(result))
+        .then(() => getUserImages())
         .catch((err) => err);
     }
     if (chat !== null) getUserdata();
@@ -104,9 +105,6 @@ export default function ChatPage({
       setMessages([...messages, receiveMessage]);
     }
   }, [receiveMessage]);
-  useEffect(()=>{
-    getUserImages()
-  })
 
   return (
     <div className="chatPage">
@@ -143,7 +141,7 @@ export default function ChatPage({
                 >
                   <p>{message.text}</p>
                   <span className="time_ago">
-                    {format(message.createdAt).split(" ")[0] +
+                    {format(message.createdAt)[0]==="j"?format(message.createdAt):format(message.createdAt).split(" ")[0] +
                       format(message.createdAt).split(" ")[1][0] +
                       " " +
                       format(message.createdAt).split(" ")[2]}

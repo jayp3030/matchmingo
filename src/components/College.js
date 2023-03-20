@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Select from "react-select";
+import Spinner from './Spinner';
 
 
 export default function College(props) {
@@ -20,6 +21,7 @@ export default function College(props) {
         element.style.transition="1s";
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
+      props.setspinner(true)
       const response = await fetch(`${host}/details/userDetails`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,10 +30,11 @@ export default function College(props) {
           college: selectedOptionCollege.value,
           branch: selectedOptionBranch.value,
           passout_year: selectedOptionPassYear.value,
-
+          
         }),
       });
       const json = await response.json();
+      props.setspinner(false)
       
     // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
@@ -183,7 +186,7 @@ export default function College(props) {
                 })}
               />
             <p className='alert' id="college_page_alert">Enter Required Fields</p>
-            <button className="btn" onClick={handleSubmit}>Next</button>
+            <button className="btn" onClick={handleSubmit}>{props.spinner?<Spinner />:"Next"}</button>
             <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
           </div>
         </div>
