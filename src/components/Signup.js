@@ -130,7 +130,7 @@ export default function Signup(props) {
         <div className="col2">
           <div className="upper">
             <h2>Become a Mingo Member</h2>
-            <button className="google_btn" onClick={handleCal}>
+            <button className="google_btn">
               <div className="google_logo">
                 <img src={google} alt="google" />
               </div>
