@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState,useEffect } from 'react'
+import Spinner from './Spinner'
 
 export default function Hobby(props) {
 
@@ -14,7 +14,7 @@ export default function Hobby(props) {
       document.getElementById("hobby_page_alert").style.opacity = 1;
       return
     }
-    
+    props.setspinner(true)
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,6 +31,7 @@ export default function Hobby(props) {
         element.style.transition="1s";
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
+      props.setspinner(false)
     }
     
   }
@@ -69,6 +70,7 @@ export default function Hobby(props) {
   const handleOnChange=(e)=>{
     setbio(e.target.value)
   }
+  
   return (
     <>
 
@@ -99,7 +101,7 @@ export default function Hobby(props) {
               <h4>Describe Yourself</h4>
               <textarea type="text" id='bio' name='bio' value={bio} onChange={handleOnChange} className='bioInput' placeholder="Bio (optional )" rows='3' />
                   <p className='alert' id='hobby_page_alert'>Please enter atleast 1 hobby</p>
-              <button className="btn" onClick={handleSubmit} >Next</button>
+              <button className="btn" onClick={handleSubmit} >{props.spinner?<Spinner />:"Next"}</button>
               <button className="btn_back" onClick={handlebackwardSlide} >Back</button>
             </form>
           </div>

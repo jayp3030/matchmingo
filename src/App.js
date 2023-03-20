@@ -78,9 +78,6 @@ function App() {
             <Route exact path="/home" element={<Homeright />} />
             }
             <Route path="/passwordReset" element={<PasswordReset />} />
-            <Route path="/edit" element={<EditProfile />} />
-            <Route path="/test" element={<Test />} />    
-            <Route path="/photo" element={<UploadId />} />    
           </Routes>
         </BrowserRouter>
       </AnimatePresence>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 
-export default function LikeSection() {
+export default function LikeSection(props) {
 
   const host =process.env.REACT_APP_BASEURL
   const [matches, setMatches] = useState()
@@ -33,6 +33,26 @@ export default function LikeSection() {
     const json = await response.json();
     setUserImgArr(json)
   }
+  const fetch_data=async(userId)=> {
+
+    const response = await fetch(`${host}/details/getUserById?id=${userId}`,{
+      method:"get",
+      headers: { "Content-Type": "application/json" }
+    });
+    const json = await response.json()
+    props.setPersonalDT([json]);  
+    console.log([json])
+  }
+
+  const getUserImagesById = async (userId) => {
+    console.log(userId);
+    const response = await fetch(`${host}/details/getUserImagebyId/${userId}`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    console.log(json);
+    props.setuserCardImgs(json);
+  };
 
   useEffect(() => {
     fetchMatches()
@@ -46,11 +66,13 @@ export default function LikeSection() {
 
   return (
     <>
-    {console.log(userImgArr)}
       {matches && matches.length!==0 ? <div className="likes">
-        {userImgArr && userImgArr.map((img) => {
+        {userImgArr && userImgArr.map((img,index) => {
           return <div className="like_wrapper">
-            <div className="img_card">
+            <div className="img_card" onClick={()=>{
+              fetch_data(matches[index])
+              getUserImagesById(matches[index])
+            }}>
               <img src={`data:image/jpeg;base64,${img && img.data
                 }`} alt="" />
             </div>

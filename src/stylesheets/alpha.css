@@ -507,6 +507,7 @@ input::-webkit-inner-spin-button {
     width: 50% !important;
     height: 100%;
     border: 1px dashed black;
+    position: relative;
 }
 .id_section_left{
     width: 100% !important;
@@ -540,10 +541,17 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     gap: .3rem;
 }
+.photoDeleteBtn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    
+}
 .inner_box{
     width: 50%;
     height: 96%;
     border: 1px dashed black;
+    position: relative;
 }
 .inner_box img{
     width: 100% !important;
@@ -910,14 +918,12 @@ label {
     justify-content: center;
     flex-wrap: wrap;
     padding: .8rem 0;
-    background:yellow;
 }
 
 .like_wrapper {
     height: 30%;
     width: 26%;
     margin: 0 .5rem;
-    background:green;
 }
 
 .like_wrapper p {

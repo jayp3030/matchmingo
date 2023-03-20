@@ -3,10 +3,10 @@ import LikeSection from "./LikeSection";
 import MsgSection from "./MsgSection";
 
 
-export default function MsgLike() {
+export default function MsgLike(props) {
   return (
     <div className="msg_like_wrapper" id="msg_like_wrapper">
-      <LikeSection />
+      <LikeSection  setPersonalDT={props.setPersonalDT} setuserCardImgs={props.setuserCardImgs}/>
       <MsgSection />
     </div>
   );

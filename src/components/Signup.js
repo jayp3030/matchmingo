@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
+import Spinner from "./Spinner";
 
 
 var data_context = React.createContext();
@@ -43,6 +44,7 @@ export default function Signup(props) {
       document.getElementById("alert").innerHTML = "Password does not match";
       return;
     }
+    props.setspinner(true)
     const response = await fetch(`${host}/auth/createUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,6 +59,7 @@ export default function Signup(props) {
     if (json.success) {
       localStorage.setItem("token", json.token) 
       document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
+      props.setspinner(false)
     }
   };
 
@@ -79,12 +82,12 @@ export default function Signup(props) {
   }
 
 
-  useEffect(()=>{
-    //if user is logged in then redirect to home page
-    if(localStorage.getItem("token")){
-      Navigate("/home")
-    }
-  },[])
+  // useEffect(()=>{
+  //   //if user is logged in then redirect to home page
+  //   if(localStorage.getItem("token")){
+  //     Navigate("/home")
+  //   }
+  // },[])
 
   const handleCal = async () => {
     var auth_obj = window.gapi.auth2.getAuthInstance();
@@ -177,7 +180,7 @@ export default function Signup(props) {
                 demo
               </p>
               <button className="btn" type="submit">
-                Next
+                {props.spinner?<Spinner />:"Next"}
               </button>
             </form>
             <h5 className="last_child">
