@@ -3,6 +3,7 @@ import SidePresentation from "./SidePresentation";
 import LoginForm from "./loginForm";
 import {AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import SidePage from "./SidePage";
 
 const Login =  () =>{
 
@@ -19,7 +20,8 @@ return(
     <>
     <AnimatePresence >
     <div className="login_page_main_div fcc" >
-        <SidePresentation />
+        {/* <SidePresentation /> */}
+        <SidePage />
         <LoginForm />
     </div>
     </AnimatePresence>
