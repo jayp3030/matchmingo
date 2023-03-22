@@ -257,9 +257,16 @@
         height:55%;
         font-size:1.3rem;
     }
+    #login_form_ff{
+        width:100%;
+    }
     #login_form_ff > input {
         padding-left:5%;
         
+    }
+    .col2{
+        width:85%;
+        transform: translateX(13%);
     }
     .col2 h2{
         font-size:1.35rem;
@@ -302,7 +309,7 @@
     }
     .remember_me_login{
         height:10%;
-        width:85%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
 
@@ -399,6 +406,9 @@
         /* background:blue; */
 
     }
+    .login_form_div{
+        width:62vw;
+    }
     .login_OR_div{
         height:3%;
         width:95%;
@@ -490,6 +500,9 @@
 .card_left,.imageChangeArrowDiv{
     width:53%;
 }
+.col2{
+    width:100%;
+}
 }
 @media (max-width: 670px) {
     .login_title_container{
@@ -508,9 +521,11 @@
     }
     .col2{
         width:100vw;
-      
+       transform: translateX(0%);
     }
- 
+    .upper,.middle{
+        width:60%;
+    }
     #gender_college{
         width:100%;
     }
@@ -640,7 +655,9 @@
         font-size: 5vw;
         animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
     }
-
+  .upper,.middle{
+    width:68%;
+  }
     @keyframes fontanimation{
         0%{
             margin-top: 5rem;
@@ -861,12 +878,10 @@
         
 }
 @media  (max-width:408px) {
-    .btn{
-        transform: translateX(0rem);
-    }
-    .btn_back{
-        transform: translateX(2rem);
-    }
+    .upper,.middle{
+        width:73%;
+      }
+    
     .card_left_mobile{
         width:80% !important;
     }

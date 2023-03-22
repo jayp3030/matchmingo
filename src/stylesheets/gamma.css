@@ -388,7 +388,7 @@ background-color: transparent;
 
 .remember_me_login{
     height:10%;
-    width:60%;
+    width:100%;
     margin:1% 0% 1% 0%;
     display: flex;
     align-items:center;
@@ -425,7 +425,7 @@ background-color: transparent;
 }
 .submit_btn_div{
     height:30%;
-    width:60%;
+    width:100%;
     /* background:blue; */
     display: flex;
     align-items: center;

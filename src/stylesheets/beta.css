@@ -371,7 +371,9 @@ body{
 
 }
 .lds-heart div {
-  top: 10px;
+  /* top: 10px; */
+  
+  left:1vw;
   position: absolute;
   width: 15px;
   height: 15px;
@@ -421,3 +423,4 @@ body{
     outline: none;
     border: 1px solid var(--light)
   }
+
