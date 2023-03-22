@@ -381,9 +381,7 @@
     .Side_presentation{
         display: none;
     }
-    .login_form_div{
-        width:53vw;
-    }
+    
     
     .login_form_container{
         height:80%;
@@ -407,7 +405,7 @@
 
     }
     .login_form_div{
-        width:62vw;
+        width:85vw;
     }
     .login_OR_div{
         height:3%;
@@ -618,7 +616,7 @@
     }
     .remember_me_login{
         height:10%;
-        width:85%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
         
@@ -730,9 +728,7 @@
         width:100%;
         
     }
-    .upper > h2{
-        
-    }
+   
     .google_btn{
         width:100%;
         
@@ -840,7 +836,7 @@
     }
     .remember_me_login{
         height:10%;
-        width:90%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
         font-size: 10px;
