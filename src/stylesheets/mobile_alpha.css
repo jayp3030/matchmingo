@@ -254,9 +254,16 @@
         height:55%;
         font-size:1.3rem;
     }
+    #login_form_ff{
+        width:100%;
+    }
     #login_form_ff > input {
         padding-left:5%;
         
+    }
+    .col2{
+        width:85%;
+        transform: translateX(13%);
     }
     .col2 h2{
         font-size:1.35rem;
@@ -299,7 +306,7 @@
     } */
     .remember_me_login{
         height:10%;
-        width:85%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
 
@@ -371,9 +378,7 @@
     .Side_presentation{
         display: none;
     }
-    .login_form_div{
-        width:53vw;
-    }
+    
     
     .login_form_container{
         height:80%;
@@ -395,6 +400,9 @@
         height:60%;
         /* background:blue; */
 
+    }
+    .login_form_div{
+        width:85vw;
     }
     .login_OR_div{
         height:3%;
@@ -487,6 +495,9 @@
 .card_left,.imageChangeArrowDiv{
     width:53%;
 }
+.col2{
+    width:100%;
+}
 }
 @media (max-width: 670px) {
     .login_title_container{
@@ -505,9 +516,11 @@
     }
     .col2{
         width:100vw;
-      
+       transform: translateX(0%);
     }
- 
+    .upper,.middle{
+        width:60%;
+    }
     #gender_college{
         width:100%;
     }
@@ -600,7 +613,7 @@
     }
     .remember_me_login{
         height:10%;
-        width:85%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
         
@@ -637,7 +650,9 @@
         font-size: 5vw;
         animation: fontanimation 2s cubic-bezier(.49,.52,0,.89) 1; 
     }
-
+  .upper,.middle{
+    width:68%;
+  }
     @keyframes fontanimation{
         0%{
             margin-top: 5rem;
@@ -710,9 +725,7 @@
         width:100%;
         
     }
-    .upper > h2{
-        
-    }
+   
     .google_btn{
         width:100%;
         
@@ -820,7 +833,7 @@
     }
     .remember_me_login{
         height:10%;
-        width:90%;
+        width:100%;
         /* background:yellow; */
         margin:1% 0% 1% 0%;
         font-size: 10px;
@@ -858,12 +871,10 @@
         
 }
 @media  (max-width:408px) {
-    .btn{
-        transform: translateX(0rem);
-    }
-    .btn_back{
-        transform: translateX(2rem);
-    }
+    .upper,.middle{
+        width:73%;
+      }
+    
     .card_left_mobile{
         width:80% !important;
     }
