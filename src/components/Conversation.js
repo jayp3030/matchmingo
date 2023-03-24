@@ -8,14 +8,20 @@ export default function Conversation({ data, currentUserId }) {
   const [convesationPageImg, setConvesationPageImg] = useState([]);
 
   useEffect(() => {
+    console.log("this is data "+ data)
     const userIds = data.members.find((id) => id !== currentUserId);
+    console.log("mattch " +userIds)
+    
     async function getUserdata() {                                 // temporary will be changed
-      const res = await fetch(`${baseURl}/details/getUser/${userIds}`)
+      const res = await fetch(`${baseURl}/details/getUserById?id=${userIds}`)
         .then((res) => res.json())
         .then((result) => setUserData(result))
         .catch((err) => err);
     }
-    getUserdata();
+    if(userIds){
+      getUserdata();
+    }
+    
     getUserImages()
   }, []);
   
@@ -32,7 +38,6 @@ export default function Conversation({ data, currentUserId }) {
     const json = await response.json();
     setConvesationPageImg(json)
   }
-  
 
   return (
     <>
@@ -46,11 +51,11 @@ export default function Conversation({ data, currentUserId }) {
             <h2>
                 {userData && userData.first_name +" "+ userData.last_name}
             </h2>
-            <p>3+ Messages</p>
+            {/* <p>3+ Messages</p>  */}
           </div>
         </div>
         <div className="msg_time">
-          <p>15m</p>
+          {/* <p>15m</p>  */}
         </div>
       </div>
     </>

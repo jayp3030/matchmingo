@@ -12,6 +12,8 @@ import UploadId from "./UploadId";
 var context =React.createContext();
 export default function ProfileSetup() {
 
+  const [spinner, setspinner] = useState(false)
+
   const getUserID = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -38,13 +40,13 @@ export default function ProfileSetup() {
       <SidePage />
       
       <div className="profile_setup" id="profile_setup">
-        <Signup handleCall={handleCallback}/>
+        <Signup handleCall={handleCallback} setspinner={setspinner} spinner={spinner}/>
         <context.Provider value={{data,personal}}>
-        <Name getUserID={getUserID}/>
-        <Age getUserID={getUserID}/>
-        <College getUserID={getUserID}/>
-        <Hobby getUserID={getUserID}/>
-        <Uploadphoto getUserID={getUserID}/>
+        <Name getUserID={getUserID}setspinner={setspinner} spinner={spinner} />
+        <Age getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
+        <College getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
+        <Hobby getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
+        <Uploadphoto getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
         {/* <UploadId getUserID={getUserID}/> */}
         </context.Provider>
         

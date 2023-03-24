@@ -244,6 +244,7 @@ input{
     justify-content: center;
     font-family: 'manrope_light';
     transition: all 0.3s ease-in-out;
+    color: var(--primary);
 }
 
 .google_btn div {
@@ -255,6 +256,12 @@ input{
     height: 100%;
     font-family: 'manrope_light';
     margin-top: 1rem;
+    background: transparent;
+    color: var(--primary);
+    resize: none;
+}
+.bioInput:hover{
+    border: 1px solid var(--light);
 }
 .bioInput:focus{
     outline: 1px solid var(--accent);
@@ -276,12 +283,12 @@ input{
 
 .col2 p {
     text-align: center;
-    color: rgba(11, 11, 11, 0.5);
+    color: var(--primary);
+    font-family: 'manrope_light';
 }
 
 .col2 form {
     width: 100%;
-    /* border: 1px solid red;  */
 }
 
 .col2 form>input  {
@@ -303,6 +310,7 @@ input{
 .col2 form .gender:hover , .middle .gender:hover{
     border: 1px solid var(--light);
 }
+
 input::placeholder {
     color: var(--primary);
 }
@@ -312,7 +320,7 @@ input::placeholder {
 }
 
 .col2 form>input:focus {
-    outline: 1px solid var(--light);
+    border: 1px solid var(--light);
 }
 
 input::-webkit-outer-spin-button,
@@ -437,10 +445,12 @@ form h4{
     padding: 0.2rem 0.5rem;
     margin-right: 0.5rem;
     margin-bottom: .5rem;
+    color: var(--primary);
 }
 
 .hobbyArray i {
     margin-left: 0.5rem;
+    color: var(--light);
 }
 
 .hobby_input_div {
@@ -452,11 +462,15 @@ form h4{
     margin: 1rem 0;
     width: 100%;
 }
+.hobby_input_div:hover {
+    border: 1px solid var(--light);
+}
 #hobbyInput {
     margin:  auto 0;
     border: none;
     height: 100%;
     font-size: .8rem;
+    color: var(--primary);
 }
 
 .hobby_input_div i {
@@ -519,12 +533,13 @@ form h4{
 .photo_section_left{
     width: 50% !important;
     height: 100%;
-    border: 1px dashed black;
+    border: 1px dashed var(--primary);
+    position: relative;
 }
 .id_section_left{
     width: 100% !important;
     height: 100%;
-    border: 1px dashed black;
+    border: 1px dashed var(--primary);
    
 }
 .photo_section_left img{
@@ -553,10 +568,17 @@ form h4{
     justify-content: center;
     gap: .3rem;
 }
+.photoDeleteBtn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    
+}
 .inner_box{
     width: 50%;
     height: 96%;
-    border: 1px dashed black;
+    border: 1px dashed var(--primary);
+    position: relative;
 }
 .inner_box img{
     width: 100% !important;
@@ -578,7 +600,7 @@ form h4{
     width: 50% !important;
     height: 15%;
     margin: .1rem 0;
-    border:  1px dashed black;
+    border:  1px dashed var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -594,13 +616,14 @@ form h4{
     justify-content: center;
     font-family: 'manrope_light';
     font-size: .8rem;
-    color: #757575;
+    color: var(--primary);
 }
 
 .photo_section_dummy img {
     height: 60%;
     width: 30%;
     transition: all .3s ease-in-out;
+    color: var(--primary);
 }
 
 .btn_dnone {
@@ -923,14 +946,12 @@ label {
     justify-content: center;
     flex-wrap: wrap;
     padding: .8rem 0;
-    /* background:yellow; */
 }
 
 .like_wrapper {
     height: 30%;
     width: 26%;
     margin: 0 .5rem;
-    background:green;
 }
 
 .like_wrapper p {

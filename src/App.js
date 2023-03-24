@@ -20,6 +20,8 @@ import LikeSection from "./components/LikeSection";
 import LikeSectionMobile from "./components/LikeSectionMobile";
 import MsgSectionMobile from "./components/MsgSectionMobile";
 import Age from "./components/Age";
+import Hobby from "./components/Hobby";
+import Signup from "./components/Signup";
 function App() {
   var obj_gapi=window.gapi;
   var CLIENT_ID ="646322029510-5gabrec6u1phpnp0lspfdv5uj5gopeut.apps.googleusercontent.com";
@@ -81,7 +83,7 @@ function App() {
             <Route path="/passwordReset" element={<PasswordReset />} />
             <Route path="/edit" element={<EditProfile />} />
             <Route path="/test" element={<Test />} />    
-            <Route path="/photo" element={<Age />} />    
+            <Route path="/photo" element={<Signup/>} />    
           </Routes>
         </BrowserRouter>
       </AnimatePresence>

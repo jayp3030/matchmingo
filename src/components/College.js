@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Select from "react-select";
+import Spinner from './Spinner';
 
 
 export default function College(props) {
@@ -20,6 +21,7 @@ export default function College(props) {
         element.style.transition="1s";
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
+      props.setspinner(true)
       const response = await fetch(`${host}/details/userDetails`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,10 +30,11 @@ export default function College(props) {
           college: selectedOptionCollege.value,
           branch: selectedOptionBranch.value,
           passout_year: selectedOptionPassYear.value,
-
+          
         }),
       });
       const json = await response.json();
+      props.setspinner(false)
       
     // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
@@ -114,9 +117,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -124,9 +128,9 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />
@@ -140,9 +144,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -150,9 +155,9 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />
@@ -166,9 +171,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -176,14 +182,14 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />
             <p className='alert' id="college_page_alert">Enter Required Fields</p>
-            <button className="btn" onClick={handleSubmit}>Next</button>
+            <button className="btn" onClick={handleSubmit}>{props.spinner?<Spinner />:"Next"}</button>
             <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
           </div>
         </div>

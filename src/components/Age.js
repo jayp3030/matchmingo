@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import Spinner from "./Spinner";
 
 export default function Age(props) {
   const host = process.env.REACT_APP_BASEURL
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
-    //   console.log();
-    //   document.getElementById("age_page_alert").style.opacity = 1;
-    //   return;
-    // }
+    if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
+      console.log();
+      document.getElementById("age_page_alert").style.opacity = 1;
+      return;
+    }
 
+    props.setspinner(true)
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -22,14 +24,14 @@ export default function Age(props) {
       }),
     });
     if (response.ok) {
-
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
         element.style.transform="translateX(-200vw)";
         element.style.transition="1s";
       });
-    // document.getElementById("profile_setup").style.transform =
-    //   "translateX(-300vw)";
+      props.setspinner(false)
+      
+      
     }
   };
   const handlebackwardSlide = (e) => {
@@ -39,8 +41,6 @@ export default function Age(props) {
       element.style.transform="translateX(-0vw)";
       element.style.transition="1s";
     });
-    // document.getElementById("profile_setup").style.transform =
-    //   "translateX(-100vw)";
   };
 
 
@@ -139,7 +139,7 @@ export default function Age(props) {
                 Fill the required fields
               </p>
               <button className="btn" onClick={handleSubmit}>
-                Next
+                {props.spinner?<Spinner />:"Next"}
               </button>
               <button className="btn_back" onClick={handlebackwardSlide}>
                 Back
