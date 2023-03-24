@@ -1,10 +1,11 @@
 const io = require('socket.io')("8800" , {
     cors :{
-        origin : 'https://matchmingo.netlify.app'
+        origin : 'https://localhost:3000'
     }   
 });
+// 'https://matchmingo.netlify.app'
 // https://matchmingosocket.onrender.com
-
+// https://matchmingo.netlify.app 
 let activeUser = [];
 
 io.on('connection' , (socket) => {

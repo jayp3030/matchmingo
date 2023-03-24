@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import google from "../images/google.png";
+import Spinner from "./Spinner";
 
 
 var data_context = React.createContext();
@@ -9,7 +10,6 @@ export default function Signup(props) {
 
   const Navigate = useNavigate();
   const host = process.env.REACT_APP_BASEURL
-  console.log(host);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -43,6 +43,7 @@ export default function Signup(props) {
       document.getElementById("alert").innerHTML = "Password does not match";
       return;
     }
+    props.setspinner(true)
     const response = await fetch(`${host}/auth/createUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -55,13 +56,9 @@ export default function Signup(props) {
       return;
     }
     if (json.success) {
-      localStorage.setItem("token",json.token)
-      document.getElementById("profile_setup").style.transform ="translateX(-100vw)"; /*-100vw*/
-      // var name1=document.getElementsByClassName("outer_signup");
-      // name1.forEach(element => {
-      //   element.style.transform="translateX(-100vw)";
-      //   element.style.transition="1s";
-      // });
+      localStorage.setItem("token", json.token) 
+      document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
+      props.setspinner(false)
     }
   };
 
@@ -84,12 +81,12 @@ export default function Signup(props) {
   }
 
 
-  useEffect(()=>{
-    //if user is logged in then redirect to home page
-    if(localStorage.getItem("token")){
-      Navigate("/home")
-    }
-  },[])
+  // useEffect(()=>{
+  //   //if user is logged in then redirect to home page
+  //   if(localStorage.getItem("token")){
+  //     Navigate("/home")
+  //   }
+  // },[])
 
   const handleCal = async () => {
     var auth_obj = window.gapi.auth2.getAuthInstance();
@@ -126,7 +123,7 @@ export default function Signup(props) {
 
   return (
     <>
-      {props.handleCall(data, personal)}
+      {/* {props.handleCall(data, personal)} */}
       <div className="outer_signup" id="outer_signup" style={{ overflow: "hidden" }}>
         <div className="col1"></div>
         <div className="col2">
@@ -138,7 +135,7 @@ export default function Signup(props) {
               </div>
               <div>Signup With Google</div>
             </button>
-            <p>OR</p>
+            <p className="or">OR</p>
           </div>
           <div className="middle">
             <form onSubmit={handleSubmit}>
@@ -165,7 +162,7 @@ export default function Signup(props) {
                   <i class="bi bi-eye"></i>
                 </button>}
               </div>
-              <div className="passwordDiv">
+              <div className="passwordDiv" >
 
                 <input
                   type="password"
@@ -182,7 +179,7 @@ export default function Signup(props) {
                 demo
               </p>
               <button className="btn" type="submit">
-                Next
+                {props.spinner?<Spinner />:"Next"}
               </button>
             </form>
             <h5 className="last_child">

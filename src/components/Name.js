@@ -1,5 +1,6 @@
 import React,{useContext, useState} from 'react'
 import { context } from './ProfileSetup';
+import Spinner from './Spinner';
 
 export default function Name(props) {
 var data=useContext(context);
@@ -23,6 +24,7 @@ usable_data=data.data;
       document.getElementById("name_page_alert").style.opacity = 1;
       return;
     }
+    props.setspinner(true)
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,10 +39,12 @@ usable_data=data.data;
       Array.prototype.forEach.call(name,(element) => {
         element.style.transform="translateX(-100vw)";
         element.style.transition="1s";
+        props.setspinner(false)
       });
       // document.getElementById("profile_setup").style.transform = "translateX(-200vw)"
     }
   }
+
   const handlebackwardSlide = (e) => {
     e.preventDefault()
     var name=document.getElementsByClassName("outer_signup");
@@ -90,7 +94,7 @@ usable_data=data.data;
               placeholder="Enter Last Name(Alphabets Only)" 
               />
               <p className='alert' id='name_page_alert'>Ender Required Fields</p>
-              <button className="btn" onClick={handleSubmit}>Next</button>
+              <button className="btn" onClick={handleSubmit}>{props.spinner?<Spinner/>:"Next"}</button>
               <button className="btn_back" onClick={handlebackwardSlide}>Back</button>
             </form>
           </div>

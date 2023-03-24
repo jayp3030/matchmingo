@@ -1,9 +1,11 @@
+import Compressor from 'compressorjs';
 import React, { useEffect, useRef, useState } from "react";
 import upldImg from "../images/uploadPhoto.png";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import Spinner from './Spinner';
 
-export default function Uploadphoto() {
+export default function Uploadphoto(props) {
   const [images, setimages] = useState([])
   const host = process.env.REACT_APP_BASEURL
   const [userId, setuserId] = useState();
@@ -41,8 +43,12 @@ export default function Uploadphoto() {
   };
 
   const handleFileChange = (e) => {
+    if (e.target.files[0].type.split('/')[0] !== "image" ) {
+      return;
+    }
     setimages(images => [...images, e.target.files[0]])
   };
+
 
   useEffect(() => {
     setInterval(() => {
@@ -64,20 +70,35 @@ export default function Uploadphoto() {
     }
   };
   const handleUploadPhoto = async () => {
-    // Create a new FormData object
     const formData = new FormData();
 
-    // Add each file from the file input to the FormData object
-    for (let i = 0; i < images.length; i++) {
-      formData.append('images', images[i]);
-    }
-
-    const response = await fetch(`${host}/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`, {
-      method: "POST",
-      body: formData,
+    return Promise.all(
+      images.map(image => {
+        return new Promise((resolve, reject) => {
+          new Compressor(image, {
+            quality: 0.1,
+            success(result) {
+              console.log({result})
+              formData.append("images",result);
+              resolve();
+            },
+            error(error) {
+              reject(error);
+            },
+          });
+        });
+      })
+    ).then(async() => {
+      const response = await fetch(`${host}/details/userImages?id=${jwt_decode(localStorage.getItem("token")).user.id}`, {
+        method: "POST",
+        body: formData,
+      });
+      const json = await response.json();
+      // props.setspinner(false) 
+      blastCircle()
     });
-    const json = await response.json();
-    blastCircle()
+    //}
+   
   }
 
   document.getElementById('uploadPageBtn') &&document.addEventListener('mousemove', function(event) { 
@@ -88,8 +109,8 @@ export default function Uploadphoto() {
       var y = event.clientY - rect.top; 
     }
 
-   
-  if(x>0 && x<320 && y>0 && y<40 ){
+   if(document.getElementById("circle")){
+    if(x>0 && x<320 && y>0 && y<40){
       document.getElementById("circle").style.display = "block" 
       document.getElementById("circle").style.top = y + "px";
       document.getElementById("circle").style.left = x + "px";
@@ -97,6 +118,8 @@ export default function Uploadphoto() {
     else{
       document.getElementById("circle").style.display = "none" 
     }
+   }
+ 
     
 }); 
 const blastCircle=()=>{
@@ -112,6 +135,12 @@ const blastCircle=()=>{
   document.getElementById("matchmingoText").style.opacity = 0 
   
 }
+const removeArrayElement=(indexToRemove)=>{
+  // console.log(index) 
+  setimages((ele) =>
+      images.filter((_, index) => index !== indexToRemove)
+    );
+}
 
 
   return (
@@ -125,23 +154,29 @@ const blastCircle=()=>{
             </div>
             <div className="photo_section">
               <div className="photo_section_left">
-                <img src={images[0] && URL.createObjectURL(images[0])} alt="" />
+              {images[0] && <div className="photoDeleteBtn"><button onClick={()=>{removeArrayElement(0)}}><i class="bi bi-x"></i></button></div>}
+                {images[0] && <img src={URL.createObjectURL(images[0])} alt="" />}
               </div>
               <div className="photo_section_right">
                 <div className="photo_section_box">
                   <div className="inner_box">
-                    <img src={images[1] && URL.createObjectURL(images[1])} alt="" />
+                    {images[1] && <div className="photoDeleteBtn"><button onClick={()=>{removeArrayElement(1)}}><i class="bi bi-x"></i></button></div>}
+                    {images[1] && <img src={URL.createObjectURL(images[1])} alt="" />}
                   </div>
                   <div className="inner_box">
-                    <img src={images[2] && URL.createObjectURL(images[2])} alt="" />
+                    {images[2] && <div className="photoDeleteBtn"><button onClick={()=>{removeArrayElement(2)}}><i class="bi bi-x"></i></button></div>}
+                    {images[2] && <img src={URL.createObjectURL(images[2])} alt="" />}
                   </div>
                 </div>
                 <div className="photo_section_box">
                   <div className="inner_box">
-                    <img src={images[3] && URL.createObjectURL(images[3])} alt="" />
+                  {images[3] && <div className="photoDeleteBtn"><button onClick={()=>{removeArrayElement(3)}}><i class="bi bi-x"></i></button></div>}
+                    {images[3] && <img src={URL.createObjectURL(images[3])} alt="" />}
                   </div>
+                  
                   <div className="inner_box">
-                    <img src={images[4] && URL.createObjectURL(images[4])} alt="" />
+                  {images[4] && <div className="photoDeleteBtn"><button onClick={()=>{removeArrayElement(4)}}><i class="bi bi-x"></i></button></div>}
+                    {images[4] && <img src={URL.createObjectURL(images[4])} alt="" />}
                   </div>
                 </div>
               </div>
@@ -163,6 +198,7 @@ const blastCircle=()=>{
                   id="input-files"
                   onChange={handleFileChange}
                   multiple
+                  accept="image/*"
                 />
               </label>
               <button className="btn_dnone">
@@ -187,7 +223,7 @@ const blastCircle=()=>{
                   className="circle"
                   id="circle"
                 ></button>
-                Upload
+                <span>{props.setspinner?<Spinner />:"Finish"}</span>
               </button>
               <button className="btn_back"  onClick={handlebackwardSlide}>
                 Back

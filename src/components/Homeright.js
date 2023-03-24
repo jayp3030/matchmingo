@@ -54,7 +54,6 @@ export default function Homeright() {
   };
 
   const fetch_data=async(userId)=> {
-    console.log("fetching" + userId.userId)
 
     const response = await fetch(`${host}/details/getUserById?id=${userId.userId}`,{
       method:"get",
@@ -408,7 +407,7 @@ export default function Homeright() {
             </button>
           </div>
           <div className="home_left_bottom">
-            {/* <MsgLike />  */}
+            <MsgLike setPersonalDT={setPersonalDT} setuserCardImgs={setuserCardImgs}/> 
           </div>
         </div>
         <div className="home_right">
@@ -452,7 +451,7 @@ export default function Homeright() {
                   </motion.div>
                 ) : (
                   <AnimatePresence mode="wait">
-                    {personalDT.map((e, i) => {
+                    {personalDT && personalDT.map((e, i) => {
                       return (
                         <motion.div
                           className="card"
