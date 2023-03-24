@@ -43,6 +43,9 @@ export default function Uploadphoto(props) {
   };
 
   const handleFileChange = (e) => {
+    if (e.target.files[0].type.split('/')[0] !== "image" ) {
+      return;
+    }
     setimages(images => [...images, e.target.files[0]])
   };
 
@@ -106,8 +109,8 @@ export default function Uploadphoto(props) {
       var y = event.clientY - rect.top; 
     }
 
-   
-  if(x>0 && x<320 && y>0 && y<40 ){
+   if(document.getElementById("circle")){
+    if(x>0 && x<320 && y>0 && y<40){
       document.getElementById("circle").style.display = "block" 
       document.getElementById("circle").style.top = y + "px";
       document.getElementById("circle").style.left = x + "px";
@@ -115,6 +118,8 @@ export default function Uploadphoto(props) {
     else{
       document.getElementById("circle").style.display = "none" 
     }
+   }
+ 
     
 }); 
 const blastCircle=()=>{
@@ -140,7 +145,6 @@ const removeArrayElement=(indexToRemove)=>{
 
   return (
     <>
-    {console.log(images[0])}
       {localStorage.getItem("token") && (
         <div className="outer_signup" id="outer_signup">
           <div className="col1"></div>
@@ -194,6 +198,7 @@ const removeArrayElement=(indexToRemove)=>{
                   id="input-files"
                   onChange={handleFileChange}
                   multiple
+                  accept="image/*"
                 />
               </label>
               <button className="btn_dnone">

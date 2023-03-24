@@ -73,7 +73,6 @@ async function getUserImage(req, res) {
 async function getUserImageById(req, res) {
   try {
     const userId = req.params.id;
-    console.log("image"+userId);
     const database = mongoClient.db("MatchMingo");
 
     const userImg = database.collection("users.files");
@@ -97,7 +96,6 @@ async function getUserImageArr(req, res) {
     const database = mongoClient.db("MatchMingo");
     const userImg = database.collection("users.files");
     const chunks = database.collection("users.chunks");
-    console.log({userIdArr});
     const userImgArr = [];
 
     for (let index = 0; index < userIdArr.length; index++) {
