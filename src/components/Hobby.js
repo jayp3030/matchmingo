@@ -14,7 +14,7 @@ export default function Hobby(props) {
       document.getElementById("hobby_page_alert").style.opacity = 1;
       return
     }
-    props.setspinner(true)
+    props.setspinner(true) 
     const response = await fetch(`${host}/details/userDetails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,13 +25,12 @@ export default function Hobby(props) {
       }),
     });
     if(response.ok){
+      props.setspinner(false)
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
         element.style.transform="translateX(-400vw)";
         element.style.transition="1s";
       });
-      // document.getElementById("profile_setup").style.transform = "translateX(-500vw)"
-      props.setspinner(false)
     }
     
   }

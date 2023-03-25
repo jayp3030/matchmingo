@@ -19,7 +19,6 @@ a{
 html {
   scroll-behavior: smooth;
   transition: scroll 5s ease-out;
-  overflow-x: hidden;
 }
 :root{
   --primary:#011627;

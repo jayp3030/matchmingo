@@ -35,7 +35,7 @@ export default function Uploadphoto(props) {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-400vw)";
+      element.style.transform="translateX(-300vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform =
@@ -70,6 +70,7 @@ export default function Uploadphoto(props) {
     }
   };
   const handleUploadPhoto = async () => {
+    props.setspinner(true)
     const formData = new FormData();
 
     return Promise.all(
@@ -94,7 +95,9 @@ export default function Uploadphoto(props) {
         body: formData,
       });
       const json = await response.json();
-      // props.setspinner(false) 
+      if(response.ok){
+        props.setspinner(false)
+      }
       blastCircle()
     });
     //}
@@ -218,12 +221,12 @@ const removeArrayElement=(indexToRemove)=>{
               </p>
             </div>
             <div className="middle">
-            <button className="btn"  {...images.length<3?"disabled":""} id="uploadPageBtn" onClick={ handleSubmit} >
+            <button className="btn"  {...images.length < 3?"disabled":""} id="uploadPageBtn" onClick={ handleSubmit} >
                 <button
                   className="circle"
                   id="circle"
                 ></button>
-                <span>{props.setspinner?<Spinner />:"Finish"}</span>
+                <span>{props.spinner?<Spinner />:"Finish"}</span>
               </button>
               <button className="btn_back"  onClick={handlebackwardSlide}>
                 Back
