@@ -107,7 +107,7 @@ export default function ChatPage({
   }, [receiveMessage]);
   useEffect(()=>{
     getUserImages()
-  })
+  },[])
 
   return (
     <div className="chatPage">

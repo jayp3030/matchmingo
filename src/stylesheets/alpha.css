@@ -517,6 +517,7 @@ form h4{
     display: flex;
     background: white;
     transition: all .5s ease-in-out;
+    /* position: fixed; */
     /* overflow: hidden;  */
     /* overflow-y: hidden;  */
 }

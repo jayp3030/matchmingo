@@ -14,12 +14,8 @@ export default function College(props) {
         document.getElementById("college_page_alert").style.opacity = 1;
         return;
       }
-      var name=document.getElementsByClassName("outer_signup");
 
-      Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-300vw)";
-        element.style.transition="1s";
-      });
+      
       // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
       props.setspinner(true)
       const response = await fetch(`${host}/details/userDetails`, {
@@ -33,8 +29,16 @@ export default function College(props) {
           
         }),
       });
-      const json = await response.json();
-      props.setspinner(false)
+      if (response.ok) {
+        var name=document.getElementsByClassName("outer_signup");
+        Array.prototype.forEach.call(name,(element) => {
+          element.style.transform="translateX(-300vw)";
+          element.style.transition="1s";
+        });
+        props.setspinner(false)
+        
+        
+      }
       
     // document.getElementById("profile_setup").style.transform = "translateX(-400vw)"
   }
