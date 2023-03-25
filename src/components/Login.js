@@ -20,8 +20,8 @@ return(
     <>
     <AnimatePresence >
     <div className="login_page_main_div fcc" >
-        {/* <SidePresentation /> */}
-        <SidePage />
+        <SidePresentation />
+        {/* <SidePage /> */}
         <LoginForm />
     </div>
     </AnimatePresence>

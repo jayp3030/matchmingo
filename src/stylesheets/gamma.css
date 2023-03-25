@@ -296,7 +296,11 @@ align-items: center;
 justify-content: center;
 flex-direction: row;
 background-color: transparent;
+padding:0.5rem 0rem;
 /* border-radius: 5px; */
+}
+.submit_btn{
+    padding:0.6rem 0rem;
 }
 #google_login > img {
     height:auto;
