@@ -29,7 +29,9 @@ export default function Uploadphoto() {
   };
 
   const handleFileChange2 = (e) => {
-    console.log('changed');
+    if (e.target.files[0].type.split('/')[0] !== "image" ) {
+      return;
+    }
     setidImages(idImages => [...idImages, e.target.files[0]])
     
   };
@@ -88,6 +90,7 @@ export default function Uploadphoto() {
                   id="input-files2"
                   onChange={handleFileChange2}
                   multiple
+                  accept="image/*"
                 />
               </label>
               <button ref={btnRef2} onClick={handleUploadPhoto} className="btn_dnone">

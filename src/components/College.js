@@ -117,9 +117,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -127,9 +128,9 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />
@@ -143,9 +144,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -153,9 +155,9 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />
@@ -169,9 +171,10 @@ export default function College(props) {
                 styles={{
                   control: (baseStyles, state) => ({
                     ...baseStyles,
-                    borderColor: state.isFocused ? 'white' : 'grey',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: "none"
+                    borderColor: localStorage.getItem("mode") === 'light' ? 'white' : 'white',
+                    border: 0,
+                    boxShadow: localStorage.getItem("mode") === 'light' ? "none" : null,
+                    background : 'transparent',
                   }),
                 }}
                 theme={(theme) => ({
@@ -179,9 +182,9 @@ export default function College(props) {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "var(--light)",
-                    primary: "var(--light)",
-                    neutral80: "black",
+                    primary25: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    primary: localStorage.getItem("mode") === 'light' ? "var(--light)" : "var(--light)",
+                    neutral80: localStorage.getItem("mode") === 'light' ? 'black' : 'white',
                   },
                 })}
               />

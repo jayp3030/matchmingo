@@ -41,9 +41,6 @@
         width:100%;
     }
    
-    .btn{
-        font-size:1rem;
-    }
     .col2 form{
         display: flex;
         flex-direction: column;
@@ -159,9 +156,9 @@
         /* font-size:1rem; */
         padding-left:7%;
     }
-    .btn{
+    /* .btn{
         font-size:1.2rem;
-    }
+    } */
     /* #login_form_ff > input {
         height:14%;
         width:80%;
@@ -303,10 +300,10 @@
     .passwordDiv{
         width: 100%;
     }
-    .btn{
+    /* .btn{
         font-size:1.2rem;
         width:100%;
-    }
+    } */
     .remember_me_login{
         height:10%;
         width:100%;
@@ -558,10 +555,10 @@
         
         /* background:green; */
     }
-    .btn{
+    /* .btn{
         font-size:1.2rem;
         width:100%;
-    }
+    } */
     .Side_presentation{
         display: none;
     }

@@ -10,7 +10,6 @@ export default function Signup(props) {
 
   const Navigate = useNavigate();
   const host = process.env.REACT_APP_BASEURL
-  console.log(host);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -124,7 +123,7 @@ export default function Signup(props) {
 
   return (
     <>
-      {props.handleCall(data, personal)}
+      {/* {props.handleCall(data, personal)} */}
       <div className="outer_signup" id="outer_signup" style={{ overflow: "hidden" }}>
         <div className="col1"></div>
         <div className="col2">
@@ -136,7 +135,7 @@ export default function Signup(props) {
               </div>
               <div>Signup With Google</div>
             </button>
-            <p>OR</p>
+            <p className="or">OR</p>
           </div>
           <div className="middle">
             <form onSubmit={handleSubmit}>
@@ -163,7 +162,7 @@ export default function Signup(props) {
                   <i class="bi bi-eye"></i>
                 </button>}
               </div>
-              <div className="passwordDiv">
+              <div className="passwordDiv" >
 
                 <input
                   type="password"
