@@ -115,7 +115,7 @@ const LoginForm = () => {
                 <motion.button
                   id="google_login"
                   onClick={handleCal}
-                  whileHover={{ scale: 1.07 }}
+                  whileHover={{ scale: 1.005 }}
                 >
                   <img src={obj1}></img>
                   <p>Log in With Google</p>
