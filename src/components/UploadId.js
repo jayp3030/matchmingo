@@ -21,7 +21,7 @@ export default function Uploadphoto() {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-500vw)";
+      element.style.transform="translateX(-600vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform =

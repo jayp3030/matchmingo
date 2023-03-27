@@ -41,14 +41,14 @@ export default function ProfileSetup() {
       
       <div className="profile_setup" id="profile_setup">
         <Signup handleCall={handleCallback} setspinner={setspinner} spinner={spinner}/>
-        <context.Provider value={{data,personal}}>
+       
         <Name getUserID={getUserID}setspinner={setspinner} spinner={spinner} />
         <Age getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
         <College getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
         <Hobby getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
         <Uploadphoto getUserID={getUserID} setspinner={setspinner} spinner={spinner}/>
         {/* <UploadId getUserID={getUserID}/> */}
-        </context.Provider>
+      
         
       </div>
     </>

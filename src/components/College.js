@@ -8,8 +8,8 @@ export default function College(props) {
   const host = process.env.REACT_APP_BASEURL
 
     const handleSubmit = async (e) => {
-      e.preventDefault()
-
+      e.preventDefault();
+     
       if (!selectedOptionCollege.value || !selectedOptionBranch.value || !selectedOptionPassYear.value) {
         document.getElementById("college_page_alert").style.opacity = 1;
         return;
@@ -32,7 +32,7 @@ export default function College(props) {
       if (response.ok) {
         var name=document.getElementsByClassName("outer_signup");
         Array.prototype.forEach.call(name,(element) => {
-          element.style.transform="translateX(-300vw)";
+          element.style.transform="translateX(-400vw)";
           element.style.transition="1s";
         });
         props.setspinner(false)
@@ -50,7 +50,7 @@ export default function College(props) {
     // });
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-100vw)";
+      element.style.transform="translateX(-200vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform = "translateX(-200vw)"

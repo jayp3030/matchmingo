@@ -37,7 +37,7 @@ usable_data=data.data;
     if(response.ok){
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-100vw)";
+        element.style.transform="translateX(-200vw)";
         element.style.transition="1s";
         props.setspinner(false)
       });

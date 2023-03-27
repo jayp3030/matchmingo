@@ -9,7 +9,8 @@ export default function Hobby(props) {
   const [bio, setbio] = useState("")
 
   const handleSubmit = async(e) => {
-    e.preventDefault()
+    e.preventDefault();
+    
     if(hobbyArr.length===0){
       document.getElementById("hobby_page_alert").style.opacity = 1;
       return
@@ -25,12 +26,13 @@ export default function Hobby(props) {
       }),
     });
     if(response.ok){
-      props.setspinner(false)
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
         element.style.transform="translateX(-400vw)";
         element.style.transition="1s";
       });
+      props.setspinner(false)
+    
     }
     
   }
@@ -38,7 +40,7 @@ export default function Hobby(props) {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-200vw)";
+      element.style.transform="translateX(-300vw)";
       element.style.transition="1s";
     });
     // document.getElementById("profile_setup").style.transform = "translateX(-300vw)"

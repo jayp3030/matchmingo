@@ -518,8 +518,8 @@ form h4{
     background: white;
     transition: all .5s ease-in-out;
     /* position: fixed; */
-    /* overflow: hidden;  */
-    /* overflow-y: hidden;  */
+    overflow: hidden;  
+    overflow-y: hidden; 
 }
 
 .photo_section {

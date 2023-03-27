@@ -6,6 +6,7 @@ export default function Age(props) {
   const host = process.env.REACT_APP_BASEURL
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!document.getElementById("dob").value || !selectedOptionGender.value || !selectedOptionOrientation.value) {
       console.log();
       document.getElementById("age_page_alert").style.opacity = 1;
@@ -26,7 +27,7 @@ export default function Age(props) {
     if (response.ok) {
       var name=document.getElementsByClassName("outer_signup");
       Array.prototype.forEach.call(name,(element) => {
-        element.style.transform="translateX(-200vw)";
+        element.style.transform="translateX(-300vw)";
         element.style.transition="1s";
       });
       props.setspinner(false)
@@ -38,7 +39,7 @@ export default function Age(props) {
     e.preventDefault();
     var name=document.getElementsByClassName("outer_signup");
     Array.prototype.forEach.call(name,(element) => {
-      element.style.transform="translateX(-0vw)";
+      element.style.transform="translateX(-100vw)";
       element.style.transition="1s";
     });
   };

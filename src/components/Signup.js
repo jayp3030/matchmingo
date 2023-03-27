@@ -24,6 +24,7 @@ export default function Signup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     if (credentials.password.length < 8) {
       console.log(credentials.password);
       console.log(credentials.password.length);
@@ -34,15 +35,6 @@ export default function Signup(props) {
     if (!credentials.email || !credentials.password || !credentials.cpassword) {
       document.getElementById("alert").style.opacity = 1;
       document.getElementById("alert").innerHTML = "Fill required fields";
-      // var name=document.getElementById("name");
-      // name.style.transform="translateX(0vw)";
-      // var name=document.getElementsByClassName("outer_signup");
-      // console.log(name);
-      // Array.prototype.forEach.call(name,(element) => {
-      //   element.style.transform="translateX(-100vw)";
-      //   element.style.transition="1s";
-      // });
-      
       return;
     }
     if (credentials.password !== credentials.cpassword) {
@@ -64,7 +56,11 @@ export default function Signup(props) {
     }
     if (json.success) {
       localStorage.setItem("token", json.token) 
-      document.getElementById("profile_setup").style.transform = "translateX(-100vw)";
+      var name=document.getElementsByClassName("outer_signup");
+      Array.prototype.forEach.call(name,(element) => {
+        element.style.transform="translateX(-100vw)";
+        element.style.transition="1s";
+      });
       props.setspinner(false)
     }
   };
