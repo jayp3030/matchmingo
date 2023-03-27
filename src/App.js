@@ -46,7 +46,7 @@ function App() {
       if(localStorage.getItem("mode")==="light"){
         root.style.setProperty('--primary','#011627');
         root.style.setProperty('--accent','#FDFFFC');
-        root.style.setProperty("--light","#2EC4B6")
+        root.style.setProperty("--light","#2EC4B6");
       }
       else{
         root.style.setProperty('--primary','#FDFFFC');
@@ -56,7 +56,6 @@ function App() {
       }
     }
   }
-
   useEffect(() => {
     setThemme()
   }, [])

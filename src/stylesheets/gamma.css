@@ -290,17 +290,23 @@ width:100%;
 #google_login , .submit_btn{
 height:53%;
 width:80%;
-border:1px solid black;
+border:1px solid gray;
 display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: row;
 background-color: transparent;
 padding:0.5rem 0rem;
+
 /* border-radius: 5px; */
 }
 .submit_btn{
+   
     padding:0.6rem 0rem;
+}
+#google_login{
+    color:var(--primary);
+    background:var(--accent);
 }
 #google_login > img {
     height:auto;
@@ -341,6 +347,10 @@ padding:0.5rem 0rem;
     color:#c0c0c0;
     /* margin:0px; */
     
+}
+
+.login_OR_div > p{
+    background:var(--accent);
 }
 
 
@@ -467,6 +477,7 @@ padding:0.5rem 0rem;
     letter-spacing:1px;
     font-family: 'manrope';
     font-weight:700;
+    color:var(--primary);
 }
 .link > p{
     color:var(--light);
